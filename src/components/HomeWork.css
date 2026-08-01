@@ -1,0 +1,241 @@
+/* =============================
+   HOMEWORK SECTION CSS
+============================= */
+
+.homework-section {
+  position: relative;
+  padding: 100px 20px;
+  background: #fbfbfb;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* =============================
+   SECTION HEADING
+============================= */
+
+.section-heading {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 60px;
+  color: #000;
+}
+
+.section-heading .subtitle {
+  display: inline-block;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: #33333318;
+  border: 1px solid #33333338;
+  color: #000;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.section-heading h2 {
+  color: #000;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.section-heading p {
+  color: #000;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+/* =============================
+   GRID LAYOUT
+============================= */
+
+.homework-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+/* =============================
+   CARD STYLING
+============================= */
+
+.homework-card {
+  position: relative;
+  height: 420px;
+  border-radius: 15px;
+  overflow: hidden;
+  cursor: pointer;
+  isolation: isolate;
+  background: #0f172a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+  transition:
+    transform 0.45s ease,
+    box-shadow 0.45s ease,
+    border-color 0.45s ease;
+}
+
+/* Background Image */
+.card-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transform: scale(1);
+  transition: transform 0.7s ease;
+}
+
+/* Black Overlay */
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.18) 0%,
+    rgba(0, 0, 0, 0.42) 45%,
+    rgba(0, 0, 0, 0.82) 100%
+  );
+  z-index: 1;
+}
+
+/* Shine Effect */
+.card-shine {
+  position: absolute;
+  top: -120%;
+  left: -45%;
+  width: 42%;
+  height: 300%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.1) 35%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0.12) 65%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(18deg);
+  opacity: 0;
+  z-index: 3;
+}
+
+.homework-card:hover .card-shine {
+  animation: shineSweep 1s ease forwards;
+}
+
+/* =============================
+   CARD CONTENT
+============================= */
+
+.card-content {
+  position: relative;
+  z-index: 4;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 30px;
+}
+
+.card-number {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.18em;
+  margin-bottom: 14px;
+}
+
+.card-content h3 {
+  color: #ffffff;
+  font-size: 1.7rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.card-content p {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.98rem;
+  line-height: 1.7;
+  max-width: 290px;
+}
+
+/* =============================
+   HOVER EFFECTS
+============================= */
+
+.homework-card:hover {
+  transform: translateY(-10px);
+  border-color: rgba(79, 255, 211, 0.4);
+  box-shadow:
+    0 28px 60px rgba(0, 0, 0, 0.5),
+    0 0 32px rgba(79, 255, 211, 0.16);
+}
+
+.homework-card:hover .card-bg {
+  transform: scale(1.12);
+}
+
+/* =============================
+   SHINE ANIMATION
+============================= */
+
+@keyframes shineSweep {
+  0% {
+    left: -55%;
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  100% {
+    left: 140%;
+    opacity: 0;
+  }
+}
+
+/* =============================
+   TABLET RESPONSIVE
+============================= */
+
+@media (max-width: 991px) {
+  .homework-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* =============================
+   MOBILE RESPONSIVE
+============================= */
+
+@media (max-width: 640px) {
+  .homework-section {
+    padding: 80px 16px;
+  }
+
+  .homework-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .homework-card {
+    height: 360px;
+    border-radius: 24px;
+  }
+
+  .card-content {
+    padding: 24px;
+  }
+
+  .card-content h3 {
+    font-size: 1.45rem;
+  }
+}

@@ -1,0 +1,70 @@
+.common-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
+  border: 1px solid #ffffff;
+  border-radius: 999px;
+  background: transparent;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.35s ease;
+}
+/* Fill animation */
+.common-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #57c557, #57c557);
+  transition: left 0.35s ease;
+  z-index: 0;
+}
+/* Keep text above animation */
+.common-btn span {
+  position: relative;
+  z-index: 2;
+  color: #ffffff;
+  transition: color 0.35s ease;
+}
+/* Hover animation */
+.common-btn:hover::before {
+  left: 0;
+}
+/* TEXT VISIBLE ON ORANGE FILL */
+.common-btn:hover {
+  border-color: #57c557;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(255, 106, 0, 0.3);
+}
+.common-btn:hover span {
+  color: #ffffff !important;
+}
+/* Active */
+.common-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+/* Optional dark version */
+.common-btn.dark-hover::before {
+  background: linear-gradient(135deg, #111827, #1f2937);
+}
+.common-btn.dark-hover:hover {
+  border-color: #ffffff;
+}
+.common-btn.dark-hover:hover span {
+  color: #ffffff !important;
+}
+/* Responsive */
+@media (max-width: 768px) {
+  .common-btn {
+    padding: 12px 24px;
+    font-size: 0.95rem;
+  }
+}
