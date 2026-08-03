@@ -20,23 +20,33 @@ const cards = [
   },
 ];
 
+/* Container animation */
 const containerVariants = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.2,
+      staggerChildren: 0.25,
+      delayChildren: 0.15,
     },
   },
 };
 
+/* Card animation - coming from down */
 const cardVariants = {
-  hidden: { opacity: 0, y: 60 },
+  hidden: {
+    opacity: 0,
+    y: 120,
+    scale: 0.9,
+    filter: "blur(10px)",
+  },
   visible: {
     opacity: 1,
     y: 0,
+    scale: 1,
+    filter: "blur(0px)",
     transition: {
-      duration: 0.7,
-      ease: "easeOut",
+      duration: 0.9,
+      ease: [0.22, 1, 0.36, 1],
     },
   },
 };
@@ -45,15 +55,23 @@ function HomeWork() {
   return (
     <section className="homework-section">
       <div className="container">
-        <div className="section-heading">
+        {/* Heading */}
+        <motion.div
+          className="section-heading"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
           <span className="subtitle">Leads Genetics</span>
           <h2>Genomics Solutions</h2>
           <p>
             Advanced genomic technologies for agriculture, research, and
             clinical applications.
           </p>
-        </div>
+        </motion.div>
 
+        {/* Cards */}
         <motion.div
           className="homework-grid"
           variants={containerVariants}
@@ -66,15 +84,25 @@ function HomeWork() {
               key={index}
               className="homework-card"
               variants={cardVariants}
+              whileHover={{
+                y: -12,
+                scale: 1.03,
+                transition: { duration: 0.3 },
+              }}
             >
+              {/* Background image */}
               <div
                 className="card-bg"
                 style={{ backgroundImage: `url(${card.image})` }}
               ></div>
 
+              {/* Overlay */}
               <div className="card-overlay"></div>
+
+              {/* Shine effect */}
               <div className="card-shine"></div>
 
+              {/* Content */}
               <div className="card-content">
                 <span className="card-number">
                   {String(index + 1).padStart(2, "0")}

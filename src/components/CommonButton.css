@@ -42,7 +42,7 @@
 .common-btn:hover {
   border-color: #57c557;
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(255, 106, 0, 0.3);
+  box-shadow: 0 12px 20px rgba(255, 106, 0, 0.3);
 }
 .common-btn:hover span {
   color: #ffffff !important;

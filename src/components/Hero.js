@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import CommonButton from "./CommonButton";
 import "./Hero.css";
 
 const slides = [
@@ -34,7 +33,7 @@ const Hero = () => {
       setTimeout(() => {
         setActiveIndex((prev) => (prev + 1) % slides.length);
         setAnimate(true);
-      }, 200);
+      }, 300);
     }, 4000);
 
     return () => clearInterval(interval);
@@ -44,44 +43,44 @@ const Hero = () => {
 
   return (
     <section className="hero">
-      {/* Background Video */}
-      <video className="hero-video" autoPlay muted loop playsInline>
-        <source src={require ("../assets/hero-video.mp4")} />
-        Your browser does not support the video tag.
+      {/* BACKGROUND VIDEO */}
+      <video
+        className="hero-video"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        poster="/images/hero-poster.jpg"
+      >
+        <source src={require("../assets/hero-video2.mp4")} type="video/mp4" />
       </video>
 
-      {/* Black Overlay */}
+      {/* DARK OVERLAY */}
       <div className="hero-overlay"></div>
 
-      {/* Animated Content */}
-      <div className={`hero-content ${animate ? "show" : "hide"}`}>
-        
+      {/* CONTENT */}
+      <div className="hero-content">
+        <div className={`hero-text ${animate ? "show" : "hide"}`} key={activeIndex}>
+          {/* <span className="hero-subheading">
+            {currentSlide.subheading}
+          </span> */}
 
-        <h1 className="hero-heading">{currentSlide.heading}</h1>
+          <h1 className="hero-heading">
+            {currentSlide.heading.split(" ").slice(0, 2).join(" ")}
+            <br />
+            {currentSlide.heading.split(" ").slice(2).join(" ")}
+          </h1>
 
-        <p className="hero-description">{currentSlide.description}</p>
+          <p className="hero-description">
+            {currentSlide.description}
+          </p>
 
-   <div className="hero-buttons">
-  <CommonButton
-    text="Explore Services"
-    to="/services"
-  />
-
-  <CommonButton
-    text="Contact Us"
-    to="/contact"
-  />
-</div>
-      </div>
-
-      {/* Slide Indicators */}
-      <div className="hero-indicators">
-        {slides.map((_, index) => (
-          <span
-            key={index}
-            className={`indicator ${index === activeIndex ? "active" : ""}`}
-          />
-        ))}
+          <div className="hero-buttons">
+            <button className="common-btn">Explore Services</button>
+            <button className="common-btn">Contact Us</button>
+          </div>
+        </div>
       </div>
     </section>
   );

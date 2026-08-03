@@ -7,159 +7,169 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background: #000;
 }
 
-/* Background Video */
+/* VIDEO */
 .hero-video {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: -2;
+  object-position: center center;
+  z-index: 0;
+  display: block;
 }
 
-/* Black Overlay */
+/* OVERLAY */
 .hero-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.65) 0%,
-    rgba(0, 0, 0, 0.55) 40%,
-    rgba(0, 0, 0, 0.75) 100%
+    to bottom,
+    rgba(0, 0, 0, 0.35),
+    rgba(0, 0, 0, 0.55)
   );
-  z-index: -1;
+  z-index: 1;
 }
 
-/* Content */
+/* CONTENT */
 .hero-content {
   position: relative;
+  z-index: 2;
+  width: 100%;
   max-width: 75%;
   padding: 0 20px;
   text-align: center;
-  color: #ffffff;
-  z-index: 2;
+  color: #fff;
+}
+
+/* ANIMATED TEXT BLOCK */
+.hero-text {
   transition: all 0.6s ease;
 }
 
-/* Animation states */
-.hero-content.show {
+.hero-text.show {
   opacity: 1;
   transform: translateY(0);
 }
 
-.hero-content.hide {
+.hero-text.hide {
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(40px);
 }
 
+/* SUBHEADING */
+.hero-subheading {
+  display: inline-block;
+  margin-bottom: 18px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(10px);
+  color: #d8fff5;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
 
-
-
-/* Heading */
+/* HEADING */
 .hero-heading {
-  font-size: clamp(2.8rem, 6vw, 5.8rem);
-  line-height: 1.08;
-  font-weight: 900;
+  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  line-height: 1.05;
+  font-weight: 800;
   margin-bottom: 24px;
-  letter-spacing: -0.04em;
-  text-shadow:
-    0 0 20px rgba(13, 255, 13, 0.15),
-    0 10px 40px rgba(0, 0, 0, 0.55);
-  animation: fadeUp 1s ease;
+  text-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
 }
 
-/* Description */
+/* DESCRIPTION */
 .hero-description {
   max-width: 760px;
-  margin: 0 auto 36px;
-  font-size: 1.12rem;
-  line-height: 1.9;
-  color: rgba(255, 255, 255, 0.88);
-  animation: fadeUp 1.2s ease;
+  margin: 0 auto 34px;
+  font-size: 1.08rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.92);
 }
 
-/* Buttons */
+/* BUTTONS */
 .hero-buttons {
   display: flex;
   justify-content: center;
-  gap: 18px;
+  gap: 16px;
   flex-wrap: wrap;
-  animation: fadeUp 1.4s ease;
 }
 
-/* Indicators */
-.hero-indicators {
-  position: absolute;
-  bottom: 32px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 10px;
-  z-index: 3;
-}
-
-.indicator {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.35);
+.common-btn {
+  padding: 14px 30px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
   transition: all 0.3s ease;
 }
 
-.indicator.active {
-  width: 34px;
-  border-radius: 999px;
-  background: #57c557;
-  box-shadow: 0 0 5px rgba(13, 255, 13, 0.9);
+.common-btn:hover {
+  transform: translateY(-2px);
+  background: #00d4aa;
+  border-color: #00d4aa;
+  color: #061a16;
+  box-shadow: 0 12px 28px rgba(0, 212, 170, 0.35);
 }
 
-/* Animation */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Responsive */
+/* ================= MOBILE FIX ================= */
 @media (max-width: 768px) {
   .hero {
-    height: 100dvh;
-    min-height: 100dvh;
+    height: 100svh;
+    min-height: 100svh;
   }
 
   .hero-video {
     width: 100%;
-    height: 100dvh;
+    height: 100%;
     object-fit: cover;
-  }
-
-  .hero-overlay {
-    height: 100dvh;
+    object-position: center center;
   }
 
   .hero-content {
-    max-width: 100%;
-    padding: 0 16px;
+    padding: 0 18px;
+    min-width: 95% !important;
+    /* background-color: #00d4aa; */
   }
 
   .hero-heading {
     font-size: 1.5rem;
+    line-height: 1.15;
   }
 
   .hero-description {
-    font-size: 1rem;
+    font-size: 0.98rem;
     line-height: 1.7;
   }
 
   .hero-buttons {
+
+    width: 100%;
+flex-direction: row;
     align-items: center;
+    
   }
+
+  .common-btn {
+    font-size: 14px !important;
+    width: 100%;
+    max-width: 160px;
+    padding: 11px 15px !important;
+  }
+}
+
+/* EXTRA SMALL DEVICES */
+@media (max-width: 480px) {
+
 }

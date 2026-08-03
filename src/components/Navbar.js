@@ -129,7 +129,7 @@ const Navbar = () => {
 
       <aside className={`sidebar ${sidebarOpen ? "open" : ""}`}>
         <div className="sidebar-header">
-          <div className="logo">LeadsGenetics</div>
+          <div className="logo mobile-sidebar-logo"><img src={require("../assets/logo.png")}/></div>
           <button
             className="close-btn"
             onClick={() => setSidebarOpen(false)}

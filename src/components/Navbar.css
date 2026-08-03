@@ -165,6 +165,9 @@ position: fixed;
 }
 
 /* ================= MOBILE ================= */
+.mobile-sidebar-logo{
+  margin-left: 0px !important;
+}
 .hamburger {
   display: none;
   font-size: 1.9rem;
