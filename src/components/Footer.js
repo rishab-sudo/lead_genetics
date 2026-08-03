@@ -89,7 +89,7 @@ export default function Footer() {
       <div className="footer-container">
         <div className="footer-grid">
           <div className="footer-brand">
-            <p className="footer-logo">LeadsGenetics</p>
+            <p className="footer-logo"><img alt="lead-genetics-video" src={require("../assets/logo.png")}/></p>
             <p className="footer-tagline">
               Agricultural, research and clinical genomics under one
               premium, science-led brand.
