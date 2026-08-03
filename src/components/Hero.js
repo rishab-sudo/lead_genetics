@@ -9,16 +9,16 @@ const slides = [
       "Empowering agriculture, research, and clinical genomics with cutting-edge sequencing technologies and bioinformatics expertise.",
   },
   {
-    heading: "Precision Agriculture Genomics",
+    heading: "Sustainable Farming with Genomics",
     subheading: "Smarter Crops, Better Yield",
     description:
       "Accelerate crop improvement programs using genomic insights, marker-assisted breeding, and AI-powered analytics.",
   },
   {
-    heading: "Clinical & Research Genomics",
+    heading: "Every Diagnosis Starts with a Genome",
     subheading: "Driving Personalized Healthcare",
     description:
-      "Unlock the power of genomic data for diagnostics, precision medicine, and next-generation biomedical research.",
+      "From reproductive screening to disease diagnostics, services turn genetic data backed by accredited labs and fast turnaround.",
   },
 ];
 

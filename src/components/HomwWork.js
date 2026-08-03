@@ -1,22 +1,35 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import "./HomeWork.css";
 
 const cards = [
   {
     title: "Agri Genomics",
+    description:
+      "Enhance crop breeding programs using genomic markers, DNA sequencing, and AI-powered agricultural analytics.",
     image:
       "https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?q=80&w=1200&auto=format&fit=crop",
+    tags: ["SNP", "GBS", "IVF"],
+    link: "/agri-genomics",
   },
   {
     title: "Research Genomics",
+    description:
+      "Accelerate scientific discovery with next-generation sequencing, transcriptomics, and advanced bioinformatics workflows.",
     image:
       "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?q=80&w=1200&auto=format&fit=crop",
+    tags: ["GBS", "Amplicon", "R&D"],
+    link: "/research-genomics",
   },
   {
     title: "Clinical Genomics",
+    description:
+      "Support precision medicine, genetic diagnostics, and personalized healthcare through comprehensive clinical genomic analysis.",
     image:
       "https://images.unsplash.com/photo-1579154204601-01588f351e67?q=80&w=1200&auto=format&fit=crop",
+    tags: ["Diagnostics", "DNA Testing", "Genetics"],
+    link: "/clinical-genomics",
   },
 ];
 
@@ -31,7 +44,7 @@ const containerVariants = {
   },
 };
 
-/* Card animation - coming from down */
+/* Card animation */
 const cardVariants = {
   hidden: {
     opacity: 0,
@@ -90,16 +103,13 @@ function HomeWork() {
                 transition: { duration: 0.3 },
               }}
             >
-              {/* Background image */}
+              {/* Background */}
               <div
                 className="card-bg"
                 style={{ backgroundImage: `url(${card.image})` }}
               ></div>
 
-              {/* Overlay */}
               <div className="card-overlay"></div>
-
-              {/* Shine effect */}
               <div className="card-shine"></div>
 
               {/* Content */}
@@ -110,10 +120,24 @@ function HomeWork() {
 
                 <h3>{card.title}</h3>
 
-                <p>
-                  Precision genomics powered by advanced sequencing and
-                  bioinformatics.
+                <p className="card-description">
+                  {card.description}
                 </p>
+
+                {/* Tags */}
+                <div className="card-tags">
+                  {card.tags.map((tag, i) => (
+                    <span key={i} className="tag-pill">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Explore Button */}
+                <Link to={card.link} className="explore-btn">
+                  Explore
+                  <span className="arrow">→</span>
+                </Link>
               </div>
             </motion.div>
           ))}
