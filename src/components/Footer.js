@@ -132,7 +132,7 @@ export default function Footer() {
 
         <div className="footer-bottom">
           <p className="footer-copyright">
-            &copy; {year} LeadsGenetics. All rights reserved.
+            &copy; {year} Leads Genetics. All rights reserved.
           </p>
           <ul className="footer-legal-list">
             {legalLinks.map((link) => (

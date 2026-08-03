@@ -59,8 +59,8 @@
 }
 
 .footer-social a:hover {
-  background: #1a1a18;
-  border-color: #1a1a18;
+  background: #000;
+  border-color: #0dff0d;
   color: #fbfbfb;
 }
 
@@ -92,7 +92,7 @@
 }
 
 .footer-link-list a:hover {
-  color: #57c557;
+  color: #0dff0d;
 }
 
 .footer-contact-line {
@@ -133,7 +133,7 @@
 }
 
 .footer-legal-list a:hover {
-  color: #3d3d3a;
+  color: #57c557;
 }
 
 @media (max-width: 900px) {
