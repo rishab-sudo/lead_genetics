@@ -54,7 +54,7 @@ const Navbar = () => {
     <>
       <nav className={`navbar ${scrolled ? "scrolled" : ""}`} ref={navRef}>
         <div className="nav-left">
-          <div className="logo"><img src={require("../assets/logo.png")}/></div>
+          <div className="logo"><img alt="lead-genetics-video" src={require("../assets/logo.png")}/></div>
 
           <ul className="nav-links">
             <li><a href="/">Home</a></li>
@@ -129,7 +129,7 @@ const Navbar = () => {
 
       <aside className={`sidebar ${sidebarOpen ? "open" : ""}`}>
         <div className="sidebar-header">
-          <div className="logo mobile-sidebar-logo"><img src={require("../assets/logo.png")}/></div>
+          <div className="logo mobile-sidebar-logo"><img alt="lead-genetics-video" src={require("../assets/logo.png")}/></div>
           <button
             className="close-btn"
             onClick={() => setSidebarOpen(false)}
