@@ -6,49 +6,50 @@
 
 body {
   font-family: "Inter", sans-serif;
-  background: #0f172a;
+
 }
 
 /* ================= NAVBAR ================= */
 .navbar {
-position: fixed;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: fit-content;
-  padding: 11px 5%;
-  display: flex;
+  padding: 14px 5%;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
   background: transparent;
-  z-index: 1000;
-  transition: background 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
   backdrop-filter: blur(5px);
-  /* border-bottom: 1px solid rgba(255, 255, 255, 0.08); */
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s ease;
   z-index: 1000;
-}
-.navbar.scrolled {
-  background: #000000;
-  backdrop-filter: blur(17px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
 }
 
-.nav-left {
+.navbar.scrolled {
+  background: #000;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+/* ================= LOGO ================= */
+.nav-logo {
   display: flex;
   align-items: center;
-  gap: 60px;
+  justify-content: flex-start;
 }
 
-.logo {
-  font-size: 1.8rem;
-
-  font-weight: 800;
-  color: #fff;
-  cursor: pointer;
+.nav-logo img {
+  height: 55px;
+  width: auto;
+  object-fit: contain;
 }
 
-/* ================= NAV LINKS ================= */
+/* ================= CENTER LINKS ================= */
+.nav-center {
+  display: flex;
+  justify-content: center;
+}
+
 .nav-links {
   list-style: none;
   display: flex;
@@ -60,98 +61,35 @@ position: fixed;
   position: relative;
 }
 
-.nav-links a,
-.dropdown-btn {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 10px 16px;
+.nav-links a {
   text-decoration: none;
   color: #fff;
   font-size: 0.98rem;
   font-weight: 600;
-  background: transparent;
-  border: none;
-  cursor: pointer;
+  padding: 10px 16px;
   border-radius: 12px;
   transition: all 0.3s ease;
-  font-family: inherit;
 }
 
-.nav-links a:hover,
-.dropdown-btn:hover {
+.nav-links a:hover {
   color: #0dff0d;
-  background: rgba(128, 128, 128, 0.18);
+  background: rgba(255, 255, 255, 0.08);
   transform: translateY(-2px);
-}
-
-/* ================= DESKTOP DROPDOWN ================= */
-.dropdown {
-  position: relative;
-}
-
-.dropdown-menu {
-  position: absolute;
-  top: calc(100% + 10px);
-  left: 0;
-  min-width: 220px;
-  padding: 12px;
-  list-style: none;
-  background: rgba(15, 23, 42, 0.98);
-  backdrop-filter: blur(18px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transform: translateY(10px);
-  transition: all 0.25s ease;
-  z-index: 9999;
-}
-
-/* Menu visibility is driven by React state (the "open" class
-   added in Navbar.js), not CSS :hover. Avoids hover-gap /
-   stacking-context edge cases entirely. */
-.dropdown-menu.open {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  transform: translateY(0);
-}
-
-.dropdown-menu li {
-  width: 100%;
-}
-
-.dropdown-menu a {
-  display: block;
-  width: 100%;
-  padding: 12px 14px;
-  border-radius: 10px;
-  color: #e5e7eb;
-  font-size: 0.95rem;
-  font-weight: 500;
-  transition: all 0.25s ease;
-}
-
-.dropdown-menu a:hover {
-  color: #0dff0d;
-  background: rgba(128, 128, 128, 0.18);
 }
 
 /* ================= RIGHT SECTION ================= */
 .nav-right {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 16px;
 }
 
 .nav-btn {
-  background: linear-gradient(135deg, #0dff0d, #08c908);
+  background: linear-gradient(135deg, #ccc, #ccc);
   color: #041104;
   border: none;
-  padding: 12px 15px;
+  padding: 12px 20px;
   border-radius: 999px;
   font-size: 0.95rem;
   font-weight: 800;
@@ -161,13 +99,10 @@ position: fixed;
 
 .nav-btn:hover {
   background: #fff;
- 
+  transform: translateY(-2px);
 }
 
-/* ================= MOBILE ================= */
-.mobile-sidebar-logo{
-  margin-left: 0px !important;
-}
+/* ================= HAMBURGER ================= */
 .hamburger {
   display: none;
   font-size: 1.9rem;
@@ -177,6 +112,7 @@ position: fixed;
   cursor: pointer;
 }
 
+/* ================= SIDEBAR ================= */
 .sidebar-overlay {
   position: fixed;
   inset: 0;
@@ -217,6 +153,11 @@ position: fixed;
   align-items: center;
 }
 
+.mobile-sidebar-logo img {
+  height: 50px;
+  width: auto;
+}
+
 .close-btn {
   background: transparent;
   border: none;
@@ -229,38 +170,32 @@ position: fixed;
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
-.sidebar-links a,
-.mobile-dropdown-btn {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.sidebar-links a {
+  display: block;
   color: #fff;
   text-decoration: none;
   padding: 12px 0;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  font-family: inherit;
+  font-weight: 500;
+  transition: color 0.3s ease;
 }
 
-.mobile-submenu {
-  display: none;
-  flex-direction: column;
-  padding-left: 14px;
-  margin-left: 10px;
-  border-left: 2px solid rgba(13, 255, 13, 0.4);
+.sidebar-links a:hover {
+  color: #0dff0d;
 }
 
-.mobile-dropdown.active .mobile-submenu {
-  display: flex;
-}
-
+/* ================= RESPONSIVE ================= */
 @media (max-width: 992px) {
-  .nav-links,
+  .navbar {
+    grid-template-columns: auto 1fr auto;
+  }
+
+  .nav-center {
+    display: none;
+  }
+
   .nav-btn {
     display: none;
   }
@@ -269,7 +204,7 @@ position: fixed;
     display: block;
   }
 
-  .nav-left {
-    gap: 0;
+  .nav-logo img {
+    height: 48px;
   }
 }

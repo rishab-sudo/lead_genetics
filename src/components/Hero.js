@@ -1,24 +1,50 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { Leaf, FlaskConical, CirclePlus } from "lucide-react";
 import "./Hero.css";
+
+import agriImg from "../assets/agri.png";
+import researchImg from "../assets/research.png";
+import clinicalImg from "../assets/clinical.png";
 
 const slides = [
   {
-    heading: "Transforming Genomics Into Innovation",
-    subheading: "Advanced DNA Sequencing Solutions",
+    heading: "Transforming Genomics<br />Into Innovation",
     description:
       "Empowering agriculture, research, and clinical genomics with cutting-edge sequencing technologies and bioinformatics expertise.",
   },
   {
-    heading: "Sustainable Farming with Genomics",
-    subheading: "Smarter Crops, Better Yield",
+    heading: "Sustainable Farming<br />with Genomics",
     description:
       "Accelerate crop improvement programs using genomic insights, marker-assisted breeding, and AI-powered analytics.",
   },
   {
-    heading: "Every Diagnosis Starts with a Genome",
-    subheading: "Driving Personalized Healthcare",
+    heading: "Every Diagnosis Starts<br />with a Genome",
     description:
-      "From reproductive screening to disease diagnostics, services turn genetic data backed by accredited labs and fast turnaround.",
+      "From reproductive screening to disease diagnostics, our services transform genetic data into actionable healthcare insights.",
+  },
+];
+const cards = [
+  {
+    title: "Agri Genomics",
+    icon: <Leaf size={22} />,
+    link: "/agri-genomics",
+    image: agriImg,
+    color: "green",
+  },
+  {
+    title: "Research Genomics",
+    icon: <FlaskConical size={22} />,
+    link: "/research-genomics",
+    image: researchImg,
+    color: "blue",
+  },
+  {
+    title: "Clinical Genomics",
+    icon: <CirclePlus size={22} />,
+    link: "/clinical-genomics",
+    image: clinicalImg,
+    color: "purple",
   },
 ];
 
@@ -30,11 +56,12 @@ const Hero = () => {
     const interval = setInterval(() => {
       setAnimate(false);
 
+      // smoother + slower transition
       setTimeout(() => {
         setActiveIndex((prev) => (prev + 1) % slides.length);
         setAnimate(true);
-      }, 500);
-    }, 5000);
+      }, 600);
+    }, 6500); // change every 6.5s
 
     return () => clearInterval(interval);
   }, []);
@@ -43,43 +70,59 @@ const Hero = () => {
 
   return (
     <section className="hero">
-      {/* BACKGROUND VIDEO */}
       <video
         className="hero-video"
         autoPlay
         muted
         loop
         playsInline
-        preload="auto"
-        poster="/images/hero-poster.jpg"
       >
-        <source src={require("../assets/lead-video3.mp4")} type="video/mp4" />
+        <source
+          src={require("../assets/lead-video3.mp4")}
+          type="video/mp4"
+        />
       </video>
 
-      {/* DARK OVERLAY */}
       <div className="hero-overlay"></div>
 
-      {/* CONTENT */}
-      <div className="hero-content">
-        <div className={`hero-text ${animate ? "show" : "hide"}`} key={activeIndex}>
-          {/* <span className="hero-subheading">
-            {currentSlide.subheading}
-          </span> */}
+      <div className="hero-container">
+        {/* ONLY THIS PART ANIMATES */}
+        <div className={`hero-text ${animate ? "show" : "hide"}`}>
+          <div className="hero-badge">LEADS GENETICS</div>
 
-          <h1 className="hero-heading">
-            {currentSlide.heading.split(" ").slice(0, 2).join(" ")}
-            <br />
-            {currentSlide.heading.split(" ").slice(2).join(" ")}
-          </h1>
+       <h1
+  className="hero-heading"
+  dangerouslySetInnerHTML={{ __html: currentSlide.heading }}
+/>
 
           <p className="hero-description">
             {currentSlide.description}
           </p>
+        </div>
 
-          <div className="hero-buttons">
-            <button className="common-btn">Explore Services</button>
-            <button className="common-btn">Contact Us</button>
-          </div>
+        {/* CARDS STAY FIXED */}
+        <div className="hero-cards">
+          {cards.map((card, index) => (
+            <Link
+              key={index}
+              to={card.link}
+              className={`hero-card ${card.color}`}
+            >
+              <div
+                className="hero-card-bg"
+                style={{ backgroundImage: `url(${card.image})` }}
+              ></div>
+
+              <div className="hero-card-content">
+                <div className={`hero-icon ${card.color}`}>
+                  {card.icon}
+                </div>
+
+                <h3>{card.title}</h3>
+                <span>Explore Services →</span>
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
     </section>

@@ -7,7 +7,6 @@ const Navbar = () => {
 
   const navRef = useRef(null);
 
-  // Toggle background on scroll
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -22,27 +21,27 @@ const Navbar = () => {
   return (
     <>
       <nav className={`navbar ${scrolled ? "scrolled" : ""}`} ref={navRef}>
-        <div className="nav-left">
-          <div className="logo">
-            <img
-              alt="lead-genetics-video"
-              src={require("../assets/logo.png")}
-            />
-          </div>
+        {/* LEFT - LOGO */}
+        <div className="nav-logo">
+          <img
+            src={require("../assets/logo.png")}
+            alt="Lead Genetics"
+          />
+        </div>
 
+        {/* CENTER - LINKS */}
+        <div className="nav-center">
           <ul className="nav-links">
             <li><a href="/">Home</a></li>
             <li><a href="/about">About</a></li>
-
-            {/* Dropdowns can be added later */}
-
             <li><a href="/contact">Contact</a></li>
           </ul>
         </div>
 
+        {/* RIGHT - BUTTON + HAMBURGER */}
         <div className="nav-right">
           <button className="common-btn nav-btn">
-            <span>Get Started</span>
+                <span>Explore More</span>
           </button>
 
           <button
@@ -55,17 +54,19 @@ const Navbar = () => {
         </div>
       </nav>
 
+      {/* OVERLAY */}
       <div
         className={`sidebar-overlay ${sidebarOpen ? "active" : ""}`}
         onClick={() => setSidebarOpen(false)}
       />
 
+      {/* SIDEBAR */}
       <aside className={`sidebar ${sidebarOpen ? "open" : ""}`}>
         <div className="sidebar-header">
-          <div className="logo mobile-sidebar-logo">
+          <div className="mobile-sidebar-logo">
             <img
-              alt="lead-genetics-video"
               src={require("../assets/logo.png")}
+              alt="Lead Genetics"
             />
           </div>
 
@@ -85,7 +86,7 @@ const Navbar = () => {
         </ul>
 
         <button className="common-btn sidebar-btn">
-          <span>Get Started</span>
+          <span>Explore More</span>
         </button>
       </aside>
     </>

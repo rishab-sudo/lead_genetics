@@ -20,24 +20,19 @@ const scientists = [
     image: require("../assets/team/Ashish_khandelwal.png"),
   },
   {
-    name: "HIRATA, Tatsumi",
-    lab: "Brain Function Laboratory",
-       image: require("../assets/team/Ashiish dubye.png"),
-  },
-  {
     name: "IWASATO, Takuji",
     lab: "Laboratory of Mammalian Neural Circuits",
     image: require("../assets/team/saravanan.png"),
   },
   {
-    name: "KOIDE, Tsuyoshi",
-    lab: "Mouse Genomics Resource Laboratory",
-       image: require("../assets/team/suyush agrwal.png"),
-  },
-  {
     name: "NAKAMURA, Hiroshi",
     lab: "Molecular Genetics Laboratory",
-       image: require("../assets/team/Ashiish dubye.png"),
+    image: require("../assets/team/Ashiish dubye.png"),
+  },
+  {
+    name: "KOIDE, Tsuyoshi",
+    lab: "Mouse Genomics Resource Laboratory",
+    image: require("../assets/team/suyush agrwal.png"),
   },
 ];
 
@@ -58,21 +53,19 @@ const Team = () => {
     responsive: [
       {
         breakpoint: 1200,
-        settings: {
-          slidesToShow: 3,
-        },
+        settings: { slidesToShow: 3 },
       },
       {
         breakpoint: 992,
-        settings: {
-          slidesToShow: 2,
-        },
+        settings: { slidesToShow: 2 },
       },
       {
         breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-        },
+        settings: { slidesToShow: 1 },
+      },
+          {
+        breakpoint: 430,
+        settings: { slidesToShow: 1 },
       },
     ],
   };
@@ -80,15 +73,17 @@ const Team = () => {
   return (
     <section className="team-scientists-section">
       <Container>
-        <div className="team-header">
-          <div>
-            <h2 className="team-title">Our Scientists</h2>
-            <p className="team-subtitle">
-              Meet the experts driving innovation in genomics, neuroscience,
-              and molecular research.
-            </p>
-          </div>
+        {/* Center Heading */}
+        <div className="team-heading">
+          <h2 className="team-title">Our Team </h2>
+          <p className="team-subtitle">
+            Meet the experts driving innovation in genomics, neuroscience,
+            and molecular research.
+          </p>
+        </div>
 
+        {/* Slider Navigation */}
+        <div className="team-slider-header">
           <div className="team-nav">
             <button
               className="team-nav-btn"
@@ -106,6 +101,7 @@ const Team = () => {
           </div>
         </div>
 
+        {/* Slider */}
         <Slider ref={sliderRef} {...settings}>
           {scientists.map((scientist, index) => (
             <div key={index} className="team-slide">

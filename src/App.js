@@ -5,10 +5,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import ClinicalGenomics from "./pages/ClinicalGenomics";
+import Footer from "./components/Footer";
+import Contact from "./pages/Contact";
 
 function App() {
   return (
-    <>
+    <div className = "App">
       {/* Navbar always visible */}
       <Navbar />
 
@@ -21,8 +23,13 @@ function App() {
           path="/clinical-genomics"
           element={<ClinicalGenomics />}
         />
+         <Route
+          path="/contact"
+          element={<Contact />}
+        />
       </Routes>
-    </>
+      <Footer/>
+    </div>
   );
 }
 
