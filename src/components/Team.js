@@ -12,32 +12,32 @@ const scientists = [
   {
     name: "TOYODA, Atsushi",
     lab: "Comparative Genomics Laboratory",
-    image: "/assets/team/scientist1.jpg",
+    image: require("../assets/team/Ashiish dubye.png"),
   },
   {
     name: "ASAKAWA, Kazuhide",
     lab: "Neurobiology and Pathology Laboratory",
-    image: "/assets/team/scientist2.jpg",
+    image: require("../assets/team/Ashish_khandelwal.png"),
   },
   {
     name: "HIRATA, Tatsumi",
     lab: "Brain Function Laboratory",
-    image: "/assets/team/scientist3.jpg",
+       image: require("../assets/team/Ashiish dubye.png"),
   },
   {
     name: "IWASATO, Takuji",
     lab: "Laboratory of Mammalian Neural Circuits",
-    image: "/assets/team/scientist4.jpg",
+    image: require("../assets/team/saravanan.png"),
   },
   {
     name: "KOIDE, Tsuyoshi",
     lab: "Mouse Genomics Resource Laboratory",
-    image: "/assets/team/scientist5.jpg",
+       image: require("../assets/team/suyush agrwal.png"),
   },
   {
     name: "NAKAMURA, Hiroshi",
     lab: "Molecular Genetics Laboratory",
-    image: "/assets/team/scientist6.jpg",
+       image: require("../assets/team/Ashiish dubye.png"),
   },
 ];
 

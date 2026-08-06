@@ -2,16 +2,16 @@ import React from "react";
 import ClinicalHero from "../components/ClinicalHero";
 import "./ClinicalGenomics.css";
 
-const testMenu = [
-  "Oncology",
-  "Rare Disease",
-  "Pharmacogenomics",
-  "Reproductive",
-  "Neonatology",
-  "Cardiology",
-  "Neurology",
-  "Infectious Disease",
-]
+// const testMenu = [
+//   "Oncology",
+//   "Rare Disease",
+//   "Pharmacogenomics",
+//   "Reproductive",
+//   "Neonatology",
+//   "Cardiology",
+//   "Neurology",
+//   "Infectious Disease",
+// ]
 
 const sections = [
   {
