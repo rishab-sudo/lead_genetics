@@ -60,7 +60,7 @@ const Navbar = () => {
             <li><a href="/">Home</a></li>
             <li><a href="/about">About</a></li>
 
-            <li className="dropdown">
+            {/* <li className="dropdown">
               <button
                 type="button"
                 className="dropdown-btn"
@@ -79,8 +79,8 @@ const Navbar = () => {
                 <li><a href="/seo">SEO Optimization</a></li>
                 <li><a href="/digital-marketing">Digital Marketing</a></li>
               </ul>
-            </li>
-
+            </li> */}
+{/* 
             <li className="dropdown">
               <button
                 type="button"
@@ -100,7 +100,7 @@ const Navbar = () => {
                 <li><a href="/agriculture">Agriculture</a></li>
                 <li><a href="/clinical">Clinical</a></li>
               </ul>
-            </li>
+            </li> */}
 
             <li><a href="/contact">Contact</a></li>
           </ul>
@@ -143,7 +143,7 @@ const Navbar = () => {
           <li><a href="/">Home</a></li>
           <li><a href="/about">About</a></li>
 
-          <li className={`mobile-dropdown ${servicesOpen ? "active" : ""}`}>
+          {/* <li className={`mobile-dropdown ${servicesOpen ? "active" : ""}`}>
             <button
               className="mobile-dropdown-btn"
               onClick={() => setServicesOpen(!servicesOpen)}
@@ -173,7 +173,7 @@ const Navbar = () => {
               <li><a href="/agriculture">Agriculture</a></li>
               <li><a href="/clinical">Clinical</a></li>
             </ul>
-          </li>
+          </li> */}
 
           <li><a href="/contact">Contact</a></li>
         </ul>

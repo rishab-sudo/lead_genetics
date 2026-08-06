@@ -1,0 +1,255 @@
+/* ================= OUTER SCROLL DRIVER ================= */
+.faq-scroll-wrapper-outer {
+  position: relative;
+  width: 100%;
+}
+
+.faq-sticky-inner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.faq-sticky-inner.is-pinned {
+  position: sticky;
+  overflow: hidden;
+}
+
+/* ================= FAQ SECTION ================= */
+.faq-section {
+  padding: 90px 0;
+  background: #f5f6f7;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* ================= TOPBAR ================= */
+.faq-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 50px;
+}
+
+.faq-header {
+  flex: 1;
+}
+
+.faq-main-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #0c2d63;
+  margin-bottom: 18px;
+  line-height: 1.2;
+}
+
+.faq-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  color: #2f855a;
+  margin-bottom: 18px;
+}
+
+.faq-line {
+  width: 44px;
+  height: 2px;
+  background: #2f855a;
+  border-radius: 999px;
+}
+
+.faq-subtitle {
+  color: #49566f;
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* ================= NAVIGATION BUTTONS ================= */
+.faq-nav-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.faq-nav-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  border: 2px solid #d7dde8;
+  background: transparent;
+  color: #0c2d63;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.faq-nav-btn:hover {
+  border-color: #2f855a;
+  color: #2f855a;
+  background: rgba(139, 197, 63, 0.08);
+  transform: translateY(-2px);
+}
+
+/* ================= HORIZONTAL VIEWPORT (desktop: shows 4 cards) ========= */
+.faq-scroll-viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+/* Mobile / tablet fallback: native horizontal scroll */
+.faq-scroll-viewport.native-scroll {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  max-width: none !important;
+}
+
+.faq-scroll-viewport.native-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* ================= CARD ROW ================= */
+.faq-scroll-wrapper {
+  display: flex;
+  gap: 28px;
+  padding: 10px 6px 18px;
+  will-change: transform;
+  /* No transition on transform — position is set every animation frame
+     from live scroll data, so it already tracks the scrollbar instantly. */
+}
+
+/* ================= CARDS ================= */
+.faq-help-card {
+  flex: 0 0 320px;
+  background: #ffffff;
+  border: 1px solid #e5e9f2;
+  border-radius: 18px;
+  padding: 28px 24px;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: transform 0.35s ease, border-color 0.3s ease,
+    box-shadow 0.3s ease;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+}
+
+.faq-help-card:hover {
+  transform: translateY(-10px);
+  border-color: #2f855a;
+  box-shadow: 0 16px 34px rgba(12, 45, 99, 0.14);
+}
+
+.faq-card-icon {
+  width: 68px;
+  height: 68px;
+  border-radius: 16px;
+  background: #cccccc36;
+  color: #4b5563;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+  transition: all 0.3s ease;
+}
+
+.faq-help-card:hover .faq-card-icon {
+  background: #2f855a;
+  color: #ffffff;
+  transform: scale(1.08);
+}
+
+.faq-card-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #0c2d63;
+  line-height: 1.4;
+  margin-bottom: 14px;
+}
+
+.faq-card-description {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #4b5563;
+  margin-bottom: 22px;
+  flex-grow: 1;
+}
+
+.faq-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #000;
+  border-bottom: 2px solid rgba(139, 197, 63, 0.45);
+  width: fit-content;
+  padding-bottom: 3px;
+  transition: all 0.3s ease;
+}
+
+.faq-help-card:hover .faq-card-link {
+  color: #2f855a;
+  border-color: #2f855a;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 991px) {
+  .faq-section {
+    padding: 72px 0;
+  }
+
+  .faq-main-title {
+    font-size: 2.4rem;
+  }
+
+  .faq-topbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .faq-nav-buttons {
+    justify-content: center;
+  }
+}
+
+/* ================= SMALL SCREENS: single centered card ================= */
+@media (max-width: 576px) {
+  .faq-section {
+    padding: 60px 0;
+  }
+
+  .faq-main-title {
+    font-size: 2rem;
+  }
+
+  .faq-scroll-viewport.native-scroll {
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 6vw;
+  }
+
+  .faq-scroll-wrapper {
+    padding-left: 6vw;
+    padding-right: 6vw;
+    gap: 20px;
+  }
+
+  .faq-help-card {
+    flex: 0 0 88vw;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+    padding: 24px 20px;
+    min-height: 300px;
+  }
+
+  .faq-card-title {
+    font-size: 1.08rem;
+  }
+
+  .faq-card-description {
+    font-size: 0.92rem;
+  }
+}

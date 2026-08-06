@@ -77,12 +77,28 @@
 }
 
 /* HEADING */
+/* HEADING */
 .hero-heading {
   font-size: clamp(2rem, 5vw, 5rem);
   line-height: 1.05;
-  font-weight: 700;
+  font-weight: 800;
   margin-bottom: 24px;
-  text-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+
+  /* Elegant gradient text */
+  background: linear-gradient(
+    90deg,
+    #fff 0%,
+    #fff 50%,
+    #2f855a 100%
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+
+  /* Soft glow for video background */
+  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.35));
 }
 
 /* DESCRIPTION */

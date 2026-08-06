@@ -33,8 +33,8 @@ const Hero = () => {
       setTimeout(() => {
         setActiveIndex((prev) => (prev + 1) % slides.length);
         setAnimate(true);
-      }, 300);
-    }, 4000);
+      }, 500);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, []);
@@ -53,7 +53,7 @@ const Hero = () => {
         preload="auto"
         poster="/images/hero-poster.jpg"
       >
-        <source src={require("../assets/hero-video2.mp4")} type="video/mp4" />
+        <source src={require("../assets/lead-video3.mp4")} type="video/mp4" />
       </video>
 
       {/* DARK OVERLAY */}

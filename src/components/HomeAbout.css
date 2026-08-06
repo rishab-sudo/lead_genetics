@@ -1,0 +1,403 @@
+/* =============================
+   HOME ABOUT SECTION
+============================= */
+
+.h-about-section {
+  position: relative;
+  padding: 110px 0;
+  background: #f8fafc;
+  overflow: hidden;
+}
+
+.h-about-bg-dna {
+  position: absolute;
+  top: 30px;
+  right: -40px;
+  width: 260px;
+  height: 520px;
+  opacity: 0.05;
+  background: url("https://www.svgrepo.com/show/445767/dna.svg") no-repeat center;
+  background-size: contain;
+  pointer-events: none;
+}
+
+.h-about-container {
+  max-width: 1400px;
+}
+
+/* =============================
+   LEFT IMAGE AREA
+============================= */
+
+.h-about-image-wrap {
+  position: relative;
+  max-width: 650px;
+  margin: 0 auto;
+  padding-bottom: 140px;
+}
+
+.h-about-main-image {
+  position: relative;
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(15, 23, 42, 0.18);
+}
+
+.h-about-main-image img {
+  width: 100%;
+  height: 680px;
+  object-fit: cover;
+  display: block;
+}
+
+.h-about-card {
+  position: absolute;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #ffffff;
+  border: 6px solid #ffffff;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.22);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.h-about-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 26px 60px rgba(15, 23, 42, 0.28);
+}
+
+.h-about-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.h-about-card-lab {
+  left: 28px;
+  bottom: 0;
+  width: 68%;
+  height: 300px;
+  z-index: 3;
+}
+
+.h-about-card-dna {
+  right: 6px;
+  bottom: -34px;
+  width: 42%;
+  height: 240px;
+  z-index: 4;
+}
+
+.h-about-floating-icon {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  animation: h-about-float 4s ease-in-out infinite;
+}
+
+.h-about-icon-top {
+  top: 14%;
+  right: 12%;
+}
+
+.h-about-icon-middle {
+  top: 48%;
+  left: 10%;
+  animation-delay: 1s;
+}
+
+.h-about-icon-bottom {
+  bottom: 18%;
+  right: 10%;
+  animation-delay: 2s;
+}
+
+@keyframes h-about-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* =============================
+   RIGHT CONTENT
+============================= */
+
+.h-about-content {
+  padding-left: 10px;
+}
+
+/* .h-about-subtitle {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.h-about-subtitle span {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  color: #2e7d32;
+}
+
+.h-about-line {
+  width: 90px;
+  height: 2px;
+  background: #2e7d32;
+} */
+.about-tag{
+    font-size: 18px !important;
+}
+.h-about-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 18px;
+  line-height: 1.2;
+}
+
+.h-about-title span {
+  color: #000;
+}
+
+.h-about-tagline {
+  font-size: 20px;
+  line-height: 1.4;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 22px;
+}
+
+.h-about-text {
+  font-size: 16px;
+  line-height: 1.9;
+  color: #475569;
+  margin-bottom: 18px;
+}
+
+/* =============================
+   STATS
+============================= */
+
+.h-about-stats {
+  margin-top: 38px;
+  margin-bottom: 34px;
+}
+
+.h-about-stat-box {
+  height: 100%;
+  text-align: center;
+  padding: 24px 16px;
+  border-radius: 20px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.h-about-stat-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+}
+
+.h-about-stat-icon {
+  color: #2f855a;
+  margin-bottom: 14px;
+}
+
+.h-about-stat-box h4 {
+  font-size: 34px;
+  font-weight: 900;
+  color: #000;
+  margin-bottom: 6px;
+}
+
+.h-about-stat-box p {
+  font-size: 14px;
+  color: #000;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* =============================
+   BUTTON
+============================= */
+
+.h-about-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 30px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #2f855a, #2f855a);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  box-shadow: 0 14px 30px rgba(21, 128, 61, 0.28);
+  transition: all 0.3s ease;
+}
+
+.h-about-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px rgba(21, 128, 61, 0.35);
+}
+
+/* =============================
+   RESPONSIVE
+============================= */
+
+@media (max-width: 1199px) {
+  .h-about-title {
+    font-size: 56px;
+  }
+
+  .h-about-tagline {
+    font-size: 24px;
+  }
+
+  .h-about-main-image img {
+    height: 620px;
+  }
+}
+
+@media (max-width: 991px) {
+  .h-about-section {
+    padding: 90px 0;
+  }
+
+  .h-about-content {
+    padding-left: 0;
+    text-align: center;
+  }
+/* 
+  .h-about-subtitle {
+    justify-content: center;
+  } */
+
+  .h-about-title {
+    font-size: 48px;
+  }
+
+  .h-about-tagline {
+    font-size: 22px;
+  }
+
+  .h-about-image-wrap {
+    max-width: 620px;
+    padding-bottom: 120px;
+  }
+}
+
+@media (max-width: 767px) {
+  .h-about-section {
+    padding: 70px 0;
+  }
+
+  .h-about-title {
+    font-size: 38px;
+  }
+
+  .h-about-tagline {
+    font-size: 20px;
+  }
+
+  .h-about-text {
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  .h-about-main-image img {
+    height: 520px;
+  }
+
+  .h-about-card-lab {
+    left: 16px;
+    width: 72%;
+    height: 230px;
+  }
+
+  .h-about-card-dna {
+    width: 44%;
+    height: 170px;
+    right: 0;
+    bottom: -18px;
+  }
+
+  .h-about-floating-icon {
+    width: 54px;
+    height: 54px;
+  }
+
+  .h-about-stat-box h4 {
+    font-size: 28px;
+  }
+
+  .h-about-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 575px) {
+  .h-about-title {
+    font-size: 32px;
+  }
+
+  .h-about-tagline {
+    font-size: 18px;
+  }
+
+  .h-about-image-wrap {
+    padding-bottom: 105px;
+  }
+
+  .h-about-main-image {
+    border-radius: 24px;
+  }
+
+  .h-about-main-image img {
+    height: 440px;
+  }
+
+  .h-about-card {
+    border-width: 4px;
+    border-radius: 18px;
+  }
+
+  .h-about-card-lab {
+    width: 78%;
+    height: 190px;
+    left: 10px;
+  }
+
+  .h-about-card-dna {
+    width: 46%;
+    height: 140px;
+  }
+
+  .h-about-stat-box {
+    padding: 20px 12px;
+  }
+
+  .h-about-stat-box h4 {
+    font-size: 24px;
+  }
+
+  .h-about-stat-box p {
+    font-size: 13px;
+  }
+}

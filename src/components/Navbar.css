@@ -23,7 +23,7 @@ position: fixed;
   background: transparent;
   z-index: 1000;
   transition: background 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
-  backdrop-filter: blur(17px);
+  backdrop-filter: blur(5px);
   /* border-bottom: 1px solid rgba(255, 255, 255, 0.08); */
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
   z-index: 1000;

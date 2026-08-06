@@ -1,16 +1,27 @@
 import React from "react";
+import { Routes, Route } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
+import ClinicalGenomics from "./pages/ClinicalGenomics";
 
 function App() {
   return (
     <>
+      {/* Navbar always visible */}
       <Navbar />
 
-      {/* Demo content */}
-      <div>
-      <Home/>
-      </div>
+      <Routes>
+        {/* Home Page */}
+        <Route path="/" element={<Home />} />
+
+        {/* Clinical Genomics Page */}
+        <Route
+          path="/clinical-genomics"
+          element={<ClinicalGenomics />}
+        />
+      </Routes>
     </>
   );
 }
