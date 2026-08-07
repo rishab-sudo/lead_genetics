@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import ClinicalGenomics from "./pages/ClinicalGenomics";
 import Footer from "./components/Footer";
 import Contact from "./pages/Contact";
+import About from "./pages/About";
 
 function App() {
   return (
@@ -17,7 +18,7 @@ function App() {
       <Routes>
         {/* Home Page */}
         <Route path="/" element={<Home />} />
-
+ <Route path="/about" element={<About />} />
         {/* Clinical Genomics Page */}
         <Route
           path="/clinical-genomics"
