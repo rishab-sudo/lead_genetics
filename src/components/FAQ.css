@@ -139,7 +139,7 @@
 
 .faq-help-card:hover {
   transform: translateY(-10px);
-  border-color: #2f855a;
+  border-color: #0c2d63;
   box-shadow: 0 16px 34px rgba(12, 45, 99, 0.14);
 }
 
@@ -157,7 +157,7 @@
 }
 
 .faq-help-card:hover .faq-card-icon {
-  background: #2f855a;
+  background: #0c2d63;
   color: #ffffff;
   transform: scale(1.08);
 }
@@ -192,8 +192,8 @@
 }
 
 .faq-help-card:hover .faq-card-link {
-  color: #2f855a;
-  border-color: #2f855a;
+  color: #0c2d63;
+  border-color: #0c2d63;
 }
 
 /* ================= RESPONSIVE ================= */
