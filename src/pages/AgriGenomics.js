@@ -220,10 +220,10 @@ const AgriGenomics = () => {
           </div>
 
           <div className="agh-media">
-            <img
-              src="https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format&fit=crop&w=900&q=80"
+            {/* <img
+              src="508483-a7212febe31a?auto=format&fit=crop&w=900&q=80"
               alt="Holstein cow in a pasture"
-            />
+            /> */}
             <span className="agh-media-badge">Certified Genomic Data</span>
           </div>
         </div>
