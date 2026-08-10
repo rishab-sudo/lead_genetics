@@ -18,6 +18,7 @@
 /* ================= FAQ SECTION ================= */
 .faq-section {
   padding: 50px 0;
+  padding-bottom: 80px;
   background: #f5f6f7;
   width: 100%;
   overflow: hidden;
@@ -43,14 +44,14 @@
   align-items: center;
   justify-content: center;
   gap: 14px;
-  color: #2f855a;
+  color: #0c2d63;
   margin-bottom: 18px;
 }
 
 .faq-line {
   width: 44px;
   height: 2px;
-  background: #2f855a;
+  background: #0c2d63;
   border-radius: 999px;
 }
 
@@ -91,8 +92,8 @@
 }
 
 .faq-nav-btn:hover {
-  border-color: #2f855a;
-  background: #2f855a;
+  border-color: #0c2d63;
+  background: #0c2d63;
   color: #ffffff;
   transform: translateY(-2px);
 }
