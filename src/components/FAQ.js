@@ -15,7 +15,7 @@ import "./FAQ.css";
 const faqCards = [
   {
     id: 1,
-    icon: <MessageCircle size={42} />,
+    icon: <MessageCircle size={30} />,
     title: "View our FAQs",
     description:
       "Find answers to the most commonly asked questions about our products and services.",
@@ -23,7 +23,7 @@ const faqCards = [
   },
   {
     id: 2,
-    icon: <Download size={42} />,
+    icon: <Download size={30} />,
     title: "Download Documents",
     description:
       "Access brochures, infographics, guides, posters, and other useful documents.",
@@ -31,7 +31,7 @@ const faqCards = [
   },
   {
     id: 3,
-    icon: <FileText size={42} />,
+    icon: <FileText size={30} />,
     title: "Case Study",
     description:
       "Explore how our genomics and sequencing services support research and innovation worldwide.",
@@ -39,7 +39,7 @@ const faqCards = [
   },
   {
     id: 4,
-    icon: <MessageCircle size={42} />,
+    icon: <MessageCircle size={30} />,
     title: "Talk to a Specialist",
     description:
       "Connect with our customer support, sales, or scientific assistance team for expert guidance.",
@@ -47,7 +47,7 @@ const faqCards = [
   },
   {
     id: 5,
-    icon: <Dna size={42} />,
+    icon: <Microscope size={30} />,
     title: "Sample Submission Guidelines",
     description:
       "Follow our simple submission guidelines to ensure accurate and high-quality sequencing results.",
@@ -55,7 +55,7 @@ const faqCards = [
   },
   {
     id: 6,
-    icon: <Microscope size={42} />,
+    icon: <Dna size={30} />,
     title: "Research Support Services",
     description:
       "Get technical assistance for genomics research, experimental design, and sequencing workflows.",
@@ -63,7 +63,7 @@ const faqCards = [
   },
   {
     id: 7,
-    icon: <ShieldCheck size={42} />,
+    icon: <ShieldCheck size={30} />,
     title: "Quality & Compliance",
     description:
       "Learn about our quality assurance processes, validation standards, and data security practices.",
@@ -71,26 +71,24 @@ const faqCards = [
   },
 ];
 
-// -------- Tunable constants --------
-const NAVBAR_OFFSET = 200;        // gap between navbar bottom and pinned section
-const VISIBLE_CARDS = 4;          // cards visible at once on desktop
+const NAVBAR_OFFSET = 200;
+const VISIBLE_CARDS = 4;
 const CARD_WIDTH = 320;
 const CARD_GAP = 28;
-const CARD_STEP = CARD_WIDTH + CARD_GAP; // used by arrow buttons on desktop
-const MOBILE_BREAKPOINT = 991;    // below this: native scroll instead of pinned scroll
-const SMALL_BREAKPOINT = 576;     // below this: single centered card
+const CARD_STEP = CARD_WIDTH + CARD_GAP;
+const MOBILE_BREAKPOINT = 991;
+const SMALL_BREAKPOINT = 576;
 
 const FAQ = () => {
-  const wrapperRef = useRef(null);   // tall outer div that drives the pin duration
-  const viewportRef = useRef(null);  // overflow-hidden window showing 4 cards
-  const rowRef = useRef(null);       // the actual flex row of all cards
+  const wrapperRef = useRef(null);
+  const viewportRef = useRef(null);
+  const rowRef = useRef(null);
 
   const [maxTranslate, setMaxTranslate] = useState(0);
   const [translateX, setTranslateX] = useState(0);
   const [isPinEnabled, setIsPinEnabled] = useState(true);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
-  // Measure how far the row needs to travel to reveal the last card
   useLayoutEffect(() => {
     const measure = () => {
       if (!rowRef.current || !viewportRef.current) return;
@@ -98,12 +96,12 @@ const FAQ = () => {
       const viewportWidth = viewportRef.current.offsetWidth;
       setMaxTranslate(Math.max(0, rowWidth - viewportWidth));
     };
+
     measure();
     window.addEventListener("resize", measure);
     return () => window.removeEventListener("resize", measure);
   }, [isPinEnabled]);
 
-  // Breakpoint tracking: desktop pin vs native scroll, and single-card mobile
   useEffect(() => {
     const mqPin = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT}px)`);
     const mqSmall = window.matchMedia(`(max-width: ${SMALL_BREAKPOINT}px)`);
@@ -112,24 +110,20 @@ const FAQ = () => {
       setIsPinEnabled(!mqPin.matches);
       setIsSmallScreen(mqSmall.matches);
     };
+
     update();
     mqPin.addEventListener("change", update);
     mqSmall.addEventListener("change", update);
+
     return () => {
       mqPin.removeEventListener("change", update);
       mqSmall.removeEventListener("change", update);
     };
   }, []);
 
-  // Convert vertical scroll progress -> horizontal translateX while pinned.
-  // Position is recalculated fresh from live scroll data every frame (no
-  // stored/remembered state), so:
-  //  - cards track the scrollbar with zero lag
-  //  - scrolling back up smoothly reverses the motion
-  //  - leaving the section (up or down) and returning always re-derives the
-  //    correct position automatically — nothing to "reset" manually.
   useEffect(() => {
     if (!isPinEnabled) return;
+
     let ticking = false;
 
     const computeProgress = () => {
@@ -146,8 +140,8 @@ const FAQ = () => {
       const scrolledIntoPin = NAVBAR_OFFSET - rect.top;
       let progress =
         scrollableRange > 0 ? scrolledIntoPin / scrollableRange : 0;
-      progress = Math.min(1, Math.max(0, progress));
 
+      progress = Math.min(1, Math.max(0, progress));
       setTranslateX(progress * maxTranslate);
       ticking = false;
     };
@@ -162,6 +156,7 @@ const FAQ = () => {
     computeProgress();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
+
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
@@ -178,6 +173,7 @@ const FAQ = () => {
       const nudge = isSmallScreen
         ? viewportRef.current.clientWidth * 0.88
         : CARD_STEP;
+
       viewportRef.current.scrollBy({
         left: direction === "left" ? -nudge : nudge,
         behavior: "smooth",
@@ -196,7 +192,7 @@ const FAQ = () => {
       style={{ height: wrapperHeight }}
     >
       <div
-        className={`faq-sticky-inner ${isPinEnabled ? "is-pinned" : ""}`}
+        className={`faq-sticky-inner ${isPinEnabled ? "is-pinned" : ""}` }
         style={
           isPinEnabled
             ? {
@@ -207,24 +203,32 @@ const FAQ = () => {
         }
       >
         <section className="faq-section">
-          <Container fluid>
-            <div className="faq-topbar">
-              <div className="faq-header text-center mx-auto">
-                <h2 className="faq-main-title">How Can We Help You?</h2>
+          <Container>
+            {/* Center Heading */}
+            <div className="faq-header-center">
+              <h2 className="faq-main-title">How Can We Help You?</h2>
 
-                <div className="faq-divider">
-                  <span className="faq-line"></span>
-                  <Dna size={22} />
-                  <span className="faq-line"></span>
-                </div>
-
-                <p className="faq-subtitle">We are pleased to assist you!</p>
+              <div className="faq-divider">
+                <span className="faq-line"></span>
+                <Dna size={22} />
+                <span className="faq-line"></span>
               </div>
 
+              <p className="faq-subtitle">
+                We are pleased to assist you with genomics services, research
+                support, documentation, compliance guidance, and expert
+                scientific consultation. Explore the resources below to find
+                the help you need quickly and efficiently.
+              </p>
+            </div>
+
+            {/* Slider Top Right Buttons */}
+            <div className="faq-slider-top">
               <div className="faq-nav-buttons">
                 <button className="faq-nav-btn" onClick={() => scroll("left")}>
                   <ChevronLeft size={22} />
                 </button>
+
                 <button className="faq-nav-btn" onClick={() => scroll("right")}>
                   <ChevronRight size={22} />
                 </button>
@@ -261,9 +265,7 @@ const FAQ = () => {
                   <div key={card.id} className="faq-help-card">
                     <div className="faq-card-icon">{card.icon}</div>
                     <h3 className="faq-card-title">{card.title}</h3>
-                    <p className="faq-card-description">
-                      {card.description}
-                    </p>
+                    <p className="faq-card-description">{card.description}</p>
                     <span className="faq-card-link">{card.button}</span>
                   </div>
                 ))}

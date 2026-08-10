@@ -125,22 +125,29 @@ const AboutUs = () => {
 
     {/* success stories section */}
  <section className="ssr-section-fluid">
-      <header className="ssr-header">
+      <div className="ssr-header">
         <h2 className="ssr-heading">Success Stories</h2>
         <p className="ssr-subheading">
-          Real-world impact through genomic innovation.
+          Real-world impact through genomic innovation and high-precision
+          clinical analysis.
         </p>
-      </header>
- 
+      </div>
+
       <div className="ssr-grid">
         {STORIES.map((story) => (
-          <article className="ssr-card" key={story.title}>
-            <div className="ssr-card-pattern" aria-hidden="true" />
+          <article
+            className={`ssr-card ssr-card--${story.color}`}
+            key={story.title}
+          >
             <span className="ssr-case-study">{story.caseStudy}</span>
+
             <h3 className="ssr-card-title">{story.title}</h3>
+
             <p className="ssr-card-description">{story.description}</p>
+
             <button type="button" className="ssr-cta">
               <span>View Details</span>
+
               <svg
                 className="ssr-cta-icon"
                 width="16"

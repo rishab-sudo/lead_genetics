@@ -23,17 +23,11 @@
   overflow: hidden;
 }
 
-/* ================= TOPBAR ================= */
-.faq-topbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 20px;
-  margin-bottom: 50px;
-}
-
-.faq-header {
-  flex: 1;
+/* ================= CENTER HEADING ================= */
+.faq-header-center {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 34px;
 }
 
 .faq-main-title {
@@ -63,7 +57,16 @@
 .faq-subtitle {
   color: #49566f;
   font-size: 1rem;
+  line-height: 1.8;
   margin: 0;
+}
+
+/* ================= SLIDER TOP RIGHT ================= */
+.faq-slider-top {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 24px;
 }
 
 /* ================= NAVIGATION BUTTONS ================= */
@@ -73,33 +76,33 @@
 }
 
 .faq-nav-btn {
-  width: 46px;
-  height: 46px;
-  border-radius: 12px;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
   border: 2px solid #d7dde8;
-  background: transparent;
+  background: #ffffff;
   color: #0c2d63;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s ease;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
 }
 
 .faq-nav-btn:hover {
   border-color: #2f855a;
-  color: #2f855a;
-  background: rgba(139, 197, 63, 0.08);
+  background: #2f855a;
+  color: #ffffff;
   transform: translateY(-2px);
 }
 
-/* ================= HORIZONTAL VIEWPORT (desktop: shows 4 cards) ========= */
+/* ================= HORIZONTAL VIEWPORT ================= */
 .faq-scroll-viewport {
   overflow: hidden;
   width: 100%;
 }
 
-/* Mobile / tablet fallback: native horizontal scroll */
 .faq-scroll-viewport.native-scroll {
   overflow-x: auto;
   scroll-behavior: smooth;
@@ -117,8 +120,6 @@
   gap: 28px;
   padding: 10px 6px 18px;
   will-change: transform;
-  /* No transition on transform — position is set every animation frame
-     from live scroll data, so it already tracks the scrollbar instantly. */
 }
 
 /* ================= CARDS ================= */
@@ -206,17 +207,11 @@
     font-size: 2.4rem;
   }
 
-  .faq-topbar {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .faq-nav-buttons {
+  .faq-slider-top {
     justify-content: center;
   }
 }
 
-/* ================= SMALL SCREENS: single centered card ================= */
 @media (max-width: 576px) {
   .faq-section {
     padding: 60px 0;
@@ -224,6 +219,10 @@
 
   .faq-main-title {
     font-size: 2rem;
+  }
+
+  .faq-subtitle {
+    font-size: 0.95rem;
   }
 
   .faq-scroll-viewport.native-scroll {
