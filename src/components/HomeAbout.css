@@ -1,304 +1,159 @@
 /* =============================
    HOME ABOUT SECTION
 ============================= */
-
 .h-about-section {
-  position: relative;
   padding: 110px 0;
-  background: #f8fafc;
-  overflow: hidden;
-}
-
-.h-about-bg-dna {
-  position: absolute;
-  top: 30px;
-  right: -40px;
-  width: 260px;
-  height: 520px;
-  opacity: 0.05;
-  background: url("https://www.svgrepo.com/show/445767/dna.svg") no-repeat center;
-  background-size: contain;
-  pointer-events: none;
+  background: #f4f6f8;
 }
 
 .h-about-container {
-  max-width: 1400px;
+  max-width: 1240px;
 }
 
 /* =============================
-   LEFT IMAGE AREA
+   LEFT IMAGE
 ============================= */
-
 .h-about-image-wrap {
   position: relative;
-  max-width: 650px;
-  margin: 0 auto;
-  padding-bottom: 140px;
 }
 
-.h-about-main-image {
-  position: relative;
-  border-radius: 32px;
-  overflow: hidden;
-  box-shadow: 0 25px 60px rgba(15, 23, 42, 0.18);
-}
-
-.h-about-main-image img {
+.h-about-image {
   width: 100%;
-  height: 680px;
+  height: 520px;
   object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0 25px 60px rgba(15, 23, 42, 0.15);
   display: block;
-}
-
-.h-about-card {
-  position: absolute;
-  border-radius: 24px;
-  overflow: hidden;
-  background: #ffffff;
-  border: 6px solid #ffffff;
-  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.22);
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
-}
-
-.h-about-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 26px 60px rgba(15, 23, 42, 0.28);
-}
-
-.h-about-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.h-about-card-lab {
-  left: 28px;
-  bottom: 0;
-  width: 68%;
-  height: 300px;
-  z-index: 3;
-}
-
-.h-about-card-dna {
-  right: 6px;
-  bottom: -34px;
-  width: 42%;
-  height: 240px;
-  z-index: 4;
-}
-
-.h-about-floating-icon {
-  position: absolute;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;
-  animation: h-about-float 4s ease-in-out infinite;
-}
-
-.h-about-icon-top {
-  top: 14%;
-  right: 12%;
-}
-
-.h-about-icon-middle {
-  top: 48%;
-  left: 10%;
-  animation-delay: 1s;
-}
-
-.h-about-icon-bottom {
-  bottom: 18%;
-  right: 10%;
-  animation-delay: 2s;
-}
-
-@keyframes h-about-float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
 }
 
 /* =============================
-   RIGHT CONTENT
+   RIGHT CONTENT (MATCH SCREENSHOT)
 ============================= */
-
 .h-about-content {
-  padding-left: 10px;
+  max-width: 560px;
+  margin-left: auto;
 }
 
-/* .h-about-subtitle {
-  display: flex;
+.h-about-badge {
+  display: inline-flex;
   align-items: center;
-  gap: 14px;
-  margin-bottom: 18px;
-}
-
-.h-about-subtitle span {
-  font-size: 14px;
+  justify-content: center;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: #eaf2ff;
+  border: 1px solid #d6e6ff;
+  color: #2563eb;
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 1.6px;
-  color: #2e7d32;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
 }
 
-.h-about-line {
-  width: 90px;
-  height: 2px;
-  background: #2e7d32;
-} */
-.about-tag{
-    font-size: 18px !important;
-}
 .h-about-title {
   font-size: 2rem;
+  line-height: 1.15;
   font-weight: 700;
-  color: #000;
-  margin-bottom: 18px;
-  line-height: 1.2;
-}
-
-.h-about-title span {
-  color: #000;
-}
-
-.h-about-tagline {
-  font-size: 20px;
-  line-height: 1.4;
-  font-weight: 600;
-  color: #000;
-  margin-bottom: 22px;
+  color: #111827;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
 }
 
 .h-about-text {
   font-size: 16px;
   line-height: 1.9;
-  color: #475569;
+  color: #6b7280;
   margin-bottom: 18px;
+}
+
+.h-about-divider {
+  width: 100%;
+  height: 1px;
+  background: #d9dee7;
+  margin: 34px 0 28px;
 }
 
 /* =============================
    STATS
 ============================= */
-
 .h-about-stats {
-  margin-top: 38px;
-  margin-bottom: 34px;
+  margin-bottom: 32px;
 }
 
-.h-about-stat-box {
-  height: 100%;
-  text-align: center;
-  padding: 24px 16px;
-  border-radius: 20px;
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.h-about-stat-box:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+.h-about-stat-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
 }
 
 .h-about-stat-icon {
-  color: #2f855a;
-  margin-bottom: 14px;
+  width: 22px;
+  min-width: 22px;
+  color: #2563eb;
+  margin-top: 3px;
 }
 
-.h-about-stat-box h4 {
-  font-size: 34px;
-  font-weight: 900;
-  color: #000;
-  margin-bottom: 6px;
+.h-about-stat-item h4 {
+  margin: 0 0 4px;
+  font-size: 1.8rem;
+  line-height: 1;
+  font-weight: 800;
+  color: #111827;
 }
 
-.h-about-stat-box p {
-  font-size: 14px;
-  color: #000;
+.h-about-stat-item p {
   margin: 0;
+  font-size: 11px;
   line-height: 1.5;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #6b7280;
 }
 
 /* =============================
    BUTTON
 ============================= */
-
 .h-about-btn {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 16px 30px;
+  padding: 14px 26px;
   border: none;
-  border-radius: 14px;
-  background: linear-gradient(135deg, #2f855a, #2f855a);
+  border-radius: 10px;
+  background: #2563eb;
   color: #ffffff;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
-  letter-spacing: 0.4px;
-  box-shadow: 0 14px 30px rgba(21, 128, 61, 0.28);
+  cursor: pointer;
   transition: all 0.3s ease;
+  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.22);
 }
 
 .h-about-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 20px 40px rgba(21, 128, 61, 0.35);
+  background: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 16px 34px rgba(37, 99, 235, 0.28);
 }
 
 /* =============================
    RESPONSIVE
 ============================= */
-
-@media (max-width: 1199px) {
-  .h-about-title {
-    font-size: 56px;
-  }
-
-  .h-about-tagline {
-    font-size: 24px;
-  }
-
-  .h-about-main-image img {
-    height: 620px;
-  }
-}
-
 @media (max-width: 991px) {
   .h-about-section {
     padding: 90px 0;
   }
 
   .h-about-content {
-    padding-left: 0;
-    text-align: center;
+    max-width: 100%;
+    margin-left: 0;
   }
-/* 
-  .h-about-subtitle {
-    justify-content: center;
-  } */
 
   .h-about-title {
-    font-size: 48px;
+    font-size: 2.5rem;
   }
 
-  .h-about-tagline {
-    font-size: 22px;
-  }
-
-  .h-about-image-wrap {
-    max-width: 620px;
-    padding-bottom: 120px;
+  .h-about-image {
+    height: 460px;
   }
 }
 
@@ -308,11 +163,7 @@
   }
 
   .h-about-title {
-    font-size: 38px;
-  }
-
-  .h-about-tagline {
-    font-size: 20px;
+    font-size: 2rem;
   }
 
   .h-about-text {
@@ -320,30 +171,12 @@
     line-height: 1.8;
   }
 
-  .h-about-main-image img {
-    height: 520px;
+  .h-about-image {
+    height: 360px;
   }
 
-  .h-about-card-lab {
-    left: 16px;
-    width: 72%;
-    height: 230px;
-  }
-
-  .h-about-card-dna {
-    width: 44%;
-    height: 170px;
-    right: 0;
-    bottom: -18px;
-  }
-
-  .h-about-floating-icon {
-    width: 54px;
-    height: 54px;
-  }
-
-  .h-about-stat-box h4 {
-    font-size: 28px;
+  .h-about-stat-item h4 {
+    font-size: 1.5rem;
   }
 
   .h-about-btn {
@@ -354,50 +187,15 @@
 
 @media (max-width: 575px) {
   .h-about-title {
-    font-size: 32px;
+    font-size: 1.75rem;
   }
 
-  .h-about-tagline {
-    font-size: 18px;
+  .h-about-image {
+    height: 300px;
+    border-radius: 14px;
   }
 
-  .h-about-image-wrap {
-    padding-bottom: 105px;
-  }
-
-  .h-about-main-image {
-    border-radius: 24px;
-  }
-
-  .h-about-main-image img {
-    height: 440px;
-  }
-
-  .h-about-card {
-    border-width: 4px;
-    border-radius: 18px;
-  }
-
-  .h-about-card-lab {
-    width: 78%;
-    height: 190px;
-    left: 10px;
-  }
-
-  .h-about-card-dna {
-    width: 46%;
-    height: 140px;
-  }
-
-  .h-about-stat-box {
-    padding: 20px 12px;
-  }
-
-  .h-about-stat-box h4 {
-    font-size: 24px;
-  }
-
-  .h-about-stat-box p {
-    font-size: 13px;
+  .h-about-stat-item p {
+    font-size: 10px;
   }
 }

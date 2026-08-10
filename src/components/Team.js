@@ -63,7 +63,7 @@ const Team = () => {
         breakpoint: 768,
         settings: { slidesToShow: 1 },
       },
-          {
+      {
         breakpoint: 430,
         settings: { slidesToShow: 1 },
       },
@@ -73,30 +73,30 @@ const Team = () => {
   return (
     <section className="team-scientists-section">
       <Container>
-        {/* Center Heading */}
-        <div className="team-heading">
-          <h2 className="team-title">Our Team </h2>
-          <p className="team-subtitle">
-            Meet the experts driving innovation in genomics, neuroscience,
-            and molecular research.
-          </p>
-        </div>
+        {/* Heading + Right Buttons */}
+        <div className="team-top-bar">
+          <div className="team-heading">
+            <span className="team-label">OUR EXPERTS</span>
+            <h2 className="team-title">Our Team</h2>
+            <p className="team-subtitle">
+              Meet the experts driving innovation in genomics, neuroscience,
+              and molecular research.
+            </p>
+          </div>
 
-        {/* Slider Navigation */}
-        <div className="team-slider-header">
           <div className="team-nav">
             <button
               className="team-nav-btn"
               onClick={() => sliderRef.current.slickPrev()}
             >
-              <ChevronLeft size={20} />
+              <ChevronLeft size={22} />
             </button>
 
             <button
               className="team-nav-btn"
               onClick={() => sliderRef.current.slickNext()}
             >
-              <ChevronRight size={20} />
+              <ChevronRight size={22} />
             </button>
           </div>
         </div>

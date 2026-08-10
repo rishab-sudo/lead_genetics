@@ -5,28 +5,36 @@ import "./NewsEvents.css";
 
 const newsData = [
   {
-    title: "Meet our people: Kati Hewitt",
+    title: "Future of Bovine Reproduction",
     date: "17 December 2025",
-    image: "/assets/news/news1.jpg",
-    tag: "Profile",
+    image: require("../assets/embroy1.jpeg"),
+    tag: "Research",
+    description:
+      " MOET technology enables the production of high-quality bovine embryos, accelerating genetic progress and reproductive efficiency.",
   },
   {
     title: "How Dr Renyu Zhang is reinventing protein",
     date: "17 December 2025",
-    image: "/assets/news/news2.jpg",
+    image: require("../assets/embroy1.jpeg"),
     tag: "News Article",
+    description:
+      " MOET technology enables the production of high-quality bovine embryos, accelerating genetic progress and reproductive efficiency.",
   },
   {
     title: "Big data and AI turbocharge weed risk research",
     date: "09 December 2025",
-    image: "/assets/news/news3.jpg",
+    image: require("../assets/embroy1.jpeg"),
     tag: "Research",
+    description:
+      " MOET technology enables the production of high-quality bovine embryos, accelerating genetic progress and reproductive efficiency.",
   },
   {
     title: "Seed bank grows with climate-resilient species",
     date: "04 December 2025",
-    image: "/assets/news/news4.jpg",
+    image: require("../assets/embroy1.jpeg"),
     tag: "News Article",
+    description:
+      " MOET technology enables the production of high-quality bovine embryos, accelerating genetic progress and reproductive efficiency.",
   },
 ];
 
@@ -36,8 +44,9 @@ const NewsEvents = () => {
       <Container>
         <div className="news-header">
           <div>
+            <span className="news-label">LATEST UPDATES</span>
             <h2 className="news-title">
-              Latest <span>News</span>
+              Latest News & Research
             </h2>
             <p className="news-subtitle">
               Stay updated with our latest discoveries, innovations, research
@@ -68,14 +77,18 @@ const NewsEvents = () => {
                 <div className="news-content">
                   <h3>{item.title}</h3>
 
-                  <div className="news-date">
-                    <CalendarDays size={15} />
-                    <span>{item.date}</span>
-                  </div>
+                  {/* Description */}
+                  <p className="news-description">{item.description}</p>
 
-                  <a href="#read-more" className="news-arrow">
-                    <ArrowRight size={18} />
-                  </a>
+                  <div className="news-footer">
+  <div className="news-date">
+    <CalendarDays size={15} />
+    <span>{item.date}</span>
+  </div>
+
+  <a href="#read-more" className="news-arrow">
+    <ArrowRight size={18} />
+  </a>  </div>
                 </div>
               </div>
             </Col>

@@ -24,24 +24,25 @@ const slides = [
       "From reproductive screening to disease diagnostics, our services transform genetic data into actionable healthcare insights.",
   },
 ];
+
 const cards = [
   {
     title: "Agri Genomics",
-    icon: <Leaf size={22} />,
+    icon: <Leaf size={26} />,
     link: "/agri-genomics",
     image: agriImg,
     color: "green",
   },
   {
     title: "Research Genomics",
-    icon: <FlaskConical size={22} />,
+    icon: <FlaskConical size={26} />,
     link: "/research-genomics",
     image: researchImg,
     color: "blue",
   },
   {
     title: "Clinical Genomics",
-    icon: <CirclePlus size={22} />,
+    icon: <CirclePlus size={26} />,
     link: "/clinical-genomics",
     image: clinicalImg,
     color: "purple",
@@ -56,12 +57,11 @@ const Hero = () => {
     const interval = setInterval(() => {
       setAnimate(false);
 
-      // smoother + slower transition
       setTimeout(() => {
         setActiveIndex((prev) => (prev + 1) % slides.length);
         setAnimate(true);
       }, 600);
-    }, 6500); // change every 6.5s
+    }, 6500);
 
     return () => clearInterval(interval);
   }, []);
@@ -70,13 +70,7 @@ const Hero = () => {
 
   return (
     <section className="hero">
-      <video
-        className="hero-video"
-        autoPlay
-        muted
-        loop
-        playsInline
-      >
+      <video autoPlay muted loop playsInline className="hero-video">
         <source
           src={require("../assets/lead-video3.mp4")}
           type="video/mp4"
@@ -86,21 +80,23 @@ const Hero = () => {
       <div className="hero-overlay"></div>
 
       <div className="hero-container">
-        {/* ONLY THIS PART ANIMATES */}
         <div className={`hero-text ${animate ? "show" : "hide"}`}>
           <div className="hero-badge">LEADS GENETICS</div>
 
-       <h1
-  className="hero-heading"
-  dangerouslySetInnerHTML={{ __html: currentSlide.heading }}
-/>
+          <h1
+            className="hero-heading"
+            dangerouslySetInnerHTML={{ __html: currentSlide.heading }}
+          />
 
           <p className="hero-description">
             {currentSlide.description}
           </p>
+
+
+         
         </div>
 
-        {/* CARDS STAY FIXED */}
+        {/* CARDS */}
         <div className="hero-cards">
           {cards.map((card, index) => (
             <Link
@@ -117,9 +113,10 @@ const Hero = () => {
                 <div className={`hero-icon ${card.color}`}>
                   {card.icon}
                 </div>
-
+          <div >
                 <h3>{card.title}</h3>
                 <span>Explore Services →</span>
+                </div>
               </div>
             </Link>
           ))}
