@@ -8,6 +8,7 @@ import ClinicalGenomics from "./pages/ClinicalGenomics";
 import Footer from "./components/Footer";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
+import AgriGenomics from "./pages/AgriGenomics";
 
 function App() {
   return (
@@ -20,6 +21,11 @@ function App() {
         <Route path="/" element={<Home />} />
  <Route path="/about" element={<About />} />
         {/* Clinical Genomics Page */}
+               <Route
+          path="/agri-genomics"
+          element={<AgriGenomics />}
+        />
+
         <Route
           path="/clinical-genomics"
           element={<ClinicalGenomics />}

@@ -6,7 +6,7 @@ import "./NewsEvents.css";
 const newsData = [
   {
     title: "Future of Bovine Reproduction",
-    date: "17 December 2025",
+    date: "08 August 2026",
     image: require("../assets/embroy1.jpeg"),
     tag: "Research",
     description:
