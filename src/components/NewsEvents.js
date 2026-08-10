@@ -4,14 +4,8 @@ import { CalendarDays, ArrowRight } from "lucide-react";
 import "./NewsEvents.css";
 
 const newsData = [
-  {
-    title: "Future of Bovine Reproduction",
-    date: "08 August 2026",
-    image: require("../assets/embroy1.jpeg"),
-    tag: "Research",
-    description:
-      " MOET technology enables the production of high-quality bovine embryos, accelerating genetic progress and reproductive efficiency.",
-  },
+  
+
   {
     title: "How Dr Renyu Zhang is reinventing protein",
     date: "17 December 2025",
@@ -23,7 +17,7 @@ const newsData = [
   {
     title: "Big data and AI turbocharge weed risk research",
     date: "09 December 2025",
-    image: require("../assets/embroy1.jpeg"),
+    image: require("../assets/embroy2.jpeg"),
     tag: "Research",
     description:
       " MOET technology enables the production of high-quality bovine embryos, accelerating genetic progress and reproductive efficiency.",
@@ -31,7 +25,7 @@ const newsData = [
   {
     title: "Seed bank grows with climate-resilient species",
     date: "04 December 2025",
-    image: require("../assets/embroy1.jpeg"),
+    image: require("../assets/embroy3.jpeg"),
     tag: "News Article",
     description:
       " MOET technology enables the production of high-quality bovine embryos, accelerating genetic progress and reproductive efficiency.",
