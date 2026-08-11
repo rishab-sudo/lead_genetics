@@ -1,17 +1,8 @@
 import React from "react";
 import "./Home.css";
 import Hero from "../components/Hero";
-import Footer from "../components/Footer";
-import HomeWork from "../components/HomwWork";
-import Partners from "../components/Partners";
-import ContactBanner from "../components/ContactBanner";
-import ContactForm from "../components/ContactForm";
-// import Locations from "../components/Locations";
-import AboutUsBanner from "../components/AboutUsBanner";
-import AgriGenoBanner from "../components/AgriGenoBan";
-
-
-// import Platform from "../components/Platform";
+// import Footer from "../components/Footer";
+// import HomeWork from "../components/HomwWork";
 import HomeAbout from "../components/HomeAbout";
 import Team from "../components/Team";
 import NewsEvents from "../components/NewsEvents";
@@ -20,6 +11,10 @@ import agriImg from "../assets/agrbanner.png"
 // import resiImg from "../assets/reabanner.png"
 import cliImg from "../assets/clibanner.png"
 import FAQ from "../components/FAQ";
+import Scroll from "../components/3d animation/Scroll";
+import GetAQuote from "../components/GetAQuote";
+
+
 
 
 const Home = () => {
@@ -27,15 +22,12 @@ const Home = () => {
 
   return (
   <>
-
-  <div>
-    <h1>hiiiii</h1>
-  </div>
   <Hero/>
 {/* 
   <HomeWork/> */}
   {/* <Platform/> */}
   <HomeAbout/>
+  <Scroll/>
   <Team/>
  <SectionSep
         bgImage={agriImg}
@@ -50,25 +42,9 @@ const Home = () => {
 "
         description="Delivering reliable sequencing and precision diagnostics for inherited disorders, oncology, reproductive health, and rare diseases."
       />
-  <FAQ/>
+      <FAQ/>
 
-<<<<<<< HEAD
-
-
-=======
-  <HomeWork/>
-  <FAQ/>
-  <Partners/>
-        <ContactBanner/>
-
-      <ContactForm/>
-      <AboutUsBanner/>
-
-      {/* <Locations/> */}
-      <AgriGenoBanner/>
-  
-  <Footer/>
->>>>>>> b1e702aa6d4138b7bf61ac083dcc392085e66286
+ <GetAQuote/>
   </>
   );
 };

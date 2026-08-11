@@ -1,0 +1,581 @@
+/* =========================================
+   GET A QUOTE
+========================================= */
+
+.get-quote {
+  width: 100%;
+  padding: 28px 5%;
+  background: #f4faff;
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   MAIN CONTAINER
+========================================= */
+
+.get-quote-container {
+  width: 100%;
+  max-width: 1500px;
+  height: 430px;
+
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 50% 50%;
+
+  overflow: hidden;
+
+  border: 1px solid #c5def5;
+  border-radius: 16px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 12px 35px rgba(45, 125, 190, 0.12);
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   LEFT IMAGE
+========================================= */
+
+.get-quote-image {
+  position: relative;
+
+  width: 100%;
+  height: 430px;
+
+  background-image: url("https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&w=1400&q=90");
+
+  background-size: cover;
+
+  /* Important: proper image positioning */
+  background-position: center center;
+
+  background-repeat: no-repeat;
+}
+
+
+/* Subtle overlay instead of white wash */
+.get-quote-image::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+
+  pointer-events: none;
+}
+
+
+/* =========================================
+   IMAGE CONTENT
+========================================= */
+
+.quote-image-overlay {
+  position: absolute;
+  z-index: 2;
+
+  inset: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 38px 50px;
+
+  box-sizing: border-box;
+}
+
+.quote-tag {
+  width: fit-content;
+
+  margin-bottom: 12px;
+
+  color: #fff;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+}
+
+.quote-image-overlay h2 {
+  margin: 0 0 12px;
+
+  color: #fff;
+
+  font-size: 40px;
+  line-height: 1.06;
+  font-weight: 700;
+}
+
+.quote-image-overlay p {
+  max-width: 390px;
+
+  margin: 0;
+
+  color: #fff;
+
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+
+/* =========================================
+   FORM SIDE
+========================================= */
+
+.get-quote-content {
+  width: 100%;
+  height: 430px;
+
+  padding: 24px 38px;
+
+  box-sizing: border-box;
+
+  background: #ffffff;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.quote-header {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 14px;
+}
+
+.quote-icon {
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  color: #1976d2;
+
+  background: #e7f3ff;
+
+  font-size: 17px;
+}
+
+.quote-header h2 {
+  margin: 0 0 2px;
+
+  color: #073f7d;
+
+  font-size: 26px;
+  line-height: 1.1;
+  font-weight: 500;
+}
+
+.quote-header p {
+  margin: 0;
+
+  color: #6d88a1;
+
+  font-size: 10.5px;
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+.quote-form {
+  width: 100%;
+}
+
+.quote-row {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 22px;
+}
+
+.quote-field {
+  margin-bottom: 8px;
+}
+
+.quote-field label {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: #0b3f77;
+
+  font-size: 10.5px;
+  font-weight: 600;
+}
+
+
+/* =========================================
+   INPUTS
+========================================= */
+
+.quote-field input,
+.quote-field select,
+.quote-field textarea {
+  width: 100%;
+
+  border: 1px solid #bcd8f2;
+  border-radius: 6px;
+
+  outline: none;
+
+  background: #ffffff;
+
+  color: #244d70;
+
+  font-family: inherit;
+
+  font-size: 11px;
+
+  box-sizing: border-box;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.quote-field input,
+.quote-field select {
+  height: 34px;
+
+  padding: 7px 10px;
+}
+
+.quote-field textarea {
+  height: 52px;
+
+  min-height: 52px;
+
+  padding: 8px 10px;
+
+  resize: none;
+}
+
+.quote-field input::placeholder,
+.quote-field textarea::placeholder {
+  color: #8ca5bb;
+}
+
+.quote-field select {
+  color: #8ca5bb;
+
+  cursor: pointer;
+}
+
+.quote-field select option {
+  color: #244d70;
+
+  background: #ffffff;
+}
+
+.quote-field input:hover,
+.quote-field select:hover,
+.quote-field textarea:hover {
+  border-color: #8bbce7;
+}
+
+.quote-field input:focus,
+.quote-field select:focus,
+.quote-field textarea:focus {
+  border-color: #2588df;
+
+  background: #fbfdff;
+
+  box-shadow:
+    0 0 0 2px rgba(37, 136, 223, 0.09);
+}
+
+
+/* =========================================
+   EMAIL HELP
+========================================= */
+
+.field-help {
+  display: block;
+
+  margin-top: 3px;
+
+  color: #4388c5;
+
+  font-size: 8px;
+  line-height: 1.2;
+}
+
+
+/* =========================================
+   PROJECT DESCRIPTION
+========================================= */
+
+.description-field {
+  margin-bottom: 8px;
+}
+
+
+/* =========================================
+   BOTTOM AREA
+========================================= */
+
+.quote-bottom {
+  display: grid;
+
+  grid-template-columns: 1fr 145px;
+
+  gap: 16px;
+
+  align-items: center;
+}
+
+
+/* =========================================
+   DISCLAIMER
+========================================= */
+
+.quote-disclaimer {
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 5px 9px;
+
+  box-sizing: border-box;
+
+  border-radius: 6px;
+
+  background: #edf6ff;
+}
+
+.quote-disclaimer span {
+  width: 15px;
+  height: 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border: 1px solid #5a9bd4;
+
+  border-radius: 50%;
+
+  color: #2775b8;
+
+  font-size: 8px;
+  font-weight: 700;
+}
+
+.quote-disclaimer p {
+  margin: 0;
+
+  color: #376486;
+
+  font-size: 8px;
+
+  line-height: 1.25;
+}
+
+
+/* =========================================
+   SUBMIT BUTTON
+========================================= */
+
+.quote-submit {
+  width: 100%;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 9px;
+
+  border: none;
+
+  border-radius: 6px;
+
+  background: linear-gradient(
+    135deg,
+    #2381d5,
+    #1267b6
+  );
+
+  color: #ffffff;
+
+  font-family: inherit;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 6px 16px rgba(25, 112, 190, 0.22);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.quote-submit span {
+  font-size: 14px;
+
+  transition: transform 0.2s ease;
+}
+
+.quote-submit:hover {
+  transform: translateY(-1px);
+
+  background: linear-gradient(
+    135deg,
+    #2e91e7,
+    #1472c5
+  );
+
+  box-shadow:
+    0 8px 20px rgba(25, 112, 190, 0.3);
+}
+
+.quote-submit:hover span {
+  transform: translate(2px, -2px);
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1050px) {
+
+  .get-quote {
+    padding: 25px 4%;
+  }
+
+  .get-quote-content {
+    padding: 22px 28px;
+  }
+
+  .quote-image-overlay {
+    padding: 30px;
+  }
+
+  .quote-image-overlay h2 {
+    font-size: 34px;
+  }
+
+  .quote-row {
+    gap: 14px;
+  }
+
+  .quote-bottom {
+    grid-template-columns: 1fr 125px;
+    gap: 10px;
+  }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 800px) {
+
+  .get-quote {
+    padding: 25px 15px;
+  }
+
+  .get-quote-container {
+    height: auto;
+
+    grid-template-columns: 1fr;
+  }
+
+  .get-quote-image {
+    height: 280px;
+  }
+
+  .get-quote-content {
+    height: auto;
+
+    padding: 26px 24px;
+  }
+
+  .quote-image-overlay {
+    padding: 25px;
+  }
+
+  .quote-image-overlay h2 {
+    font-size: 30px;
+  }
+
+  .quote-row {
+    grid-template-columns: 1fr;
+
+    gap: 0;
+  }
+
+  .quote-bottom {
+    grid-template-columns: 1fr;
+  }
+
+  .quote-submit {
+    height: 40px;
+  }
+
+  .quote-disclaimer {
+    height: auto;
+    min-height: 40px;
+  }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 500px) {
+
+  .get-quote-image {
+    height: 240px;
+  }
+
+  .quote-image-overlay h2 {
+    font-size: 27px;
+  }
+
+  .quote-image-overlay p {
+    font-size: 11px;
+  }
+
+  .get-quote-content {
+    padding: 24px 18px;
+  }
+
+  .quote-header h2 {
+    font-size: 23px;
+  }
+}

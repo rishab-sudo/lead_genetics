@@ -1,6 +1,8 @@
 import React from 'react'
 import './About.css'
 import AboutUsBanner from '../components/AboutUsBanner';
+import OurHistory from '../components/OurHistory';
+import illu from '../assets/illu.png';
 
 const STORIES = [
   {
@@ -126,7 +128,7 @@ const AboutUs = () => {
     {/* success stories section */}
  <section className="ssr-section-fluid">
       <div className="ssr-header">
-        <h2 className="ssr-heading">Success Stories</h2>
+        <h2 className="ssr-heading">Precision in Practice</h2>
         <p className="ssr-subheading">
           Real-world impact through genomic innovation and high-precision
           clinical analysis.
@@ -170,6 +172,8 @@ const AboutUs = () => {
         ))}
       </div>
     </section>
+
+    <OurHistory/>
 
     {/* technology showcase section */}
    <section className="tss-section-fluid">
@@ -595,117 +599,11 @@ const AboutUs = () => {
  
         {/* Center illustration */}
         <div className="ari-illustration-wrap">
-          <svg
+          <img
+            src={illu}
+            alt="Advanced Research Infrastructure illustration"
             className="ari-illustration"
-            viewBox="0 0 1000 400"
-            xmlns="http://www.w3.org/2000/svg"
-            role="img"
-            aria-label="Isometric illustration of a research lab equipment cluster on a raised platform."
-          >
-            {/* decorative DNA helix, top corner */}
-            <g className="ari-helix" transform="translate(880,40)">
-              <path
-                className="ari-helix-line"
-                d="M-14,-24 C0,-14 0,-6 -14,4 C0,14 0,22 -14,32"
-                fill="none"
-              />
-              <path
-                className="ari-helix-line"
-                d="M14,-24 C0,-14 0,-6 14,4 C0,14 0,22 14,32"
-                fill="none"
-              />
-              <path
-                className="ari-helix-rung"
-                d="M-11,-16 L11,-16 M-14,4 L14,4 M-11,24 L11,24"
-              />
-            </g>
- 
-            {/* floor platform */}
-            <polygon
-              className="ari-floor"
-              points="500,80 660,166 500,252 340,166"
-            />
-            <polygon
-              className="ari-floor-edge"
-              points="340,166 500,252 500,272 340,186"
-            />
-            <polygon
-              className="ari-floor-edge"
-              points="660,166 500,252 500,272 660,186"
-            />
- 
-            {/* central server cabinet */}
-            <g className="ari-cube">
-              <polygon
-                className="ari-cube-top"
-                points="500,60 560,94 500,128 440,94"
-              />
-              <polygon
-                className="ari-cube-left"
-                points="440,94 500,128 500,192 440,158"
-              />
-              <polygon
-                className="ari-cube-right"
-                points="560,94 500,128 500,192 560,158"
-              />
-              <circle className="ari-light" cx="470" cy="118" r="3" />
-              <circle className="ari-light" cx="470" cy="134" r="3" />
-              <circle className="ari-light" cx="470" cy="150" r="3" />
-            </g>
- 
-            {/* left equipment block */}
-            <g className="ari-cube">
-              <polygon
-                className="ari-cube-top"
-                points="392,132 432,154 392,176 352,154"
-              />
-              <polygon
-                className="ari-cube-left"
-                points="352,154 392,176 392,214 352,192"
-              />
-              <polygon
-                className="ari-cube-right"
-                points="432,154 392,176 392,214 432,192"
-              />
-            </g>
- 
-            {/* right equipment block */}
-            <g className="ari-cube">
-              <polygon
-                className="ari-cube-top"
-                points="608,132 648,154 608,176 568,154"
-              />
-              <polygon
-                className="ari-cube-left"
-                points="568,154 608,176 608,208 568,186"
-              />
-              <polygon
-                className="ari-cube-right"
-                points="648,154 608,176 608,208 648,186"
-              />
-            </g>
- 
-            {/* front small monitor block */}
-            <g className="ari-cube">
-              <polygon
-                className="ari-cube-top"
-                points="500,176 530,193 500,210 470,193"
-              />
-              <polygon
-                className="ari-cube-left"
-                points="470,193 500,210 500,230 470,213"
-              />
-              <polygon
-                className="ari-cube-right"
-                points="530,193 500,210 500,230 530,213"
-              />
-            </g>
- 
-            {/* connector pulses from equipment to platform edge */}
-            <circle className="ari-pulse-dot" cx="392" cy="154" r="4" />
-            <circle className="ari-pulse-dot" cx="608" cy="154" r="4" />
-            <circle className="ari-pulse-dot" cx="500" cy="94" r="4" />
-          </svg>
+          />
         </div>
  
         {/* Right feature column */}

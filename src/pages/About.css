@@ -654,7 +654,10 @@
 .ari-illustration {
   width: 100%;
   height: auto;
+  max-height: 420px;
   display: block;
+  object-fit: contain;
+  border-radius: 16px;
 }
 
 .ari-floor {

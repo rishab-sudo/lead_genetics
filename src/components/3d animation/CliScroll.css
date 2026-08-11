@@ -1,0 +1,249 @@
+.cli-scroll-container-fluid {
+  width: 100%;
+  max-width: 100%;
+  background: #05070a;
+}
+
+/* Tall scroll track — its height (scrollLengthVh) controls how much
+   scrolling it takes to play through the whole frame sequence and
+   step through every chapter. */
+.cli-scroll-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* Sticky, not GSAP-pinned: stays fixed in the viewport for the full
+   height of the wrapper above, then releases naturally into normal
+   flow once the wrapper's bottom reaches the viewport bottom. */
+.cli-scroll-stage {
+  --cli-scroll-accent: #cdfa5e;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background: #000;
+}
+
+.cli-scroll-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* subtle vignette so overlay text stays readable over any frame */
+.cli-scroll-stage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.65) 0%,
+    rgba(0, 0, 0, 0.05) 28%,
+    rgba(0, 0, 0, 0) 55%,
+    rgba(0, 0, 0, 0.35) 100%
+  );
+  pointer-events: none;
+}
+
+/* ---------- bottom-left: eyebrow + heading ---------- */
+
+.cli-scroll-bottom-left {
+  position: absolute;
+  left: 5%;
+  bottom: 6%;
+  z-index: 2;
+  max-width: 58%;
+}
+
+.cli-scroll-eyebrow-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.7rem;
+  overflow: hidden;
+  animation: cli-scroll-fade-in 0.5s ease both;
+}
+
+.cli-scroll-eyebrow-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 1px;
+  background: var(--cli-scroll-accent);
+  flex: none;
+}
+
+.cli-scroll-eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(244, 246, 248, 0.85);
+  font-weight: 500;
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+.cli-scroll-heading {
+  position: relative;
+  display: inline-block;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: 1.05;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #f6f7f5;
+  margin: 0;
+  padding-bottom: 0.15em;
+  overflow: hidden;
+  animation: cli-scroll-reveal-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.cli-scroll-heading::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background: var(--cli-scroll-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: cli-scroll-underline 0.8s 0.15s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ---------- bottom-right: description + CTA ---------- */
+
+.cli-scroll-bottom-right {
+  position: absolute;
+  right: 5%;
+  bottom: 6%;
+  z-index: 2;
+  width: min(320px, 34vw);
+  text-align: left;
+}
+
+.cli-scroll-description {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: rgba(244, 246, 248, 0.88);
+  margin: 0 0 1rem;
+  overflow: hidden;
+  animation: cli-scroll-reveal-up 0.6s 0.05s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.cli-scroll-cta {
+  display: inline-block;
+  background: var(--cli-scroll-accent);
+  color: #0b1c12;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  padding: 0.85em 1.4em;
+  border-radius: 3px;
+  animation: cli-scroll-fade-in 0.5s 0.25s ease both;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.cli-scroll-cta:hover {
+  background: #e2ff9a;
+  transform: translateY(-1px);
+}
+
+/* ---------- shared reveal keyframes ---------- */
+
+@keyframes cli-scroll-reveal-up {
+  from {
+    clip-path: inset(0 0 100% 0);
+    transform: translateY(35%);
+  }
+  to {
+    clip-path: inset(0 0 0% 0);
+    transform: translateY(0%);
+  }
+}
+
+@keyframes cli-scroll-underline {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes cli-scroll-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ---------- loader ---------- */
+
+.cli-scroll-loader {
+  position: absolute;
+  left: 50%;
+  bottom: 3%;
+  transform: translateX(-50%);
+  z-index: 3;
+  width: min(280px, 60vw);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.cli-scroll-loader-bar {
+  height: 2px;
+  background: var(--cli-scroll-accent, #cdfa5e);
+  width: 0%;
+  transition: width 0.15s linear;
+  flex: 1;
+}
+
+.cli-scroll-loader::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.cli-scroll-loader-label {
+  font-size: 0.7rem;
+  color: rgba(244, 246, 248, 0.7);
+  font-variant-numeric: tabular-nums;
+  min-width: 2.4em;
+}
+
+@media (max-width: 768px) {
+  .cli-scroll-bottom-left,
+  .cli-scroll-bottom-right {
+    left: 6%;
+    right: 6%;
+    width: auto;
+    max-width: none;
+  }
+  .cli-scroll-bottom-right {
+    bottom: 18%;
+  }
+  .cli-scroll-bottom-left {
+    bottom: 32%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cli-scroll-heading,
+  .cli-scroll-description,
+  .cli-scroll-eyebrow-row,
+  .cli-scroll-cta,
+  .cli-scroll-heading::after {
+    animation: none !important;
+    clip-path: none !important;
+    transform: none !important;
+  }
+}

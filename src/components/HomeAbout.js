@@ -9,8 +9,8 @@ import {
 } from "lucide-react";
 import "./HomeAbout.css";
 
-// Replace with your real image
-import labImg from "../assets/logo.png";
+import farmImg from "../assets/farm_628x680.png";
+import labImg from "../assets/lab_420x288.png";
 
 const stats = [
   {
@@ -39,16 +39,17 @@ const HomeAbout = () => {
   return (
     <section className="h-about-section">
       <Container className="h-about-container">
-        <Row className="align-items-center g-5">
-          {/* LEFT IMAGE */}
-          <Col lg={5}>
+        <Row className="align-items-center gx-4 gy-5">
+          {/* LEFT IMAGE MOSAIC */}
+          <Col lg={6}>
             <div className="h-about-image-wrap">
-              <img src={labImg} alt="Leads Genetics Lab" className="h-about-image" />
+              <img src={farmImg} alt="Agriculture Genomics Farm" className="h-about-image h-about-image--farm" />
+              <img src={labImg} alt="Genomics Laboratory" className="h-about-image h-about-image--lab" />
             </div>
           </Col>
 
           {/* RIGHT CONTENT */}
-          <Col lg={7}>
+          <Col lg={6}>
             <div className="h-about-content">
               <div className="h-about-badge">ABOUT LEADS GENETICS</div>
 

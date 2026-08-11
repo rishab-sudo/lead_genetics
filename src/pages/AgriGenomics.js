@@ -383,6 +383,8 @@ const AgriGenomics = () => {
           </form>
         </div>
       </section>
+
+      
     </>
   );
 };
