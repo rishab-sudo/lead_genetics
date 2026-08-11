@@ -18,6 +18,10 @@ const Home = () => {
 
   return (
   <>
+
+  <div>
+    <h1>hiiiii</h1>
+  </div>
   <Hero/>
 {/* 
   <HomeWork/> */}
@@ -38,6 +42,8 @@ const Home = () => {
         description="Delivering reliable sequencing and precision diagnostics for inherited disorders, oncology, reproductive health, and rare diseases."
       />
   <FAQ/>
+
+
 
   </>
   );
