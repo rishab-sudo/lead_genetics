@@ -1,0 +1,274 @@
+/* ===================================================
+   Cli Oncology Section
+=================================================== */
+
+.oncology-section {
+  padding: 90px 0;
+  background: #f5f8fc;
+}
+
+.container {
+  width: min(1400px, 92%);
+  margin: auto;
+}
+
+.oncology-heading {
+  margin-bottom: 45px;
+}
+
+.oncology-heading h2 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #17324d;
+  margin-bottom: 10px;
+}
+
+.oncology-heading p {
+  font-size: 1.1rem;
+  color: #666;
+}
+
+/* ==========================================
+   GRID
+========================================== */
+
+.oncology-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+/* ==========================================
+   CARD
+========================================== */
+
+.oncology-card {
+  background: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid #e7eef4;
+  transition: .35s ease;
+  box-shadow: 0 10px 25px rgba(0,0,0,.05);
+
+  animation: fadeUp .8s ease forwards;
+  opacity: 0;
+}
+
+.oncology-card:nth-child(1){animation-delay:.1s;}
+.oncology-card:nth-child(2){animation-delay:.2s;}
+.oncology-card:nth-child(3){animation-delay:.3s;}
+.oncology-card:nth-child(4){animation-delay:.4s;}
+.oncology-card:nth-child(5){animation-delay:.5s;}
+.oncology-card:nth-child(6){animation-delay:.6s;}
+.oncology-card:nth-child(7){animation-delay:.7s;}
+.oncology-card:nth-child(8){animation-delay:.8s;}
+.oncology-card:nth-child(9){animation-delay:.9s;}
+
+.oncology-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 25px 60px rgba(0,0,0,.12);
+}
+
+/* ==========================================
+   IMAGE
+========================================== */
+
+.card-image{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:230px;
+    padding:20px;
+    background:#fbfdff;
+}
+
+.card-image img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+}
+
+/* ==========================================
+   CONTENT
+========================================== */
+
+.card-content{
+    padding:28px;
+}
+
+.card-content h3{
+    font-size:1.45rem;
+    color:#17324d;
+    margin-bottom:15px;
+    font-weight:700;
+}
+
+.card-content p{
+    color:#666;
+    line-height:1.7;
+    margin-bottom:18px;
+    font-size:.97rem;
+}
+
+.card-content ul{
+    margin:0;
+    padding-left:20px;
+}
+
+.card-content li{
+    margin-bottom:10px;
+    color:#333;
+    line-height:1.5;
+}
+
+/* ==========================================
+   REPORT CARD
+========================================== */
+
+.report-image{
+    width:100%;
+    border-radius:10px;
+    margin-top:20px;
+    border:1px solid #edf2f7;
+}
+
+.report-points{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-top:15px;
+}
+
+.report-points span{
+    color:#17a79d;
+    font-size:.95rem;
+    font-weight:600;
+}
+
+/* ==========================================
+   MINI CARDS
+========================================== */
+
+.mini .card-image{
+    height:150px;
+}
+
+.mini h3{
+    font-size:1.35rem;
+}
+
+.mini p{
+    font-size:.93rem;
+}
+
+/* ==========================================
+   IMAGE CARD
+========================================== */
+
+.image .card-content{
+    text-align:center;
+}
+
+.image .card-content h3{
+    margin-top:10px;
+}
+
+.image .card-content p{
+    margin-top:10px;
+}
+
+/* ==========================================
+   CONTENT CARD
+========================================== */
+
+.content{
+    display:flex;
+    flex-direction:column;
+}
+
+/* ==========================================
+   REPORT CARD
+========================================== */
+
+.report{
+    display:flex;
+    flex-direction:column;
+}
+
+/* ==========================================
+   SCROLL ANIMATION
+========================================== */
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(50px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width:1200px){
+
+.oncology-grid{
+    grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media (max-width:768px){
+
+.oncology-section{
+    padding:70px 0;
+}
+
+.oncology-heading h2{
+    font-size:2rem;
+}
+
+.oncology-grid{
+    grid-template-columns:1fr;
+}
+
+.card-image{
+    height:200px;
+}
+
+.card-content{
+    padding:22px;
+}
+
+}
+
+@media (max-width:480px){
+
+.oncology-heading{
+    text-align:center;
+}
+
+.oncology-heading h2{
+    font-size:1.8rem;
+}
+
+.card-content h3{
+    font-size:1.2rem;
+}
+
+.card-content p{
+    font-size:.9rem;
+}
+
+.card-image{
+    height:170px;
+}
+
+}

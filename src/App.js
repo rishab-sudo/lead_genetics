@@ -34,6 +34,7 @@ function App() {
           path="/contact"
           element={<Contact />}
         />
+        <Route path="/agri-genomics" element={<AgriGenomics />} />
       </Routes>
       <Footer/>
     </div>
