@@ -6,7 +6,6 @@
    how much scrolling it takes to play through the whole frame sequence. */
 .scroll-frame-wrapper {
   position: relative;
-  height: 600vh;
   width: 100%;
 }
 
@@ -36,7 +35,7 @@
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 640px;
+  max-width: 75%;
   height: 200px;
   display: flex;
   align-items: center;
@@ -44,6 +43,7 @@
 }
 
 .scroll-frame-overlay {
+    min-width: 80% !important;
   position: absolute;
   inset: 0;
   display: flex;
@@ -84,4 +84,15 @@
     opacity: 1;
     transform: none !important;
   }
+  .scroll-frame-overlay-stack {
+  position: relative;
+  z-index: 2;
+
+  min-width: 95%;
+  max-width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 }

@@ -21,12 +21,12 @@ gsap.registerPlugin(ScrollTrigger);
  */
 
 const FRAME_COUNT = 240;
-const SCROLL_LENGTH_VH = 600; // how many viewport-heights of scroll it takes to play the whole sequence
+const SCROLL_LENGTH_VH = 400; // how many viewport-heights of scroll it takes to play the whole sequence
 const FRAME_PATH = (index) =>
   `/frames/ezgif-frame-${String(index + 1).padStart(3, "0")}.jpg`;
 
 const DEFAULT_CAPTIONS = [
-  { eyebrow: "Step 01", title: "Built frame by frame", description: "Scroll position drives which frame is drawn to the canvas." },
+  { eyebrow: "Step 01", title: "Engineering the Future of Agriculture", description: "Agri Genomics is transforming the way we understand and improve crops. By analyzing genetic variation and identifying traits linked to yield, resilience, disease resistance, and quality, genomic technologies enable more precise and efficient crop development. Our approach bridges advanced genomic science with real-world agricultural challenges, helping accelerate innovation from the laboratory to the field." },
 ];
 
 export default function ScrollFrameSection({
