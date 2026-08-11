@@ -11,6 +11,7 @@ import SectionSep from "../components/SectionSep";
 import agriImg from "../assets/agrbanner.png"
 // import resiImg from "../assets/reabanner.png"
 import cliImg from "../assets/clibanner.png"
+import Scroll  from "../components/3d animation/Scroll";
 
 
 const Home = () => {
@@ -23,6 +24,7 @@ const Home = () => {
   <HomeWork/> */}
   {/* <Platform/> */}
   <HomeAbout/>
+  <Scroll/>
   <Team/>
  <SectionSep
         bgImage={agriImg}
