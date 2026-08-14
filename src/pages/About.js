@@ -2,8 +2,8 @@ import React from 'react'
 import './About.css'
 import AboutUsBanner from '../components/AboutUsBanner';
 import OurHistory from '../components/OurHistory';
-import illu from '../assets/illu.png';
-
+import illuexplode from '../assets/illuexplode.mp4';
+import GetAQuote from '../components/GetAQuote';
 const STORIES = [
   {
     caseStudy: "Case Study 01",
@@ -118,6 +118,9 @@ const FEATURES = [
     ),
   },
 ];
+
+
+
 
 const AboutUs = () => {
 
@@ -599,10 +602,14 @@ const AboutUs = () => {
  
         {/* Center illustration */}
         <div className="ari-illustration-wrap">
-          <img
-            src={illu}
-            alt="Advanced Research Infrastructure illustration"
-            className="ari-illustration"
+          <video
+            className="ari-illustration-video"
+            src={illuexplode}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
           />
         </div>
  
@@ -731,6 +738,7 @@ const AboutUs = () => {
         </div>
       </div>
     </section>
+     <GetAQuote/>
 
     </>
   )

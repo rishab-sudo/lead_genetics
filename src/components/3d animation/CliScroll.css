@@ -25,12 +25,22 @@
   background: #000;
 }
 
+/* Canvas is invisible until every frame is decoded — it fades in
+   once `loaded` flips true, so there's never a blank/half-drawn
+   frame or a loading indicator, just a quiet dark panel until the
+   sequence is ready to scrub. */
 .cli-scroll-canvas {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   display: block;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.cli-scroll-canvas.is-ready {
+  opacity: 1;
 }
 
 /* subtle vignette so overlay text stays readable over any frame */
@@ -181,45 +191,6 @@
   }
 }
 
-/* ---------- loader ---------- */
-
-.cli-scroll-loader {
-  position: absolute;
-  left: 50%;
-  bottom: 3%;
-  transform: translateX(-50%);
-  z-index: 3;
-  width: min(280px, 60vw);
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-.cli-scroll-loader-bar {
-  height: 2px;
-  background: var(--cli-scroll-accent, #cdfa5e);
-  width: 0%;
-  transition: width 0.15s linear;
-  flex: 1;
-}
-
-.cli-scroll-loader::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.15);
-}
-
-.cli-scroll-loader-label {
-  font-size: 0.7rem;
-  color: rgba(244, 246, 248, 0.7);
-  font-variant-numeric: tabular-nums;
-  min-width: 2.4em;
-}
-
 @media (max-width: 768px) {
   .cli-scroll-bottom-left,
   .cli-scroll-bottom-right {
@@ -241,9 +212,12 @@
   .cli-scroll-description,
   .cli-scroll-eyebrow-row,
   .cli-scroll-cta,
-  .cli-scroll-heading::after {
+  .cli-scroll-heading::after,
+  .cli-scroll-canvas {
     animation: none !important;
     clip-path: none !important;
     transform: none !important;
+    transition: none !important;
+    opacity: 1 !important;
   }
 }

@@ -12,7 +12,8 @@ import agriImg from "../assets/agrbanner.png"
 import cliImg from "../assets/clibanner.png"
 import FAQ from "../components/FAQ";
 import Scroll from "../components/3d animation/Scroll";
-import GetAQuote from "../components/GetAQuote";
+import Services from "../components/Services";
+import Credentials from "../components/Credentials";
 
 
 
@@ -28,7 +29,9 @@ const Home = () => {
   {/* <Platform/> */}
   <HomeAbout/>
   <Scroll/>
+   <Services/>
   <Team/>
+ 
  <SectionSep
         bgImage={agriImg}
         title="Breeding Tomorrow's Agriculture, Today"
@@ -36,6 +39,7 @@ const Home = () => {
         link="/agriculture-genomics"
       />
   <NewsEvents/>
+  <Credentials/>
    <SectionSep
         bgImage={cliImg}
         title="Transforming Patient Care Through Genetic Insights
@@ -44,7 +48,6 @@ const Home = () => {
       />
       <FAQ/>
 
- <GetAQuote/>
   </>
   );
 };

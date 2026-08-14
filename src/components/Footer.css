@@ -136,17 +136,28 @@
   color: #43AB62;
 }
 
+/* Below 900px: brand becomes its own full-width row (section 1),
+   the 4 link columns pair into a 2x2 grid (section 2) instead of
+   stacking into one long column. This is the fix for footer height. */
 @media (max-width: 900px) {
   .footer-grid {
     grid-template-columns: repeat(2, 1fr);
+    row-gap: 32px;
+    column-gap: 20px;
   }
   .footer-brand {
     grid-column: 1 / -1;
   }
 }
 
-@media (max-width: 520px) {
+@media (max-width: 420px) {
+  .footer-column-title {
+    font-size: 15px !important;
+  }
+  .footer-link-list a {
+    font-size: 14px;
+  }
   .footer-grid {
-    grid-template-columns: 1fr;
+    column-gap: 14px;
   }
 }

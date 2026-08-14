@@ -23,6 +23,25 @@ gsap.registerPlugin(ScrollTrigger);
  *      description/CTA bottom-right), which mounts fresh and replays
  *      its mask-reveal + underline animation on every chapter change
  *
+ * Tuning scroll length:
+ * - `scrollLengthVh` is the total scroll distance, in viewport-heights,
+ *   needed to play the full sequence. A mouse wheel "notch" is usually
+ *   ~100-120px, and a trackpad swipe varies a lot more, so there's no
+ *   exact universal vh-to-scroll-count formula — but as a rough guide,
+ *   on a ~900px-tall viewport, 100vh ≈ 900px ≈ 7-9 mouse-wheel notches.
+ *   The default here (1000vh) targets roughly 10+ notches on a typical
+ *   desktop mouse; bump it higher if it still feels quick on your setup,
+ *   or lower it for trackpad-heavy audiences where swipes cover more
+ *   distance per gesture.
+ *
+ * Loading behavior:
+ * - Frames are NOT preloaded on mount. An IntersectionObserver watches
+ *   the wrapper and only starts preloading once it's about to enter
+ *   the viewport (rootMargin gives it a head start).
+ * - There's no visible progress bar. The stage stays a plain dark
+ *   panel until every frame is ready, then the canvas fades in and
+ *   the first chapter mounts — no flash, no percentage counter.
+ *
  * Setup:
  * 1. npm install gsap
  * 2. Frames live in /public/frames/Cliframes/frame-001.jpg ... frame-300.jpg
@@ -30,7 +49,7 @@ gsap.registerPlugin(ScrollTrigger);
  * Usage:
  *   <CliScroll
  *     frameCount={300}
- *     scrollLengthVh={400}
+ *     scrollLengthVh={1000}
  *     chapters={[
  *       { eyebrow: "THE TECH", heading: "At scale.", description: "...",
  *         ctaLabel: "Our Value Proposition", ctaHref: "#value", start: 0 },
@@ -44,36 +63,55 @@ gsap.registerPlugin(ScrollTrigger);
 
 const FRAME_PATH = (index) => `/frames/Cliframes/ezgif-frame-${String(index).padStart(3, "0")}.jpg`;
 
-
 export default function CliScroll({
   frameCount = 300,
   framePath = FRAME_PATH,
-  scrollLengthVh = 400, // total scroll length of the track, in vh — more vh = slower/longer scrub
+  scrollLengthVh = 1000, // total scroll length of the track, in vh — more vh = slower/longer scrub
   chapters = [],
 }) {
   const wrapperRef = useRef(null);
   const canvasRef = useRef(null);
   const imagesRef = useRef([]);
   const activeChapterIndexRef = useRef(0);
+  const [nearView, setNearView] = useState(false);
   const [loaded, setLoaded] = useState(false);
-  const [progress, setProgress] = useState(0);
   const [activeChapterIndex, setActiveChapterIndex] = useState(0);
 
   const sortedChapters = [...chapters].sort((a, b) => (a.start ?? 0) - (b.start ?? 0));
   const activeChapter = sortedChapters[activeChapterIndex] || sortedChapters[0];
 
-  // Preload every frame before wiring up the scrub, so scrubbing
-  // never shows a blank/flashing frame.
+  // Only start caring about this section once it's about to be scrolled
+  // into view — avoids loading anything for a section the user may
+  // never reach.
   useEffect(() => {
+    const wrapper = wrapperRef.current;
+    if (!wrapper) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setNearView(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "150% 0px" } // start early: roughly 1.5 viewports before it arrives
+    );
+
+    observer.observe(wrapper);
+    return () => observer.disconnect();
+  }, []);
+
+  // Preload every frame, silently, once the section is near view.
+  useEffect(() => {
+    if (!nearView) return;
+
     let cancelled = false;
     let loadedCount = 0;
     const images = new Array(frameCount);
 
-    // Defined once, outside the loop (fixes eslint no-loop-func).
     const handleFrameSettled = () => {
       loadedCount++;
       if (cancelled) return;
-      setProgress(Math.round((loadedCount / frameCount) * 100));
       if (loadedCount === frameCount) setLoaded(true);
     };
 
@@ -89,7 +127,7 @@ export default function CliScroll({
     return () => {
       cancelled = true;
     };
-  }, [frameCount, framePath]);
+  }, [nearView, frameCount, framePath]);
 
   // Wire GSAP ScrollTrigger (sticky-driven scrub) once frames are loaded.
   useEffect(() => {
@@ -188,9 +226,12 @@ export default function CliScroll({
         style={{ height: `${scrollLengthVh}vh` }}
       >
         <div className="cli-scroll-stage">
-          <canvas ref={canvasRef} className="cli-scroll-canvas" />
+          <canvas
+            ref={canvasRef}
+            className={`cli-scroll-canvas${loaded ? " is-ready" : ""}`}
+          />
 
-          {activeChapter && (
+          {loaded && activeChapter && (
             <>
               <div className="cli-scroll-bottom-left">
                 <div key={`eyebrow-${activeChapterIndex}`} className="cli-scroll-eyebrow-row">
@@ -219,13 +260,6 @@ export default function CliScroll({
                 )}
               </div>
             </>
-          )}
-
-          {!loaded && (
-            <div className="cli-scroll-loader">
-              <div className="cli-scroll-loader-bar" style={{ width: `${progress}%` }} />
-              <span className="cli-scroll-loader-label">{progress}%</span>
-            </div>
           )}
         </div>
       </section>

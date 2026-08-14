@@ -156,6 +156,64 @@
 }
 
 /* =============================
+   MISSION / VISION / VALUES PILLARS
+============================= */
+.h-about-pillars-wrap {
+  margin-top: 64px;
+}
+
+.about-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.about-pillar {
+  padding: 32px 24px;
+  border-radius: 16px;
+  text-align: left;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid #d9dee7;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(15, 23, 42, 0.12);
+}
+
+.about-pillar__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: #eaf2ff;
+  color: #2563eb;
+  margin-bottom: 16px;
+}
+
+.about-pillar__label {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 10px;
+}
+
+.about-pillar__text {
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* =============================
    RESPONSIVE
 ============================= */
 @media (max-width: 991px) {
@@ -174,6 +232,10 @@
 
   .h-about-image-wrap {
     height: 480px; /* scale down the container height */
+  }
+
+  .about-pillars {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -206,6 +268,14 @@
   .h-about-btn {
     width: 100%;
     justify-content: center;
+  }
+
+  .h-about-pillars-wrap {
+    margin-top: 48px;
+  }
+
+  .about-pillars {
+    grid-template-columns: 1fr;
   }
 }
 

@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -22,19 +23,19 @@ const Navbar = () => {
     <>
       <nav className={`navbar ${scrolled ? "scrolled" : ""}`} ref={navRef}>
         {/* LEFT - LOGO */}
-        <div className="nav-logo">
+        <Link to="/" className="nav-logo">
           <img
             src={require("../assets/logo.png")}
             alt="Lead Genetics"
           />
-        </div>
+        </Link>
 
         {/* CENTER - LINKS */}
         <div className="nav-center">
           <ul className="nav-links">
-            <li><a href="/">Home</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/contact">Contact</a></li>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/about">About</Link></li>
+            <li><Link to="/contact">Contact</Link></li>
           </ul>
         </div>
 
@@ -63,12 +64,12 @@ const Navbar = () => {
       {/* SIDEBAR */}
       <aside className={`sidebar ${sidebarOpen ? "open" : ""}`}>
         <div className="sidebar-header">
-          <div className="mobile-sidebar-logo">
+          <Link to="/" className="mobile-sidebar-logo" onClick={() => setSidebarOpen(false)}>
             <img
               src={require("../assets/logo.png")}
               alt="Lead Genetics"
             />
-          </div>
+          </Link>
 
           <button
             className="close-btn"
@@ -80,9 +81,9 @@ const Navbar = () => {
         </div>
 
         <ul className="sidebar-links">
-          <li><a href="/">Home</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/contact">Contact</a></li>
+          <li><Link to="/" onClick={() => setSidebarOpen(false)}>Home</Link></li>
+          <li><Link to="/about" onClick={() => setSidebarOpen(false)}>About</Link></li>
+          <li><Link to="/contact" onClick={() => setSidebarOpen(false)}>Contact</Link></li>
         </ul>
 
         <button className="common-btn sidebar-btn">
