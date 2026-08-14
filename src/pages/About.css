@@ -1,0 +1,426 @@
+/* ==========================================================
+   About.css — Leads Agri Genetics
+   Theme accent: #2563b8
+   Scoped under .about-page to avoid collisions with the rest
+   of the site. Mobile-first; breakpoints at 640 / 960 / 1280.
+   ========================================================== */
+
+.about-page {
+  --color-primary: #2563b8;
+  --color-primary-dark: #184a8f;
+  --color-primary-light: #e8f0fa;
+  --color-ink: #0f1b2d;
+  --color-muted: #5b6b7d;
+  --color-surface: #ffffff;
+  --color-surface-alt: #f6f9fc;
+  --color-border: #dfe6ee;
+
+  --font-display: "Fraunces", "Georgia", serif;
+  --font-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", "Courier New", monospace;
+
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --section-y: clamp(3rem, 8vw, 6.5rem);
+  --radius: 14px;
+
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  background: var(--color-surface);
+  overflow-x: hidden;
+}
+
+.about-page * {
+  box-sizing: border-box;
+}
+
+.about-page img {
+  max-width: 100%;
+  display: block;
+  border-radius: var(--radius);
+}
+
+/* ---------- Shared container-fluid ---------- */
+
+.about-page .container-fluid {
+  width: 100%;
+  padding: var(--section-y) var(--gutter);
+  position: relative;
+}
+/* .hero-section{
+    background-color: #5b6b7d !important;
+} */
+.about-page h1,
+.about-page h2,
+.about-page h3 {
+  font-family: var(--font-display);
+  color: var(--color-ink);
+  line-height: 1.15;
+  margin: 0 0 0.6em;
+}
+
+.about-page p {
+  color: var(--color-muted);
+  line-height: 1.7;
+  margin: 0 0 1em;
+}
+
+.about-page .tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  background: var(--color-primary-light);
+  padding: 0.35em 0.75em;
+  border-radius: 999px;
+  margin-bottom: 0.9em;
+}
+
+/* ---------- Buttons & links ---------- */
+.about-page .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.85em 1.6em;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.about-page .btn-primary {
+  background: var(--color-primary);
+  color: #fff;
+  box-shadow: 0 8px 20px -8px rgba(37, 99, 184, 0.55);
+}
+
+.about-page .btn-primary:hover {
+  background: var(--color-primary-dark);
+  transform: translateY(-2px);
+}
+
+.about-page .btn-ghost {
+  background: transparent;
+  color: var(--color-primary);
+  border: 1.5px solid var(--color-primary);
+}
+
+.about-page .btn-ghost:hover {
+  background: var(--color-primary-light);
+  transform: translateY(-2px);
+}
+
+.about-page .btn:focus-visible,
+.about-page a:focus-visible {
+  outline: 3px solid var(--color-primary-dark);
+  outline-offset: 3px;
+}
+
+.about-page .link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.about-page .link-arrow span {
+  transition: transform 0.2s ease;
+}
+
+.about-page .link-arrow:hover span {
+  transform: translateX(4px);
+}
+
+/* ==========================================================
+   HERO
+   ========================================================== */
+.hero-section {
+  min-height: 78vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(180deg, var(--color-primary-light) 0%, #ffffff 70%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 780px;
+}
+
+.hero-section .eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-primary-dark);
+  display: block;
+  margin-bottom: 1em;
+}
+
+.hero-section h1 {
+  font-size: clamp(2.1rem, 5.2vw, 3.6rem);
+  max-width: 16ch;
+}
+
+.hero-sub {
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  color: var(--color-primary-dark);
+  font-weight: 600;
+  max-width: 40ch;
+}
+
+.hero-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+/* Signature element: an ambient DNA-helix line drawing, restrained
+   and pushed to the edge so it reads as texture, not decoration. */
+.hero-helix {
+  position: absolute;
+  top: 0;
+  right: clamp(-2rem, 4vw, 4rem);
+  height: 100%;
+  width: min(38vw, 340px);
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.helix-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.helix-strand {
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.strand-a {
+  stroke: var(--color-primary);
+}
+
+.strand-b {
+  stroke: var(--color-primary-dark);
+  opacity: 0.55;
+}
+
+@media (max-width: 640px) {
+  .hero-helix {
+    width: 44vw;
+    opacity: 0.28;
+  }
+}
+
+/* ==========================================================
+   WHO WE ARE AND WHAT WE DO
+   ========================================================== */
+.who-we-are-section {
+  background: var(--color-surface);
+}
+
+.split-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.split-text h2 {
+  font-size: clamp(1.7rem, 3.4vw, 2.4rem);
+}
+
+.split-text .lede {
+  color: var(--color-ink);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.split-media img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  box-shadow: 0 20px 45px -20px rgba(15, 27, 45, 0.35);
+}
+
+/* Stats strip */
+.stats-strip {
+  margin-top: clamp(2.5rem, 6vw, 4rem);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  padding: 1.75rem;
+  background: var(--color-surface-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.stat-value {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  color: var(--color-primary);
+}
+
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+/* ==========================================================
+   OUR COMMITMENT TO PEOPLE, PLANET, AND PURPOSE
+   ========================================================== */
+.commitment-section {
+  background: var(--color-surface);
+}
+
+.commitment-section > h2 {
+  font-size: clamp(1.7rem, 3.4vw, 2.4rem);
+  max-width: 720px;
+  margin-bottom: clamp(2rem, 5vw, 3.5rem);
+}
+
+.commitment-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+.commitment-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.commitment-media img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  margin-bottom: 1.25rem;
+}
+
+.commitment-card h3 {
+  font-size: 1.3rem;
+}
+
+/* ==========================================================
+   OUR LEADERSHIP TEAM
+   ========================================================== */
+.leadership-section {
+  background: var(--color-surface-alt);
+}
+
+.leadership-section > h2 {
+  font-size: clamp(1.7rem, 3.4vw, 2.4rem);
+  margin-bottom: clamp(2rem, 5vw, 3.5rem);
+}
+
+.leadership-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+  align-items: center;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.leadership-photo img {
+  width: 128px;
+  height: 128px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.leadership-copy blockquote {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-style: italic;
+  color: var(--color-ink);
+  margin: 0.4em 0 1em;
+  line-height: 1.5;
+}
+
+.leader-name {
+  font-weight: 700;
+  color: var(--color-ink);
+  margin-bottom: 1.2em;
+}
+
+.leader-title {
+  font-weight: 400;
+  color: var(--color-muted);
+  margin-left: 0.4em;
+}
+
+/* ==========================================================
+   RESPONSIVE — tablet and up
+   ========================================================== */
+@media (min-width: 640px) {
+  .commitment-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats-strip {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 960px) {
+  .split-grid {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+
+  .service-row {
+    grid-template-columns: 1fr 1fr;
+    padding: 1.75rem;
+  }
+
+  .service-row--reverse .service-media {
+    order: 2;
+  }
+
+  .service-row--reverse .service-copy {
+    order: 1;
+  }
+
+  .leadership-card {
+    grid-template-columns: 200px 1fr;
+  }
+
+  .leadership-photo img {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .about-page .container-fluid {
+    padding-left: max(var(--gutter), calc((100vw - 1240px) / 2));
+    padding-right: max(var(--gutter), calc((100vw - 1240px) / 2));
+  }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .about-page * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}

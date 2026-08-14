@@ -60,7 +60,7 @@
 
 .footer-social a:hover {
   background: #000;
-  border-color: #43AB62;
+  border-color: #2563eb;
   color: #fbfbfb;
 }
 
@@ -92,7 +92,7 @@
 }
 
 .footer-link-list a:hover {
-  color: #43AB62;
+  color: #2563eb;
 }
 
 .footer-contact-line {
@@ -133,7 +133,7 @@
 }
 
 .footer-legal-list a:hover {
-  color: #43AB62;
+  color: #2563eb;
 }
 
 /* Below 900px: brand becomes its own full-width row (section 1),
