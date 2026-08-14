@@ -8,7 +8,7 @@ import HomeAbout from "../components/HomeAbout";
 import Team from "../components/Team";
 import NewsEvents from "../components/NewsEvents";
 import SectionSep from "../components/SectionSep";
-import agriImg from "../assets/agrbanner.png"
+// import agriImg from "../assets/agrbanner.png"
 // import resiImg from "../assets/reabanner.png"
 import cliImg from "../assets/clibanner.png"
 import Scroll  from "../components/3d animation/Scroll";
@@ -24,14 +24,16 @@ const Home = () => {
   <HomeWork/> */}
   {/* <Platform/> */}
   <HomeAbout/>
-  <Scroll/>
+
   <Team/>
- <SectionSep
+ {/* <SectionSep
         bgImage={agriImg}
         title="Breeding Tomorrow's Agriculture, Today"
         description="Accelerating genetic improvement in crops and livestock through precision genomics"
         link="/agriculture-genomics"
-      />
+      /> */}
+
+        <Scroll/>
   <NewsEvents/>
    <SectionSep
         bgImage={cliImg}
