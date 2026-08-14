@@ -38,9 +38,9 @@ const NewsEvents = () => {
       <Container>
         <div className="news-header">
           <div>
-            <span className="news-label">LATEST UPDATES</span>
+            
             <h2 className="news-title">
-              Latest News & Research
+              News & Insights
             </h2>
             <p className="news-subtitle">
               Stay updated with our latest discoveries, innovations, research

@@ -1,9 +1,8 @@
 import React from "react";
 import "./Home.css";
 import Hero from "../components/Hero";
-
-// import Platform from "../components/Platform";
-import FAQ from "../components/FAQ";
+// import Footer from "../components/Footer";
+// import HomeWork from "../components/HomwWork";
 import HomeAbout from "../components/HomeAbout";
 import Team from "../components/Team";
 import NewsEvents from "../components/NewsEvents";
@@ -12,12 +11,14 @@ import SectionSep from "../components/SectionSep";
 // import resiImg from "../assets/reabanner.png"
 import cliImg from "../assets/clibanner.png"
 import Scroll  from "../components/3d animation/Scroll";
+import FAQ from "../components/FAQ";
+import Credentials from "../components/Credentials";
 
 
 const Home = () => {
 
 
-  return (
+  return ( 
   <>
   <Hero/>
 {/* 
@@ -35,13 +36,14 @@ const Home = () => {
 
         <Scroll/>
   <NewsEvents/>
+  <Credentials/>
    <SectionSep
         bgImage={cliImg}
         title="Transforming Patient Care Through Genetic Insights
 "
         description="Delivering reliable sequencing and precision diagnostics for inherited disorders, oncology, reproductive health, and rare diseases."
       />
-  <FAQ/>
+      <FAQ/>
 
   </>
   );

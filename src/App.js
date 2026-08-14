@@ -1,13 +1,13 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import About from "./pages/About";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import ClinicalGenomics from "./pages/ClinicalGenomics";
 import Footer from "./components/Footer";
 import Contact from "./pages/Contact";
-import About from "./pages/About";
+import Research from "./pages/Research";
 import AgriGenomics from "./pages/AgriGenomics";
 
 function App() {
@@ -19,7 +19,12 @@ function App() {
       <Routes>
         {/* Home Page */}
         <Route path="/" element={<Home />} />
- <Route path="/about" element={<About />} />
+
+          <Route path="/about" element={<About />} />
+ <Route 
+ path="/research-genomics" 
+ element={<Research />} 
+ />
         {/* Clinical Genomics Page */}
                <Route
           path="/agri-genomics"
@@ -34,6 +39,7 @@ function App() {
           path="/contact"
           element={<Contact />}
         />
+        <Route path="/agri-genomics" element={<AgriGenomics />} />
       </Routes>
       <Footer/>
     </div>

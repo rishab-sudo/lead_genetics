@@ -1,7 +1,7 @@
 import React from "react";
 import ClinicalHero from "../components/ClinicalHero";
 import "./ClinicalGenomics.css";
-
+import CliScroll from "../components/3d animation/CliScroll";
 // const testMenu = [
 //   "Oncology",
 //   "Rare Disease",
@@ -60,6 +60,7 @@ const ClinicalGenomics = () => {
   return (
     <>
       <ClinicalHero />
+      
 
       {/* <section className="clinical-testmenu-section">
         <div className="container">

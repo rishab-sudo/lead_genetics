@@ -224,6 +224,7 @@
 /* =========================================================
    Precision Biotech Services — "pgs" (Pipeline / Genomic Services)
    Theme: Light Green
+   3-card grid + stats bar
 ========================================================= */
 
 .pgs-section-fluid {
@@ -281,88 +282,56 @@
   margin: 0;
 }
 
-.pgs-pipeline {
-  position: relative;
-}
-
-.pgs-rail {
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  margin-bottom: -1px;
-}
-
-.pgs-rail::before {
-  content: "";
-  position: absolute;
-  top: 15px;
-  left: calc(100% / 6);
-  right: calc(100% / 6);
-  height: 2px;
-  background: repeating-linear-gradient(
-    to right,
-    var(--pgs-accent-soft) 0 8px,
-    transparent 8px 16px
-  );
-  z-index: 0;
-}
-
-.pgs-rail-stop {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  justify-content: center;
-}
-
-.pgs-rail-num {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background-color: var(--pgs-bg);
-  border: 2px solid var(--pgs-accent);
-  color: var(--pgs-accent-dark);
-  font-weight: 700;
-  font-size: 0.8rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .pgs-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-  margin-top: 28px;
+  gap: 24px;
+  margin-top: 8px;
 }
 
-.pgs-row {
-  display: flex;
-  flex-direction: column;
+.pgs-card {
   background-color: var(--pgs-card);
   border: 1px solid var(--pgs-border);
   border-radius: 20px;
-  padding: 30px 28px;
+  padding: 28px 26px;
   box-shadow: 0 6px 18px rgba(47, 92, 38, 0.06);
+  text-align: left;
 }
 
-.pgs-art-wrap {
-  position: relative;
-  align-self: center;
-  width: 148px;
-  height: 148px;
+.pgs-card-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.pgs-card-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background-color: var(--pgs-bg-soft);
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 22px;
+  overflow: hidden;
+}
+
+.pgs-card-icon .pgs-art-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.pgs-card-icon .pgs-art-ring {
+  display: none;
+}
+
+.pgs-card-icon .pgs-art-label {
+  display: none;
 }
 
 .pgs-step {
   display: none;
-}
-
-.pgs-art-svg {
-  width: 100%;
-  height: 100%;
 }
 
 .pgs-art-ring {
@@ -449,11 +418,6 @@
   fill: var(--pgs-accent-dark);
 }
 
-.pgs-content {
-  flex: 1 1 auto;
-  text-align: center;
-}
-
 .pgs-eyebrow {
   display: inline-block;
   background-color: var(--pgs-accent);
@@ -464,31 +428,30 @@
   text-transform: uppercase;
   padding: 4px 12px;
   border-radius: 999px;
-  margin-bottom: 12px;
 }
 
-.pgs-title {
-  font-size: clamp(1.25rem, 2vw, 1.6rem);
+.pgs-card-title {
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--pgs-accent-dark);
-  margin-bottom: 12px;
-  line-height: 1.3;
+  margin-bottom: 10px;
+  line-height: 1.35;
 }
 
-.pgs-copy {
-  font-size: 1rem;
+.pgs-card-copy {
+  font-size: 0.92rem;
   color: var(--pgs-text-soft);
-  line-height: 1.65;
-  margin: 0 0 18px;
+  line-height: 1.6;
+  margin: 0 0 16px;
 }
 
 .pgs-feature-list {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
   list-style: none;
-  margin: 0;
+  margin: 0 0 4px;
   padding: 0;
 }
 
@@ -496,19 +459,22 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: var(--pgs-text);
   font-weight: 600;
 }
 
-.pgs-feature-list li::before {
-  content: "";
+.pgs-feature-check {
   flex: 0 0 auto;
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  background-color: var(--pgs-accent-soft);
-  background-image: linear-gradient(135deg, var(--pgs-accent), var(--pgs-accent-dark));
+  background-color: var(--pgs-accent);
+  color: #fff;
+  font-size: 0.62rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .pgs-callout {
@@ -554,20 +520,44 @@
   text-decoration: underline;
 }
 
+.pgs-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 36px;
+}
+
+.pgs-stat-box {
+  background-color: var(--pgs-card);
+  border: 1px solid var(--pgs-border);
+  border-radius: 16px;
+  padding: 20px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-align: center;
+}
+
+.pgs-stat-num {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--pgs-accent-dark);
+}
+
+.pgs-stat-label {
+  font-size: 0.8rem;
+  color: var(--pgs-text-soft);
+}
+
 @media (max-width: 900px) {
   .pgs-grid {
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 20px;
   }
 
-  .pgs-rail,
-  .pgs-rail::before {
-    display: none;
-  }
-
-  .pgs-art-wrap {
-    width: 170px;
-    height: 170px;
+  .pgs-stats {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -576,8 +566,12 @@
     padding: 56px 0;
   }
 
-  .pgs-row {
-    padding: 24px;
+  .pgs-card {
+    padding: 22px;
+  }
+
+  .pgs-stats {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -760,272 +754,318 @@
 }
 
 /* =========================================================
-   Scientific Resources — "scr"
-   Theme: Light green tint
+   Agricultural Genomics Services — "agb" (Agri-Genomics Bento)
+   Bento grid of cards that expand into a detail modal on click,
+   styled after the reference: soft card, icon roundel top-left,
+   expand glyph top-right, modal with tagline + stat pill + checklist.
+   Kept in the page's green theme rather than the reference's warm
+   palette, so it reads as part of this site, not a pasted-in block.
 ========================================================= */
 
-.scr-section-fluid {
-  --scr-bg: #f4faf1;
-  --scr-card: #ffffff;
-  --scr-border: #dcecd6;
-  --scr-accent: #4c8a3d;
-  --scr-accent-dark: #2f5c26;
-  --scr-text: #1c2a17;
-  --scr-text-soft: #5c6b57;
+.detail-section {
+  position: relative;
+  background: #f7faf9;
+  padding: 88px 0;
+}
 
+.container-max {
   width: 100%;
-  background-color: var(--scr-bg);
-  padding: 80px 0;
-}
-
-.scr-container {
-  max-width: 1180px;
+  max-width: 1200px;
+  padding-left: 24px;
+  padding-right: 24px;
   margin: 0 auto;
-  padding: 0 24px;
 }
 
-.scr-headrow {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 40px;
-  gap: 16px;
-  flex-wrap: wrap;
+.detail-header {
+  text-align: left;
+  max-width: 640px;
+  margin: 0 0 40px;
 }
 
-.scr-heading {
-  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+.detail-header__label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #2f5c26;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.detail-header__title {
+  font-size: 28px;
+  font-weight: 500;
+  color: #16261a;
+  margin: 0 0 10px;
+}
+
+.detail-header__title strong {
   font-weight: 700;
-  color: var(--scr-text);
+  color: #2f5c26;
+}
+
+.detail-header__sub {
+  font-size: 15px;
+  color: #5c6b57;
   margin: 0;
 }
 
-.scr-browse-link {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--scr-accent-dark);
-  text-decoration: none;
-}
-
-.scr-browse-link:hover {
-  text-decoration: underline;
-}
-
-.scr-grid {
+/* Bento grid — six-column track, cards span 2–4 columns via inline
+   style (AGB_SPANS in the component) to get the mixed wide/narrow
+   rhythm from the reference. */
+.agb-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: 20px;
 }
 
-.scr-card {
-  background-color: var(--scr-card);
-  border: 1px solid var(--scr-border);
-  border-radius: 16px;
-  padding: 26px 22px;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+.agb-card {
+  grid-column: span 3;
+  text-align: left;
+  background: #ffffff;
+  border: 1px solid #dcecd6;
+  border-radius: 20px;
+  padding: 26px 26px 24px;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
-.scr-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 14px 28px rgba(47, 92, 38, 0.08);
+.agb-card:hover,
+.agb-card:focus-visible {
+  transform: translateY(-4px);
+  border-color: #7bc96f;
+  box-shadow: 0 16px 34px rgba(47, 92, 38, 0.12);
 }
 
-.scr-icon {
+.agb-card:focus-visible {
+  outline: 2px solid #4c8a3d;
+  outline-offset: 2px;
+}
+
+.agb-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.agb-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 42px;
   height: 42px;
   border-radius: 12px;
-  background-color: #eaf5e5;
-  display: flex;
+  background: #eaf5e5;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.agb-expand {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 16px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #f4faf1;
+  color: #5c6b57;
+  flex-shrink: 0;
 }
 
-.scr-icon svg {
-  width: 20px;
-  height: 20px;
-  stroke: var(--scr-accent-dark);
+.agb-expand svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
 }
 
-.scr-card-title {
-  font-size: 0.98rem;
+.agb-card-title {
+  font-size: 1.08rem;
   font-weight: 700;
-  color: var(--scr-text);
-  margin-bottom: 4px;
+  color: #16261a;
+  margin: 0 0 8px;
 }
 
-.scr-card-sub {
-  font-size: 0.82rem;
-  color: var(--scr-text-soft);
+.agb-card-desc {
+  font-size: 0.9rem;
+  color: #5c6b57;
+  line-height: 1.55;
   margin: 0;
 }
 
-@media (max-width: 900px) {
-  .scr-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 480px) {
-  .scr-section-fluid {
-    padding: 56px 0;
-  }
-
-  .scr-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* =========================================================
-   Closing CTA — "agc" (Agri Genomics Conversion)
-   Theme: Deep forest green
-========================================================= */
-
-.agc-section-fluid {
-  --agc-bg: #0f2417;
-  --agc-bg-deep: #0a1a10;
-  --agc-border: rgba(255, 255, 255, 0.12);
-  --agc-accent: #7bc96f;
-  --agc-text: #f2f8ef;
-  --agc-text-soft: #b9ccb2;
-
-  width: 100%;
-  background-color: var(--agc-bg);
-  padding: 80px 0;
-}
-
-.agc-container {
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 0 24px;
+/* Modal */
+.agb-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: rgba(15, 36, 23, 0.55);
+  backdrop-filter: blur(2px);
   display: flex;
   align-items: center;
-  gap: 64px;
+  justify-content: center;
+  padding: 24px;
+  animation: agb-fade-in 0.2s ease both;
 }
 
-.agc-content {
-  flex: 1 1 440px;
+.agb-modal {
+  width: 100%;
+  max-width: 560px;
+  max-height: min(640px, 88vh);
+  overflow-y: auto;
+  background: #fbfdfa;
+  border-radius: 22px;
+  padding: 30px 30px 32px;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.35);
+  animation: agb-scale-in 0.22s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-.agc-heading {
-  font-size: clamp(1.8rem, 3vw, 2.4rem);
+.agb-modal-headrow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.agb-modal-icon {
+  width: 46px;
+  height: 46px;
+  font-size: 1.3rem;
+}
+
+.agb-modal-close {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: #eaf5e5;
+  color: #223018;
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease;
+}
+
+.agb-modal-close:hover {
+  background-color: #d3ecc7;
+}
+
+.agb-modal-title {
+  font-size: 1.4rem;
   font-weight: 700;
-  color: var(--agc-text);
-  line-height: 1.25;
-  margin-bottom: 14px;
+  color: #16261a;
+  margin: 0 0 8px;
 }
 
-.agc-copy {
+.agb-modal-tagline {
   font-size: 1rem;
-  color: var(--agc-text-soft);
-  line-height: 1.6;
-  margin: 0 0 24px;
+  font-weight: 600;
+  color: #2f5c26;
+  margin: 0 0 12px;
 }
 
-.agc-points {
+.agb-modal-detail {
+  font-size: 0.95rem;
+  color: #5c6b57;
+  line-height: 1.65;
+  margin: 0 0 20px;
+}
+
+.agb-stat-pill {
+  background: #eaf5e5;
+  border-radius: 16px;
+  padding: 16px 18px;
+  margin-bottom: 20px;
+}
+
+.agb-stat-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #2f5c26;
+  margin-bottom: 6px;
+}
+
+.agb-stat-pill p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: #3a4a35;
+  line-height: 1.55;
+}
+
+.agb-checklist {
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-}
-
-.agc-points li {
-  display: flex;
-  align-items: center;
   gap: 10px;
-  font-size: 0.92rem;
-  color: var(--agc-text);
 }
 
-.agc-points li::before {
-  content: "";
-  flex: 0 0 auto;
+.agb-checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: #223018;
+}
+
+.agb-check-icon {
+  flex-shrink: 0;
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background-color: rgba(123, 201, 111, 0.16);
-  border: 1px solid var(--agc-accent);
-}
-
-.agc-form {
-  flex: 1 1 380px;
-  background-color: #fff;
-  border-radius: 18px;
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
-}
-
-.agc-field {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.agc-field label {
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: #223018;
-}
-
-.agc-field input,
-.agc-field select {
-  border: 1px solid #d7e6d1;
-  border-radius: 10px;
-  padding: 11px 14px;
-  font-size: 0.92rem;
-  color: #223018;
-  background-color: #fbfdfa;
-}
-
-.agc-field input:focus,
-.agc-field select:focus {
-  outline: 2px solid var(--agc-accent);
-  outline-offset: 1px;
-}
-
-.agc-submit-btn {
-  margin-top: 4px;
-  background-color: #4c8a3d;
+  background: #4c8a3d;
   color: #fff;
-  font-weight: 600;
-  font-size: 0.95rem;
-  border: none;
-  border-radius: 10px;
-  padding: 13px 20px;
-  cursor: pointer;
-  transition: background-color 0.15s ease, transform 0.15s ease;
+  font-size: 0.68rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
 }
 
-.agc-submit-btn:hover {
-  background-color: #3c7230;
-  transform: translateY(-1px);
+@keyframes agb-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes agb-scale-in {
+  from { opacity: 0; transform: scale(0.94) translateY(8px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .agb-modal-backdrop,
+  .agb-modal,
+  .agb-card {
+    animation: none !important;
+    transition: none !important;
+  }
 }
 
 @media (max-width: 900px) {
-  .agc-container {
-    flex-direction: column;
+  .agb-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
-
-  .agc-content {
-    text-align: center;
-  }
-
-  .agc-points {
-    align-items: center;
+  .agb-card {
+    grid-column: span 1 !important;
   }
 }
 
-@media (max-width: 480px) {
-  .agc-section-fluid {
-    padding: 56px 0;
+@media (max-width: 560px) {
+  .agb-grid {
+    grid-template-columns: 1fr;
   }
-
-  .agc-form {
-    padding: 22px;
+  .detail-section {
+    padding: 64px 0;
+  }
+  .agb-modal {
+    padding: 24px 22px 26px;
   }
 }

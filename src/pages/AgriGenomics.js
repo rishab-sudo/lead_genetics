@@ -1,5 +1,94 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./AgriGenomics.css";
+import AgriGenoBan from "../components/AgriGenoBan";
+
+
+const AGR_SERVICES = [
+  {
+    id: "crop-genomics",
+    icon: "🌾",
+    title: "Crop Genomics",
+    desc: "Whole genome sequencing and trait mapping for crop improvement, disease resistance, and yield optimisation.",
+    tagline: "Sequence once, breed with certainty.",
+    detail:
+      "We run whole-genome and targeted resequencing across breeding populations, then map traits back to markers your team can act on immediately — no black-box scores, just usable loci.",
+    stat: {
+      label: "Turnaround",
+      text: "Full trait-mapping reports delivered in 10–14 days from sample receipt, backed by a QC pipeline that flags low-coverage regions before they reach your report.",
+    },
+    checklist: ["Whole-genome & targeted resequencing", "Trait-marker association mapping", "Disease-resistance & yield panels"],
+  },
+  {
+    id: "livestock-dna",
+    icon: "🐄",
+    title: "Livestock DNA Profiling",
+    desc: "Parentage verification, breed identification, genetic diversity assessment, and performance trait analysis.",
+    tagline: "Every pedigree, verified at the base pair.",
+    detail:
+      "Parentage, breed composition, and genetic diversity are confirmed against reference panels built from your own herd history, so results reflect your population — not a generic database.",
+    stat: {
+      label: "Panel Size",
+      text: "Profiles run against a 50K-plus SNP panel per animal, giving parentage calls confidence levels above 99.9% in typical herds.",
+    },
+    checklist: ["Parentage verification", "Breed composition analysis", "Genetic diversity & inbreeding tracking"],
+  },
+  {
+    id: "seed-verification",
+    icon: "🌱",
+    title: "Seed Verification",
+    desc: "Genotypic identity verification and purity testing for seed lots using molecular markers.",
+    tagline: "Purity you can put a number on.",
+    detail:
+      "Molecular marker panels confirm genotypic identity and lot purity before seed ever reaches the field, catching mislabeling and off-type contamination early.",
+    stat: {
+      label: "Detection Threshold",
+      text: "Off-type contamination is reliably detected down to 1% of a seed lot using our standard marker panel.",
+    },
+    checklist: ["Genotypic identity confirmation", "Lot purity testing", "Off-type contamination screening"],
+  },
+  {
+    id: "soil-metagenomics",
+    icon: "🌍",
+    title: "Soil Metagenomics",
+    desc: "Characterisation of soil microbial communities to understand nutrient cycling and plant health.",
+    tagline: "Read the soil like a genome.",
+    detail:
+      "Shotgun and amplicon sequencing of soil samples reveal the microbial communities driving nutrient cycling, so fertility programs are built on what's actually living in the field.",
+    stat: {
+      label: "Coverage",
+      text: "Each sample profiles bacterial, fungal, and archaeal communities down to genus level across up to 12 fields per submission batch.",
+    },
+    checklist: ["16S/ITS amplicon sequencing", "Nutrient-cycling pathway mapping", "Field-by-field microbial benchmarking"],
+  },
+  {
+    id: "pathogen-detection",
+    icon: "🧬",
+    title: "Plant Pathogen Detection",
+    desc: "Rapid identification of fungal, bacterial, and viral plant pathogens using targeted sequencing.",
+    tagline: "Identify the pathogen before it spreads.",
+    detail:
+      "Targeted sequencing panels flag fungal, bacterial, and viral pathogens directly from field samples, often days before visible symptoms would prompt a lab submission.",
+    stat: {
+      label: "Response Time",
+      text: "Preliminary pathogen ID typically returns within 48 hours of sample receipt, with full confirmatory results by day five.",
+    },
+    checklist: ["Multi-pathogen targeted panels", "Fungal, bacterial & viral coverage", "Early, pre-symptomatic detection"],
+  },
+  {
+    id: "marker-selection",
+    icon: "📊",
+    title: "Marker-Assisted Selection",
+    desc: "Genomic selection pipelines integrating SNP arrays and whole-genome data for breeding programs.",
+    tagline: "Breed forward, not backward.",
+    detail:
+      "SNP array data and whole-genome information feed directly into genomic selection pipelines, so every cross is chosen with predicted breeding values in hand.",
+    stat: {
+      label: "Prediction Accuracy",
+      text: "Genomic selection models are validated against realized outcomes each season, typically explaining 60%+ of variance in target traits.",
+    },
+    checklist: ["SNP array integration", "Genomic breeding value prediction", "Season-over-season model validation"],
+  },
+];
 
 const PIPELINE = [
   {
@@ -34,8 +123,14 @@ const PIPELINE = [
       "Before an embryo is ever implanted, its genomic profile is screened against markers for milk yield, fertility, disease resistance, and structural soundness — so every decision downstream is backed by data, not guesswork.",
     art: "dna",
     features: ["Predictive Analytics", "Genomic Mapping"],
-    link: "View Analysis Samples",
   },
+];
+
+const PGS_STATS = [
+  { num: "10K+", label: "Embryos Produced" },
+  { num: "500+", label: "Partner Farms" },
+  { num: "120+", label: "Genomic Markers Tracked" },
+  { num: "25+", label: "Countries Served" },
 ];
 
 const CASE_STUDIES = [
@@ -67,58 +162,7 @@ const CASE_STUDIES = [
       "Genomic markers linked to udder health were validated across four partner herds, giving producers an early signal for mastitis susceptibility.",
     author: "Dr. Elena Rodriguez",
     image:
-      "https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format&fit=crop&w=600&q=80",
-  },
-];
-
-const RESOURCES = [
-  {
-    id: "ivf-protocol",
-    title: "IVF Protocol Guide",
-    sub: "Step-by-step lab reference, 2024 edition",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M9 2h6M10 2v6l-5.5 9.5A2 2 0 0 0 6.2 21h11.6a2 2 0 0 0 1.7-3.5L14 8V2" />
-        <path d="M7.5 15h9" />
-      </svg>
-    ),
-  },
-  {
-    id: "moet-integration",
-    title: "MOET Integration",
-    sub: "Fitting embryo transfer into your calendar",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="3" />
-        <circle cx="5" cy="6" r="2" />
-        <circle cx="19" cy="6" r="2" />
-        <circle cx="5" cy="18" r="2" />
-        <circle cx="19" cy="18" r="2" />
-        <path d="M9.6 10.4 6.6 7.4M14.4 10.4l3-3M9.6 13.6l-3 3M14.4 13.6l3 3" />
-      </svg>
-    ),
-  },
-  {
-    id: "genomic-efficiency",
-    title: "Genomic Efficiency",
-    sub: "Benchmarks across breeding programs",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M4 19V9M11 19V4M18 19v-7" />
-        <path d="M3 19h18" />
-      </svg>
-    ),
-  },
-  {
-    id: "bovine-journal",
-    title: "Bovine Genetics Journal",
-    sub: "Quarterly research digest, Q1",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v17H6.5A2.5 2.5 0 0 0 4 21.5v-17Z" />
-        <path d="M8 7h8M8 11h8" />
-      </svg>
-    ),
+      "https://terranutritech.com/2020/04/06/top-10-tips-for-dairy-cow-breeding",
   },
 ];
 
@@ -190,44 +234,27 @@ const initials = (name) =>
     .map((part) => part[0])
     .join("");
 
+/* Bento column-span pattern for the 6 service cards, on a 6-col track:
+   row1 wide/narrow, row2 narrow/wide, row3 even/even — mirrors the
+   reference layout while staying data-driven off AGR_SERVICES. */
+const AGB_SPANS = [4, 2, 2, 4, 3, 3];
+
 const AgriGenomics = () => {
+  const [activeService, setActiveService] = useState(null);
+
+  // Escape key closes the open card's detail modal.
+  useEffect(() => {
+    if (!activeService) return;
+    const onKeyDown = (e) => {
+      if (e.key === "Escape") setActiveService(null);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [activeService]);
+
   return (
     <>
-      {/* Hero */}
-      <section className="agh-section-fluid">
-        <div className="container-fluid agh-container">
-          <div className="agh-content">
-            <span className="agh-eyebrow">Precision Cattle Genetics</span>
-            <h1 className="agh-heading">Agri Genomics: Transforming Bovine Genetics</h1>
-            <p className="agh-subheading">
-              Lab-grade IVF, MOET, and genomic selection working together to
-              raise the genetic ceiling of every herd we work with.
-            </p>
-            <div className="agh-actions">
-              <button type="button" className="agh-btn-primary">Get Started</button>
-              <button type="button" className="agh-btn-secondary">View Research Paper</button>
-            </div>
-            <div className="agh-stats">
-              <div className="agh-stat">
-                <span className="agh-stat-num">500+</span>
-                <span className="agh-stat-label">Successful Transfers</span>
-              </div>
-              <div className="agh-stat">
-                <span className="agh-stat-num">99.6%</span>
-                <span className="agh-stat-label">Genetic Accuracy</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="agh-media">
-            {/* <img
-              src="508483-a7212febe31a?auto=format&fit=crop&w=900&q=80"
-              alt="Holstein cow in a pasture"
-            /> */}
-            <span className="agh-media-badge">Certified Genomic Data</span>
-          </div>
-        </div>
-      </section>
+    <AgriGenoBan/>
 
       {/* Precision Biotech Services */}
       <section className="pgs-section-fluid">
@@ -242,51 +269,51 @@ const AgriGenomics = () => {
             </p>
           </header>
 
-          <div className="pgs-pipeline">
-            <div className="pgs-rail" aria-hidden="true">
-              {PIPELINE.map((stage) => (
-                <div key={stage.id} className="pgs-rail-stop">
-                  <span className="pgs-rail-num">{stage.step}</span>
+          <div className="pgs-grid">
+            {PIPELINE.map((stage) => (
+              <div key={stage.id} className="pgs-card">
+                <div className="pgs-card-head">
+                  <div className="pgs-card-icon">{renderArt(stage.art)}</div>
+                  <span className="pgs-eyebrow">{stage.eyebrow}</span>
                 </div>
-              ))}
-            </div>
 
-            <div className="pgs-grid">
-              {PIPELINE.map((stage) => (
-                <div key={stage.id} className="pgs-row">
-                  <div className="pgs-art-wrap">
-                    {renderArt(stage.art)}
+                <h3 className="pgs-card-title">{stage.title}</h3>
+                <p className="pgs-card-copy">{stage.copy}</p>
+
+                {stage.features && (
+                  <ul className="pgs-feature-list">
+                    {stage.features.map((feature) => (
+                      <li key={feature}>
+                        <span className="pgs-feature-check">✓</span>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
+                {stage.callout && (
+                  <div className="pgs-callout">
+                    <div>
+                      <span className="pgs-callout-label">{stage.callout.label}</span>
+                      <p>{stage.callout.text}</p>
+                    </div>
                   </div>
+                )}
 
-                  <div className="pgs-content">
-                    <span className="pgs-eyebrow">{stage.eyebrow}</span>
-                    <h3 className="pgs-title">{stage.title}</h3>
-                    <p className="pgs-copy">{stage.copy}</p>
+                {stage.link && (
+                  <a href="#genomic-samples" className="pgs-link">{stage.link} →</a>
+                )}
+              </div>
+            ))}
+          </div>
 
-                    {stage.features && (
-                      <ul className="pgs-feature-list">
-                        {stage.features.map((feature) => (
-                          <li key={feature}>{feature}</li>
-                        ))}
-                      </ul>
-                    )}
-
-                    {stage.callout && (
-                      <div className="pgs-callout">
-                        <div>
-                          <span className="pgs-callout-label">{stage.callout.label}</span>
-                          <p>{stage.callout.text}</p>
-                        </div>
-                      </div>
-                    )}
-
-                    {stage.link && (
-                      <a href="#genomic-samples" className="pgs-link">{stage.link} →</a>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
+          <div className="pgs-stats">
+            {PGS_STATS.map((s) => (
+              <div key={s.label} className="pgs-stat-box">
+                <span className="pgs-stat-num">{s.num}</span>
+                <span className="pgs-stat-label">{s.label}</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -327,62 +354,92 @@ const AgriGenomics = () => {
         </div>
       </section>
 
-      {/* Scientific Resources */}
-      <section className="scr-section-fluid">
-        <div className="container-fluid scr-container">
-          <div className="scr-headrow">
-            <h2 className="scr-heading">Scientific Resources</h2>
-            <a href="#all-resources" className="scr-browse-link">Browse All Resources</a>
+      {/* Agricultural Genomics Services — bento cards, click to expand */}
+      <section className="section detail-section">
+        <div className="container-max">
+          <div className="detail-header">
+            <span className="detail-header__label">Services</span>
+            <h2 className="detail-header__title">
+              Agricultural <strong>Genomics Services</strong>
+            </h2>
+            <p className="detail-header__sub">Six labs, one submission form. Open any card to go deeper.</p>
           </div>
 
-          <div className="scr-grid">
-            {RESOURCES.map((resource) => (
-              <div key={resource.id} className="scr-card">
-                <div className="scr-icon">{resource.icon}</div>
-                <h4 className="scr-card-title">{resource.title}</h4>
-                <p className="scr-card-sub">{resource.sub}</p>
-              </div>
+          <div className="agb-grid">
+            {AGR_SERVICES.map((item, i) => (
+              <button
+                type="button"
+                key={item.id}
+                className="agb-card"
+                style={{ gridColumn: `span ${AGB_SPANS[i] || 3}` }}
+                onClick={() => setActiveService(item)}
+              >
+                <div className="agb-card-top">
+                  <span className="agb-card-icon">{item.icon}</span>
+                  <span className="agb-expand" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M9 3H3v6M15 3h6v6M15 21h6v-6M9 21H3v-6" />
+                    </svg>
+                  </span>
+                </div>
+                <h3 className="agb-card-title">{item.title}</h3>
+                <p className="agb-card-desc">{item.desc}</p>
+              </button>
             ))}
           </div>
         </div>
-      </section>
 
-      {/* Closing CTA */}
-      <section className="agc-section-fluid">
-        <div className="container-fluid agc-container">
-          <div className="agc-content">
-            <h2 className="agc-heading">Ready to Elevate Your Herd Genetics?</h2>
-            <p className="agc-copy">
-              Join the hundreds of forward-thinking farms benefiting from our
-              genomic services. Our team is ready to help you build a more
-              productive, resilient herd.
-            </p>
-            <ul className="agc-points">
-              <li>No obligation genetic audit</li>
-              <li>Customized implementation strategy</li>
-              <li>Ongoing technical support</li>
-            </ul>
+        {/* Detail modal for the active service */}
+        {activeService && (
+          <div
+            className="agb-modal-backdrop"
+            onClick={() => setActiveService(null)}
+          >
+            <div
+              className="agb-modal"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="agb-modal-title"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="agb-modal-headrow">
+                <span className="agb-card-icon agb-modal-icon">{activeService.icon}</span>
+                <button
+                  type="button"
+                  className="agb-modal-close"
+                  onClick={() => setActiveService(null)}
+                  aria-label="Close"
+                >
+                  ×
+                </button>
+              </div>
+
+              <h3 id="agb-modal-title" className="agb-modal-title">{activeService.title}</h3>
+              <p className="agb-modal-tagline">{activeService.tagline}</p>
+              <p className="agb-modal-detail">{activeService.detail}</p>
+
+              {activeService.stat && (
+                <div className="agb-stat-pill">
+                  <span className="agb-stat-label">{activeService.stat.label}</span>
+                  <p>{activeService.stat.text}</p>
+                </div>
+              )}
+
+              {activeService.checklist && (
+                <ul className="agb-checklist">
+                  {activeService.checklist.map((point) => (
+                    <li key={point}>
+                      <span className="agb-check-icon">✓</span> {point}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
           </div>
-
-          <form className="agc-form" onSubmit={(e) => e.preventDefault()}>
-            <div className="agc-field">
-              <label htmlFor="agc-email">Professional Email</label>
-              <input id="agc-email" type="email" placeholder="you@yourfarm.com" />
-            </div>
-            <div className="agc-field">
-              <label htmlFor="agc-help">How can we help?</label>
-              <select id="agc-help" defaultValue="">
-                <option value="" disabled>Select an area of interest</option>
-                <option value="ivf">IVF Services</option>
-                <option value="moet">MOET Program</option>
-                <option value="genomics">Genomic Selection</option>
-                <option value="general">General Inquiry</option>
-              </select>
-            </div>
-            <button type="submit" className="agc-submit-btn">Submit Inquiry</button>
-          </form>
-        </div>
+        )}
       </section>
+
+      
     </>
   );
 };
