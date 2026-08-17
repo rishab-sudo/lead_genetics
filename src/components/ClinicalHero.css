@@ -63,11 +63,12 @@
 
 /* Description */
 .hero-desc {
+  text-align: center !important;
   max-width: 760px;
-  margin: 0 auto 50px;
+  margin:  auto !important;
   font-size: 1.05rem;
   line-height: 1.8;
-  color: rgba(255, 255, 255, 0.85);
+  color: #fbfbfb !important;
 }
 
 /* ================= STATS ================= */

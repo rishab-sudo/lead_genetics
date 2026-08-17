@@ -1,0 +1,1053 @@
+/* =========================================================
+   MAIN SECTION
+========================================================= */
+
+.rare-disease-section {
+  position: relative;
+  padding: 25px 0;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 90% 5%,
+      rgba(37, 99, 235, 0.055),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 5% 70%,
+      rgba(8, 127, 123, 0.04),
+      transparent 25%
+    ),
+    #ffffff;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.rare-disease-header {
+  display: flex;
+  align-items: flex-start;
+  max-width: 1120px;
+  margin-bottom: 65px;
+}
+
+.rare-disease-icon {
+  position: relative;
+  flex-shrink: 0;
+
+  width: 76px;
+  height: 76px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-right: 30px;
+
+  color: #ffffff;
+
+  border-radius: 21px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #087f7b
+    );
+
+  box-shadow:
+    0 18px 40px rgba(37, 99, 235, 0.18);
+}
+
+.rare-disease-icon::after {
+  content: "";
+
+  position: absolute;
+
+  width: 10px;
+  height: 10px;
+
+  right: -4px;
+  top: -4px;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  border: 3px solid #087f7b;
+}
+
+.rare-disease-heading {
+  max-width: 920px;
+}
+
+.rare-disease-eyebrow {
+  display: block;
+
+  margin-bottom: 11px;
+
+  color: #087f7b;
+
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2.2px;
+}
+
+.rare-disease-heading h2 {
+  margin: 0;
+
+  color: #101b36;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: clamp(48px, 5.2vw, 68px);
+
+  line-height: 1.05;
+
+  font-weight: 500;
+
+  letter-spacing: -1.8px;
+}
+
+.rare-disease-divider {
+  width: 92px;
+  height: 3px;
+
+  margin: 27px 0;
+
+  border-radius: 5px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #2563eb,
+      #087f7b
+    );
+}
+
+.rare-disease-heading p {
+  max-width: 940px;
+
+  margin: 0;
+
+  color: #566274;
+
+  font-size: 17px;
+
+  line-height: 1.9;
+}
+
+
+/* =========================================================
+   MAIN TAB NAVIGATION
+========================================================= */
+
+.rare-main-tabs {
+  display: grid;
+
+  grid-template-columns:
+    repeat(6, 1fr);
+
+  gap: 8px;
+
+  padding: 7px;
+
+  margin-bottom: 16px;
+
+  border:
+    1px solid #dce9eb;
+
+  border-radius: 18px;
+
+  background: #f5f9fa;
+}
+
+.rare-main-tab {
+  position: relative;
+
+  min-height: 105px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  padding: 16px 15px;
+
+  border: none;
+
+  border-radius: 13px;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  text-align: left;
+
+  transition:
+    all 0.3s ease;
+}
+
+.rare-main-tab:hover {
+  background: #ffffff;
+  transform: translateY(-2px);
+}
+
+.rare-main-tab.active {
+  background: #ffffff;
+
+  box-shadow:
+    0 8px 28px rgba(20, 58, 73, 0.09);
+}
+
+.main-tab-number {
+  margin-bottom: 9px;
+
+  color: #a9b9be;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: 1px;
+}
+
+.rare-main-tab.active .main-tab-number {
+  color: #087f7b;
+}
+
+.main-tab-icon {
+  position: absolute;
+
+  top: 14px;
+  right: 14px;
+
+  width: 35px;
+  height: 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #708088;
+
+  border-radius: 9px;
+
+  background: #edf3f4;
+
+  transition:
+    all 0.3s ease;
+}
+
+.rare-main-tab.active .main-tab-icon {
+  color: #ffffff;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #087f7b
+    );
+}
+
+.main-tab-label {
+  max-width: 135px;
+
+  padding-right: 20px;
+
+  color: #27354c;
+
+  font-size: 13px;
+
+  line-height: 1.4;
+
+  font-weight: 700;
+}
+
+.main-tab-arrow {
+  position: absolute;
+
+  right: 13px;
+  bottom: 12px;
+
+  color: #087f7b;
+
+  opacity: 0;
+
+  transition:
+    all 0.3s ease;
+}
+
+.rare-main-tab.active .main-tab-arrow {
+  opacity: 1;
+}
+
+
+/* =========================================================
+   APPROACH CONTENT
+========================================================= */
+
+.approach-content {
+  padding: 45px;
+
+  border:
+    1px solid #dce9eb;
+
+  border-radius: 22px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #f7fbfc
+    );
+
+  box-shadow:
+    0 15px 45px rgba(18, 55, 75, 0.055);
+
+  animation:
+    contentFade 0.35s ease;
+}
+
+@keyframes contentFade {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.content-heading {
+  margin-bottom: 32px;
+}
+
+.content-heading span {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #087f7b;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: 1.8px;
+}
+
+.content-heading h3 {
+  margin: 0;
+
+  color: #13203b;
+
+  font-size: 30px;
+
+  line-height: 1.3;
+
+  font-weight: 650;
+
+  letter-spacing: -0.5px;
+}
+
+
+/* =========================================================
+   APPROACH CARDS
+========================================================= */
+
+.approach-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 14px;
+}
+
+.approach-card {
+  position: relative;
+
+  min-height: 265px;
+
+  padding: 27px 25px 31px;
+
+  overflow: hidden;
+
+  border:
+    1px solid #dce9eb;
+
+  border-radius: 18px;
+
+  background: #ffffff;
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.approach-card:hover {
+  transform: translateY(-5px);
+
+  border-color:
+    rgba(8, 127, 123, 0.22);
+
+  box-shadow:
+    0 18px 40px rgba(18, 55, 75, 0.09);
+}
+
+.approach-card-top {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-bottom: 28px;
+}
+
+.approach-number {
+  color: #aebec3;
+
+  font-size: 32px;
+
+  font-weight: 300;
+
+  line-height: 1;
+}
+
+.approach-icon {
+  width: 50px;
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #087f7b;
+
+  border-radius: 14px;
+
+  background:
+    rgba(8, 127, 123, 0.08);
+}
+
+.approach-card h4 {
+  margin: 0 0 12px;
+
+  color: #15213a;
+
+  font-size: 19px;
+
+  line-height: 1.35;
+
+  font-weight: 700;
+}
+
+.approach-card p {
+  margin: 0;
+
+  color: #5b6878;
+
+  font-size: 13.5px;
+
+  line-height: 1.7;
+}
+
+.approach-card-line {
+  position: absolute;
+
+  left: 0;
+  bottom: 0;
+
+  width: 0;
+  height: 3px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #2563eb,
+      #087f7b
+    );
+
+  transition:
+    width 0.35s ease;
+}
+
+.approach-card:hover .approach-card-line {
+  width: 100%;
+}
+
+
+/* =========================================================
+   CLINICAL TAB CONTENT
+========================================================= */
+
+.clinical-tab-content {
+  padding: 48px;
+
+  border:
+    1px solid #dce9eb;
+
+  border-radius: 22px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #f7fbfc
+    );
+
+  box-shadow:
+    0 15px 45px rgba(18, 55, 75, 0.055);
+
+  animation:
+    contentFade 0.35s ease;
+}
+
+
+/* =========================================================
+   CLINICAL HEADER
+========================================================= */
+
+.clinical-tab-header {
+  display: flex;
+
+  align-items: center;
+
+  gap: 17px;
+
+  margin-bottom: 30px;
+}
+
+.clinical-tab-number {
+  width: 46px;
+  height: 46px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  color: #087f7b;
+
+  border-radius: 12px;
+
+  background:
+    rgba(8, 127, 123, 0.07);
+
+  border:
+    1px solid rgba(8, 127, 123, 0.11);
+
+  font-size: 11px;
+
+  font-weight: 800;
+}
+
+.clinical-tab-icon {
+  width: 62px;
+  height: 62px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  color: #087f7b;
+
+  border-radius: 17px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(8, 127, 123, 0.09),
+      rgba(37, 99, 235, 0.07)
+    );
+}
+
+.clinical-tab-eyebrow {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #087f7b;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.8px;
+}
+
+.clinical-tab-header h3 {
+  margin: 0;
+
+  color: #13203b;
+
+  font-size: 31px;
+
+  line-height: 1.2;
+
+  font-weight: 700;
+
+  letter-spacing: -0.5px;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.clinical-tab-description {
+  max-width: 1080px;
+
+  margin-bottom: 35px;
+}
+
+.clinical-tab-description p {
+  margin: 0;
+
+  color: #566274;
+
+  font-size: 16px;
+
+  line-height: 1.85;
+}
+
+
+/* =========================================================
+   APPLICATIONS
+========================================================= */
+
+.applications-box {
+  padding: 28px 30px;
+
+  border:
+    1px solid #dce9eb;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f8fbfc,
+      #ffffff
+    );
+}
+
+.applications-heading {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  margin-bottom: 21px;
+
+  color: #087f7b;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
+
+  text-transform: uppercase;
+}
+
+.applications-heading-icon {
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+
+  background:
+    rgba(8, 127, 123, 0.08);
+}
+
+.applications-list {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 17px 50px;
+}
+
+.application-item {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 10px;
+}
+
+.application-check {
+  flex-shrink: 0;
+
+  margin-top: 2px;
+
+  color: #087f7b;
+}
+
+.application-item p {
+  margin: 0;
+
+  color: #536074;
+
+  font-size: 14px;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .rare-main-tabs {
+    grid-template-columns:
+      repeat(3, 1fr);
+  }
+
+  .approach-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+}
+
+
+@media (max-width: 991px) {
+
+  .rare-disease-section {
+    padding: 85px 0;
+  }
+
+  .rare-disease-header {
+    margin-bottom: 55px;
+  }
+
+  .rare-disease-heading h2 {
+    font-size: 52px;
+  }
+
+  .clinical-tab-content,
+  .approach-content {
+    padding: 35px;
+  }
+
+  .applications-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   HORIZONTAL X-AXIS TAB SCROLL
+========================================================= */
+
+@media (max-width: 575px) {
+
+  .rare-disease-section {
+    padding: 70px 0;
+
+    /* Prevent page itself from horizontal overflow */
+    overflow-x: hidden;
+  }
+
+
+  /* =======================================================
+     HEADER
+  ======================================================= */
+
+  .rare-disease-header {
+    display: block;
+
+    margin-bottom: 40px;
+  }
+
+  .rare-disease-icon {
+    width: 62px;
+    height: 62px;
+
+    margin: 0 0 22px;
+
+    border-radius: 17px;
+  }
+
+  .rare-disease-heading h2 {
+    font-size: 40px;
+
+    letter-spacing: -1px;
+  }
+
+  .rare-disease-divider {
+    margin: 21px 0;
+  }
+
+  .rare-disease-heading p {
+    font-size: 15px;
+
+    line-height: 1.8;
+  }
+
+
+  /* =======================================================
+     TABS - HORIZONTAL SCROLL
+  ======================================================= */
+
+  .rare-main-tabs {
+
+    /* IMPORTANT */
+    display: flex;
+
+    flex-wrap: nowrap;
+
+    /* Enable horizontal scrolling */
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    /* Allow smooth touch scrolling */
+    -webkit-overflow-scrolling: touch;
+
+    /* Prevent scrollbar space */
+    scrollbar-width: none;
+
+    /* Keep tabs in one line */
+    width: calc(100vw - 30px);
+
+    /* Do not let the tabs shrink */
+    flex-shrink: 0;
+
+    gap: 8px;
+
+    padding: 6px;
+
+    margin-bottom: 16px;
+
+    border-radius: 15px;
+  }
+
+
+  /* Chrome / Safari scrollbar */
+
+  .rare-main-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+
+  /* =======================================================
+     EACH TAB
+  ======================================================= */
+
+  .rare-main-tab {
+
+    /* IMPORTANT:
+       Fixed width means all tabs stay in one row */
+    flex: 0 0 155px;
+
+    width: 155px;
+
+    min-height: 92px;
+
+    padding: 13px;
+
+    border-radius: 12px;
+  }
+
+
+  .rare-main-tab:hover {
+    transform: none;
+  }
+
+
+  .main-tab-number {
+    margin-bottom: 8px;
+
+    font-size: 10px;
+  }
+
+
+  .main-tab-icon {
+    width: 31px;
+    height: 31px;
+
+    top: 11px;
+    right: 11px;
+  }
+
+
+  .main-tab-label {
+    max-width: 110px;
+
+    padding-right: 15px;
+
+    font-size: 12px;
+
+    line-height: 1.4;
+  }
+
+
+  .main-tab-arrow {
+    right: 11px;
+    bottom: 9px;
+  }
+
+
+  /* =======================================================
+     APPROACH
+  ======================================================= */
+
+  .approach-content {
+    padding: 27px 20px;
+
+    border-radius: 18px;
+  }
+
+
+  .content-heading {
+    margin-bottom: 25px;
+  }
+
+
+  .content-heading h3 {
+    font-size: 23px;
+  }
+
+
+  .content-heading h3 br {
+    display: none;
+  }
+
+
+  .approach-grid {
+    grid-template-columns: 1fr;
+
+    gap: 11px;
+  }
+
+
+  .approach-card {
+    min-height: auto;
+
+    padding: 24px 21px 28px;
+  }
+
+
+  /* =======================================================
+     CLINICAL CONTENT
+  ======================================================= */
+
+  .clinical-tab-content {
+    padding: 27px 20px;
+
+    border-radius: 18px;
+  }
+
+
+  .clinical-tab-header {
+    align-items: flex-start;
+
+    gap: 10px;
+
+    margin-bottom: 24px;
+  }
+
+
+  .clinical-tab-number {
+    width: 37px;
+    height: 37px;
+
+    border-radius: 10px;
+  }
+
+
+  .clinical-tab-icon {
+    width: 50px;
+    height: 50px;
+
+    border-radius: 13px;
+  }
+
+
+  .clinical-tab-eyebrow {
+    font-size: 9px;
+
+    letter-spacing: 1.3px;
+  }
+
+
+  .clinical-tab-header h3 {
+    font-size: 21px;
+
+    line-height: 1.25;
+  }
+
+
+  /* =======================================================
+     DESCRIPTION
+  ======================================================= */
+
+  .clinical-tab-description {
+    margin-bottom: 25px;
+  }
+
+
+  .clinical-tab-description p {
+    font-size: 14px;
+
+    line-height: 1.75;
+  }
+
+
+  /* =======================================================
+     APPLICATIONS
+  ======================================================= */
+
+  .applications-box {
+    padding: 20px 17px;
+
+    border-radius: 15px;
+  }
+
+
+  .applications-heading {
+    font-size: 10px;
+
+    margin-bottom: 17px;
+  }
+
+
+  .applications-list {
+    grid-template-columns: 1fr;
+
+    gap: 14px;
+  }
+
+
+  .application-item {
+    gap: 8px;
+  }
+
+
+  .application-item p {
+    font-size: 13px;
+
+    line-height: 1.65;
+  }
+
+}

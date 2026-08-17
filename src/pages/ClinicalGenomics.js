@@ -1,185 +1,252 @@
 import React from "react";
-import ClinicalHero from "../components/ClinicalHero";
+import { Container, Row, Col } from "react-bootstrap";
+import {
+  Dna,
+  TestTube2,
+  ScanLine,
+  ShieldCheck,
+  Activity,
+  CheckCircle2,
+    Clock3,
+  Sparkles,
+} from "lucide-react";
 import "./ClinicalGenomics.css";
+import ClinicalHero from "../components/ClinicalHero"
+import clinicalGenomicsImg from "../assets/clinical.png";
+import OncologyGenomics from "../components/OncologyGenomics";
+import RareDiseaseGenomics from "../components/RareDiseaseGenomics";
+import NeonatologyCardiology from "../components/NeonatologyCardiology";
 
-// const testMenu = [
-//   "Oncology",
-//   "Rare Disease",
-//   "Pharmacogenomics",
-//   "Reproductive",
-//   "Neonatology",
-//   "Cardiology",
-//   "Neurology",
-//   "Infectious Disease",
-// ]
 
-const sections = [
+const oncologySections = [
   {
-    title: "Oncology Genomics",
-    text: "Comprehensive tumor profiling, liquid biopsy, HRD assessment, TMB and MSI biomarkers to support precision oncology decisions and targeted therapy selection.",
-    image: "https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&w=900&q=80",
+    id: "liquid-biopsy",
+    icon: TestTube2,
+    title: "Liquid Biopsy",
+    description:
+      "Liquid biopsy analyzes circulating tumor DNA (ctDNA) and other tumor-derived material shed into the bloodstream, offering a minimally invasive window into a tumor's genomic makeup without the need for surgical tissue collection.",
+    applications: [
+      "Comprehensive genomic profiling when tissue is insufficient, unavailable, or too risky to obtain",
+      "Real-time monitoring of treatment response and emerging resistance mutations",
+      "Detection of minimal residual disease (MRD) after surgery or therapy",
+      "Early relapse detection, often ahead of radiological progression",
+      "Serial monitoring across the course of treatment, since a single blood draw can be repeated where a tissue biopsy cannot",
+    ],
+    whyItMatters:
+      "Tumors evolve. A biopsy taken at diagnosis may no longer reflect the disease six months into treatment. Liquid biopsy allows clinicians to track that evolution longitudinally, adjusting therapy as the tumor's genomic profile changes.",
   },
-  {
-    title: "Rare Disease Genomics",
-    text: "Whole exome and genome sequencing for undiagnosed disorders, hereditary syndromes and complex pediatric conditions requiring deep genomic investigation.",
-    image: "https://images.unsplash.com/photo-1532187643603-ba119ca4109e?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    title: "Pharmacogenomics (PGx)",
-    text: "Predict drug response and optimize treatment selection using validated pharmacogenomic markers across oncology, cardiology and psychiatry workflows.",
-    image: "https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    title: "Reproductive Genetics",
-    text: "Carrier screening, PGT support, prenatal risk assessment and reproductive planning powered by advanced molecular and cytogenetic technologies.",
-    image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    title: "Neonatology Genomics",
-    text: "Rapid NICU sequencing solutions for critically ill newborns, enabling faster diagnosis and earlier intervention during the most critical hours of care.",
-    image: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    title: "Cardiology Genomics",
-    text: "Inherited arrhythmia, cardiomyopathy and sudden cardiac death risk assessment with actionable genomic insights for patients and families.",
-    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    title: "Neurology Genomics",
-    text: "Genetic testing for epilepsy, neurodevelopmental disorders, neuropathies and neurodegenerative conditions using comprehensive sequencing approaches.",
-    image: "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    title: "Infectious Disease Genomics",
-    text: "Pathogen sequencing, outbreak investigation and antimicrobial resistance profiling to support infection control and precision infectious disease management.",
-    image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=900&q=80",
-  },
-]
 
-const ClinicalGenomics = () => {
+  {
+    id: "solid-tumor",
+    icon: Dna,
+    title: "Solid Tumor Panels",
+    description:
+      "Our solid tumor NGS panels provide multi-gene genomic profiling from formalin-fixed paraffin-embedded (FFPE) tissue, covering clinically actionable alterations across the genes most relevant to targeted therapy and clinical trial eligibility.",
+    applications: [
+      "Detection of single nucleotide variants (SNVs), insertions/deletions, copy number alterations, and gene fusions in a single assay",
+      "Identification of actionable driver mutations to match patients to approved targeted therapies",
+      "Companion diagnostic-relevant findings that support treatment decisions across lung, breast, colorectal, gastric, and other solid tumors",
+      "Molecular tumor board–ready reports that translate complex genomic data into clear treatment guidance",
+    ],
+  },
+
+  {
+    id: "hrd",
+    icon: ShieldCheck,
+    title: "HRD",
+    subtitle: "Homologous Recombination Deficiency",
+    description:
+      "HRD testing identifies tumors that have lost the ability to repair double-strand DNA breaks accurately — a state strongly associated with sensitivity to PARP inhibitors and platinum-based chemotherapy, particularly in ovarian, breast, prostate, and pancreatic cancers.",
+    applications: [
+      "Identifying patients most likely to benefit from PARP inhibitor therapy",
+      "Combining BRCA1/2 mutation status with genomic scar signatures for a comprehensive HRD score",
+      "Guiding maintenance therapy decisions in newly diagnosed and recurrent ovarian cancer",
+    ],
+  },
+
+  {
+    id: "tmb",
+    icon: Activity,
+    title: "TMB",
+    subtitle: "Tumor Mutational Burden",
+    description:
+      "TMB quantifies the total number of somatic mutations per megabase of tumor genome. A high mutational burden generates more neoantigens, which can make a tumor more visible — and more vulnerable — to the immune system.",
+    applications: [
+      "Predicting response to immune checkpoint inhibitors, independent of PD-L1 expression",
+      "Supporting immunotherapy eligibility decisions across tumor types with limited standard options",
+      "Complementing MSI and PD-L1 status for a fuller immunogenicity profile",
+    ],
+  },
+
+  {
+    id: "msi",
+    icon: ScanLine,
+    title: "MSI",
+    subtitle: "Microsatellite Instability",
+    description:
+      "MSI testing detects instability in short repetitive DNA sequences that arises from a defective DNA mismatch repair (MMR) system — a hallmark of certain colorectal, endometrial, and gastric cancers, and a subset of Lynch syndrome–associated tumors.",
+    applications: [
+      "Identifying MSI-High tumors as strong candidates for immune checkpoint inhibitor therapy",
+      "Screening for Lynch syndrome, prompting germline testing and family cascade screening where indicated",
+      "Informing prognosis and chemotherapy response in colorectal cancer",
+    ],
+  },
+];
+const ClinicalGenomicsSection = () => {
   return (
-    <>
-      <ClinicalHero />
-      
+    <> 
+    <ClinicalHero/>
 
-      {/* <section className="clinical-testmenu-section">
-        <div className="container">
-          <div className="clinical-testmenu-grid">
-            {testMenu.map((item, index) => (
-              <div className="clinical-testmenu-card" key={index}>
-                <span>{item}</span>
+    <section className="clinical-genomics-section">
+      <Container>
+
+        {/* ================= TOP SECTION ================= */}
+        <Row className="align-items-center clinical-top-row">
+
+          {/* LEFT CONTENT */}
+          <Col lg={6} className="clinical-content">
+            <div className="clinical-eyebrow">
+              <span></span>
+              PRECISION. INSIGHT. BETTER OUTCOMES.
+            </div>
+
+            <h2>
+              Clinical Genomics
+              <br />
+              at <span>Leads Genetics</span>
+            </h2>
+
+            <div className="clinical-line">
+              <span></span>
+            </div>
+
+            <p>
+              Modern medicine is moving from a one-size-fits-all model to one
+              guided by the genome. At Leads Genetics, our Clinical Genomics
+              division brings together next-generation sequencing (NGS),
+              bioinformatics, and clinical expertise to help physicians
+              diagnose disease earlier, choose the right therapy the first
+              time, and give families answers when they need them most.
+            </p>
+          </Col>
+
+          {/* RIGHT IMAGE */}
+          <Col lg={6}>
+            <div className="clinical-image-wrapper">
+
+              <img
+                src={clinicalGenomicsImg}
+                alt="Clinical Genomics Laboratory"
+                className="clinical-main-image"
+              />
+
+              <div className="image-floating-card">
+                <Dna size={20} />
+                <span>Advanced Genomic Science</span>
               </div>
-            ))}
-          </div>
-        </div>
-      </section> */}
 
-      <section className="clinical-content-section">
-        <div className="container">
-          {sections.map((section, index) => (
-            <div
-              className={`clinical-content-row ${
-                index % 2 !== 0 ? "clinical-content-row-reverse" : ""
-              }`}
-              key={index}
-            >
-              <div className="clinical-content-image">
-                <img src={section.image} alt={section.title} />
+            </div>
+          </Col>
+
+        </Row>
+
+
+        {/* ================= SECOND FULL WIDTH CONTENT ================= */}
+        <div className="clinical-bottom-card">
+
+          {/* DNA ICON + DECORATIVE LINE */}
+          <div className="clinical-decoration">
+
+            <span className="decoration-line"></span>
+
+            <div className="clinical-icon">
+              <Dna size={30} />
+            </div>
+
+            <span className="decoration-line"></span>
+
+          </div>
+
+
+          {/* SECOND PARAGRAPH */}
+          <div className="clinical-bottom-text">
+
+            <p>
+              From oncology to reproductive health, from a newborn's first
+              days to a lifetime of chronic disease management, our test menu
+              is built to support{" "}
+              <strong>every stage of the clinical journey</strong> — accurate,
+              clinically actionable, and delivered with a turnaround time that
+              respects the urgency of patient care.
+            </p>
+
+          </div>
+
+
+          {/* HIGHLIGHTS */}
+          <div className="clinical-highlights">
+
+            <div className="clinical-highlight">
+
+              <div className="highlight-icon">
+                <ShieldCheck size={25} />
               </div>
 
-              <div className="clinical-content-text">
-                <span className="clinical-content-tag">CLINICAL GENOMICS</span>
-                <h2>{section.title}</h2>
-                <p>{section.text}</p>
-
-                <div className="clinical-content-highlight">
-                  <h5>Why it matters</h5>
-                  <ul>
-                    <li>Faster and more confident clinical decisions</li>
-                    <li>Improved patient stratification and risk assessment</li>
-                    <li>Actionable genomic insights integrated into care pathways</li>
-                  </ul>
-                </div>
+              <div>
+                <h4>Accurate Testing</h4>
+                <p>
+                  High-quality genomic testing with rigorous quality control.
+                </p>
               </div>
+
             </div>
-          ))}
+
+
+            <div className="clinical-highlight">
+
+              <div className="highlight-icon">
+                <Activity size={25} />
+              </div>
+
+              <div>
+                <h4>Clinical Insights</h4>
+                <p>
+                  Expert interpretation delivering clear, actionable insights.
+                </p>
+              </div>
+
+            </div>
+
+
+            <div className="clinical-highlight">
+
+              <div className="highlight-icon">
+                <Clock3 size={25} />
+              </div>
+
+              <div>
+                <h4>Faster Turnaround</h4>
+                <p>
+                  Optimized workflows for timely reports when they matter most.
+                </p>
+              </div>
+
+            </div>
+
+          </div>
+
         </div>
-      </section>
 
-      <section className="clinical-process-section">
-        <div className="container">
-          <div className="clinical-process-heading">
-            <span>PRECISION WORKFLOW</span>
-            <h2>From genome to bedside decision</h2>
-          </div>
+      </Container>
+    </section>
+{/*  */}
+<OncologyGenomics/>
 
-          <div className="clinical-process-grid">
-            <div className="clinical-process-card">
-              <div className="clinical-process-icon">🧬</div>
-              <h4>Genomic Sequencing</h4>
-              <p>High-quality DNA and RNA sequencing with validated laboratory workflows.</p>
-            </div>
+<RareDiseaseGenomics/>
 
-            <div className="clinical-process-card">
-              <div className="clinical-process-icon">📊</div>
-              <h4>Data Analysis</h4>
-              <p>Advanced bioinformatics pipelines for accurate variant detection and annotation.</p>
-            </div>
-
-            <div className="clinical-process-card">
-              <div className="clinical-process-icon">🔬</div>
-              <h4>Clinical Interpretation</h4>
-              <p>Expert review and evidence-based reporting aligned with current clinical guidelines.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="clinical-features-section">
-        <div className="container">
-          <div className="clinical-features-heading">
-            <span>WHY LEADS GENETICS</span>
-            <h2>The rare resource of competence across the whole clinical journey</h2>
-          </div>
-
-          <div className="clinical-features-grid">
-            <div className="clinical-features-card">
-              <h4>Expertise</h4>
-              <p>Multidisciplinary genomics experts supporting oncology, rare disease and reproductive medicine programs.</p>
-            </div>
-
-            <div className="clinical-features-card">
-              <h4>Technology</h4>
-              <p>Validated sequencing platforms, automated workflows and scalable infrastructure for clinical-grade testing.</p>
-            </div>
-
-            <div className="clinical-features-card">
-              <h4>Rapid TAT</h4>
-              <p>Optimized laboratory and analysis pipelines designed to deliver timely results for critical clinical decisions.</p>
-            </div>
-
-            <div className="clinical-features-card">
-              <h4>Clinical Context</h4>
-              <p>Actionable reports with therapeutic relevance, risk interpretation and guidance for downstream patient management.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="clinical-cta-section">
-        <div className="container">
-          <div className="clinical-cta-wrapper">
-            <div>
-              <h2>Ready to order a test for your patient?</h2>
-              <p>Connect with our genomics team to discuss the right testing strategy for your clinical workflow.</p>
-            </div>
-
-            <button className="clinical-cta-button">Order a Test</button>
-          </div>
-        </div>
-      </section>
+<NeonatologyCardiology/>
     </>
-  )
-}
+  );
+};
 
-export default ClinicalGenomics;
+export default ClinicalGenomicsSection;
