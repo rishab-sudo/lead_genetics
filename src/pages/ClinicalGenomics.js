@@ -10,7 +10,7 @@ import {
 } from "lucide-react";
 import "./ClinicalGenomics.css";
 import ClinicalHero from "../components/ClinicalHero"
-import clinicalGenomicsImg from "../assets/clinical.png";
+import clinicalGenomicsImg from "../assets/lab/lab.jpeg";
 import OncologyGenomics from "../components/OncologyGenomics";
 import RareDiseaseGenomics from "../components/RareDiseaseGenomics";
 import NeonatologyCardiology from "../components/NeonatologyCardiology";
