@@ -6,9 +6,9 @@ import {
   ScanLine,
   ShieldCheck,
   Activity,
-  CheckCircle2,
+ 
     Clock3,
-  Sparkles,
+
 } from "lucide-react";
 import "./ClinicalGenomics.css";
 import ClinicalHero from "../components/ClinicalHero"
@@ -18,80 +18,7 @@ import RareDiseaseGenomics from "../components/RareDiseaseGenomics";
 import NeonatologyCardiology from "../components/NeonatologyCardiology";
 
 
-const oncologySections = [
-  {
-    id: "liquid-biopsy",
-    icon: TestTube2,
-    title: "Liquid Biopsy",
-    description:
-      "Liquid biopsy analyzes circulating tumor DNA (ctDNA) and other tumor-derived material shed into the bloodstream, offering a minimally invasive window into a tumor's genomic makeup without the need for surgical tissue collection.",
-    applications: [
-      "Comprehensive genomic profiling when tissue is insufficient, unavailable, or too risky to obtain",
-      "Real-time monitoring of treatment response and emerging resistance mutations",
-      "Detection of minimal residual disease (MRD) after surgery or therapy",
-      "Early relapse detection, often ahead of radiological progression",
-      "Serial monitoring across the course of treatment, since a single blood draw can be repeated where a tissue biopsy cannot",
-    ],
-    whyItMatters:
-      "Tumors evolve. A biopsy taken at diagnosis may no longer reflect the disease six months into treatment. Liquid biopsy allows clinicians to track that evolution longitudinally, adjusting therapy as the tumor's genomic profile changes.",
-  },
 
-  {
-    id: "solid-tumor",
-    icon: Dna,
-    title: "Solid Tumor Panels",
-    description:
-      "Our solid tumor NGS panels provide multi-gene genomic profiling from formalin-fixed paraffin-embedded (FFPE) tissue, covering clinically actionable alterations across the genes most relevant to targeted therapy and clinical trial eligibility.",
-    applications: [
-      "Detection of single nucleotide variants (SNVs), insertions/deletions, copy number alterations, and gene fusions in a single assay",
-      "Identification of actionable driver mutations to match patients to approved targeted therapies",
-      "Companion diagnostic-relevant findings that support treatment decisions across lung, breast, colorectal, gastric, and other solid tumors",
-      "Molecular tumor board–ready reports that translate complex genomic data into clear treatment guidance",
-    ],
-  },
-
-  {
-    id: "hrd",
-    icon: ShieldCheck,
-    title: "HRD",
-    subtitle: "Homologous Recombination Deficiency",
-    description:
-      "HRD testing identifies tumors that have lost the ability to repair double-strand DNA breaks accurately — a state strongly associated with sensitivity to PARP inhibitors and platinum-based chemotherapy, particularly in ovarian, breast, prostate, and pancreatic cancers.",
-    applications: [
-      "Identifying patients most likely to benefit from PARP inhibitor therapy",
-      "Combining BRCA1/2 mutation status with genomic scar signatures for a comprehensive HRD score",
-      "Guiding maintenance therapy decisions in newly diagnosed and recurrent ovarian cancer",
-    ],
-  },
-
-  {
-    id: "tmb",
-    icon: Activity,
-    title: "TMB",
-    subtitle: "Tumor Mutational Burden",
-    description:
-      "TMB quantifies the total number of somatic mutations per megabase of tumor genome. A high mutational burden generates more neoantigens, which can make a tumor more visible — and more vulnerable — to the immune system.",
-    applications: [
-      "Predicting response to immune checkpoint inhibitors, independent of PD-L1 expression",
-      "Supporting immunotherapy eligibility decisions across tumor types with limited standard options",
-      "Complementing MSI and PD-L1 status for a fuller immunogenicity profile",
-    ],
-  },
-
-  {
-    id: "msi",
-    icon: ScanLine,
-    title: "MSI",
-    subtitle: "Microsatellite Instability",
-    description:
-      "MSI testing detects instability in short repetitive DNA sequences that arises from a defective DNA mismatch repair (MMR) system — a hallmark of certain colorectal, endometrial, and gastric cancers, and a subset of Lynch syndrome–associated tumors.",
-    applications: [
-      "Identifying MSI-High tumors as strong candidates for immune checkpoint inhibitor therapy",
-      "Screening for Lynch syndrome, prompting germline testing and family cascade screening where indicated",
-      "Informing prognosis and chemotherapy response in colorectal cancer",
-    ],
-  },
-];
 const ClinicalGenomicsSection = () => {
   return (
     <> 
