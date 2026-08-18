@@ -35,6 +35,7 @@ const NewsEvents = () => {
   const [visibleCards, setVisibleCards] = useState(3);
 
   /* ================= RESPONSIVE CARD COUNT ================= */
+
   useEffect(() => {
     const updateVisibleCards = () => {
       if (window.innerWidth <= 767) {
@@ -55,7 +56,8 @@ const NewsEvents = () => {
     };
   }, []);
 
-  /* ================= RESET INDEX ON RESPONSIVE CHANGE ================= */
+  /* ================= RESET INDEX ================= */
+
   useEffect(() => {
     const maxIndex = Math.max(newsData.length - visibleCards, 0);
 
@@ -65,6 +67,7 @@ const NewsEvents = () => {
   }, [visibleCards, currentIndex]);
 
   /* ================= NEXT SLIDE ================= */
+
   const nextSlide = () => {
     const maxIndex = Math.max(newsData.length - visibleCards, 0);
 
@@ -78,6 +81,7 @@ const NewsEvents = () => {
   };
 
   /* ================= PREVIOUS SLIDE ================= */
+
   const prevSlide = () => {
     const maxIndex = Math.max(newsData.length - visibleCards, 0);
 
@@ -91,36 +95,62 @@ const NewsEvents = () => {
   };
 
   /* ================= AUTO SLIDER ================= */
+
   useEffect(() => {
-    if (newsData.length <= visibleCards) return;
+    if (newsData.length <= visibleCards) {
+      return undefined;
+    }
 
     const interval = setInterval(() => {
-      nextSlide();
+      const maxIndex = Math.max(newsData.length - visibleCards, 0);
+
+      setCurrentIndex((prev) => {
+        if (prev >= maxIndex) {
+          return 0;
+        }
+
+        return prev + 1;
+      });
     }, 4500);
 
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+    };
   }, [visibleCards]);
 
   const slidePercentage = 100 / visibleCards;
+
+  const totalSlides = Math.max(
+    newsData.length - visibleCards + 1,
+    1
+  );
 
   return (
     <section className="news-events-section">
       <Container>
         {/* ================= HEADER ================= */}
+
         <div className="news-header">
           <div className="news-heading-wrapper">
-            <span className="news-eyebrow">LATEST UPDATES</span>
+            <span className="news-eyebrow">
+              LATEST UPDATES
+            </span>
 
-            <h2 className="news-title">News &amp; Insights</h2>
+            <h2 className="news-title">
+              News &amp; Insights
+            </h2>
 
             <p className="news-subtitle">
-              Stay updated with our latest discoveries, innovations, research
-              highlights, and genomics breakthroughs.
+              Stay updated with our latest discoveries, innovations,
+              research highlights, and genomics breakthroughs.
             </p>
           </div>
 
           <div className="news-header-actions">
-            <a href="#news" className="news-view-btn">
+            <a
+              href="#news"
+              className="news-view-btn"
+            >
               ALL NEWS
             </a>
 
@@ -131,7 +161,10 @@ const NewsEvents = () => {
                 onClick={prevSlide}
                 aria-label="Previous news"
               >
-                <ArrowLeft size={17} strokeWidth={1.8} />
+                <ArrowLeft
+                  size={17}
+                  strokeWidth={1.8}
+                />
               </button>
 
               <button
@@ -140,21 +173,28 @@ const NewsEvents = () => {
                 onClick={nextSlide}
                 aria-label="Next news"
               >
-                <ArrowRight size={17} strokeWidth={1.8} />
+                <ArrowRight
+                  size={17}
+                  strokeWidth={1.8}
+                />
               </button>
             </div>
           </div>
         </div>
 
         {/* ================= DIVIDER ================= */}
+
         <div className="news-divider"></div>
 
         {/* ================= SLIDER ================= */}
+
         <div className="news-slider">
           <div
             className="news-slider-track"
             style={{
-              transform: `translateX(-${currentIndex * slidePercentage}%)`,
+              transform: `translateX(-${
+                currentIndex * slidePercentage
+              }%)`,
             }}
           >
             {newsData.map((item, index) => (
@@ -166,7 +206,9 @@ const NewsEvents = () => {
                 }}
               >
                 <article className="news-card">
+
                   {/* IMAGE */}
+
                   <div className="news-image-wrapper">
                     <img
                       src={item.image}
@@ -174,28 +216,40 @@ const NewsEvents = () => {
                       className="news-image"
                     />
 
-                    <span className="news-tag">{item.tag}</span>
+                    <span className="news-tag">
+                      {item.tag}
+                    </span>
                   </div>
 
                   {/* CONTENT */}
+
                   <div className="news-content">
                     <h3>{item.title}</h3>
 
-                    <p className="news-description">{item.description}</p>
+                    <p className="news-description">
+                      {item.description}
+                    </p>
 
                     {/* FOOTER */}
+
                     <div className="news-footer">
-                      <span className="news-date">{item.date}</span>
+                      <span className="news-date">
+                        {item.date}
+                      </span>
 
                       <a
                         href="#read-more"
                         className="news-arrow"
                         aria-label={`Read more about ${item.title}`}
                       >
-                        <ArrowRight size={17} strokeWidth={1.8} />
+                        <ArrowRight
+                          size={17}
+                          strokeWidth={1.8}
+                        />
                       </a>
                     </div>
                   </div>
+
                 </article>
               </div>
             ))}
@@ -203,11 +257,17 @@ const NewsEvents = () => {
         </div>
 
         {/* ================= SLIDER INDICATOR ================= */}
+
         <div className="news-slider-bottom">
+
           <div className="news-progress">
             <span
               style={{
-                width: `${((currentIndex + 1) / Math.max(newsData.length - visibleCards + 1, 1)) * 100}%`,
+                width: `${
+                  ((currentIndex + 1) /
+                    totalSlides) *
+                  100
+                }%`,
               }}
             ></span>
           </div>
@@ -220,11 +280,10 @@ const NewsEvents = () => {
             <small>/</small>
 
             <span>
-              {String(
-                Math.max(newsData.length - visibleCards + 1, 1)
-              ).padStart(2, "0")}
+              {String(totalSlides).padStart(2, "0")}
             </span>
           </div>
+
         </div>
       </Container>
     </section>
