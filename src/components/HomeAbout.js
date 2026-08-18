@@ -7,7 +7,7 @@ import {
   FlaskConical,
   ArrowRight,
 } from "lucide-react";
-import { FiTarget, FiEye, FiAward } from "react-icons/fi";
+
 import "./HomeAbout.css";
 
 import farmImg from "../assets/farm_628x680.png";
@@ -20,23 +20,7 @@ const STATS = [
   { icon: <FlaskConical size={18} />, value: 10, suffix: "+", label: "YEARS EXCELLENCE" },
 ];
 
-const PILLARS = [
-  {
-    icon: <FiTarget size={28} />,
-    label: "Mission",
-    text: "To democratise access to precision genomics across agriculture, research, and clinical science — delivering insights that are accurate, fast, and actionable.",
-  },
-  {
-    icon: <FiEye size={28} />,
-    label: "Vision",
-    text: "A world where every crop, patient, and organism is understood at the genomic level — enabling better decisions for health, food security, and biodiversity.",
-  },
-  {
-    icon: <FiAward size={28} />,
-    label: "Values",
-    text: "Scientific rigour. Radical transparency. Continuous innovation. We hold ourselves to the highest standards of accuracy and data integrity in everything we deliver.",
-  },
-];
+
 
 /* Counts up from 0 to `value` once its wrapper scrolls into view. */
 function AnimatedCounter({ value, prefix = "", suffix = "" }) {
@@ -87,9 +71,9 @@ const HomeAbout = () => {
   return (
     <section className="h-about-section">
       <Container className="h-about-container">
-        <Row className="align-items-center gx-4 gy-5">
+        <Row className="align-items-center justify-content-between gx-4 gy-5 w-100">
           {/* LEFT IMAGE MOSAIC */}
-          <Col lg={6}>
+          <Col lg={5}>
             <div className="h-about-image-wrap">
               <img src={farmImg} alt="Agriculture Genomics Farm" className="h-about-image h-about-image--farm" />
               <img src={labImg} alt="Genomics Laboratory" className="h-about-image h-about-image--lab" />
@@ -152,19 +136,7 @@ const HomeAbout = () => {
         </Row>
 
         {/* MISSION / VISION / VALUES PILLARS */}
-        <Row className="h-about-pillars-wrap">
-          <Col lg={12}>
-            <div className="about-pillars">
-              {PILLARS.map((p) => (
-                <div key={p.label} className="about-pillar glass-card">
-                  <div className="about-pillar__icon">{p.icon}</div>
-                  <h3 className="about-pillar__label">{p.label}</h3>
-                  <p className="about-pillar__text">{p.text}</p>
-                </div>
-              ))}
-            </div>
-          </Col>
-        </Row>
+  
       </Container>
     </section>
   );

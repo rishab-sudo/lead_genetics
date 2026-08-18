@@ -3,10 +3,6 @@ import { Link } from "react-router-dom";
 import { Leaf, FlaskConical, CirclePlus } from "lucide-react";
 import "./Hero.css";
 
-import agriImg from "../assets/agri.png";
-import researchImg from "../assets/research.png";
-import clinicalImg from "../assets/clinical.png";
-
 const slides = [
   {
     heading: "Transforming Genomics<br />Into Innovation",
@@ -30,21 +26,18 @@ const cards = [
     title: "Agri Genomics",
     icon: <Leaf size={26} />,
     link: "/agri-genomics",
-    image: agriImg,
     color: "green",
   },
   {
     title: "Research Genomics",
     icon: <FlaskConical size={26} />,
     link: "/research-genomics",
-    image: researchImg,
     color: "blue",
   },
   {
     title: "Clinical Genomics",
     icon: <CirclePlus size={26} />,
     link: "/clinical-genomics",
-    image: clinicalImg,
     color: "purple",
   },
 ];
@@ -70,6 +63,7 @@ const Hero = () => {
 
   return (
     <section className="hero">
+      {/* VIDEO BACKGROUND */}
       <video autoPlay muted loop playsInline className="hero-video">
         <source
           src={require("../assets/lead-video3.mp4")}
@@ -77,26 +71,28 @@ const Hero = () => {
         />
       </video>
 
+      {/* VIDEO OVERLAY */}
       <div className="hero-overlay"></div>
 
       <div className="hero-container">
+
+        {/* HERO TEXT */}
         <div className={`hero-text ${animate ? "show" : "hide"}`}>
           <div className="hero-badge">LEADS GENETICS</div>
 
           <h1
             className="hero-heading"
-            dangerouslySetInnerHTML={{ __html: currentSlide.heading }}
+            dangerouslySetInnerHTML={{
+              __html: currentSlide.heading,
+            }}
           />
 
           <p className="hero-description">
             {currentSlide.description}
           </p>
-
-
-         
         </div>
 
-        {/* CARDS */}
+        {/* THREE CARDS */}
         <div className="hero-cards">
           {cards.map((card, index) => (
             <Link
@@ -104,23 +100,24 @@ const Hero = () => {
               to={card.link}
               className={`hero-card ${card.color}`}
             >
-              <div
-                className="hero-card-bg"
-                style={{ backgroundImage: `url(${card.image})` }}
-              ></div>
-
               <div className="hero-card-content">
+
+                {/* ICON */}
                 <div className={`hero-icon ${card.color}`}>
                   {card.icon}
                 </div>
-          <div >
-                <h3>{card.title}</h3>
-                <span>Explore Services →</span>
+
+                {/* TEXT */}
+                <div className="hero-card-text">
+                  <h3>{card.title}</h3>
+                  <span>Explore Services →</span>
                 </div>
+
               </div>
             </Link>
           ))}
         </div>
+
       </div>
     </section>
   );
