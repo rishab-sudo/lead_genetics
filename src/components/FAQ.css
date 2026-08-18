@@ -2,12 +2,14 @@
 .faq-scroll-wrapper-outer {
   position: relative;
   width: 100%;
+
 }
 
 .faq-sticky-inner {
   width: 100%;
   display: flex;
   align-items: center;
+  
 }
 
 .faq-sticky-inner.is-pinned {
@@ -17,7 +19,8 @@
 
 /* ================= FAQ SECTION ================= */
 .faq-section {
-  padding: 50px 0;
+  margin-top: 3.5%;
+  padding: 80px 0;
   padding-bottom: 80px;
   background: #f5f6f7;
   width: 100%;
