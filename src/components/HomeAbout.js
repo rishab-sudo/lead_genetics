@@ -3,7 +3,6 @@ import { Container, Row, Col } from "react-bootstrap";
 import {
   Beaker,
   Users,
-  Globe,
   FlaskConical,
   ArrowRight,
 } from "lucide-react";
