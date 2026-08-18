@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+
 import About from "./pages/About";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
@@ -10,38 +11,55 @@ import Contact from "./pages/Contact";
 import Research from "./pages/Research";
 import AgriGenomics from "./pages/AgriGenomics";
 
+import ScrollTop from "./components/ScrollTop";
+import ScrollToTop from "./components/ScrollToTop";
+
 function App() {
   return (
-    <div className = "App">
+    <div className="App">
       {/* Navbar always visible */}
       <Navbar />
+
+      {/* Scroll to top whenever route/page changes */}
+      <ScrollToTop />
 
       <Routes>
         {/* Home Page */}
         <Route path="/" element={<Home />} />
 
-          <Route path="/about" element={<About />} />
- <Route 
- path="/research-genomics" 
- element={<Research />} 
- />
-        {/* Clinical Genomics Page */}
-               <Route
+        {/* About Page */}
+        <Route path="/about" element={<About />} />
+
+        {/* Research Genomics Page */}
+        <Route
+          path="/research-genomics"
+          element={<Research />}
+        />
+
+        {/* Agri Genomics Page */}
+        <Route
           path="/agri-genomics"
           element={<AgriGenomics />}
         />
 
+        {/* Clinical Genomics Page */}
         <Route
           path="/clinical-genomics"
           element={<ClinicalGenomics />}
         />
-         <Route
+
+        {/* Contact Page */}
+        <Route
           path="/contact"
           element={<Contact />}
         />
-        <Route path="/agri-genomics" element={<AgriGenomics />} />
       </Routes>
-      <Footer/>
+
+      {/* Footer */}
+      <Footer />
+
+      {/* Fixed Scroll Top Button */}
+      <ScrollTop />
     </div>
   );
 }
