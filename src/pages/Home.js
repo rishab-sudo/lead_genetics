@@ -13,6 +13,8 @@ import cliImg from "../assets/clibanner.png"
 import Scroll  from "../components/3d animation/Scroll";
 import FAQ from "../components/FAQ";
 import Credentials from "../components/Credentials";
+import WhyUs from "../components/WhyUs";
+import SectionDivider from "../components/SectionDivider";
 // import Gallery from "../components/Gallery";
 
 
@@ -26,7 +28,7 @@ const Home = () => {
   <HomeWork/> */}
   {/* <Platform/> */}
   <HomeAbout/>
-
+<SectionDivider />
   <Team/>
  {/* <SectionSep
         bgImage={agriImg}
@@ -46,6 +48,8 @@ const Home = () => {
       />
       {/* <Gallery/> */}
       <FAQ/>
+      <SectionDivider />
+      <WhyUs/>
 
   </>
   );

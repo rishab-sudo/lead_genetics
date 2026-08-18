@@ -1,0 +1,117 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&display=swap");
+
+.whyus-section {
+  --whyus-item-height: 108px;
+  --whyus-accent: #1d9e75;
+  --whyus-navy: #0a1628;
+  background-color: #fff;
+  padding: 80px 0;
+}
+
+.whyus-heading-col {
+  padding-right: 32px;
+  margin-bottom: 40px;
+}
+
+.whyus-eyebrow {
+  display: inline-block;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--whyus-accent);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.whyus-heading {
+  font-family: "Dancing Script", cursive;
+  font-weight: 700;
+  font-size: 3rem;
+  line-height: 1.2;
+  color: var(--whyus-navy);
+  margin-bottom: 18px;
+}
+
+.whyus-subtext {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #5a6472;
+  max-width: 420px;
+}
+
+.whyus-track {
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  height: calc(3 * var(--whyus-item-height));
+  padding-right: 8px;
+}
+
+.whyus-track::-webkit-scrollbar {
+  width: 4px;
+}
+
+.whyus-track::-webkit-scrollbar-thumb {
+  background-color: #d3d8de;
+  border-radius: 4px;
+}
+
+.whyus-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  min-height: var(--whyus-item-height);
+  padding: 20px 0;
+  border-top: 1px solid #e3e6ea;
+  transition: opacity 0.4s ease;
+  opacity: 0.55;
+}
+
+.whyus-item:first-child {
+  border-top: none;
+}
+
+.whyus-item-active {
+  opacity: 1;
+}
+
+.whyus-index {
+  font-size: 28px;
+  font-weight: 500;
+  color: #d3d8de;
+  min-width: 48px;
+  flex-shrink: 0;
+}
+
+.whyus-item-active .whyus-index {
+  color: var(--whyus-accent);
+}
+
+.whyus-item-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--whyus-navy);
+  margin: 0 0 4px;
+}
+
+.whyus-item-desc {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #7a8290;
+  margin: 0;
+}
+
+@media (max-width: 767px) {
+  .whyus-heading {
+    font-size: 2.25rem;
+  }
+
+  .whyus-heading-col {
+    padding-right: 0;
+    text-align: center;
+  }
+
+  .whyus-subtext {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+}

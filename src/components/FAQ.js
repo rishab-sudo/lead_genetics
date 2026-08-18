@@ -73,9 +73,9 @@ const faqCards = [
 
 const NAVBAR_OFFSET = 200;
 const VISIBLE_CARDS = 4;
-const CARD_WIDTH = 320;
+const CARD_WIDTH = 320; // fallback only (tablet / non-pinned default)
 const CARD_GAP = 28;
-const CARD_STEP = CARD_WIDTH + CARD_GAP;
+const CARD_STEP = CARD_WIDTH + CARD_GAP; // fallback step
 const MOBILE_BREAKPOINT = 991;
 const SMALL_BREAKPOINT = 576;
 
@@ -89,6 +89,8 @@ const FAQ = () => {
   const [isPinEnabled, setIsPinEnabled] = useState(true);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
+  // Measure how far the row can translate (row width - viewport width).
+  // Runs whenever layout could change (breakpoint switch, resize, card resize).
   useLayoutEffect(() => {
     const measure = () => {
       if (!rowRef.current || !viewportRef.current) return;
@@ -98,8 +100,16 @@ const FAQ = () => {
     };
 
     measure();
+
+    const ro = new ResizeObserver(measure);
+    if (viewportRef.current) ro.observe(viewportRef.current);
+    if (rowRef.current) ro.observe(rowRef.current);
+
     window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", measure);
+    };
   }, [isPinEnabled]);
 
   useEffect(() => {
@@ -164,15 +174,20 @@ const FAQ = () => {
   }, [isPinEnabled, maxTranslate]);
 
   const scroll = (direction) => {
+    // measure the actual rendered card width so the scroll step always
+    // matches exactly one card, regardless of breakpoint/clamp sizing
+    const cardEl = rowRef.current?.firstElementChild;
+    const step = cardEl ? cardEl.offsetWidth + CARD_GAP : CARD_STEP;
+
     if (isPinEnabled) {
       window.scrollBy({
-        top: direction === "left" ? -CARD_STEP : CARD_STEP,
+        top: direction === "left" ? -step : step,
         behavior: "smooth",
       });
     } else if (viewportRef.current) {
       const nudge = isSmallScreen
         ? viewportRef.current.clientWidth * 0.88
-        : CARD_STEP;
+        : step;
 
       viewportRef.current.scrollBy({
         left: direction === "left" ? -nudge : nudge,
@@ -235,29 +250,25 @@ const FAQ = () => {
               </div>
             </div>
 
+            {/* Viewport is always the full Container width now — the card
+                width (see CSS clamp) is derived from this width so exactly
+                VISIBLE_CARDS fit with no clipping, and the group naturally
+                sits centered because Container itself is centered. */}
             <div
               className={`faq-scroll-viewport ${
                 isPinEnabled ? "" : "native-scroll"
               }`}
               ref={viewportRef}
-              style={
-                isPinEnabled
-                  ? {
-                      maxWidth: `${
-                        VISIBLE_CARDS * CARD_WIDTH +
-                        (VISIBLE_CARDS - 1) * CARD_GAP
-                      }px`,
-                      margin: "0 auto",
-                    }
-                  : undefined
-              }
             >
               <div
                 className="faq-scroll-wrapper"
                 ref={rowRef}
                 style={
                   isPinEnabled
-                    ? { transform: `translateX(-${translateX}px)` }
+                    ? {
+                        transform: `translateX(-${translateX}px)`,
+                        justifyContent: maxTranslate === 0 ? "center" : "flex-start",
+                      }
                     : undefined
                 }
               >
