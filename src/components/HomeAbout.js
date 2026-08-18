@@ -14,15 +14,28 @@ import farmImg from "../assets/farm_628x680.png";
 import labImg from "../assets/lab_420x288.png";
 
 const STATS = [
-  { icon: <Beaker size={18} />, value: 5000, suffix: "+", label: "GENOMIC PROJECTS" },
-  { icon: <Users size={18} />, value: 200, suffix: "+", label: "RESEARCH PARTNERS" },
-  { icon: <Globe size={18} />, value: 15, suffix: "+", label: "COUNTRIES SERVED" },
-  { icon: <FlaskConical size={18} />, value: 10, suffix: "+", label: "YEARS EXCELLENCE" },
+  {
+    icon: <Beaker size={18} />,
+    value: 5000,
+    suffix: "+",
+    label: "GENOMIC PROJECTS",
+  },
+  {
+    icon: <Users size={18} />,
+    value: 200,
+    suffix: "+",
+    label: "RESEARCH PARTNERS",
+  },
+
+  {
+    icon: <FlaskConical size={18} />,
+    value: 10,
+    suffix: "+",
+    label: "YEARS EXCELLENCE",
+  },
 ];
 
-
-
-/* Counts up from 0 to `value` once its wrapper scrolls into view. */
+/* Counts up from 0 to value once its wrapper scrolls into view */
 function AnimatedCounter({ value, prefix = "", suffix = "" }) {
   const [display, setDisplay] = useState(0);
   const ref = useRef(null);
@@ -31,30 +44,47 @@ function AnimatedCounter({ value, prefix = "", suffix = "" }) {
 
   useEffect(() => {
     const el = ref.current;
+
     if (!el) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !hasRun.current) {
           hasRun.current = true;
+
           const duration = 1400;
           const start = performance.now();
 
           const tick = (now) => {
-            const progress = Math.min((now - start) / duration, 1);
+            const progress = Math.min(
+              (now - start) / duration,
+              1
+            );
+
             const eased = 1 - Math.pow(1 - progress, 3);
             const current = value * eased;
-            setDisplay(isFloat ? Number(current.toFixed(1)) : Math.round(current));
-            if (progress < 1) requestAnimationFrame(tick);
+
+            setDisplay(
+              isFloat
+                ? Number(current.toFixed(1))
+                : Math.round(current)
+            );
+
+            if (progress < 1) {
+              requestAnimationFrame(tick);
+            }
           };
 
           requestAnimationFrame(tick);
         }
       },
-      { threshold: 0.4 }
+      {
+        threshold: 0.4,
+      }
     );
 
     observer.observe(el);
+
     return () => observer.disconnect();
   }, [value, isFloat]);
 
@@ -72,18 +102,31 @@ const HomeAbout = () => {
     <section className="h-about-section">
       <Container className="h-about-container">
         <Row className="align-items-center justify-content-between gx-4 gy-5 w-100">
+
           {/* LEFT IMAGE MOSAIC */}
           <Col lg={5}>
             <div className="h-about-image-wrap">
-              <img src={farmImg} alt="Agriculture Genomics Farm" className="h-about-image h-about-image--farm" />
-              <img src={labImg} alt="Genomics Laboratory" className="h-about-image h-about-image--lab" />
+              <img
+                src={farmImg}
+                alt="Agriculture Genomics Farm"
+                className="h-about-image h-about-image--farm"
+              />
+
+              <img
+                src={labImg}
+                alt="Genomics Laboratory"
+                className="h-about-image h-about-image--lab"
+              />
             </div>
           </Col>
 
           {/* RIGHT CONTENT */}
           <Col lg={6}>
             <div className="h-about-content">
-              <div className="h-about-badge">ABOUT LEADS GENETICS</div>
+
+              <div className="h-about-badge">
+                ABOUT LEADS GENETICS
+              </div>
 
               <h2 className="h-about-title">
                 Advancing Genomics.
@@ -94,49 +137,61 @@ const HomeAbout = () => {
               </h2>
 
               <p className="h-about-text">
-                Leads Genetics is a multidisciplinary genomics and biotechnology
-                company dedicated to advancing scientific discovery through
-                cutting-edge sequencing technologies, molecular diagnostics,
-                bioinformatics, and precision agriculture solutions.
+                Leads Genetics is a multidisciplinary genomics and
+                biotechnology company dedicated to advancing scientific
+                discovery through cutting-edge sequencing technologies,
+                molecular diagnostics, bioinformatics, and precision
+                agriculture solutions.
               </p>
 
               <p className="h-about-text">
-                Our expertise spans Human Genomics, Plant Genomics, Animal &amp;
-                Livestock Genomics, Microbial Genomics, and Multi-Omics,
-                enabling comprehensive solutions from sample processing to
-                advanced genomic interpretation.
+                Our expertise spans Human Genomics, Plant Genomics,
+                Animal &amp; Livestock Genomics, Microbial Genomics,
+                and Multi-Omics, enabling comprehensive solutions from
+                sample processing to advanced genomic interpretation.
               </p>
 
               <div className="h-about-divider"></div>
 
-              {/* STATS — now animated on scroll into view */}
+              {/* STATS */}
               <Row className="h-about-stats">
                 {STATS.map((item, index) => (
-                  <Col xs={6} key={index} className="mb-4">
+                  <Col
+                    xs={3}
+                    key={index}
+                    className="h-about-stat-col"
+                  >
                     <div className="h-about-stat-item">
-                      <div className="h-about-stat-icon">{item.icon}</div>
 
-                      <div>
+                      <div className="h-about-stat-icon">
+                        {item.icon}
+                      </div>
+
+                      <div className="h-about-stat-content">
                         <h4>
-                          <AnimatedCounter value={item.value} suffix={item.suffix} />
+                          <AnimatedCounter
+                            value={item.value}
+                            suffix={item.suffix}
+                          />
                         </h4>
+
                         <p>{item.label}</p>
                       </div>
+
                     </div>
                   </Col>
                 ))}
               </Row>
 
+              {/* BUTTON */}
               <button className="h-about-btn">
-                Learn More About Us
+                Know  More 
                 <ArrowRight size={18} />
               </button>
+
             </div>
           </Col>
         </Row>
-
-        {/* MISSION / VISION / VALUES PILLARS */}
-  
       </Container>
     </section>
   );

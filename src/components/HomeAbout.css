@@ -1,25 +1,26 @@
 /* =============================
    HOME ABOUT SECTION
 ============================= */
+
 .h-about-section {
   padding: 80px 0;
   background: #f4f6f8;
 }
 
 .h-about-container {
-/* background-color: #1d4ed8; */
+  width: 100%;
 }
 
 /* =============================
    LEFT IMAGE MOSAIC
 ============================= */
+
 .h-about-image-wrap {
   position: relative;
   width: 100%;
-  height: 560px; /* total column height */
+  height: 560px;
 }
 
-/* Farm — large background image, fills full width of wrapper */
 .h-about-image--farm {
   position: absolute;
   top: 0;
@@ -32,7 +33,6 @@
   display: block;
 }
 
-/* Lab — smaller, bottom-left, overlapping the farm with white border */
 .h-about-image--lab {
   position: absolute;
   bottom: 0;
@@ -47,13 +47,13 @@
 }
 
 /* =============================
-   RIGHT CONTENT (MATCH SCREENSHOT)
+   RIGHT CONTENT
 ============================= */
+
 .h-about-content {
   text-align: justify;
   max-width: 100%;
   margin-left: 0;
-  /* background-color: #1d4ed8; */
 }
 
 .h-about-badge {
@@ -98,14 +98,27 @@
 /* =============================
    STATS
 ============================= */
+
 .h-about-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
   margin-bottom: 32px;
+  margin-left: 0;
+  margin-right: 0;
+
+}
+
+.h-about-stat-col {
+  padding-left: 6px;
+  padding-right: 6px;
 }
 
 .h-about-stat-item {
   display: flex;
   align-items: flex-start;
-  gap: 12px;
+  gap: 8px;
 }
 
 .h-about-stat-icon {
@@ -115,26 +128,33 @@
   margin-top: 3px;
 }
 
+.h-about-stat-content {
+  min-width: 0;
+}
+
 .h-about-stat-item h4 {
   margin: 0 0 4px;
   font-size: 1.8rem;
   line-height: 1;
   font-weight: 800;
   color: #111827;
+  white-space: nowrap;
 }
 
 .h-about-stat-item p {
   margin: 0;
-  font-size: 11px;
+  font-size: 10px;
   line-height: 1.5;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   color: #6b7280;
+  white-space: normal;
 }
 
 /* =============================
    BUTTON
 ============================= */
+
 .h-about-btn {
   display: inline-flex;
   align-items: center;
@@ -158,9 +178,8 @@
 }
 
 /* =============================
-   MISSION / VISION / VALUES PILLARS
+   TABLET
 ============================= */
-
 
 @media (max-width: 991px) {
   .h-about-section {
@@ -177,13 +196,35 @@
   }
 
   .h-about-image-wrap {
-    height: 480px; /* scale down the container height */
+    height: 480px;
   }
 
-  .about-pillars {
-    grid-template-columns: repeat(2, 1fr);
+  .h-about-stat-item {
+    gap: 6px;
+  }
+
+  .h-about-stat-icon {
+    width: 20px;
+    min-width: 20px;
+  }
+
+  .h-about-stat-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .h-about-stat-item h4 {
+    font-size: 1.45rem;
+  }
+
+  .h-about-stat-item p {
+    font-size: 8px;
   }
 }
+
+/* =============================
+   MOBILE
+============================= */
 
 @media (max-width: 767px) {
   .h-about-section {
@@ -200,30 +241,56 @@
   }
 
   .h-about-image-wrap {
-    height: 400px; /* scale down container further */
+    height: 400px;
   }
 
   .h-about-image--lab {
-    border-width: 4px; /* slightly thinner border for small screen */
+    border-width: 4px;
+  }
+
+  /*
+     Keep all 4 stats in one row
+  */
+
+  .h-about-stat-col {
+    padding-left: 3px;
+    padding-right: 3px;
+  }
+
+  .h-about-stat-item {
+    gap: 4px;
+  }
+
+  .h-about-stat-icon {
+    width: 16px;
+    min-width: 16px;
+    margin-top: 2px;
+  }
+
+  .h-about-stat-icon svg {
+    width: 14px;
+    height: 14px;
   }
 
   .h-about-stat-item h4 {
-    font-size: 1.5rem;
+    font-size: 1rem;
+  }
+
+  .h-about-stat-item p {
+    font-size: 7px;
+    letter-spacing: 0.02em;
+    line-height: 1.3;
   }
 
   .h-about-btn {
     width: 100%;
     justify-content: center;
   }
-
-  .h-about-pillars-wrap {
-    margin-top: 48px;
-  }
-
-  .about-pillars {
-    grid-template-columns: 1fr;
-  }
 }
+
+/* =============================
+   SMALL MOBILE
+============================= */
 
 @media (max-width: 575px) {
   .h-about-title {
@@ -231,14 +298,38 @@
   }
 
   .h-about-image-wrap {
-    height: 320px; /* scale down container for mobile */
+    height: 320px;
   }
 
   .h-about-image--lab {
     border-width: 3px;
   }
 
+  .h-about-stat-col {
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+
+  .h-about-stat-item {
+    gap: 3px;
+  }
+
+  .h-about-stat-icon {
+    width: 14px;
+    min-width: 14px;
+  }
+
+  .h-about-stat-icon svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .h-about-stat-item h4 {
+    font-size: 0.85rem;
+  }
+
   .h-about-stat-item p {
-    font-size: 10px;
+    font-size: 6px;
+    letter-spacing: 0;
   }
 }
