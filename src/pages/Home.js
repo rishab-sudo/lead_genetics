@@ -13,7 +13,7 @@ import cliImg from "../assets/clibanner.png"
 import Scroll  from "../components/3d animation/Scroll";
 import FAQ from "../components/FAQ";
 import Credentials from "../components/Credentials";
-import Gallery from "../components/Gallery";
+// import Gallery from "../components/Gallery";
 
 
 const Home = () => {
@@ -44,7 +44,7 @@ const Home = () => {
 "
         description="Delivering reliable sequencing and precision diagnostics for inherited disorders, oncology, reproductive health, and rare diseases."
       />
-      <Gallery/>
+      {/* <Gallery/> */}
       <FAQ/>
 
   </>
