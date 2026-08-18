@@ -72,7 +72,7 @@ const faqCards = [
 ];
 
 const NAVBAR_OFFSET = 200;
-const VISIBLE_CARDS = 4;
+
 const CARD_WIDTH = 320; // fallback only (tablet / non-pinned default)
 const CARD_GAP = 28;
 const CARD_STEP = CARD_WIDTH + CARD_GAP; // fallback step
