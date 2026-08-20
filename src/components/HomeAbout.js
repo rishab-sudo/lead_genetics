@@ -1,50 +1,61 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import {
   Beaker,
   Users,
-  FlaskConical,
   ArrowRight,
 } from "lucide-react";
-
+import { useNavigate } from "react-router-dom";
 import "./HomeAbout.css";
 
-import farmImg from "../assets/farm_628x680.png";
-import labImg from "../assets/lab_420x288.png";
+// Image
+import aboutImg from "../assets/clibanner.png";
 
-const STATS = [
+/* =========================================
+   IMAGE STATS
+========================================= */
+
+const IMAGE_STATS = [
   {
     icon: <Beaker size={18} />,
-    value: 5000,
+    value: 20,
     suffix: "+",
-    label: "GENOMIC PROJECTS",
+    label: "Years of Genomics",
   },
   {
     icon: <Users size={18} />,
-    value: 200,
+    value: 1000,
     suffix: "+",
-    label: "RESEARCH PARTNERS",
+    label: "Animals Research ",
   },
-
-  {
-    icon: <FlaskConical size={18} />,
-    value: 10,
+    {
+    icon: <Users size={18} />,
+    value: 6,
     suffix: "+",
-    label: "YEARS EXCELLENCE",
+    label: "In-house Technology Platforms ",
   },
 ];
 
-/* Counts up from 0 to value once its wrapper scrolls into view */
-function AnimatedCounter({ value, prefix = "", suffix = "" }) {
+/* =========================================
+   ANIMATED COUNTER
+========================================= */
+
+function AnimatedCounter({
+  value,
+  prefix = "",
+  suffix = "",
+}) {
   const [display, setDisplay] = useState(0);
+
   const ref = useRef(null);
   const hasRun = useRef(false);
+
   const isFloat = !Number.isInteger(value);
 
   useEffect(() => {
-    const el = ref.current;
+    const element = ref.current;
 
-    if (!el) return;
+    if (!element) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -60,7 +71,9 @@ function AnimatedCounter({ value, prefix = "", suffix = "" }) {
               1
             );
 
-            const eased = 1 - Math.pow(1 - progress, 3);
+            const eased =
+              1 - Math.pow(1 - progress, 3);
+
             const current = value * eased;
 
             setDisplay(
@@ -82,7 +95,7 @@ function AnimatedCounter({ value, prefix = "", suffix = "" }) {
       }
     );
 
-    observer.observe(el);
+    observer.observe(element);
 
     return () => observer.disconnect();
   }, [value, isFloat]);
@@ -96,102 +109,173 @@ function AnimatedCounter({ value, prefix = "", suffix = "" }) {
   );
 }
 
+/* =========================================
+   HOME ABOUT
+========================================= */
+
 const HomeAbout = () => {
+  // Navigation hook must be inside HomeAbout
+  const navigate = useNavigate();
+
+  // Navigate to About Us page
+  const handleKnowMore = () => {
+    navigate("/about");
+  };
+
   return (
     <section className="h-about-section">
-      <Container className="h-about-container">
-        <Row className="align-items-center justify-content-between gx-4 gy-5 w-100">
 
-          {/* LEFT IMAGE MOSAIC */}
-          <Col lg={5}>
-            <div className="h-about-image-wrap">
-              <img
-                src={farmImg}
-                alt="Agriculture Genomics Farm"
-                className="h-about-image h-about-image--farm"
-              />
+      {/* =================================
+          FULL WIDTH CONTAINER
+      ================================= */}
 
-              <img
-                src={labImg}
-                alt="Genomics Laboratory"
-                className="h-about-image h-about-image--lab"
-              />
-            </div>
-          </Col>
+      <Container fluid className="h-about-container">
 
-          {/* RIGHT CONTENT */}
-          <Col lg={6}>
-            <div className="h-about-content">
+        <Row className="align-items-center g-5">
 
-              <div className="h-about-badge">
-                ABOUT LEADS GENETICS
+          {/* =================================
+              LEFT IMAGE
+          ================================= */}
+
+          <Col
+            xl={5}
+            lg={5}
+            md={12}
+            className="h-about-image-column col-h"
+          >
+
+            <div className="h-about-image-area">
+
+              <div className="h-about-image-box">
+
+                <img
+                  src={aboutImg}
+                  alt="About Leads Genetics"
+                  className="h-about-main-image"
+                />
+
               </div>
 
-              <h2 className="h-about-title">
-                Advancing Genomics.
-                <br />
-                Empowering Agriculture.
-                <br />
-                Transforming Healthcare.
-              </h2>
+              {/* =================================
+                  FLOATING STATS ON IMAGE
+              ================================= */}
 
-              <p className="h-about-text">
-                Leads Genetics is a multidisciplinary genomics and
-                biotechnology company dedicated to advancing scientific
-                discovery through cutting-edge sequencing technologies,
-                molecular diagnostics, bioinformatics, and precision
-                agriculture solutions.
-              </p>
+              <div className="h-about-floating-stats">
 
-              <p className="h-about-text">
-                Our expertise spans Human Genomics, Plant Genomics,
-                Animal &amp; Livestock Genomics, Microbial Genomics,
-                and Multi-Omics, enabling comprehensive solutions from
-                sample processing to advanced genomic interpretation.
-              </p>
-
-              <div className="h-about-divider"></div>
-
-              {/* STATS */}
-              <Row className="h-about-stats">
-                {STATS.map((item, index) => (
-                  <Col
-                    xs={3}
+                {IMAGE_STATS.map((item, index) => (
+                  <div
+                    className="h-about-floating-stat"
                     key={index}
-                    className="h-about-stat-col"
                   >
-                    <div className="h-about-stat-item">
 
-                      <div className="h-about-stat-icon">
-                        {item.icon}
+                    <div className="h-about-floating-icon">
+                      {item.icon}
+                    </div>
+
+                    <div className="h-about-floating-content">
+
+                      <div className="h-about-floating-value">
+                        <AnimatedCounter
+                          value={item.value}
+                          suffix={item.suffix}
+                        />
                       </div>
 
-                      <div className="h-about-stat-content">
-                        <h4>
-                          <AnimatedCounter
-                            value={item.value}
-                            suffix={item.suffix}
-                          />
-                        </h4>
-
-                        <p>{item.label}</p>
+                      <div className="h-about-floating-label">
+                        {item.label}
                       </div>
 
                     </div>
-                  </Col>
-                ))}
-              </Row>
 
-              {/* BUTTON */}
-              <button className="h-about-btn">
-                Know  More 
-                <ArrowRight size={18} />
-              </button>
+                  </div>
+                ))}
+
+              </div>
 
             </div>
+
           </Col>
+
+          {/* =================================
+              RIGHT CONTENT
+          ================================= */}
+
+       {/* =================================
+    RIGHT CONTENT
+================================= */}
+
+<Col
+  xl={7}
+  lg={7}
+  md={12}
+  className="col-h"
+>
+  <div className="h-about-content">
+
+    {/* BADGE */}
+    <div className="h-about-badge">
+      OUR JOURNEY
+    </div>
+
+    {/* HEADING */}
+    <h2 className="h-about-title section-heading">
+      Advancing Genomics
+      <br />
+     Empowering Agriculture
+     <br />
+     Transforming Healthcare
+    </h2>
+
+    {/* DESCRIPTION */}
+    <p className="h-about-text">
+      The story of Leads Genetics begins with a strong foundation
+      built in genomics, molecular diagnostics, and life-science
+      research. For nearly a decade, the organization operated
+      through its earlier identity, GenePrint Labs / GenePrint
+      LifeSciences, developing expertise in genetic testing,
+      next-generation sequencing, molecular diagnostics, and
+      bioinformatics.
+    </p>
+
+    <p className="h-about-text">
+      Over the years, this scientific foundation evolved beyond
+      individual testing and sequencing projects into a broader
+      vision-building an integrated genomics platform capable of
+      translating genetic information into practical outcomes
+      across agriculture, livestock, plants, and human health.
+    </p>
+
+    <p className="h-about-text">
+      A new chapter began as the business became part of the
+      Leads / BL Agro ecosystem, bringing together established
+      genomics capabilities with the scale, agricultural reach,
+      and long-term vision of the BL Agro Group. This transition
+      gave rise to <strong>Leads Genetics</strong> - a
+      genomics-focused organization designed to connect laboratory
+      science with real-world biological and agricultural outcomes.
+    </p>
+
+ 
+
+
+
+    {/* KNOW MORE BUTTON */}
+    <button
+      type="button"
+      className="h-about-btn"
+      onClick={handleKnowMore}
+    >
+      <span>Read More</span>
+      <ArrowRight size={18} />
+    </button>
+
+  </div>
+</Col>
+
         </Row>
+
       </Container>
+
     </section>
   );
 };

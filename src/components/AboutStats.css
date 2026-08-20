@@ -1,0 +1,262 @@
+/* =========================================================
+   ABOUT STATS SECTION
+========================================================= */
+
+.about-stats-section {
+  width: 100%;
+  padding: 38px 0;
+  background: #0c2d63;
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   FLUID CONTAINER
+========================================================= */
+
+.about-stats-container {
+  width: 100%;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+
+/* =========================================================
+   ROW
+========================================================= */
+
+.about-stats-row {
+  width: 100%;
+  margin: 0;
+}
+
+
+/* =========================================================
+   COLUMN
+========================================================= */
+
+.about-stats-col {
+  padding: 8px;
+}
+
+
+/* =========================================================
+   STAT BOX
+========================================================= */
+
+.about-stat-box {
+  width: 100%;
+  min-height: 118px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  background: #123b78;
+
+  padding: 18px 15px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  border-radius: 4px;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.about-stat-box:hover {
+  transform: translateY(-4px);
+  background: #16447f;
+
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.16);
+}
+
+
+/* =========================================================
+   NUMBER
+========================================================= */
+
+.about-stat-number {
+  font-size: 34px;
+  line-height: 1;
+
+  font-weight: 700;
+
+  color: #ffffff;
+
+  margin-bottom: 12px;
+
+  letter-spacing: -0.5px;
+}
+
+
+/* =========================================================
+   LABEL
+========================================================= */
+
+.about-stat-label {
+  max-width: 230px;
+
+  font-size: 12.5px;
+  line-height: 1.45;
+
+  font-weight: 500;
+
+  color: rgba(255, 255, 255, 0.88);
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+========================================================= */
+
+@media (min-width: 1400px) {
+
+  .about-stats-section {
+    padding: 42px 0;
+  }
+
+  .about-stats-container {
+    padding-left: 55px;
+    padding-right: 55px;
+  }
+
+  .about-stats-col {
+    padding: 9px;
+  }
+
+  .about-stat-box {
+    min-height: 125px;
+    padding: 20px;
+  }
+
+  .about-stat-number {
+    font-size: 38px;
+  }
+
+  .about-stat-label {
+    font-size: 13px;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 991px) {
+
+  .about-stats-section {
+    padding: 32px 0;
+  }
+
+  .about-stats-container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .about-stats-col {
+    padding: 7px;
+  }
+
+  .about-stat-box {
+    min-height: 115px;
+  }
+
+  .about-stat-number {
+    font-size: 32px;
+  }
+
+  .about-stat-label {
+    font-size: 12px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   2 STATS PER ROW
+========================================================= */
+
+@media (max-width: 575px) {
+
+  .about-stats-section {
+    padding: 25px 0;
+  }
+
+  .about-stats-container {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .about-stats-col {
+    width: 50%;
+    padding: 5px;
+  }
+
+  .about-stat-box {
+    min-height: 108px;
+
+    padding: 15px 9px;
+
+    border-radius: 4px;
+  }
+
+  .about-stat-number {
+    font-size: 27px;
+    margin-bottom: 9px;
+  }
+
+  .about-stat-label {
+    max-width: 145px;
+
+    font-size: 10.5px;
+    line-height: 1.4;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+  .about-stats-section {
+    padding: 22px 0;
+  }
+
+  .about-stats-container {
+    padding-left: 7px;
+    padding-right: 7px;
+  }
+
+  .about-stats-col {
+    padding: 4px;
+  }
+
+  .about-stat-box {
+    min-height: 102px;
+    padding: 13px 7px;
+  }
+
+  .about-stat-number {
+    font-size: 25px;
+  }
+
+  .about-stat-label {
+    max-width: 135px;
+    font-size: 10px;
+  }
+}

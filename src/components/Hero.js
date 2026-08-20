@@ -5,19 +5,19 @@ import "./Hero.css";
 
 const slides = [
   {
-    heading: "Transforming Genomics<br />Into Innovation",
+    heading: "From Sequence to Solution<br />From Farm to Clinic",
     description:
-      "Empowering agriculture, research, and clinical genomics with cutting-edge sequencing technologies and bioinformatics expertise.",
+      "India’s integrated genomics company combining advanced multi-omics laboratories, agricultural and livestock genomics, research capabilities, and clinical solutions to transform genomic data into real-world impact.",
   },
   {
-    heading: "Sustainable Farming<br />with Genomics",
+    heading: "One Genome<br />Multiple Possibilities",
     description:
-      "Accelerate crop improvement programs using genomic insights, marker-assisted breeding, and AI-powered analytics.",
+      "From agriculture and livestock to research and clinical genomics, we bring sequencing, multi-omics, and scientific expertise together to deliver solutions that advance health, strengthen food systems, and accelerate discovery.",
   },
   {
-    heading: "Every Diagnosis Starts<br />with a Genome",
+    heading: "From Farm to Research<br />From Research to Clinic",
     description:
-      "From reproductive screening to disease diagnostics, our services transform genetic data into actionable healthcare insights.",
+      "Building India’s integrated genomics ecosystem across agriculture, cattle and livestock, scientific research, and clinical genomics, connecting advanced sequencing and multi-omics with solutions designed for a healthier, smarter future.",
   },
 ];
 
@@ -63,8 +63,15 @@ const Hero = () => {
 
   return (
     <section className="hero">
+
       {/* VIDEO BACKGROUND */}
-      <video autoPlay muted loop playsInline className="hero-video">
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="hero-video"
+      >
         <source
           src={require("../assets/lead-video3.mp4")}
           type="video/mp4"
@@ -77,9 +84,14 @@ const Hero = () => {
       <div className="hero-container">
 
         {/* HERO TEXT */}
+          <div className="hero-badge">
+            LEADS GENETICS
+          </div>
         <div className={`hero-text ${animate ? "show" : "hide"}`}>
-          <div className="hero-badge">LEADS GENETICS</div>
 
+          {/* STATIC BADGE - NO ANIMATION */}
+
+          {/* HERO HEADING */}
           <h1
             className="hero-heading"
             dangerouslySetInnerHTML={{
@@ -87,13 +99,16 @@ const Hero = () => {
             }}
           />
 
+          {/* HERO DESCRIPTION */}
           <p className="hero-description">
             {currentSlide.description}
           </p>
+
         </div>
 
-        {/* THREE CARDS */}
+        {/* THREE GENOMICS CARDS */}
         <div className="hero-cards">
+
           {cards.map((card, index) => (
             <Link
               key={index}
@@ -116,6 +131,7 @@ const Hero = () => {
               </div>
             </Link>
           ))}
+
         </div>
 
       </div>

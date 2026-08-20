@@ -5,28 +5,41 @@ import "./NewsEvents.css";
 
 const newsData = [
   {
-    title: "How Dr Renyu Zhang is reinventing protein",
-    date: "17 December 2025",
-    image: require("../assets/embroy1.jpeg"),
+    title: "Leads Agri Genetics Launches India’s 1st Privately-Owned Integrated CoE for Cattle & Plant Genomics",
+    date: "September 30, 2025",
+    image: require("../assets/news/news1.jpeg"),
     tag: "News Article",
     description:
-      "MOET technology enables the production of high-quality bovine embryos, accelerating genetic progress and reproductive efficiency.",
+      "From Gir embryos to genome mapping, Leads Agri Genetics is reshaping India’s agri-genomics future.",
+    url: "https://www.indianweb2.com/2025/09/leads-agri-genetics-launches-indias-1st.html",
   },
   {
-    title: "Big data and AI turbocharge weed risk research",
-    date: "09 December 2025",
-    image: require("../assets/embroy2.jpeg"),
+    title: "India, Brazil Seal Landmark Animal Genomics Partnership to Transform Global Dairy Future: A Strategic South-South Alliance for Global Food Security",
+    date: "Dec 11 2025",
+    image: require("../assets/news/news2.jpeg"),
     tag: "Research",
     description:
-      "MOET technology enables the production of high-quality bovine embryos, accelerating genetic progress and reproductive efficiency.",
+      "A historic India-Brazil alliance leveraging advanced animal genomics to revolutionize dairy production and safeguard global food security.",
+    url: "https://www.business-standard.com/content/press-releases-ani/india-brazil-seal-landmark-animal-genomics-partnership-to-transform-global-dairy-future-a-strategic-south-south-alliance-for-global-food-security-125121101095_1.html",
   },
   {
-    title: "Seed bank grows with climate-resilient species",
-    date: "04 December 2025",
-    image: require("../assets/embroy3.jpeg"),
+    title: "Leads Agri Genetics initiative is a giant leap in advancing India’s agricultural biotechnology and livestock genomics capabilities. ",
+    date: "29 Sep, 2025",
+ image: require("../assets/news/news1.jpeg"),
     tag: "News Article",
     description:
-      "MOET technology enables the production of high-quality bovine embryos, accelerating genetic progress and reproductive efficiency.",
+      "Transforming India’s agri-tech landscape with end-to-end genomic innovations for superior livestock and crop development.",
+    url: "https://agrospectrumindia.com/news/62/32657/leads-agri-genetics-launches-indias-first-privately-owned-integrated-centre-of-excellence-for-cattle-and-plant-genomics.html",
+  },
+
+    {
+    title: "Deepening Oceans of Trust: Navy Chief Admiral Dinesh K. Tripathi’s Landmark Visit to Brazil",
+    date: "December 16, 2025",
+ image: require("../assets/news/news4.jpeg"),
+    tag: "News Article",
+    description:
+      "Overview of Navy Chief Admiral Dinesh K. Tripathi’s Visit to Brazil",
+    url: "https://affairscloud.com/overview-of-navy-chief-admiral-dinesh-k-tripathis-visit-to-brazil/",
   },
 ];
 
@@ -118,6 +131,39 @@ const NewsEvents = () => {
     };
   }, [visibleCards]);
 
+  /* ================= CARD / ARROW CLICK ================= */
+
+  const goToUrl = (url) => {
+    if (!url) return;
+
+    const isExternal = /^https?:\/\//i.test(url);
+
+    if (isExternal) {
+      window.open(url, "_blank", "noopener,noreferrer");
+    } else {
+      window.location.href = url;
+    }
+  };
+
+  const handleCardClick = (url) => (e) => {
+    // Prevent double navigation if the arrow (also clickable) was the target
+    if (e.target.closest(".news-arrow")) return;
+    goToUrl(url);
+  };
+
+  const handleArrowClick = (url) => (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    goToUrl(url);
+  };
+
+  const handleCardKeyDown = (url) => (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      goToUrl(url);
+    }
+  };
+
   const slidePercentage = 100 / visibleCards;
 
   const totalSlides = Math.max(
@@ -205,7 +251,13 @@ const NewsEvents = () => {
                   flex: `0 0 ${slidePercentage}%`,
                 }}
               >
-                <article className="news-card">
+                <article
+                  className="news-card"
+                  role="link"
+                  tabIndex={0}
+                  onClick={handleCardClick(item.url)}
+                  onKeyDown={handleCardKeyDown(item.url)}
+                >
 
                   {/* IMAGE */}
 
@@ -238,9 +290,10 @@ const NewsEvents = () => {
                       </span>
 
                       <a
-                        href="#read-more"
+                        href={item.url}
                         className="news-arrow"
                         aria-label={`Read more about ${item.title}`}
+                        onClick={handleArrowClick(item.url)}
                       >
                         <ArrowRight
                           size={17}

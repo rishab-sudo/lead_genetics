@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect, useLayoutEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
 import {
   Download,
@@ -71,221 +71,122 @@ const faqCards = [
   },
 ];
 
-const NAVBAR_OFFSET = 200;
-
-const CARD_WIDTH = 320; // fallback only (tablet / non-pinned default)
+const CARD_WIDTH = 320;
 const CARD_GAP = 28;
-const CARD_STEP = CARD_WIDTH + CARD_GAP; // fallback step
-const MOBILE_BREAKPOINT = 991;
-const SMALL_BREAKPOINT = 576;
+const CARD_STEP = CARD_WIDTH + CARD_GAP;
+const AUTO_SCROLL_SPEED = 0.6; // px per frame, right -> left
 
 const FAQ = () => {
-  const wrapperRef = useRef(null);
-  const viewportRef = useRef(null);
   const rowRef = useRef(null);
+  const translateRef = useRef(0);
+  const rafRef = useRef(null);
+  const singleSetWidthRef = useRef(0);
+  const [isPaused, setIsPaused] = useState(false);
 
-  const [maxTranslate, setMaxTranslate] = useState(0);
-  const [translateX, setTranslateX] = useState(0);
-  const [isPinEnabled, setIsPinEnabled] = useState(true);
-  const [isSmallScreen, setIsSmallScreen] = useState(false);
-
-  // Measure how far the row can translate (row width - viewport width).
-  // Runs whenever layout could change (breakpoint switch, resize, card resize).
-  useLayoutEffect(() => {
-    const measure = () => {
-      if (!rowRef.current || !viewportRef.current) return;
-      const rowWidth = rowRef.current.scrollWidth;
-      const viewportWidth = viewportRef.current.offsetWidth;
-      setMaxTranslate(Math.max(0, rowWidth - viewportWidth));
-    };
-
-    measure();
-
-    const ro = new ResizeObserver(measure);
-    if (viewportRef.current) ro.observe(viewportRef.current);
-    if (rowRef.current) ro.observe(rowRef.current);
-
-    window.addEventListener("resize", measure);
-    return () => {
-      ro.disconnect();
-      window.removeEventListener("resize", measure);
-    };
-  }, [isPinEnabled]);
+  // duplicate cards so the loop can wrap seamlessly
+  const loopedCards = [...faqCards, ...faqCards];
 
   useEffect(() => {
-    const mqPin = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT}px)`);
-    const mqSmall = window.matchMedia(`(max-width: ${SMALL_BREAKPOINT}px)`);
-
-    const update = () => {
-      setIsPinEnabled(!mqPin.matches);
-      setIsSmallScreen(mqSmall.matches);
+    const measure = () => {
+      if (rowRef.current) {
+        singleSetWidthRef.current = rowRef.current.scrollWidth / 2;
+      }
     };
-
-    update();
-    mqPin.addEventListener("change", update);
-    mqSmall.addEventListener("change", update);
-
-    return () => {
-      mqPin.removeEventListener("change", update);
-      mqSmall.removeEventListener("change", update);
-    };
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
   }, []);
 
   useEffect(() => {
-    if (!isPinEnabled) return;
-
-    let ticking = false;
-
-    const computeProgress = () => {
-      const wrapper = wrapperRef.current;
-      if (!wrapper || maxTranslate <= 0) {
-        ticking = false;
-        return;
+    const animate = () => {
+      if (!isPaused && rowRef.current && singleSetWidthRef.current > 0) {
+        translateRef.current += AUTO_SCROLL_SPEED;
+        if (translateRef.current >= singleSetWidthRef.current) {
+          translateRef.current -= singleSetWidthRef.current;
+        }
+        rowRef.current.style.transform = `translateX(-${translateRef.current}px)`;
       }
-
-      const rect = wrapper.getBoundingClientRect();
-      const viewportH = window.innerHeight;
-      const scrollableRange = rect.height - viewportH;
-
-      const scrolledIntoPin = NAVBAR_OFFSET - rect.top;
-      let progress =
-        scrollableRange > 0 ? scrolledIntoPin / scrollableRange : 0;
-
-      progress = Math.min(1, Math.max(0, progress));
-      setTranslateX(progress * maxTranslate);
-      ticking = false;
+      rafRef.current = requestAnimationFrame(animate);
     };
-
-    const onScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(computeProgress);
-        ticking = true;
-      }
-    };
-
-    computeProgress();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-    };
-  }, [isPinEnabled, maxTranslate]);
+    rafRef.current = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, [isPaused]);
 
   const scroll = (direction) => {
-    // measure the actual rendered card width so the scroll step always
-    // matches exactly one card, regardless of breakpoint/clamp sizing
-    const cardEl = rowRef.current?.firstElementChild;
-    const step = cardEl ? cardEl.offsetWidth + CARD_GAP : CARD_STEP;
+    if (!rowRef.current || singleSetWidthRef.current === 0) return;
 
-    if (isPinEnabled) {
-      window.scrollBy({
-        top: direction === "left" ? -step : step,
-        behavior: "smooth",
-      });
-    } else if (viewportRef.current) {
-      const nudge = isSmallScreen
-        ? viewportRef.current.clientWidth * 0.88
-        : step;
+    setIsPaused(true);
+    let next =
+      translateRef.current + (direction === "left" ? -CARD_STEP : CARD_STEP);
 
-      viewportRef.current.scrollBy({
-        left: direction === "left" ? -nudge : nudge,
-        behavior: "smooth",
-      });
-    }
+    if (next < 0) next += singleSetWidthRef.current;
+    if (next >= singleSetWidthRef.current) next -= singleSetWidthRef.current;
+
+    translateRef.current = next;
+    rowRef.current.style.transition = "transform 0.4s ease";
+    rowRef.current.style.transform = `translateX(-${next}px)`;
+
+    setTimeout(() => {
+      if (rowRef.current) rowRef.current.style.transition = "";
+    }, 400);
+
+    setTimeout(() => setIsPaused(false), 2500);
   };
 
-  const wrapperHeight = isPinEnabled
-    ? `calc(100vh + ${maxTranslate}px)`
-    : "auto";
-
   return (
-    <div
-      className="faq-scroll-wrapper-outer"
-      ref={wrapperRef}
-      style={{ height: wrapperHeight }}
-    >
-      <div
-        className={`faq-sticky-inner ${isPinEnabled ? "is-pinned" : ""}` }
-        style={
-          isPinEnabled
-            ? {
-                top: `${NAVBAR_OFFSET}px`,
-                height: `calc(100vh - ${NAVBAR_OFFSET}px)`,
-              }
-            : {}
-        }
-      >
-        <section className="faq-section">
-          <Container>
-            {/* Center Heading */}
-            <div className="faq-header-center">
-              <h2 className="faq-main-title">How Can We Help You?</h2>
+    <section className="faq-section">
+      <Container>
+        {/* Center Heading */}
+        <div className="faq-header-center">
+          <h2 className="section-heading">How Can We Help You?</h2>
 
-              <div className="faq-divider">
-                <span className="faq-line"></span>
-                <Dna size={22} />
-                <span className="faq-line"></span>
+          <div className="faq-divider">
+            <span className="faq-line"></span>
+            <Dna size={22} />
+            <span className="faq-line"></span>
+          </div>
+
+          <p className="faq-subtitle">
+            We are pleased to assist you with genomics services, research
+            support, documentation, compliance guidance, and expert
+            scientific consultation. Explore the resources below to find
+            the help you need quickly and efficiently.
+          </p>
+        </div>
+
+        {/* Slider Top Right Buttons */}
+        <div className="faq-slider-top">
+          <div className="faq-nav-buttons">
+            <button className="faq-nav-btn" onClick={() => scroll("left")}>
+              <ChevronLeft size={22} />
+            </button>
+
+            <button className="faq-nav-btn" onClick={() => scroll("right")}>
+              <ChevronRight size={22} />
+            </button>
+          </div>
+        </div>
+
+        <div
+          className="faq-scroll-viewport"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onTouchStart={() => setIsPaused(true)}
+          onTouchEnd={() => setIsPaused(false)}
+        >
+          <div className="faq-scroll-wrapper" ref={rowRef}>
+            {loopedCards.map((card, idx) => (
+              <div key={`${card.id}-${idx}`} className="faq-help-card">
+                <div className="faq-card-icon">{card.icon}</div>
+                <h3 className="faq-card-title">{card.title}</h3>
+                <p className="faq-card-description">{card.description}</p>
+                <span className="faq-card-link">{card.button}</span>
               </div>
-
-              <p className="faq-subtitle">
-                We are pleased to assist you with genomics services, research
-                support, documentation, compliance guidance, and expert
-                scientific consultation. Explore the resources below to find
-                the help you need quickly and efficiently.
-              </p>
-            </div>
-
-            {/* Slider Top Right Buttons */}
-            <div className="faq-slider-top">
-              <div className="faq-nav-buttons">
-                <button className="faq-nav-btn" onClick={() => scroll("left")}>
-                  <ChevronLeft size={22} />
-                </button>
-
-                <button className="faq-nav-btn" onClick={() => scroll("right")}>
-                  <ChevronRight size={22} />
-                </button>
-              </div>
-            </div>
-
-            {/* Viewport is always the full Container width now — the card
-                width (see CSS clamp) is derived from this width so exactly
-                VISIBLE_CARDS fit with no clipping, and the group naturally
-                sits centered because Container itself is centered. */}
-            <div
-              className={`faq-scroll-viewport ${
-                isPinEnabled ? "" : "native-scroll"
-              }`}
-              ref={viewportRef}
-            >
-              <div
-                className="faq-scroll-wrapper"
-                ref={rowRef}
-                style={
-                  isPinEnabled
-                    ? {
-                        transform: `translateX(-${translateX}px)`,
-                        justifyContent: maxTranslate === 0 ? "center" : "flex-start",
-                      }
-                    : undefined
-                }
-              >
-                {faqCards.map((card) => (
-                  <div key={card.id} className="faq-help-card">
-                    <div className="faq-card-icon">{card.icon}</div>
-                    <h3 className="faq-card-title">{card.title}</h3>
-                    <p className="faq-card-description">{card.description}</p>
-                    <span className="faq-card-link">{card.button}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </Container>
-        </section>
-      </div>
-    </div>
+            ))}
+          </div>
+        </div>
+      </Container>
+    </section>
   );
 };
 

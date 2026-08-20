@@ -10,30 +10,36 @@ import "./Team.css";
 
 const scientists = [
   {
-    name: "TOYODA, Atsushi",
-    lab: "Comparative Genomics Laboratory",
-    image: require("../assets/team/Ashiish dubye.png"),
+    name: "Ghnaymshyam ji ",
+    lab: " Chairman Of The Board at B.L. Agro Industries Ltd",
+    image: require("../assets/team/Ghanyamji.png"),
   },
   {
-    name: "ASAKAWA, Kazuhide",
-    lab: "Neurobiology and Pathology Laboratory",
+    name: "Ashish khandelwal ",
+    lab: "Managing Director at B.L. Agro Industries Ltd",
     image: require("../assets/team/Ashish_khandelwal.png"),
   },
   {
-    name: "IWASATO, Takuji",
-    lab: "Laboratory of Mammalian Neural Circuits",
-    image: require("../assets/team/saravanan.png"),
-  },
-  {
-    name: "NAKAMURA, Hiroshi",
-    lab: "Molecular Genetics Laboratory",
+    name: "Dr. Ashish Dubey ",
+    lab: "Co-founder of Leads Genetics ",
     image: require("../assets/team/Ashiish dubye.png"),
   },
   {
-    name: "KOIDE, Tsuyoshi",
-    lab: "Mouse Genomics Resource Laboratory",
-    image: require("../assets/team/suyush agrwal.png"),
+    name: " Dr. Pardhasaradhi, ",
+    lab: " Technical & Operations Head at Leads Genetics",
+    image: require("../assets/team/parda.png"),
   },
+  {
+    name: "Dr. Ayush ",
+    lab: "Assistant Vice President – Head Data & Bioinformatics, Leads Genetics Pvt. Ltd.",
+    image: require("../assets/team/Ayush.png"),
+  },
+   {
+    name: "Dr. Saravanan Durairaj ",
+    lab: "MOET IVF Specialist",
+    image: require("../assets/team/saravanan.png"),
+  },
+
 ];
 
 const Team = () => {
@@ -47,7 +53,7 @@ const Team = () => {
     slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 2500,
+    autoplaySpeed: 3500,
     pauseOnHover: true,
     cssEase: "ease-in-out",
     responsive: [
