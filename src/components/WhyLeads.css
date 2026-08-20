@@ -1,0 +1,415 @@
+/* ==========================================================
+   WhyChooseUs.css — Leads Genetics
+   Theme: Signature Brand Blue & Clean Responsive Design
+   ========================================================== */
+
+.wcu-section {
+  width: 100%;
+  background: #f8fafc;
+  color: #0f172a;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  padding: clamp(2rem, 4vw, 3.5rem) clamp(1.25rem, 4vw, 3rem);
+  box-sizing: border-box;
+}
+
+.wcu-container {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+/* ── Heading ── */
+.wcu-heading {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.wcu-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #2563eb;
+  background: #eff6ff;
+  border: 1px solid #dbeafe;
+  padding: 0.35em 0.85em;
+  border-radius: 999px;
+  margin-bottom: 0.9rem;
+}
+
+.wcu-title {
+  margin: 0 0 0.85rem;
+  color: #0f172a;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.65rem, 3.2vw, 2.35rem);
+  line-height: 1.22;
+  letter-spacing: -0.02em;
+}
+
+.wcu-intro {
+  margin: 0 auto;
+  color: #64748b;
+  font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+  line-height: 1.7;
+}
+
+/* ── 3 Main Feature Cards Grid ── */
+.wcu-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+  margin-bottom: clamp(3rem, 6vw, 4.5rem);
+}
+
+.wcu-card {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px -4px rgba(15, 23, 42, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.wcu-card:hover {
+  border-color: #bfdbfe;
+  box-shadow: 0 16px 36px -8px rgba(37, 99, 235, 0.16);
+}
+
+/* Panel Header Inside Card */
+.wcu-panel {
+  position: relative;
+  height: 220px;
+  background: linear-gradient(180deg, #f0f7ff 0%, #e8f2fe 100%);
+  border-bottom: 1px solid #e2e8f0;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.wcu-panel--feature {
+  background: linear-gradient(180deg, #eaf2ff 0%, #ddeaff 100%);
+}
+
+.wcu-panel--metric {
+  background: linear-gradient(180deg, #f0fdf4 0%, #e6f7eb 100%);
+}
+
+/* ── Card 1 Elements ── */
+.wcu-timeline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #2563eb;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.wcu-timeline i {
+  flex: 1;
+  margin: 0 0.5rem;
+  border-top: 1px dashed rgba(37, 99, 235, 0.4);
+}
+
+.wcu-bars {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 90px;
+  padding: 0 0.5rem;
+  margin-top: auto;
+}
+
+.wcu-bar {
+  width: 3.2%;
+  height: var(--h);
+  border-radius: 999px;
+  background: #bfdbfe;
+  transform-origin: bottom center;
+  animation: wcuBarPulse 2.6s ease-in-out infinite;
+  animation-delay: calc(var(--i, 0) * 80ms);
+}
+
+.wcu-bar.active {
+  width: 4%;
+  background: #2563eb;
+  box-shadow: 0 0 10px rgba(37, 99, 235, 0.4);
+}
+
+@keyframes wcuBarPulse {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(0.85); }
+}
+
+.wcu-value-chip {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+  white-space: nowrap;
+}
+
+.wcu-axis {
+  display: flex;
+  justify-content: space-between;
+  color: #64748b;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  margin-top: 0.35rem;
+}
+
+/* ── Card 2 Elements ── */
+.wcu-assistant-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #2563eb;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.wcu-badge {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #2563eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wcu-question {
+  margin: 0;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.wcu-prompt {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid #bfdbfe;
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 0.78rem;
+  color: #475569;
+  line-height: 1.45;
+}
+
+.wcu-automate {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 999px;
+  text-decoration: none;
+  width: fit-content;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.wcu-automate:hover {
+  background: #1d4ed8;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* ── Card 3 Elements ── */
+.wcu-metric-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #166534;
+}
+
+.wcu-metric-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.wcu-metric-row strong {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.1;
+}
+
+.wcu-eff-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #16a34a;
+  background: #dcfce7;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.wcu-pills-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 0.5rem;
+}
+
+.wcu-metric-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  border: 1px solid #d1fae5;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: #1e293b;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.wcu-pill-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #16a34a;
+  flex-shrink: 0;
+}
+
+/* ── Card Copy (Bottom Half) ── */
+.wcu-card-copy {
+  padding: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.wcu-card-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.wcu-card-icon-wrap {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: #eff6ff;
+  color: #2563eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.wcu-card-copy h3 {
+  margin: 0;
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.wcu-card-copy p {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: #64748b;
+  padding-left: 42px;
+}
+
+/* ==========================================================
+   DIFFERENTIATORS LIST (2x3 Grid)
+   ========================================================== */
+.wcu-diff-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  box-shadow: 0 4px 20px -4px rgba(15, 23, 42, 0.04);
+}
+
+.wcu-diff-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 0.75rem;
+  border-radius: 12px;
+  transition: background 0.2s ease;
+}
+
+.wcu-diff-item:hover {
+  background: #f8fafc;
+}
+
+.wcu-diff-icon {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  border-radius: 10px;
+  background: #eff6ff;
+  border: 1px solid #dbeafe;
+  color: #2563eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wcu-diff-copy h4 {
+  margin: 0 0 0.25rem;
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.35;
+}
+
+.wcu-diff-copy p {
+  margin: 0;
+  font-size: 0.84rem;
+  line-height: 1.55;
+  color: #64748b;
+}
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+@media (max-width: 991px) {
+  .wcu-cards {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .wcu-diff-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .wcu-diff-list {
+    grid-template-columns: 1fr;
+  }
+
+  .wcu-card-copy p {
+    padding-left: 0;
+    margin-top: 0.25rem;
+  }
+}

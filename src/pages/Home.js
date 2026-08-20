@@ -48,7 +48,7 @@ const Home = () => {
         title="Advancing Agriculture Through Genomics
 "
         description="Our research capabilities bring together genomics, bioinformatics, and agricultural science to generate insights that support stronger crops, better breeding, and more resilient agriculture."
-        buttonText="EXPLORE AGRICULTURAL RESEARCH "
+        buttonText="EXPLORE AGRICULTURAL RESEARCH →"
         link="/agri-genomics"
       />
   <Credentials/>

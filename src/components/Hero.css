@@ -28,7 +28,7 @@
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.42);
+  background: rgba(0, 0, 0, 0.5);
   z-index: 1;
 }
 
@@ -54,7 +54,7 @@
 .hero-text {
   max-width: 75%;
   margin-bottom: 60px;
-  color: #fff;
+  color: #fbfbfb;
 
   transition: all 0.8s ease;
 }
@@ -81,7 +81,7 @@
   background: rgba(255, 255, 255, 0.12);
   border: 1px solid rgba(255, 255, 255, 0.2);
 
-  color: #fff;
+  color: #fbfbfb;
 
   font-size: 0.85rem;
   font-weight: 700;
@@ -100,7 +100,7 @@
 
   margin-bottom: 24px;
 
-  color: #fff;
+  color: #fbfbfb;
 
   text-shadow:
     0 4px 20px rgba(0, 0, 0, 0.5),

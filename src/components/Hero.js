@@ -73,7 +73,7 @@ const Hero = () => {
         className="hero-video"
       >
         <source
-          src={require("../assets/lead-video3.mp4")}
+          src={require("../assets/lead-video22.mp4")}
           type="video/mp4"
         />
       </video>
