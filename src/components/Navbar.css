@@ -6,10 +6,10 @@
 
 body {
   font-family: "Inter", sans-serif;
-
 }
 
 /* ================= NAVBAR ================= */
+
 .navbar {
   position: fixed;
   top: 0;
@@ -21,9 +21,36 @@ body {
   align-items: center;
   background: transparent;
   backdrop-filter: blur(5px);
-  transition: all 0.3s ease;
+
+  /* Smooth hide/show */
+  transform: translateY(0);
+  opacity: 1;
+
+  transition:
+    transform 0.45s ease,
+    opacity 0.35s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease,
+    backdrop-filter 0.3s ease;
+
   z-index: 1000;
 }
+
+/* ================= NAVBAR HIDE / SHOW ================= */
+
+.navbar.navbar-hidden {
+  transform: translateY(-110%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.navbar.navbar-visible {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ================= SCROLLED NAVBAR ================= */
 
 .navbar.scrolled {
   background: rgba(0, 0, 0, 0.6);
@@ -33,6 +60,7 @@ body {
 }
 
 /* ================= LOGO ================= */
+
 .nav-logo {
   display: flex;
   align-items: center;
@@ -46,6 +74,7 @@ body {
 }
 
 /* ================= CENTER LINKS ================= */
+
 .nav-center {
   display: flex;
   justify-content: center;
@@ -80,6 +109,7 @@ body {
 }
 
 /* ================= RIGHT SECTION ================= */
+
 .nav-right {
   display: flex;
   align-items: center;
@@ -105,6 +135,7 @@ body {
 }
 
 /* ================= HAMBURGER ================= */
+
 .hamburger {
   display: none;
   font-size: 1.9rem;
@@ -115,6 +146,7 @@ body {
 }
 
 /* ================= SIDEBAR ================= */
+
 .sidebar-overlay {
   position: fixed;
   inset: 0;
@@ -189,6 +221,7 @@ body {
 }
 
 /* ================= RESPONSIVE ================= */
+
 @media (max-width: 992px) {
   .navbar {
     grid-template-columns: auto 1fr auto;

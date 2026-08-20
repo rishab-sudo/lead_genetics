@@ -37,4 +37,7 @@ input,
 textarea,
 select {
   font-family: var(--font-primary);
+} 
+.section-heading{
+  font-size: 5rem !important;
 }

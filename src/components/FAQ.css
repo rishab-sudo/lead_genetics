@@ -1,7 +1,7 @@
 /* ================= FAQ SECTION ================= */
 .faq-section {
-  margin-top: 3.5%;
-  padding: 65px 0;
+
+  padding: 5% 0;
   background: #f5f6f7;
   width: 100%;
   overflow: hidden;
@@ -76,6 +76,14 @@
 .faq-scroll-viewport {
   overflow: hidden;
   width: 100%;
+}
+
+/* Lock the viewport to exactly 3 cards on desktop */
+@media (min-width: 992px) {
+  .faq-scroll-viewport {
+    max-width: calc(3 * 320px + 2 * 28px); /* 1016px */
+    margin: 0 auto;
+  }
 }
 
 /* ================= CARD ROW ================= */

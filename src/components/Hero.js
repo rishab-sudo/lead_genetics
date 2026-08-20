@@ -84,9 +84,9 @@ const Hero = () => {
       <div className="hero-container">
 
         {/* HERO TEXT */}
-          <div className="hero-badge">
+          {/* <div className="hero-badge">
             LEADS GENETICS
-          </div>
+          </div> */}
         <div className={`hero-text ${animate ? "show" : "hide"}`}>
 
           {/* STATIC BADGE - NO ANIMATION */}

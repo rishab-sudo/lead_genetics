@@ -32,15 +32,7 @@ const newsData = [
     url: "https://agrospectrumindia.com/news/62/32657/leads-agri-genetics-launches-indias-first-privately-owned-integrated-centre-of-excellence-for-cattle-and-plant-genomics.html",
   },
 
-    {
-    title: "Deepening Oceans of Trust: Navy Chief Admiral Dinesh K. Tripathi’s Landmark Visit to Brazil",
-    date: "December 16, 2025",
- image: require("../assets/news/news4.jpeg"),
-    tag: "News Article",
-    description:
-      "Overview of Navy Chief Admiral Dinesh K. Tripathi’s Visit to Brazil",
-    url: "https://affairscloud.com/overview-of-navy-chief-admiral-dinesh-k-tripathis-visit-to-brazil/",
-  },
+
 ];
 
 const NewsEvents = () => {
@@ -182,8 +174,8 @@ const NewsEvents = () => {
               LATEST UPDATES
             </span>
 
-            <h2 className="news-title">
-              News &amp; Insights
+            <h2 className="news-title section-heading">
+               Insights from Leads Genetics  
             </h2>
 
             <p className="news-subtitle">
@@ -193,12 +185,12 @@ const NewsEvents = () => {
           </div>
 
           <div className="news-header-actions">
-            <a
+            {/* <a
               href="#news"
               className="news-view-btn"
             >
               ALL NEWS
-            </a>
+            </a> */}
 
             <div className="news-slider-controls">
               <button

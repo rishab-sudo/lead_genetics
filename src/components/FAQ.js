@@ -74,71 +74,62 @@ const faqCards = [
 const CARD_WIDTH = 320;
 const CARD_GAP = 28;
 const CARD_STEP = CARD_WIDTH + CARD_GAP;
-const AUTO_SCROLL_SPEED = 0.6; // px per frame, right -> left
+const AUTO_INTERVAL = 3000; // ms per card step
+const TRANSITION_MS = 600;
+const TOTAL = faqCards.length;
 
 const FAQ = () => {
-  const rowRef = useRef(null);
-  const translateRef = useRef(0);
-  const rafRef = useRef(null);
-  const singleSetWidthRef = useRef(0);
-  const [isPaused, setIsPaused] = useState(false);
-
   // duplicate cards so the loop can wrap seamlessly
   const loopedCards = [...faqCards, ...faqCards];
 
-  useEffect(() => {
-    const measure = () => {
-      if (rowRef.current) {
-        singleSetWidthRef.current = rowRef.current.scrollWidth / 2;
-      }
-    };
-    measure();
-    window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
-  }, []);
+  const [index, setIndex] = useState(0); // 0..TOTAL-1, then jumps to TOTAL to animate, then resets
+  const [noTransition, setNoTransition] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+  const resetTimeoutRef = useRef(null);
 
+  // Auto-advance one card every 3s. Fully stops while isPaused.
   useEffect(() => {
-    const animate = () => {
-      if (!isPaused && rowRef.current && singleSetWidthRef.current > 0) {
-        translateRef.current += AUTO_SCROLL_SPEED;
-        if (translateRef.current >= singleSetWidthRef.current) {
-          translateRef.current -= singleSetWidthRef.current;
-        }
-        rowRef.current.style.transform = `translateX(-${translateRef.current}px)`;
-      }
-      rafRef.current = requestAnimationFrame(animate);
-    };
-    rafRef.current = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(rafRef.current);
+    if (isPaused) return;
+    const id = setInterval(() => {
+      setIndex((prev) => prev + 1);
+    }, AUTO_INTERVAL);
+    return () => clearInterval(id);
   }, [isPaused]);
 
-  const scroll = (direction) => {
-    if (!rowRef.current || singleSetWidthRef.current === 0) return;
+  // When we've scrolled past the real set, snap back to 0 without a visible jump.
+  useEffect(() => {
+    if (index >= TOTAL) {
+      resetTimeoutRef.current = setTimeout(() => {
+        setNoTransition(true);
+        setIndex(0);
+        // re-enable transition on the next frame
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => setNoTransition(false));
+        });
+      }, TRANSITION_MS);
+    }
+    return () => clearTimeout(resetTimeoutRef.current);
+  }, [index]);
 
+  const handleManualScroll = (direction) => {
     setIsPaused(true);
-    let next =
-      translateRef.current + (direction === "left" ? -CARD_STEP : CARD_STEP);
-
-    if (next < 0) next += singleSetWidthRef.current;
-    if (next >= singleSetWidthRef.current) next -= singleSetWidthRef.current;
-
-    translateRef.current = next;
-    rowRef.current.style.transition = "transform 0.4s ease";
-    rowRef.current.style.transform = `translateX(-${next}px)`;
-
-    setTimeout(() => {
-      if (rowRef.current) rowRef.current.style.transition = "";
-    }, 400);
-
-    setTimeout(() => setIsPaused(false), 2500);
+    setIndex((prev) => {
+      let next = prev + (direction === "left" ? -1 : 1);
+      if (next < 0) next = TOTAL - 1;
+      return next;
+    });
+    // resume autoplay after one full cycle
+    setTimeout(() => setIsPaused(false), AUTO_INTERVAL);
   };
+
+  const translateX = index * CARD_STEP;
 
   return (
     <section className="faq-section">
       <Container>
         {/* Center Heading */}
         <div className="faq-header-center">
-          <h2 className="section-heading">How Can We Help You?</h2>
+          <h2 className="section-heading">Find The Right Support For You</h2>
 
           <div className="faq-divider">
             <span className="faq-line"></span>
@@ -147,21 +138,26 @@ const FAQ = () => {
           </div>
 
           <p className="faq-subtitle">
-            We are pleased to assist you with genomics services, research
-            support, documentation, compliance guidance, and expert
-            scientific consultation. Explore the resources below to find
-            the help you need quickly and efficiently.
+Connect with the right resources and expertise across genomics services, research, technical documentation, compliance, and
+ scientific consultation.
+
           </p>
         </div>
 
         {/* Slider Top Right Buttons */}
         <div className="faq-slider-top">
           <div className="faq-nav-buttons">
-            <button className="faq-nav-btn" onClick={() => scroll("left")}>
+            <button
+              className="faq-nav-btn"
+              onClick={() => handleManualScroll("left")}
+            >
               <ChevronLeft size={22} />
             </button>
 
-            <button className="faq-nav-btn" onClick={() => scroll("right")}>
+            <button
+              className="faq-nav-btn"
+              onClick={() => handleManualScroll("right")}
+            >
               <ChevronRight size={22} />
             </button>
           </div>
@@ -174,7 +170,13 @@ const FAQ = () => {
           onTouchStart={() => setIsPaused(true)}
           onTouchEnd={() => setIsPaused(false)}
         >
-          <div className="faq-scroll-wrapper" ref={rowRef}>
+          <div
+            className="faq-scroll-wrapper"
+            style={{
+              transform: `translateX(-${translateX}px)`,
+              transition: noTransition ? "none" : "transform 0.6s ease",
+            }}
+          >
             {loopedCards.map((card, idx) => (
               <div key={`${card.id}-${idx}`} className="faq-help-card">
                 <div className="faq-card-icon">{card.icon}</div>

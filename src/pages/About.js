@@ -79,7 +79,7 @@ export default function About() {
               <span aria-hidden="true">&rarr;</span>
             </motion.a>
 
-            <motion.dl className="stats-strip" variants={fadeUp}>
+            {/* <motion.dl className="stats-strip" variants={fadeUp}>
               <div className="stat-item">
                 <dt className="stat-label">Genomes Sequenced</dt>
                 <dd className="stat-value">2M+</dd>
@@ -96,7 +96,7 @@ export default function About() {
                 <dt className="stat-label">Founded</dt>
                 <dd className="stat-value">2008</dd>
               </div>
-            </motion.dl>
+            </motion.dl> */}
           </motion.div>
 
           <motion.div

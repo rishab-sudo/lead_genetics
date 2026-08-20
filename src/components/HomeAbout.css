@@ -5,10 +5,9 @@
 .h-about-section {
   width: 100%;
   padding: 90px 0;
-  background: #f8fafc;
+  background: #fff;
   overflow: hidden;
 }
-
 
 /* =========================================
    FULL WIDTH CONTAINER
@@ -20,7 +19,6 @@
   padding-right: 6%;
 }
 
-
 /* =========================================
    ROW
 ========================================= */
@@ -31,7 +29,6 @@
   margin-right: 0;
 }
 
-
 /* =========================================
    IMAGE COLUMN
 ========================================= */
@@ -40,6 +37,11 @@
   position: relative;
 }
 
+.col-h {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 /* =========================================
    IMAGE AREA
@@ -51,32 +53,22 @@
   padding-bottom: 25px;
 }
 
-
 /* =========================================
    IMAGE BOX
 ========================================= */
 
 .h-about-image-box {
   position: relative;
-
   width: 100%;
   height: 600px;
-
   overflow: hidden;
-
   border-radius: 16px;
-
   background: #e5e7eb;
 
   box-shadow:
     0 20px 50px rgba(15, 23, 42, 0.12);
 }
 
-.col-h{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 /* =========================================
    MAIN IMAGE
 ========================================= */
@@ -84,7 +76,6 @@
 .h-about-main-image {
   width: 100%;
   height: 100%;
-
   display: block;
 
   object-fit: cover;
@@ -93,123 +84,9 @@
   transition: transform 0.6s ease;
 }
 
-
 .h-about-image-box:hover .h-about-main-image {
   transform: scale(1.03);
 }
-
-
-/* =========================================
-   FLOATING STATS CARD
-   ONLY ON IMAGE
-========================================= */
-
-.h-about-floating-stats {
-  position: absolute;
-
-  right: 25px;
-  bottom: 0;
-
-  display: flex;
-  align-items: center;
-
-  min-width: 330px;
-
-  padding: 20px 22px;
-
-  background: rgba(255, 255, 255, 0.97);
-
-  border-radius: 13px;
-
-  box-shadow:
-    0 18px 45px rgba(15, 23, 42, 0.16),
-    0 5px 15px rgba(15, 23, 42, 0.07);
-
-  z-index: 5;
-}
-
-
-/* =========================================
-   EACH FLOATING STAT
-========================================= */
-
-.h-about-floating-stat {
-  flex: 1;
-
-  display: flex;
-  align-items: flex-start;
-
-  gap: 9px;
-
-  padding: 0 17px;
-}
-
-
-.h-about-floating-stat:first-child {
-  border-right: 1px solid #e5e7eb;
-}
-
-
-/* =========================================
-   STAT ICON
-========================================= */
-
-.h-about-floating-icon {
-  width: 22px;
-  min-width: 22px;
-
-  margin-top: 2px;
-
-  color: #2563eb;
-}
-
-
-/* =========================================
-   STAT CONTENT
-========================================= */
-
-.h-about-floating-content {
-  min-width: 0;
-}
-
-
-/* =========================================
-   STAT NUMBER
-========================================= */
-
-.h-about-floating-value {
-  font-size: 1.65rem;
-
-  line-height: 1;
-
-  font-weight: 800;
-
-  color: #0c2d63;
-
-  margin-bottom: 5px;
-
-  white-space: nowrap;
-}
-
-
-/* =========================================
-   STAT LABEL
-========================================= */
-
-.h-about-floating-label {
-  font-size: 8px;
-
-  line-height: 1.4;
-
-  font-weight: 700;
-
-  letter-spacing: 0.07em;
-
-  color: #6b7280;
-
-  white-space: nowrap;
-}
-
 
 /* =========================================
    RIGHT CONTENT
@@ -217,12 +94,9 @@
 
 .h-about-content {
   width: 100%;
-
   max-width: 700px;
-
   padding-left: 20px;
 }
-
 
 /* =========================================
    BADGE
@@ -230,7 +104,6 @@
 
 .h-about-badge {
   display: inline-flex;
-
   align-items: center;
   justify-content: center;
 
@@ -239,22 +112,18 @@
   border-radius: 999px;
 
   background: #fbfbfb;
-
   border: 1px solid #0c2d63;
 
   color: #0c2d63;
 
   font-size: 10px;
-
   font-weight: 700;
 
   letter-spacing: 0.08em;
-
   text-transform: uppercase;
 
   margin-bottom: 18px;
 }
-
 
 /* =========================================
    TITLE
@@ -262,11 +131,8 @@
 
 .h-about-title {
   margin: 0 0 25px;
-
   color: #0c2d63;
-
 }
-
 
 /* =========================================
    TEXT
@@ -276,7 +142,6 @@
   margin: 0 0 18px;
 
   font-size: 15px;
-
   line-height: 1.8;
 
   color: #667085;
@@ -284,6 +149,127 @@
   text-align: left;
 }
 
+/* =========================================
+   STATS DIVIDER
+========================================= */
+
+.h-about-stats-divider {
+  width: 100%;
+  height: 1px;
+
+  background: #d9dee7;
+
+  margin-top: 28px;
+  margin-bottom: 24px;
+}
+
+/* =========================================
+   STATS ROW
+========================================= */
+
+.h-about-stats-row {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  align-items: stretch;
+
+  margin-bottom: 28px;
+}
+
+/* =========================================
+   INDIVIDUAL STAT
+========================================= */
+
+.h-about-stat {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 12px;
+
+  padding: 0 22px;
+}
+
+/* Vertical divider between stats */
+
+.h-about-stat + .h-about-stat {
+  border-left: 1px solid #e5e7eb;
+}
+
+/* First stat */
+
+.h-about-stat:first-child {
+  padding-left: 0;
+}
+
+/* Last stat */
+
+.h-about-stat:last-child {
+  padding-right: 0;
+}
+
+/* =========================================
+   STAT ICON
+========================================= */
+
+.h-about-stat-icon {
+  width: 38px;
+  min-width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #eef4ff;
+
+  color: #2563eb;
+}
+
+/* =========================================
+   STAT CONTENT
+========================================= */
+
+.h-about-stat-content {
+  min-width: 0;
+}
+
+/* =========================================
+   STAT NUMBER
+========================================= */
+
+.h-about-stat-value {
+  font-size: 1.65rem;
+
+  line-height: 1;
+
+  font-weight: 800;
+
+  color: #0c2d63;
+
+  margin-bottom: 6px;
+
+  white-space: nowrap;
+}
+
+/* =========================================
+   STAT LABEL
+========================================= */
+
+.h-about-stat-label {
+  font-size: 11px;
+
+  line-height: 1.4;
+
+  font-weight: 700;
+
+  letter-spacing: 0.05em;
+
+  color: #6b7280;
+}
 
 /* =========================================
    BUTTON
@@ -297,12 +283,11 @@
 
   gap: 10px;
 
-  margin-top: 12px;
+  margin-top: 0;
 
   padding: 14px 24px;
 
   border: none;
-
   border-radius: 8px;
 
   background: #0c2d63;
@@ -310,7 +295,6 @@
   color: #ffffff;
 
   font-size: 13px;
-
   font-weight: 700;
 
   cursor: pointer;
@@ -324,11 +308,9 @@
     box-shadow 0.3s ease;
 }
 
-
 .h-about-btn svg {
   transition: transform 0.3s ease;
 }
-
 
 .h-about-btn:hover {
   background: #0c2d63;
@@ -339,11 +321,9 @@
     0 12px 28px rgba(23, 0, 92, 0.28);
 }
 
-
 .h-about-btn:hover svg {
   transform: translateX(4px);
 }
-
 
 /* =========================================
    LARGE DESKTOP
@@ -365,7 +345,6 @@
   }
 
 }
-
 
 /* =========================================
    LAPTOP
@@ -398,20 +377,19 @@
     font-size: 14px;
   }
 
-  .h-about-floating-stats {
-    right: 15px;
-
-    min-width: 300px;
-
-    padding: 18px 15px;
+  .h-about-stat {
+    padding: 0 14px;
   }
 
-  .h-about-floating-stat {
-    padding: 0 12px;
+  .h-about-stat-value {
+    font-size: 1.45rem;
+  }
+
+  .h-about-stat-label {
+    font-size: 10px;
   }
 
 }
-
 
 /* =========================================
    TABLET
@@ -430,9 +408,7 @@
 
   .h-about-image-area {
     max-width: 750px;
-
     margin: 0 auto;
-
     padding-bottom: 35px;
   }
 
@@ -440,15 +416,9 @@
     height: 500px;
   }
 
-  .h-about-floating-stats {
-    right: 25px;
-  }
-
   .h-about-content {
     max-width: 100%;
-
     padding-left: 0;
-
     margin-top: 10px;
   }
 
@@ -460,8 +430,30 @@
     font-size: 15px;
   }
 
-}
+  .h-about-stats-row {
+    margin-top: 4px;
+  }
 
+  .h-about-stat {
+    padding: 0 12px;
+    gap: 9px;
+  }
+
+  .h-about-stat-icon {
+    width: 34px;
+    min-width: 34px;
+    height: 34px;
+  }
+
+  .h-about-stat-value {
+    font-size: 1.35rem;
+  }
+
+  .h-about-stat-label {
+    font-size: 9px;
+  }
+
+}
 
 /* =========================================
    MOBILE
@@ -482,7 +474,6 @@
     --bs-gutter-y: 40px;
   }
 
-
   /* IMAGE */
 
   .h-about-image-area {
@@ -491,60 +482,8 @@
 
   .h-about-image-box {
     height: 400px;
-
     border-radius: 13px;
   }
-
-
-  /* FLOATING CARD */
-
-  .h-about-floating-stats {
-    left: 50%;
-    right: auto;
-
-    bottom: 0;
-
-    width: calc(100% - 30px);
-
-    min-width: 0;
-
-    transform: translateX(-50%);
-
-    padding: 17px 10px;
-
-    border-radius: 11px;
-  }
-
-
-  .h-about-floating-stat {
-    gap: 6px;
-
-    padding: 0 10px;
-  }
-
-
-  .h-about-floating-icon {
-    width: 19px;
-    min-width: 19px;
-  }
-
-
-  .h-about-floating-icon svg {
-    width: 15px;
-    height: 15px;
-  }
-
-
-  .h-about-floating-value {
-    font-size: 1.3rem;
-  }
-
-
-  .h-about-floating-label {
-font-size: 15px !important;
-    letter-spacing: 0.03em;
-  }
-
 
   /* CONTENT */
 
@@ -552,40 +491,71 @@ font-size: 15px !important;
     margin-top: 5px;
   }
 
-
   .h-about-badge {
     margin-bottom: 14px;
   }
 
-
   .h-about-title {
     font-size: 2rem;
-
     line-height: 1.15;
-
     margin-bottom: 20px;
   }
 
-
   .h-about-text {
     font-size: 14px;
-
     line-height: 1.75;
-
     margin-bottom: 16px;
   }
 
+  /* DIVIDER */
+
+  .h-about-stats-divider {
+    margin-top: 24px;
+    margin-bottom: 20px;
+  }
+
+  /* STATS */
+
+  .h-about-stats-row {
+    grid-template-columns: 1fr;
+
+    gap: 16px;
+
+    margin-bottom: 24px;
+  }
+
+  .h-about-stat,
+  .h-about-stat:first-child,
+  .h-about-stat:last-child {
+    padding: 0;
+  }
+
+  .h-about-stat + .h-about-stat {
+    border-left: none;
+  }
+
+  .h-about-stat-icon {
+    width: 36px;
+    min-width: 36px;
+    height: 36px;
+  }
+
+  .h-about-stat-value {
+    font-size: 1.35rem;
+  }
+
+  .h-about-stat-label {
+    font-size: 11px;
+  }
 
   /* BUTTON */
 
   .h-about-btn {
     width: 100%;
-
-    margin-top: 10px;
+    margin-top: 5px;
   }
 
 }
-
 
 /* =========================================
    SMALL MOBILE
@@ -602,70 +572,29 @@ font-size: 15px !important;
     padding-right: 16px;
   }
 
-
   .h-about-image-box {
     height: 330px;
-
     border-radius: 11px;
   }
-
-
-  .h-about-floating-stats {
-    width: calc(100% - 20px);
-
-    padding: 14px 7px;
-  }
-
-
-  .h-about-floating-stat {
-    gap: 4px;
-
-    padding: 0 7px;
-  }
-
-
-  .h-about-floating-stat:first-child {
-    border-right: 1px solid #e5e7eb;
-  }
-
-
-  .h-about-floating-icon {
-    width: 16px;
-    min-width: 16px;
-  }
-
-
-  .h-about-floating-icon svg {
-    width: 12px;
-    height: 12px;
-  }
-
-
-  .h-about-floating-value {
-    font-size: 1.1rem;
-
-    margin-bottom: 3px;
-  }
-
-
-  .h-about-floating-label {
-    font-size: 5.5px;
-  }
-
 
   .h-about-title {
     font-size: 1.75rem;
   }
 
-
   .h-about-text {
     font-size: 13.5px;
-
     line-height: 1.75;
   }
 
-}
+  .h-about-stat-value {
+    font-size: 1.2rem;
+  }
 
+  .h-about-stat-label {
+    font-size: 10px;
+  }
+
+}
 
 /* =========================================
    EXTRA SMALL
@@ -678,41 +607,20 @@ font-size: 15px !important;
     padding-right: 14px;
   }
 
-
   .h-about-image-box {
     height: 285px;
   }
-
-
-  .h-about-floating-stats {
-    width: calc(100% - 14px);
-
-    padding: 12px 5px;
-  }
-
-
-  .h-about-floating-stat {
-    padding: 0 5px;
-  }
-
-
-  .h-about-floating-value {
-    font-size: 0.95rem;
-  }
-
-
-  .h-about-floating-label {
-    font-size: 5px;
-  }
-
 
   .h-about-title {
     font-size: 1.55rem;
   }
 
-
   .h-about-text {
     font-size: 13px;
+  }
+
+  .h-about-stat-value {
+    font-size: 1.1rem;
   }
 
 }

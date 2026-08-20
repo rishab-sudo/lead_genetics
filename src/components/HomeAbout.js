@@ -12,7 +12,7 @@ import "./HomeAbout.css";
 import aboutImg from "../assets/clibanner.png";
 
 /* =========================================
-   IMAGE STATS
+   STATS
 ========================================= */
 
 const IMAGE_STATS = [
@@ -20,19 +20,19 @@ const IMAGE_STATS = [
     icon: <Beaker size={18} />,
     value: 20,
     suffix: "+",
-    label: "Years of Genomics",
+    label: "Years of Experience",
   },
   {
     icon: <Users size={18} />,
     value: 1000,
     suffix: "+",
-    label: "Animals Research ",
+    label: "Projects Completed",
   },
-    {
+  {
     icon: <Users size={18} />,
     value: 6,
     suffix: "+",
-    label: "In-house Technology Platforms ",
+    label: "In-house Technology Platforms",
   },
 ];
 
@@ -114,10 +114,8 @@ function AnimatedCounter({
 ========================================= */
 
 const HomeAbout = () => {
-  // Navigation hook must be inside HomeAbout
   const navigate = useNavigate();
 
-  // Navigate to About Us page
   const handleKnowMore = () => {
     navigate("/about");
   };
@@ -156,32 +154,100 @@ const HomeAbout = () => {
 
               </div>
 
+            </div>
+
+          </Col>
+
+          {/* =================================
+              RIGHT CONTENT
+          ================================= */}
+
+          <Col
+            xl={7}
+            lg={7}
+            md={12}
+            className="col-h"
+          >
+
+            <div className="h-about-content">
+
+              {/* BADGE */}
+
+              <div className="h-about-badge">
+                OUR JOURNEY
+              </div>
+
+              {/* HEADING */}
+
+              <h2 className="h-about-title section-heading">
+                Advancing Genomics
+                <br />
+                Empowering Agriculture
+                <br />
+                Transforming Healthcare
+              </h2>
+
+              {/* DESCRIPTION */}
+
+              <p className="h-about-text">
+                The story of Leads Genetics begins with a strong foundation
+                built in genomics, molecular diagnostics, and life-science
+                research. For nearly a decade, the organization operated
+                through its earlier identity, GenePrint Labs , developing expertise in genetic testing,
+                next-generation sequencing, molecular diagnostics, and
+                bioinformatics.
+              </p>
+
+              <p className="h-about-text">
+                Over the years, this scientific foundation evolved beyond
+                individual testing and sequencing projects into a broader
+                vision-building an integrated genomics platform capable of
+                translating genetic information into practical outcomes
+                across agriculture, livestock, plants, and human health.
+              </p>
+
+              <p className="h-about-text">
+                A new chapter began as the business became part of the
+                Leads / BL Agro ecosystem, bringing together established
+                genomics capabilities with the scale, agricultural reach,
+                and long-term vision of the BL Agro Group. This transition
+                gave rise to <strong>Leads Genetics</strong> - a
+                genomics-focused organization designed to connect laboratory
+                science with real-world biological and agricultural outcomes.
+              </p>
+
               {/* =================================
-                  FLOATING STATS ON IMAGE
+                  THIN LINE
               ================================= */}
 
-              <div className="h-about-floating-stats">
+              <div className="h-about-stats-divider"></div>
+
+              {/* =================================
+                  STATS ROW
+              ================================= */}
+
+              <div className="h-about-stats-row">
 
                 {IMAGE_STATS.map((item, index) => (
                   <div
-                    className="h-about-floating-stat"
+                    className="h-about-stat"
                     key={index}
                   >
 
-                    <div className="h-about-floating-icon">
+                    <div className="h-about-stat-icon">
                       {item.icon}
                     </div>
 
-                    <div className="h-about-floating-content">
+                    <div className="h-about-stat-content">
 
-                      <div className="h-about-floating-value">
+                      <div className="h-about-stat-value">
                         <AnimatedCounter
                           value={item.value}
                           suffix={item.suffix}
                         />
                       </div>
 
-                      <div className="h-about-floating-label">
+                      <div className="h-about-stat-label">
                         {item.label}
                       </div>
 
@@ -192,85 +258,22 @@ const HomeAbout = () => {
 
               </div>
 
+              {/* =================================
+                  BUTTON
+              ================================= */}
+
+              <button
+                type="button"
+                className="h-about-btn"
+                onClick={handleKnowMore}
+              >
+                <span>Read More</span>
+                <ArrowRight size={18} />
+              </button>
+
             </div>
 
           </Col>
-
-          {/* =================================
-              RIGHT CONTENT
-          ================================= */}
-
-       {/* =================================
-    RIGHT CONTENT
-================================= */}
-
-<Col
-  xl={7}
-  lg={7}
-  md={12}
-  className="col-h"
->
-  <div className="h-about-content">
-
-    {/* BADGE */}
-    <div className="h-about-badge">
-      OUR JOURNEY
-    </div>
-
-    {/* HEADING */}
-    <h2 className="h-about-title section-heading">
-      Advancing Genomics
-      <br />
-     Empowering Agriculture
-     <br />
-     Transforming Healthcare
-    </h2>
-
-    {/* DESCRIPTION */}
-    <p className="h-about-text">
-      The story of Leads Genetics begins with a strong foundation
-      built in genomics, molecular diagnostics, and life-science
-      research. For nearly a decade, the organization operated
-      through its earlier identity, GenePrint Labs / GenePrint
-      LifeSciences, developing expertise in genetic testing,
-      next-generation sequencing, molecular diagnostics, and
-      bioinformatics.
-    </p>
-
-    <p className="h-about-text">
-      Over the years, this scientific foundation evolved beyond
-      individual testing and sequencing projects into a broader
-      vision-building an integrated genomics platform capable of
-      translating genetic information into practical outcomes
-      across agriculture, livestock, plants, and human health.
-    </p>
-
-    <p className="h-about-text">
-      A new chapter began as the business became part of the
-      Leads / BL Agro ecosystem, bringing together established
-      genomics capabilities with the scale, agricultural reach,
-      and long-term vision of the BL Agro Group. This transition
-      gave rise to <strong>Leads Genetics</strong> - a
-      genomics-focused organization designed to connect laboratory
-      science with real-world biological and agricultural outcomes.
-    </p>
-
- 
-
-
-
-    {/* KNOW MORE BUTTON */}
-    <button
-      type="button"
-      className="h-about-btn"
-      onClick={handleKnowMore}
-    >
-      <span>Read More</span>
-      <ArrowRight size={18} />
-    </button>
-
-  </div>
-</Col>
 
         </Row>
 

@@ -5,23 +5,51 @@ import "./Navbar.css";
 const Navbar = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [navbarVisible, setNavbarVisible] = useState(true);
 
   const navRef = useRef(null);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      const currentScrollY = window.scrollY;
+
+      // Existing scrolled state
+      setScrolled(currentScrollY > 20);
+
+      // Always show navbar at the very top
+      if (currentScrollY <= 20) {
+        setNavbarVisible(true);
+      } 
+      // Scrolling down
+      else if (currentScrollY > lastScrollY.current) {
+        setNavbarVisible(false);
+      } 
+      // Scrolling up
+      else if (currentScrollY < lastScrollY.current) {
+        setNavbarVisible(true);
+      }
+
+      lastScrollY.current = currentScrollY;
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
     handleScroll();
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
     <>
-      <nav className={`navbar ${scrolled ? "scrolled" : ""}`} ref={navRef}>
+      <nav
+        ref={navRef}
+        className={`navbar ${scrolled ? "scrolled" : ""} ${
+          navbarVisible ? "navbar-visible" : "navbar-hidden"
+        }`}
+      >
         {/* LEFT - LOGO */}
         <Link to="/" className="nav-logo">
           <img
@@ -33,16 +61,24 @@ const Navbar = () => {
         {/* CENTER - LINKS */}
         <div className="nav-center">
           <ul className="nav-links">
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/about">About</Link></li>
-            <li><Link to="/contact">Contact</Link></li>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+
+            <li>
+              <Link to="/contact">Contact</Link>
+            </li>
           </ul>
         </div>
 
         {/* RIGHT - BUTTON + HAMBURGER */}
         <div className="nav-right">
           <button className="common-btn nav-btn">
-                <span>Explore More</span>
+            <span>Explore More</span>
           </button>
 
           <button
@@ -64,7 +100,11 @@ const Navbar = () => {
       {/* SIDEBAR */}
       <aside className={`sidebar ${sidebarOpen ? "open" : ""}`}>
         <div className="sidebar-header">
-          <Link to="/" className="mobile-sidebar-logo" onClick={() => setSidebarOpen(false)}>
+          <Link
+            to="/"
+            className="mobile-sidebar-logo"
+            onClick={() => setSidebarOpen(false)}
+          >
             <img
               src={require("../assets/logo.png")}
               alt="Lead Genetics"
@@ -81,9 +121,23 @@ const Navbar = () => {
         </div>
 
         <ul className="sidebar-links">
-          <li><Link to="/" onClick={() => setSidebarOpen(false)}>Home</Link></li>
-          <li><Link to="/about" onClick={() => setSidebarOpen(false)}>About</Link></li>
-          <li><Link to="/contact" onClick={() => setSidebarOpen(false)}>Contact</Link></li>
+          <li>
+            <Link to="/" onClick={() => setSidebarOpen(false)}>
+              Home
+            </Link>
+          </li>
+
+          <li>
+            <Link to="/about" onClick={() => setSidebarOpen(false)}>
+              About
+            </Link>
+          </li>
+
+          <li>
+            <Link to="/contact" onClick={() => setSidebarOpen(false)}>
+              Contact
+            </Link>
+          </li>
         </ul>
 
         <button className="common-btn sidebar-btn">

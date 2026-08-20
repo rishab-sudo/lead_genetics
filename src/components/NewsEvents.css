@@ -5,7 +5,7 @@
 .news-events-section {
   position: relative;
   padding: 70px 0 80px;
-  background: #f7f8fa;
+  background: #ffffff;
   overflow: hidden;
 }
 
@@ -57,38 +57,36 @@
 }
 
 .news-heading-wrapper {
-  max-width: 680px;
+  max-width: 100%;
 }
 
 .news-eyebrow {
   display: block;
-
-  margin-bottom: 7px;
-
-  font-size: 9px;
-  line-height: 1;
+  padding: 6px 14px;
+width: fit-content !important;
+  border-radius: 999px;
+background: #fbfbfb;
+  border: 1px solid #0c2d63;
+color: #0c2d63;
+margin-bottom: 7px;
+ font-size: 9px;
+ line-height: 1;
   font-weight: 800;
-
-  letter-spacing: 0.13em;
+ letter-spacing: 0.13em;
   text-transform: uppercase;
-
-  color: #2563eb;
+ color: #2563eb;
 }
 
 .news-title {
   margin: 0 0 12px;
 
-  font-size: clamp(2.2rem, 4vw, 3.2rem);
-  line-height: 1;
+letter-spacing: -0.04em;
 
-  font-weight: 700;
-  letter-spacing: -0.04em;
-
-  color: #111827;
+color: #111827;
 }
 
 .news-subtitle {
-  max-width: 600px;
+max-width: 100%;
 
   margin: 0;
 

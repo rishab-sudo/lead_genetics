@@ -178,7 +178,7 @@
 
   background: transparent;
 
-  color: #637083;
+  color: #000;
 
   cursor: pointer;
 
@@ -193,21 +193,22 @@
 
 
 .oncology-tab:hover {
-  color: #087f7b;
+  color: #000;
 
   background: rgba(255, 255, 255, 0.7);
 }
 
 
 .oncology-tab-active {
-  color: #ffffff;
+  color: #000;
+  background-color: #fff;
 
-  background:
+  /* background:
     linear-gradient(
       100deg,
       #087f7b,
       #2563eb
-    );
+    ); */
 
   box-shadow:
     0 8px 20px rgba(8, 127, 123, 0.18);
@@ -217,14 +218,9 @@
 
 
 .oncology-tab-active:hover {
-  color: #ffffff;
+  color: #000;
 
-  background:
-    linear-gradient(
-      135deg,
-      #087f7b,
-      #2563eb
-    );
+background-color: #fff;
 }
 
 
@@ -262,12 +258,15 @@
 
 
 .oncology-tab-active .tab-icon {
-  color: #ffffff;
+  color: #000;
 
   background:
-    rgba(255, 255, 255, 0.16);
+    linear-gradient(
+      120deg,
+      #2564ebe1,
+      #087f7b8c
+    );
 }
-
 
 .tab-title {
   font-size: 13px;

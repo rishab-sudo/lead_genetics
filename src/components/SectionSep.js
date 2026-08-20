@@ -11,23 +11,23 @@ const SectionSep = ({
 }) => {
   return (
     <div className="section-wrapperr">
-    <section
-      className="section-sep"
-      style={{ backgroundImage: `url(${bgImage})` }}
-    >
-      <div className="section-overlay">
-        <div className="section-content">
-          <h2>{title}</h2>
-          <p>{description}</p>
+      <section
+        className="section-sep"
+        style={{ backgroundImage: `url(${bgImage})` }}
+      >
+        <div className="section-overlay">
+          <div className="section-content">
+            <h2>{title}</h2>
 
-          <Link to={link} className="explore-btn">
-            {buttonText}
-          </Link>
+            <p>{description}</p>
+
+            <Link to={link} className="explore-btn">
+              {buttonText}
+            </Link>
+          </div>
         </div>
-      </div>
-    </section>
-</div>
-
+      </section>
+    </div>
   );
 };
 
