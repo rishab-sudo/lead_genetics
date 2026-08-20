@@ -5,7 +5,7 @@ import "./Hero.css";
 
 const slides = [
   {
-    heading: "From Sequence to Solution<br />From Farm to Clinic",
+    heading: "From Sequence to Solution",
     description:
       "India’s integrated genomics company combining advanced multi-omics laboratories, agricultural and livestock genomics, research capabilities, and clinical solutions to transform genomic data into real-world impact.",
   },
@@ -15,7 +15,7 @@ const slides = [
       "From agriculture and livestock to research and clinical genomics, we bring sequencing, multi-omics, and scientific expertise together to deliver solutions that advance health, strengthen food systems, and accelerate discovery.",
   },
   {
-    heading: "From Farm to Research<br />From Research to Clinic",
+    heading: "From Farm to Research",
     description:
       "Building India’s integrated genomics ecosystem across agriculture, cattle and livestock, scientific research, and clinical genomics, connecting advanced sequencing and multi-omics with solutions designed for a healthier, smarter future.",
   },
