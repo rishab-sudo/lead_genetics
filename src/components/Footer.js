@@ -21,44 +21,30 @@ const Linkedin = ({ size = 18, ...props }) => (
   </svg>
 );
 
-const Twitter = ({ size = 18, ...props }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={size}
-    height={size}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    {...props}
-  >
-    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
-  </svg>
-);
-
+// Routes matched against App.js:
+// /agri-genomics, /research-genomics, /clinical-genomics, /about, /contact
+// Order per requested layout: Agricultural, Research, Clinical, Animal & livestock, IVF & reproductive
 const genomicsLinks = [
-  { label: "Agricultural", href: "/agricultural-genomics" },
-  { label: "Research", href: "/research" },
+  { label: "Agricultural", href: "/agri-genomics" },
+  { label: "Research", href: "/research-genomics" },
   { label: "Clinical", href: "/clinical-genomics" },
-  { label: "Animal & livestock", href: "/clinical-genomics/animal-livestock-genomics" },
-  { label: "IVF & reproductive", href: "/clinical-genomics/ivf-reproductive-genetics" },
+  { label: "Animal & livestock", href: "/agri-genomics" },
+  { label: "IVF & reproductive", href: "/agri-genomics" },
 ];
 
 const companyLinks = [
   { label: "About", href: "/about" },
-  { label: "Why choose us", href: "/why-leadsgenetics" },
+  { label: "Why choose us", href: "/about#why-choose" },
   { label: "Trust & credibility", href: "/credibility" },
-  { label: "Partners", href: "/partners" },
-  { label: "Careers", href: "/about/careers" },
+  { label: "Partners", href: "/contact" },
+  { label: "Careers", href: "/contact" },
 ];
 
 const resourceLinks = [
-  { label: "Publications", href: "/research/publications" },
-  { label: "Case studies", href: "/research/case-studies" },
+  { label: "Publications", href: "/#faq" },
+  { label: "Case studies", href: "/#faq" },
   { label: "News", href: "/resources/news" },
-  { label: "FAQs", href: "/resources/faqs" },
+  { label: "FAQs", href: "/#faq" },
 ];
 
 const legalLinks = [
@@ -72,7 +58,7 @@ function FooterColumn({ title, links }) {
       <p className="footer-column-title">{title}</p>
       <ul className="footer-link-list">
         {links.map((link) => (
-          <li key={link.href}>
+          <li key={link.href + link.label}>
             <a href={link.href}>{link.label}</a>
           </li>
         ))}
@@ -95,11 +81,8 @@ export default function Footer() {
               premium, science-led brand.
             </p>
             <div className="footer-social">
-              <a href="https://linkedin.com" aria-label="LinkedIn" target="_blank" rel="noreferrer">
+              <a href="https://www.linkedin.com/company/leads-genetics-1/" aria-label="LinkedIn" target="_blank" rel="noreferrer">
                 <Linkedin size={18} />
-              </a>
-              <a href="https://twitter.com" aria-label="X (Twitter)" target="_blank" rel="noreferrer">
-                <Twitter size={18} />
               </a>
               <a href="mailto:hello@leadsgenetics.com" aria-label="Email">
                 <Mail size={18} />
@@ -114,8 +97,8 @@ export default function Footer() {
           <div className="footer-column">
             <p className="footer-column-title">Contact</p>
             <ul className="footer-link-list">
-              <li><a href="/contact/consultation">Request consultation</a></li>
-              <li><a href="/contact/locations">Locations</a></li>
+              <li><a href="/contact">Request consultation</a></li>
+              <li><a href="/contact">Locations</a></li>
               <li>
                 <a href="mailto:hello@leadsgenetics.com" className="footer-contact-line">
                   <Mail size={14} /> hello@leadsgenetics.com
