@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Carousel } from "react-bootstrap";
 import {
   Beaker,
   Users,
@@ -8,8 +8,26 @@ import {
 import { useNavigate } from "react-router-dom";
 import "./HomeAbout.css";
 
-// Image
-import aboutImg from "../assets/clibanner.png";
+// Images
+import aboutImg1 from "../assets/clibanner.png";
+import aboutImg2 from "../assets/h-about1.png";
+
+
+/* =========================================
+   ABOUT IMAGES
+========================================= */
+
+const ABOUT_IMAGES = [
+  {
+    image: aboutImg1,
+    alt: "Leads Genetics",
+  },
+  {
+    image: aboutImg2,
+    alt: "Leads Genetics Laboratory",
+  },
+
+];
 
 /* =========================================
    STATS
@@ -132,7 +150,7 @@ const HomeAbout = () => {
         <Row className="align-items-center g-5">
 
           {/* =================================
-              LEFT IMAGE
+              LEFT IMAGE SLIDER
           ================================= */}
 
           <Col
@@ -146,11 +164,31 @@ const HomeAbout = () => {
 
               <div className="h-about-image-box">
 
-                <img
-                  src={aboutImg}
-                  alt="About Leads Genetics"
-                  className="h-about-main-image"
-                />
+                <Carousel
+                  className="h-about-carousel"
+                  controls={false}
+                  indicators={true}
+                  interval={2500}
+                  pause={false}
+                  touch={true}
+                  keyboard={true}
+                  wrap={true}
+                  slide={true}
+                >
+
+                  {ABOUT_IMAGES.map((item, index) => (
+                    <Carousel.Item key={index}>
+
+                      <img
+                        src={item.image}
+                        alt={item.alt}
+                        className="h-about-main-image"
+                      />
+
+                    </Carousel.Item>
+                  ))}
+
+                </Carousel>
 
               </div>
 
@@ -193,9 +231,9 @@ const HomeAbout = () => {
                 The story of Leads Genetics begins with a strong foundation
                 built in genomics, molecular diagnostics, and life-science
                 research. For nearly a decade, the organization operated
-                through its earlier identity, GenePrint Labs , developing expertise in genetic testing,
-                next-generation sequencing, molecular diagnostics, and
-                bioinformatics.
+                through its earlier identity, GenePrint Labs , developing
+                expertise in genetic testing, next-generation sequencing,
+                molecular diagnostics, and bioinformatics.
               </p>
 
               <p className="h-about-text">
@@ -229,6 +267,7 @@ const HomeAbout = () => {
               <div className="h-about-stats-row">
 
                 {IMAGE_STATS.map((item, index) => (
+
                   <div
                     className="h-about-stat"
                     key={index}
@@ -254,6 +293,7 @@ const HomeAbout = () => {
                     </div>
 
                   </div>
+
                 ))}
 
               </div>

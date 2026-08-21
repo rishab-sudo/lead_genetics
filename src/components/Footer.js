@@ -111,7 +111,7 @@ export default function Footer() {
               </li>
               <li>
                 <a href="tel:+916389913132" className="footer-contact-line">
-                  <Phone size={14} /> 063899 13132
+                  <Phone size={14} /> +91 63899 13132
                 </a>
               </li>
             </ul>

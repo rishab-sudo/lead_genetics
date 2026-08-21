@@ -41,51 +41,72 @@ const scientists = [
   },
 ];
 
-// 👉 Apni horizontal banner image yahan set karein
+// Horizontal banner image
 const teamBannerImage = require("../assets/team/group_team.jpeg");
 
 const Team = () => {
-  const sliderRef = useRef(null);
+  const swiperRef = useRef(null);
+
+  const handlePrev = () => {
+    if (swiperRef.current) {
+      swiperRef.current.slidePrev(700);
+    }
+  };
+
+  const handleNext = () => {
+    if (swiperRef.current) {
+      swiperRef.current.slideNext(700);
+    }
+  };
 
   return (
     <section className="team-scientists-section">
       <Container>
-
-        {/* ===== Heading ===== */}
+        {/* ================================
+            HEADING
+        ================================= */}
         <div className="team-top-bar">
           <div className="team-heading">
-            <h2 className="team-title section-heading">Experts Behind Every Discovery</h2>
+            <h2 className="team-title section-heading">
+              Experts Behind Every Discovery
+            </h2>
 
             <p className="team-subtitle">
-   Meet the multidisciplinary experts bringing together genomics, bioinformatics, molecular science, and 
-   biological research to solve complex challenges.
+              Meet the multidisciplinary experts bringing together genomics,
+              bioinformatics, molecular science, and biological research to
+              solve complex challenges.
             </p>
           </div>
         </div>
 
-        {/* ===== Slider Wrapper ===== */}
+        {/* ================================
+            SLIDER
+        ================================= */}
         <div className="team-slider-wrapper">
 
           {/* LEFT ARROW */}
           <button
+            type="button"
             className="team-slider-arrow team-slider-arrow-left"
-            onClick={() => sliderRef.current.swiper.slidePrev()}
+            onClick={handlePrev}
             aria-label="Previous team member"
           >
-            <ChevronLeft size={24} />
+            <ChevronLeft size={24} strokeWidth={2} />
           </button>
 
-          {/* SLIDER */}
           <Swiper
-            ref={sliderRef}
+            onSwiper={(swiper) => {
+              swiperRef.current = swiper;
+            }}
             modules={[Autoplay]}
             loop={true}
             speed={700}
-            slidesPerView={1}
             slidesPerGroup={1}
-            centeredSlides={true}
-            centeredSlidesBounds={true}
-            spaceBetween={0}
+            slidesPerView={1}
+            spaceBetween={20}
+            centeredSlides={false}
+            allowTouchMove={true}
+            watchSlidesProgress={true}
             autoplay={{
               delay: 3500,
               disableOnInteraction: false,
@@ -94,30 +115,39 @@ const Team = () => {
             breakpoints={{
               431: {
                 slidesPerView: 1,
-                centeredSlides: true,
+                slidesPerGroup: 1,
+                spaceBetween: 20,
               },
+
               769: {
                 slidesPerView: 1,
-                centeredSlides: true,
+                slidesPerGroup: 1,
+                spaceBetween: 20,
               },
+
               993: {
                 slidesPerView: 2,
-                centeredSlides: true,
+                slidesPerGroup: 1,
+                spaceBetween: 24,
               },
+
               1201: {
                 slidesPerView: 3,
-                centeredSlides: true,
+                slidesPerGroup: 1,
+                spaceBetween: 24,
               },
+
               1301: {
                 slidesPerView: 4,
-                centeredSlides: true,
+                slidesPerGroup: 1,
+                spaceBetween: 24,
               },
             }}
+            className="team-swiper"
           >
             {scientists.map((scientist, index) => (
               <SwiperSlide key={index} className="team-slide">
                 <div className="scientist-card">
-
                   <img
                     src={scientist.image}
                     alt={scientist.name}
@@ -128,7 +158,6 @@ const Team = () => {
                     <h3>{scientist.lab}</h3>
                     <span>{scientist.name}</span>
                   </div>
-
                 </div>
               </SwiperSlide>
             ))}
@@ -136,34 +165,38 @@ const Team = () => {
 
           {/* RIGHT ARROW */}
           <button
+            type="button"
             className="team-slider-arrow team-slider-arrow-right"
-            onClick={() => sliderRef.current.swiper.slideNext()}
+            onClick={handleNext}
             aria-label="Next team member"
           >
-            <ChevronRight size={24} />
+            <ChevronRight size={24} strokeWidth={2} />
           </button>
-
         </div>
 
-        {/* ===== Meet Our Team Section (replaces old banner image) ===== */}
+        {/* ================================
+            MEET OUR TEAM
+        ================================= */}
         <div className="team-meet-section">
           <div className="team-meet-content">
-            <h2 className="team-meet-title section-heading">Meet our Team</h2>
+            <h2 className="team-meet-title section-heading">
+              Meet our Team
+            </h2>
 
             <p className="team-meet-text">
-              At Leads Genetics, our strength lies in a multidisciplinary team of
-              geneticists, embryologists, and veterinary scientists working together
-              to advance genomics-driven livestock breeding. From high-resolution
-              genomic selection to advanced IVF and MOET programs, our team
-              combines deep scientific expertise with hands-on field experience to
-              deliver measurable results for breeders and dairy farms across the
-              region.
+              At Leads Genetics, our strength lies in a multidisciplinary team
+              of geneticists, embryologists, and veterinary scientists working
+              together to advance genomics-driven livestock breeding. From
+              high-resolution genomic selection to advanced IVF and MOET
+              programs, our team combines deep scientific expertise with
+              hands-on field experience to deliver measurable results for
+              breeders and dairy farms across the region.
             </p>
 
             <p className="team-meet-text">
-              Backed by a state-of-the-art lab and years of applied research, we're
-              committed to making cutting-edge reproductive genetics accessible
-              and practical for the livestock industry.
+              Backed by a state-of-the-art lab and years of applied research,
+              we're committed to making cutting-edge reproductive genetics
+              accessible and practical for the livestock industry.
             </p>
           </div>
 
@@ -175,7 +208,6 @@ const Team = () => {
             />
           </div>
         </div>
-
       </Container>
     </section>
   );

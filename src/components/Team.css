@@ -1,39 +1,40 @@
-.team-scientists-section {
-  padding: 45px 0;
-  background: rgba(234, 236, 238, 0.459) ;
+/* =========================================================
+   MAIN SECTION
+========================================================= */
 
+.team-scientists-section {
+  width: 100%;
+  padding: 45px 0;
+  background: rgba(234, 236, 238, 0.459);
+  overflow: hidden;
 }
 
-/* ===== Top Bar ===== */
+
+/* =========================================================
+   TOP BAR
+========================================================= */
 
 .team-top-bar {
-  width: 100% !important;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   gap: 20px;
   margin-bottom: 40px;
-
 }
 
-/* ===== Heading ===== */
+
+/* =========================================================
+   HEADING
+========================================================= */
 
 .team-heading {
+  width: 100%;
   max-width: 100%;
 }
 
-.team-label {
-  display: inline-block;
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #0c2d63;
-  margin-bottom: 10px;
-}
-
 .team-title {
-  margin-bottom: 14px;
+  margin: 0 0 14px;
   line-height: 1.15;
   color: #0f172a;
 }
@@ -43,7 +44,9 @@
   line-height: 1.75;
   font-size: 1rem;
   margin: 0;
+  max-width: 850px;
 }
+
 
 /* =========================================================
    SLIDER WRAPPER
@@ -52,131 +55,36 @@
 .team-slider-wrapper {
   position: relative;
   width: 100%;
+  padding: 0 0;
 }
+
 
 /* =========================================================
-   SLIDER
+   SWIPER
 ========================================================= */
 
-.team-slider-wrapper .slick-slider {
+.team-swiper {
   width: 100%;
-}
-
-.team-slider-wrapper .slick-list {
   overflow: hidden;
 }
 
-.team-slider-wrapper .slick-slide:focus,
-.team-slider-wrapper .slick-slide *:focus {
-  outline: none;
-}
-
-.team-slider-wrapper .slick-track {
-  display: flex !important;
+.team-swiper .swiper-wrapper {
   align-items: stretch;
 }
 
-.team-slider-wrapper .slick-slide {
+.team-slide {
   height: auto;
+  box-sizing: border-box;
 }
-
-.team-slider-wrapper .slick-slide > div {
-  height: 100%;
-}
-
-/* =========================================================
-   SLICK SPACING
-========================================================= */
 
 .team-slide {
-  padding: 0 12px;
-  height: 100%;
-}
-
-.team-slider-wrapper .slick-list {
-  margin: 0 -12px;
-  overflow: hidden;
-}
-
-/* =========================================================
-   LEFT / RIGHT ARROWS — white circle, shadow, vertically centered
-========================================================= */
-
-.team-slider-arrow {
-  position: absolute;
-  top: 50%;
-  left: auto;
-  right: auto;
-  transform: translateY(-50%);
-
-  width: 52px;
-  height: 52px;
-  flex-shrink: 0;
-
-  border-radius: 50%;
-  border: none;
-
-  background: #ffffff;
-  color: #0f172a;
-
   display: flex;
-  align-items: center;
-  justify-content: center;
-
-  cursor: pointer;
-  padding: 0;
-  line-height: 0;
-
-  z-index: 20;
-
-  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.16);
-
-  transition:
-    background 0.35s ease,
-    color 0.35s ease,
-    transform 0.35s ease,
-    box-shadow 0.35s ease;
 }
 
-.team-slider-arrow svg {
-  display: block;
-  margin: 0 auto;
+.team-slide .scientist-card {
+  width: 100%;
 }
 
-/* LEFT */
-
-.team-slider-arrow-left {
-  left: -26px;
-}
-
-/* RIGHT */
-
-.team-slider-arrow-right {
-  right: -26px;
-}
-
-/* HOVER */
-
-.team-slider-arrow:hover {
-  background: #0c2d63;
-  color: #fff;
-
-  box-shadow: 0 14px 30px rgba(12, 45, 99, 0.32);
-}
-
-.team-slider-arrow-left:hover {
-  transform: translateY(-50%) translateX(-3px);
-}
-
-.team-slider-arrow-right:hover {
-  transform: translateY(-50%) translateX(3px);
-}
-
-/* ACTIVE / CLICK feedback */
-
-.team-slider-arrow:active {
-  transform: translateY(-50%) scale(0.94);
-}
 
 /* =========================================================
    CARD
@@ -184,15 +92,14 @@
 
 .scientist-card {
   position: relative;
-
+  width: 100%;
   height: 430px;
-
   border-radius: 8px;
   overflow: hidden;
-
   background: #000;
 
-  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+  box-shadow:
+    0 18px 40px rgba(15, 23, 42, 0.12);
 
   transition:
     transform 0.45s ease,
@@ -202,17 +109,19 @@
 .scientist-card:hover {
   transform: translateY(-8px);
 
-  box-shadow: 0 26px 52px rgba(37, 99, 235, 0.2);
+  box-shadow:
+    0 26px 52px rgba(37, 99, 235, 0.2);
 }
+
 
 /* =========================================================
    IMAGE
 ========================================================= */
 
 .scientist-image {
+  display: block;
   width: 100%;
   height: 100%;
-
   object-fit: cover;
 
   transition: transform 0.7s ease;
@@ -221,6 +130,7 @@
 .scientist-card:hover .scientist-image {
   transform: scale(1.08);
 }
+
 
 /* =========================================================
    OVERLAY
@@ -247,43 +157,144 @@
 
   font-size: 1.08rem;
   font-weight: 700;
-
   line-height: 1.45;
+
+  color: #ffffff;
 }
 
 .scientist-overlay span {
   font-size: 0.84rem;
-
   font-weight: 600;
-
   letter-spacing: 0.08em;
-
   text-transform: uppercase;
 
   color: #cbd5e1;
 }
 
+
 /* =========================================================
-   MEET OUR TEAM SECTION (replaces old full-width banner image)
-   White card, text left / image right — same width as slider
+   LEFT / RIGHT ARROWS
+========================================================= */
+
+.team-slider-arrow {
+  position: absolute;
+
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 52px;
+  height: 52px;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #ffffff;
+  color: #0f172a;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  z-index: 50;
+
+  box-shadow:
+    0 10px 24px rgba(15, 23, 42, 0.16);
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.team-slider-arrow svg {
+  display: block;
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   LEFT ARROW
+========================================================= */
+
+.team-slider-arrow-left {
+  left: -26px;
+}
+
+
+/* =========================================================
+   RIGHT ARROW
+========================================================= */
+
+.team-slider-arrow-right {
+  right: -26px;
+}
+
+
+/* =========================================================
+   ARROW HOVER
+========================================================= */
+
+.team-slider-arrow:hover {
+  background: #0c2d63;
+  color: #ffffff;
+
+  box-shadow:
+    0 14px 30px rgba(12, 45, 99, 0.32);
+}
+
+.team-slider-arrow-left:hover {
+  transform: translateY(-50%) translateX(-3px);
+}
+
+.team-slider-arrow-right:hover {
+  transform: translateY(-50%) translateX(3px);
+}
+
+
+/* =========================================================
+   ARROW ACTIVE
+========================================================= */
+
+.team-slider-arrow:active {
+  transform: translateY(-50%) scale(0.94);
+}
+
+
+/* =========================================================
+   MEET OUR TEAM SECTION
 ========================================================= */
 
 .team-meet-section {
   display: flex;
   align-items: stretch;
+
   width: 100%;
+
   margin-top: 40px;
 
   background: #ffffff;
+
   border-radius: 8px;
+
   overflow: hidden;
 
-  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+  box-shadow:
+    0 18px 40px rgba(15, 23, 42, 0.12);
 }
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
 
 .team-meet-content {
   flex: 0 0 45%;
-  max-width: 50%;
+  max-width: 45%;
 
   padding: 56px 48px;
 
@@ -295,7 +306,6 @@
 .team-meet-title {
   margin: 0 0 20px;
 
-
   line-height: 1.15;
 
   color: #0f172a;
@@ -303,8 +313,11 @@
 
 .team-meet-text {
   color: #64748b;
+
   line-height: 1.75;
+
   font-size: 1rem;
+
   margin: 0 0 18px;
 }
 
@@ -312,24 +325,34 @@
   margin-bottom: 0;
 }
 
+
+/* =========================================================
+   IMAGE
+========================================================= */
+
 .team-meet-image-wrap {
-  flex: 0 0 60%;
-  max-width: 60%;
+  flex: 0 0 55%;
+  max-width: 55%;
 }
 
 .team-meet-image {
   display: block;
+
   width: 100%;
   height: 100%;
+
   min-height: 420px;
+
   object-fit: cover;
 }
 
+
 /* =========================================================
-   RESPONSIVE - TABLET
+   TABLET
 ========================================================= */
 
 @media (max-width: 1200px) {
+
   .team-slider-arrow-left {
     left: -18px;
   }
@@ -337,13 +360,16 @@
   .team-slider-arrow-right {
     right: -18px;
   }
+
 }
 
+
 /* =========================================================
-   RESPONSIVE - 991px
+   991px
 ========================================================= */
 
 @media (max-width: 991px) {
+
   .team-top-bar {
     flex-direction: column;
     align-items: flex-start;
@@ -377,13 +403,16 @@
   .team-meet-image {
     min-height: 320px;
   }
+
 }
 
+
 /* =========================================================
-   RESPONSIVE - MOBILE
+   MOBILE
 ========================================================= */
 
 @media (max-width: 767px) {
+
   .team-scientists-section {
     padding: 56px 0;
   }
@@ -400,12 +429,8 @@
     font-size: 0.95rem;
   }
 
-  .team-slide {
-    padding: 0 8px;
-  }
-
-  .team-slider-wrapper .slick-list {
-    margin: 0 -8px;
+  .team-swiper {
+    width: 100%;
   }
 
   .scientist-card {
@@ -421,62 +446,77 @@
     font-size: 1rem;
   }
 
+  .scientist-overlay span {
+    font-size: 0.78rem;
+  }
+
   .team-slider-arrow {
     width: 44px;
     height: 44px;
   }
 
   .team-slider-arrow-left {
-    left: -25px !important;
+    left: -8px;
   }
 
   .team-slider-arrow-right {
-    right: -25px !important;
+    right: -8px;
   }
 
   .team-meet-section {
     flex-direction: column;
+
     margin-top: 28px;
+
     border-radius: 14px;
   }
 
   .team-meet-content {
     flex: 0 0 auto;
     max-width: 100%;
+
     padding: 28px 22px;
   }
 
   .team-meet-image-wrap {
     flex: 0 0 auto;
     max-width: 100%;
+    width: 100%;
   }
 
   .team-meet-image {
     min-height: 220px;
   }
+
 }
+
 
 /* =========================================================
    SMALL MOBILE
 ========================================================= */
 
 @media (max-width: 430px) {
+
   .team-slider-arrow {
     width: 40px;
     height: 40px;
   }
 
   .team-slider-arrow-left {
-    left: 8px;
+    left: 6px;
   }
 
   .team-slider-arrow-right {
-    right: 8px;
+    right: 6px;
   }
 
   .team-slider-arrow svg {
     width: 20px;
     height: 20px;
+  }
+
+  .scientist-card {
+    height: 340px;
   }
 
   .team-meet-title {
@@ -486,4 +526,5 @@
   .team-meet-image {
     min-height: 180px;
   }
+
 }

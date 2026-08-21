@@ -64,9 +64,36 @@
   overflow: hidden;
   border-radius: 16px;
   background: #e5e7eb;
-
   box-shadow:
     0 20px 50px rgba(15, 23, 42, 0.12);
+}
+
+/* =========================================
+   IMAGE CAROUSEL
+========================================= */
+
+.h-about-carousel {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* Carousel item should fill image box */
+
+.h-about-carousel .carousel-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+}
+
+/* =========================================
+   CAROUSEL ITEM
+========================================= */
+
+.h-about-carousel .carousel-item {
+  width: 100%;
+  height: 600px;
+  transition: transform 0.8s ease-in-out;
 }
 
 /* =========================================
@@ -77,15 +104,82 @@
   width: 100%;
   height: 100%;
   display: block;
-
   object-fit: cover;
   object-position: center;
-
   transition: transform 0.6s ease;
 }
 
+/* =========================================
+   IMAGE HOVER
+========================================= */
+
 .h-about-image-box:hover .h-about-main-image {
   transform: scale(1.03);
+}
+
+/* =========================================
+   CAROUSEL INDICATORS / DOTS
+========================================= */
+
+.h-about-carousel .carousel-indicators {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  margin: 0;
+
+  padding: 0;
+
+  z-index: 10;
+}
+
+/* Individual dots */
+
+.h-about-carousel .carousel-indicators [data-bs-target] {
+  width: 9px;
+  height: 9px;
+
+  margin: 0 5px;
+  padding: 0;
+
+  border: 0;
+  border-radius: 50%;
+
+  background-color: rgba(255, 255, 255, 0.55);
+
+  opacity: 1;
+
+  transition:
+    width 0.3s ease,
+    background-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+/* Active dot */
+
+.h-about-carousel .carousel-indicators .active {
+  width: 28px;
+  height: 9px;
+
+  border-radius: 20px;
+
+  background-color: #ffffff;
+}
+
+/* =========================================
+   HIDE CAROUSEL ARROWS
+========================================= */
+
+.h-about-carousel .carousel-control-prev,
+.h-about-carousel .carousel-control-next {
+  display: none;
 }
 
 /* =========================================
@@ -225,7 +319,6 @@
   border-radius: 50%;
 
   background: #eef4ff;
-
   color: #2563eb;
 }
 
@@ -277,7 +370,6 @@
 
 .h-about-btn {
   display: inline-flex;
-
   align-items: center;
   justify-content: center;
 
@@ -291,7 +383,6 @@
   border-radius: 8px;
 
   background: #0c2d63;
-
   color: #ffffff;
 
   font-size: 13px;
@@ -340,10 +431,13 @@
     height: 520px;
   }
 
+  .h-about-carousel .carousel-item {
+    height: 520px;
+  }
+
   .h-about-title {
     font-size: 2.7rem;
   }
-
 }
 
 /* =========================================
@@ -362,6 +456,10 @@
   }
 
   .h-about-image-box {
+    height: 470px;
+  }
+
+  .h-about-carousel .carousel-item {
     height: 470px;
   }
 
@@ -388,7 +486,6 @@
   .h-about-stat-label {
     font-size: 10px;
   }
-
 }
 
 /* =========================================
@@ -408,7 +505,9 @@
 
   .h-about-image-area {
     max-width: 750px;
+
     margin: 0 auto;
+
     padding-bottom: 35px;
   }
 
@@ -416,9 +515,15 @@
     height: 500px;
   }
 
+  .h-about-carousel .carousel-item {
+    height: 500px;
+  }
+
   .h-about-content {
     max-width: 100%;
+
     padding-left: 0;
+
     margin-top: 10px;
   }
 
@@ -436,6 +541,7 @@
 
   .h-about-stat {
     padding: 0 12px;
+
     gap: 9px;
   }
 
@@ -452,7 +558,6 @@
   .h-about-stat-label {
     font-size: 9px;
   }
-
 }
 
 /* =========================================
@@ -482,7 +587,42 @@
 
   .h-about-image-box {
     height: 400px;
+
     border-radius: 13px;
+  }
+
+  .h-about-carousel {
+    border-radius: 13px;
+  }
+
+  .h-about-carousel .carousel-inner {
+    border-radius: 13px;
+  }
+
+  .h-about-carousel .carousel-item {
+    height: 400px;
+  }
+
+  .h-about-main-image {
+    border-radius: 13px;
+  }
+
+  /* DOTS */
+
+  .h-about-carousel .carousel-indicators {
+    bottom: 14px;
+  }
+
+  .h-about-carousel .carousel-indicators [data-bs-target] {
+    width: 8px;
+    height: 8px;
+
+    margin: 0 4px;
+  }
+
+  .h-about-carousel .carousel-indicators .active {
+    width: 24px;
+    height: 8px;
   }
 
   /* CONTENT */
@@ -497,13 +637,17 @@
 
   .h-about-title {
     font-size: 2rem;
+
     line-height: 1.15;
+
     margin-bottom: 20px;
   }
 
   .h-about-text {
     font-size: 14px;
+
     line-height: 1.75;
+
     margin-bottom: 16px;
   }
 
@@ -554,7 +698,6 @@
     width: 100%;
     margin-top: 5px;
   }
-
 }
 
 /* =========================================
@@ -574,7 +717,28 @@
 
   .h-about-image-box {
     height: 330px;
+
     border-radius: 11px;
+  }
+
+  .h-about-carousel {
+    border-radius: 11px;
+  }
+
+  .h-about-carousel .carousel-inner {
+    border-radius: 11px;
+  }
+
+  .h-about-carousel .carousel-item {
+    height: 330px;
+  }
+
+  .h-about-main-image {
+    border-radius: 11px;
+  }
+
+  .h-about-carousel .carousel-indicators {
+    bottom: 12px;
   }
 
   .h-about-title {
@@ -593,7 +757,6 @@
   .h-about-stat-label {
     font-size: 10px;
   }
-
 }
 
 /* =========================================
@@ -611,6 +774,10 @@
     height: 285px;
   }
 
+  .h-about-carousel .carousel-item {
+    height: 285px;
+  }
+
   .h-about-title {
     font-size: 1.55rem;
   }
@@ -622,5 +789,4 @@
   .h-about-stat-value {
     font-size: 1.1rem;
   }
-
 }
