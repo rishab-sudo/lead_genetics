@@ -34,6 +34,28 @@ const newsData = [
       "Transforming India’s agri-tech landscape with end-to-end genomic innovations for superior livestock and crop development.",
     url: "https://agrospectrumindia.com/news/62/32657/leads-agri-genetics-launches-indias-first-privately-owned-integrated-centre-of-excellence-for-cattle-and-plant-genomics.html",
   },
+
+    {
+    title:
+      "India’s first IVF in 116 cows from Gir embryo by BL Agro subsidiary shows 65% success",
+    date: "19 March, 2026",
+    image: require("../assets/news/news1.jpeg"),
+    tag: "News Article",
+    description:
+      "Leads Genetics plans to perform embryo transfers in a total of 700 cows by the end of March",
+    url: "https://www.thehindubusinessline.com/economy/agri-business/indias-first-ivf-in-116-cows-from-gir-embryo-by-bl-agro-subsidiary-shows-65-success/article70761089.ece",
+  },
+
+    {
+    title:
+      "Baroda to Brazil and back Leads Genetics claims 60 pc success in Gir cattle embryo transfers",
+    date: "March 19, 2026",
+    image: require("../assets/news/news1.jpeg"),
+    tag: "News Article",
+    description:
+      "Elite Brazilian Gir cattle genetics back to India",
+    url: "https://www.theweek.in/wire-updates/business/2026/03/19/baroda-to-brazil-and-back-leads-genetics-claims-60-pc-success-in-gir-cattle-embryo-transfers.html",
+  },
 ];
 
 const NewsEvents = () => {
