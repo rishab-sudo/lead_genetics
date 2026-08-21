@@ -92,7 +92,7 @@ font-size: 14px;
   color: #fff;
   background: transparent;
 
-  border: 2px solid #fff;
+  border: 1px solid #fff !important;
 
   box-shadow: none;
 

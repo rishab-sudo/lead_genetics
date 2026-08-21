@@ -29,7 +29,7 @@ const IMAGE_STATS = [
     label: "Projects Completed",
   },
   {
-    icon: <Users size={18} />,
+    icon: <Beaker size={18} />,
     value: 6,
     suffix: "+",
     label: "In-house Technology Platforms",

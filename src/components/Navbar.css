@@ -220,6 +220,11 @@ body {
   color: #0dff0d;
 }
 
+.common-btn {
+  border-radius: 30px;
+width: fit-content;
+padding: 7px 25px;
+}
 /* ================= RESPONSIVE ================= */
 
 @media (max-width: 992px) {

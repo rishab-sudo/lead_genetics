@@ -160,13 +160,35 @@ const Team = () => {
 
         </div>
 
-        {/* ===== Full-width Horizontal Banner Image (same width as slider) ===== */}
-        <div className="team-banner-image">
-          <img
-            src={teamBannerImage}
-            alt="Our Team"
-            className="team-banner-img"
-          />
+        {/* ===== Meet Our Team Section (replaces old banner image) ===== */}
+        <div className="team-meet-section">
+          <div className="team-meet-content">
+            <h2 className="team-meet-title">Meet our Team</h2>
+
+            <p className="team-meet-text">
+              At Leads Genetics, our strength lies in a multidisciplinary team of
+              geneticists, embryologists, and veterinary scientists working together
+              to advance genomics-driven livestock breeding. From high-resolution
+              genomic selection to advanced IVF and MOET programs, our team
+              combines deep scientific expertise with hands-on field experience to
+              deliver measurable results for breeders and dairy farms across the
+              region.
+            </p>
+
+            <p className="team-meet-text">
+              Backed by a state-of-the-art lab and years of applied research, we're
+              committed to making cutting-edge reproductive genetics accessible
+              and practical for the livestock industry.
+            </p>
+          </div>
+
+          <div className="team-meet-image-wrap">
+            <img
+              src={teamBannerImage}
+              alt="Our Team"
+              className="team-meet-image"
+            />
+          </div>
         </div>
 
       </Container>

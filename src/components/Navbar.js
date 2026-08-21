@@ -78,7 +78,7 @@ const Navbar = () => {
         {/* RIGHT - BUTTON + HAMBURGER */}
         <div className="nav-right">
           <button className="common-btn nav-btn">
-            <span>Explore More</span>
+            <span>Get A Quote</span>
           </button>
 
           <button
@@ -141,7 +141,8 @@ const Navbar = () => {
         </ul>
 
         <button className="common-btn sidebar-btn">
-          <span>Explore More</span>
+          <span>Get A Quote
+</span>
         </button>
       </aside>
     </>

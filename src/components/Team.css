@@ -262,22 +262,65 @@
 }
 
 /* =========================================================
-   FULL-WIDTH HORIZONTAL BANNER IMAGE (below slider)
-   Width same as slider (Container width)
+   MEET OUR TEAM SECTION (replaces old full-width banner image)
+   White card, text left / image right — same width as slider
 ========================================================= */
 
-.team-banner-image {
+.team-meet-section {
+  display: flex;
+  align-items: stretch;
   width: 100%;
   margin-top: 40px;
+
+  background: #ffffff;
   border-radius: 8px;
   overflow: hidden;
+
   box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
 }
 
-.team-banner-img {
+.team-meet-content {
+  flex: 0 0 45%;
+  max-width: 50%;
+
+  padding: 56px 48px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.team-meet-title {
+  margin: 0 0 20px;
+
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.15;
+
+  color: #0f172a;
+}
+
+.team-meet-text {
+  color: #64748b;
+  line-height: 1.75;
+  font-size: 1rem;
+  margin: 0 0 18px;
+}
+
+.team-meet-text:last-child {
+  margin-bottom: 0;
+}
+
+.team-meet-image-wrap {
+  flex: 0 0 60%;
+  max-width: 60%;
+}
+
+.team-meet-image {
   display: block;
   width: 100%;
-  height: 100%;      /* apni pasand se adjust kar sakte hain */
+  height: 100%;
+  min-height: 420px;
   object-fit: cover;
 }
 
@@ -322,8 +365,16 @@
     right: -12px;
   }
 
-  .team-banner-img {
-    height: 320px;
+  .team-meet-content {
+    padding: 44px 36px;
+  }
+
+  .team-meet-title {
+    font-size: 2rem;
+  }
+
+  .team-meet-image {
+    min-height: 320px;
   }
 }
 
@@ -382,13 +433,25 @@
     right: 1px;
   }
 
-  .team-banner-image {
+  .team-meet-section {
+    flex-direction: column;
     margin-top: 28px;
     border-radius: 14px;
   }
 
-  .team-banner-img {
-    height: 220px;
+  .team-meet-content {
+    flex: 0 0 auto;
+    max-width: 100%;
+    padding: 28px 22px;
+  }
+
+  .team-meet-image-wrap {
+    flex: 0 0 auto;
+    max-width: 100%;
+  }
+
+  .team-meet-image {
+    min-height: 220px;
   }
 }
 
@@ -415,7 +478,11 @@
     height: 20px;
   }
 
-  .team-banner-img {
-    height: 180px;
+  .team-meet-title {
+    font-size: 1.6rem;
+  }
+
+  .team-meet-image {
+    min-height: 180px;
   }
 }

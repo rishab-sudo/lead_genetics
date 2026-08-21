@@ -66,7 +66,8 @@
 width: fit-content !important;
   border-radius: 999px;
 background: #fbfbfb;
-  border: 1px solid #0c2d63;
+  border: none;
+  background-color: #2564eb21;
 color: #0c2d63;
 margin-bottom: 7px;
  font-size: 9px;
