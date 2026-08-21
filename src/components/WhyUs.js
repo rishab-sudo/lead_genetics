@@ -114,11 +114,11 @@ const WhyUs = () => {
 
           {/* LEFT CONTENT */}
           <Col lg={5} md={12} className="whyus-heading-col">
-            <span className="whyus-eyebrow">
+            <span className="whyus-eyebrow ">
               Why choose us
             </span>
 
-            <h2 className="whyus-heading">
+            <h2 className="whyus-heading section-heading">
               Precision science,
               <br />
               trusted results

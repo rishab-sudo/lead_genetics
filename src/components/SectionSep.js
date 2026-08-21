@@ -17,7 +17,7 @@ const SectionSep = ({
       >
         <div className="section-overlay">
           <div className="section-content">
-            <h2>{title}</h2>
+            <h2 className="section-heading">{title}</h2>
 
             <p>{description}</p>
 

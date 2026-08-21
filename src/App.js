@@ -13,6 +13,7 @@ import AgriGenomics from "./pages/AgriGenomics";
 
 import ScrollTop from "./components/ScrollTop";
 import ScrollToTop from "./components/ScrollToTop";
+import "./App.css"
 
 function App() {
   return (

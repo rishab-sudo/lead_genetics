@@ -5,7 +5,8 @@ import "./NewsEvents.css";
 
 const newsData = [
   {
-    title: "Leads Agri Genetics Launches India’s 1st Privately-Owned Integrated CoE for Cattle & Plant Genomics",
+    title:
+      "Leads Agri Genetics Launches India’s 1st Privately-Owned Integrated CoE for Cattle & Plant Genomics",
     date: "September 30, 2025",
     image: require("../assets/news/news1.jpeg"),
     tag: "News Article",
@@ -14,7 +15,8 @@ const newsData = [
     url: "https://www.indianweb2.com/2025/09/leads-agri-genetics-launches-indias-1st.html",
   },
   {
-    title: "India, Brazil Seal Landmark Animal Genomics Partnership to Transform Global Dairy Future: A Strategic South-South Alliance for Global Food Security",
+    title:
+      "India, Brazil Seal Landmark Animal Genomics Partnership to Transform Global Dairy Future: A Strategic South-South Alliance for Global Food Security",
     date: "Dec 11 2025",
     image: require("../assets/news/news2.jpeg"),
     tag: "Research",
@@ -23,16 +25,15 @@ const newsData = [
     url: "https://www.business-standard.com/content/press-releases-ani/india-brazil-seal-landmark-animal-genomics-partnership-to-transform-global-dairy-future-a-strategic-south-south-alliance-for-global-food-security-125121101095_1.html",
   },
   {
-    title: "Leads Agri Genetics initiative is a giant leap in advancing India’s agricultural biotechnology and livestock genomics capabilities. ",
+    title:
+      "Leads Agri Genetics initiative is a giant leap in advancing India’s agricultural biotechnology and livestock genomics capabilities.",
     date: "29 Sep, 2025",
- image: require("../assets/news/news1.jpeg"),
+    image: require("../assets/news/news1.jpeg"),
     tag: "News Article",
     description:
       "Transforming India’s agri-tech landscape with end-to-end genomic innovations for superior livestock and crop development.",
     url: "https://agrospectrumindia.com/news/62/32657/leads-agri-genetics-launches-indias-first-privately-owned-integrated-centre-of-excellence-for-cattle-and-plant-genomics.html",
   },
-
-
 ];
 
 const NewsEvents = () => {
@@ -40,7 +41,6 @@ const NewsEvents = () => {
   const [visibleCards, setVisibleCards] = useState(3);
 
   /* ================= RESPONSIVE CARD COUNT ================= */
-
   useEffect(() => {
     const updateVisibleCards = () => {
       if (window.innerWidth <= 767) {
@@ -62,7 +62,6 @@ const NewsEvents = () => {
   }, []);
 
   /* ================= RESET INDEX ================= */
-
   useEffect(() => {
     const maxIndex = Math.max(newsData.length - visibleCards, 0);
 
@@ -72,7 +71,6 @@ const NewsEvents = () => {
   }, [visibleCards, currentIndex]);
 
   /* ================= NEXT SLIDE ================= */
-
   const nextSlide = () => {
     const maxIndex = Math.max(newsData.length - visibleCards, 0);
 
@@ -86,7 +84,6 @@ const NewsEvents = () => {
   };
 
   /* ================= PREVIOUS SLIDE ================= */
-
   const prevSlide = () => {
     const maxIndex = Math.max(newsData.length - visibleCards, 0);
 
@@ -100,7 +97,6 @@ const NewsEvents = () => {
   };
 
   /* ================= AUTO SLIDER ================= */
-
   useEffect(() => {
     if (newsData.length <= visibleCards) {
       return undefined;
@@ -124,7 +120,6 @@ const NewsEvents = () => {
   }, [visibleCards]);
 
   /* ================= CARD / ARROW CLICK ================= */
-
   const goToUrl = (url) => {
     if (!url) return;
 
@@ -138,14 +133,16 @@ const NewsEvents = () => {
   };
 
   const handleCardClick = (url) => (e) => {
-    // Prevent double navigation if the arrow (also clickable) was the target
+    // Prevent double navigation if arrow is clicked
     if (e.target.closest(".news-arrow")) return;
+
     goToUrl(url);
   };
 
   const handleArrowClick = (url) => (e) => {
     e.preventDefault();
     e.stopPropagation();
+
     goToUrl(url);
   };
 
@@ -167,15 +164,12 @@ const NewsEvents = () => {
     <section className="news-events-section">
       <Container>
         {/* ================= HEADER ================= */}
-
         <div className="news-header">
           <div className="news-heading-wrapper">
-            <span className="news-eyebrow">
-              LATEST UPDATES
-            </span>
+            <span className="news-eyebrow">LATEST UPDATES</span>
 
             <h2 className="news-title section-heading">
-               Insights from Leads Genetics  
+              Insights from Leads Genetics
             </h2>
 
             <p className="news-subtitle">
@@ -185,133 +179,115 @@ const NewsEvents = () => {
           </div>
 
           <div className="news-header-actions">
-            {/* <a
-              href="#news"
-              className="news-view-btn"
-            >
-              ALL NEWS
-            </a> */}
-
-            <div className="news-slider-controls">
-              <button
-                type="button"
-                className="news-control-btn"
-                onClick={prevSlide}
-                aria-label="Previous news"
-              >
-                <ArrowLeft
-                  size={17}
-                  strokeWidth={1.8}
-                />
-              </button>
-
-              <button
-                type="button"
-                className="news-control-btn"
-                onClick={nextSlide}
-                aria-label="Next news"
-              >
-                <ArrowRight
-                  size={17}
-                  strokeWidth={1.8}
-                />
-              </button>
-            </div>
+            {/* ALL NEWS BUTTON CAN BE ADDED HERE */}
           </div>
         </div>
 
         {/* ================= DIVIDER ================= */}
-
         <div className="news-divider"></div>
 
         {/* ================= SLIDER ================= */}
-
-        <div className="news-slider">
-          <div
-            className="news-slider-track"
-            style={{
-              transform: `translateX(-${
-                currentIndex * slidePercentage
-              }%)`,
-            }}
+        <div className="news-slider-wrapper">
+          {/* LEFT ARROW */}
+          <button
+            type="button"
+            className="news-slider-arrow news-slider-arrow-left"
+            onClick={prevSlide}
+            aria-label="Previous news"
           >
-            {newsData.map((item, index) => (
-              <div
-                className="news-slide"
-                key={`${item.title}-${index}`}
-                style={{
-                  flex: `0 0 ${slidePercentage}%`,
-                }}
-              >
-                <article
-                  className="news-card"
-                  role="link"
-                  tabIndex={0}
-                  onClick={handleCardClick(item.url)}
-                  onKeyDown={handleCardKeyDown(item.url)}
+            <ArrowLeft size={17} strokeWidth={1.8} />
+          </button>
+
+          <div className="news-slider">
+            <div
+              className="news-slider-track"
+              style={{
+                transform: `translateX(-${
+                  currentIndex * slidePercentage
+                }%)`,
+              }}
+            >
+              {newsData.map((item, index) => (
+                <div
+                  className="news-slide"
+                  key={`${item.title}-${index}`}
+                  style={{
+                    flex: `0 0 ${slidePercentage}%`,
+                  }}
                 >
+                  <article
+                    className="news-card"
+                    role="link"
+                    tabIndex={0}
+                    onClick={handleCardClick(item.url)}
+                    onKeyDown={handleCardKeyDown(item.url)}
+                  >
+                    {/* IMAGE */}
+                    <div className="news-image-wrapper">
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="news-image"
+                      />
 
-                  {/* IMAGE */}
-
-                  <div className="news-image-wrapper">
-                    <img
-                      src={item.image}
-                      alt={item.title}
-                      className="news-image"
-                    />
-
-                    <span className="news-tag">
-                      {item.tag}
-                    </span>
-                  </div>
-
-                  {/* CONTENT */}
-
-                  <div className="news-content">
-                    <h3>{item.title}</h3>
-
-                    <p className="news-description">
-                      {item.description}
-                    </p>
-
-                    {/* FOOTER */}
-
-                    <div className="news-footer">
-                      <span className="news-date">
-                        {item.date}
+                      <span className="news-tag">
+                        {item.tag}
                       </span>
-
-                      <a
-                        href={item.url}
-                        className="news-arrow"
-                        aria-label={`Read more about ${item.title}`}
-                        onClick={handleArrowClick(item.url)}
-                      >
-                        <ArrowRight
-                          size={17}
-                          strokeWidth={1.8}
-                        />
-                      </a>
                     </div>
-                  </div>
 
-                </article>
-              </div>
-            ))}
+                    {/* CONTENT */}
+                    <div className="news-content">
+                      <h3>{item.title}</h3>
+
+                      <p className="news-description">
+                        {item.description}
+                      </p>
+
+                      {/* FOOTER */}
+                      <div className="news-footer">
+                        <span className="news-date">
+                          {item.date}
+                        </span>
+
+                        <a
+                          href={item.url}
+                          className="news-arrow"
+                          aria-label={`Read more about ${item.title}`}
+                          onClick={handleArrowClick(item.url)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <ArrowRight
+                            size={17}
+                            strokeWidth={1.8}
+                          />
+                        </a>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              ))}
+            </div>
           </div>
+
+          {/* RIGHT ARROW */}
+          <button
+            type="button"
+            className="news-slider-arrow news-slider-arrow-right"
+            onClick={nextSlide}
+            aria-label="Next news"
+          >
+            <ArrowRight size={17} strokeWidth={1.8} />
+          </button>
         </div>
 
         {/* ================= SLIDER INDICATOR ================= */}
-
         <div className="news-slider-bottom">
-
           <div className="news-progress">
             <span
               style={{
                 width: `${
-                  ((currentIndex + 1) /
-                    totalSlides) *
-                  100
+                  ((currentIndex + 1) / totalSlides) * 100
                 }%`,
               }}
             ></span>
@@ -328,7 +304,6 @@ const NewsEvents = () => {
               {String(totalSlides).padStart(2, "0")}
             </span>
           </div>
-
         </div>
       </Container>
     </section>

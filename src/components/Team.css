@@ -1,6 +1,7 @@
 .team-scientists-section {
-  padding: 50px 0;
+  padding: 45px 0;
   background: rgba(234, 236, 238, 0.459) ;
+
 }
 
 /* ===== Top Bar ===== */
@@ -12,6 +13,7 @@
   align-items: flex-end;
   gap: 20px;
   margin-bottom: 40px;
+
 }
 
 /* ===== Heading ===== */

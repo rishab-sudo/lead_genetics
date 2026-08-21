@@ -4,11 +4,11 @@
 
 .key-clients-section {
   width: 100%;
-  padding: clamp(3.5rem, 6vw, 5rem) clamp(1.25rem, 4vw, 3rem);
+  padding: 50px 50px;
   background: #ffffff;
   overflow: hidden;
   box-sizing: border-box;
-  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+
 }
 
 .kc-container {
@@ -38,8 +38,8 @@
 }
 
 .kc-heading {
-  font-size: clamp(1.75rem, 3.2vw, 2.35rem);
-  font-weight: 800;
+
+
   line-height: 1.25;
   color: #0f172a;
   margin: 0 0 0.85rem;

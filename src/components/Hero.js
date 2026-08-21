@@ -1,6 +1,15 @@
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import React, {
+  useEffect,
+  useRef,
+  useState,
+  useCallback,
+} from "react";
 import { Link } from "react-router-dom";
-import { Leaf, FlaskConical, CirclePlus } from "lucide-react";
+import {
+  Leaf,
+  FlaskConical,
+  CirclePlus,
+} from "lucide-react";
 import "./Hero.css";
 
 const slides = [
@@ -46,8 +55,8 @@ const Hero = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [animate, setAnimate] = useState(true);
 
-  /* Mobile cards */
   const [activeCard, setActiveCard] = useState(0);
+
   const cardsRef = useRef(null);
   const autoSlideRef = useRef(null);
 
@@ -60,7 +69,10 @@ const Hero = () => {
       setAnimate(false);
 
       setTimeout(() => {
-        setActiveIndex((prev) => (prev + 1) % slides.length);
+        setActiveIndex(
+          (prev) => (prev + 1) % slides.length
+        );
+
         setAnimate(true);
       }, 600);
     }, 6500);
@@ -72,36 +84,35 @@ const Hero = () => {
      SCROLL TO ACTIVE CARD
   ========================================================= */
 
-  const scrollToCard = useCallback((index, smooth = true) => {
-    const container = cardsRef.current;
+  const scrollToCard = useCallback(
+    (index, smooth = true) => {
+      const container = cardsRef.current;
 
-    if (!container) return;
+      if (!container) return;
 
-    const cardElements =
-      container.querySelectorAll(".hero-card");
+      const cardElements =
+        container.querySelectorAll(".hero-card");
 
-    const card = cardElements[index];
+      const card = cardElements[index];
 
-    if (!card) return;
+      if (!card) return;
 
-    /*
-      Center card inside mobile container
-    */
+      const containerWidth = container.offsetWidth;
+      const cardWidth = card.offsetWidth;
 
-    const containerWidth = container.offsetWidth;
-    const cardWidth = card.offsetWidth;
+      const targetScroll =
+        card.offsetLeft -
+        (containerWidth - cardWidth) / 2;
 
-    const targetScroll =
-      card.offsetLeft -
-      (containerWidth - cardWidth) / 2;
+      container.scrollTo({
+        left: targetScroll,
+        behavior: smooth ? "smooth" : "auto",
+      });
 
-    container.scrollTo({
-      left: targetScroll,
-      behavior: smooth ? "smooth" : "auto",
-    });
-
-    setActiveCard(index);
-  }, []);
+      setActiveCard(index);
+    },
+    []
+  );
 
   /* =========================================================
      AUTO CARD SLIDER
@@ -113,7 +124,8 @@ const Hero = () => {
 
     autoSlideRef.current = setInterval(() => {
       setActiveCard((prev) => {
-        const nextIndex = (prev + 1) % cards.length;
+        const nextIndex =
+          (prev + 1) % cards.length;
 
         scrollToCard(nextIndex);
 
@@ -178,9 +190,6 @@ const Hero = () => {
 
         setActiveCard(closestIndex);
 
-        /*
-          Restart auto slider after manual swipe
-        */
         startAutoSlide();
       }, 120);
     };
@@ -210,9 +219,6 @@ const Hero = () => {
   const handleDotClick = (index) => {
     scrollToCard(index);
 
-    /*
-      Restart 2 sec timer after manual click
-    */
     startAutoSlide();
   };
 

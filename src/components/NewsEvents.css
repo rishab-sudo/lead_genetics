@@ -140,47 +140,6 @@ max-width: 100%;
 }
 
 /* =========================================================
-   SLIDER CONTROLS
-========================================================= */
-
-.news-slider-controls {
-  display: flex;
-  gap: 5px;
-}
-
-.news-control-btn {
-  width: 36px;
-  height: 36px;
-
-  padding: 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border: 1px solid #dfe3e8;
-  background: #ffffff;
-
-  color: #374151;
-
-  cursor: pointer;
-
-  transition:
-    background 0.3s ease,
-    color 0.3s ease,
-    border-color 0.3s ease,
-    transform 0.3s ease;
-}
-
-.news-control-btn:hover {
-  background: #111827;
-  color: #ffffff;
-  border-color: #111827;
-
-  transform: translateY(-2px);
-}
-
-/* =========================================================
    DIVIDER
 ========================================================= */
 
@@ -200,10 +159,12 @@ max-width: 100%;
    SLIDER
 ========================================================= */
 
-.news-slider {
+.news-slider-wrapper {
   position: relative;
   z-index: 2;
+}
 
+.news-slider {
   width: 100%;
 
   overflow: hidden;
@@ -211,19 +172,64 @@ max-width: 100%;
 
 .news-slider-track {
   display: flex;
-
-  width: 100%;
-
-  margin-left: -12px;
-  margin-right: -12px;
-
-  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+width: 100%;
+margin: auto;
+transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .news-slide {
   padding: 0 12px;
 
   box-sizing: border-box;
+}
+
+/* =========================================================
+   SLIDER ARROWS (LEFT / RIGHT, VERTICALLY CENTERED)
+========================================================= */
+
+.news-slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+border-radius: 50%;
+  width: 45px;
+  height: 45px;
+
+  padding: 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #dfe3e8;
+  background: #ffffff;
+
+  color: #374151;
+
+  cursor: pointer;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.news-slider-arrow:hover {
+  background: #0c2d63;
+  color: #ffffff;
+  border-color: #111827;
+
+  transform: translateY(-50%) translateY(-2px);
+}
+
+.news-slider-arrow-left {
+  left: -15px;
+}
+
+.news-slider-arrow-right {
+  right: -15px;
 }
 
 /* =========================================================
@@ -570,6 +576,14 @@ cursor: pointer;
 
   .news-slider-bottom {
     margin-top: 20px;
+  }
+
+  .news-slider-arrow-left {
+    left: -10px;
+  }
+
+  .news-slider-arrow-right {
+    right: -10px;
   }
 }
 

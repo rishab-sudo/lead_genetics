@@ -121,10 +121,10 @@ export default function Client() {
         
         {/* Section Header */}
         <div className="kc-header">
-          <span className="kc-tag">
+          {/* <span className="kc-tag">
             Our Key Clients & Partners
-          </span>
-          <h2 className="kc-heading">
+          </span> */}
+          <h2 className="kc-heading section-heading">
             Trusted by Leading Global & National Institutions
           </h2>
           <p className="kc-subheading">
