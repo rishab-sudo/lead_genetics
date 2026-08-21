@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Leaf, FlaskConical, CirclePlus } from "lucide-react";
 import "./Hero.css";
@@ -46,6 +46,15 @@ const Hero = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [animate, setAnimate] = useState(true);
 
+  /* Mobile cards */
+  const [activeCard, setActiveCard] = useState(0);
+  const cardsRef = useRef(null);
+  const autoSlideRef = useRef(null);
+
+  /* =========================================================
+     HERO TEXT AUTO SLIDER
+  ========================================================= */
+
   useEffect(() => {
     const interval = setInterval(() => {
       setAnimate(false);
@@ -59,17 +68,169 @@ const Hero = () => {
     return () => clearInterval(interval);
   }, []);
 
+  /* =========================================================
+     SCROLL TO ACTIVE CARD
+  ========================================================= */
+
+  const scrollToCard = (index, smooth = true) => {
+    const container = cardsRef.current;
+
+    if (!container) return;
+
+    const cardElements =
+      container.querySelectorAll(".hero-card");
+
+    const card = cardElements[index];
+
+    if (!card) return;
+
+    /*
+      Center card inside mobile container
+    */
+
+    const containerWidth = container.offsetWidth;
+    const cardWidth = card.offsetWidth;
+
+    const targetScroll =
+      card.offsetLeft -
+      (containerWidth - cardWidth) / 2;
+
+    container.scrollTo({
+      left: targetScroll,
+      behavior: smooth ? "smooth" : "auto",
+    });
+
+    setActiveCard(index);
+  };
+
+  /* =========================================================
+     AUTO CARD SLIDER
+     Every 2 seconds
+  ========================================================= */
+
+  const startAutoSlide = () => {
+    clearInterval(autoSlideRef.current);
+
+    autoSlideRef.current = setInterval(() => {
+      setActiveCard((prev) => {
+        const nextIndex = (prev + 1) % cards.length;
+
+        scrollToCard(nextIndex);
+
+        return nextIndex;
+      });
+    }, 2000);
+  };
+
+  /* =========================================================
+     START AUTO SLIDER
+  ========================================================= */
+
+  useEffect(() => {
+    startAutoSlide();
+
+    return () => {
+      clearInterval(autoSlideRef.current);
+    };
+  }, []);
+
+  /* =========================================================
+     DETECT MANUAL SWIPE
+  ========================================================= */
+
+  useEffect(() => {
+    const container = cardsRef.current;
+
+    if (!container) return;
+
+    let scrollTimeout;
+
+    const handleScroll = () => {
+      clearTimeout(scrollTimeout);
+
+      scrollTimeout = setTimeout(() => {
+        const cardElements =
+          container.querySelectorAll(".hero-card");
+
+        if (!cardElements.length) return;
+
+        const containerCenter =
+          container.scrollLeft +
+          container.offsetWidth / 2;
+
+        let closestIndex = 0;
+        let closestDistance = Infinity;
+
+        cardElements.forEach((card, index) => {
+          const cardCenter =
+            card.offsetLeft +
+            card.offsetWidth / 2;
+
+          const distance = Math.abs(
+            containerCenter - cardCenter
+          );
+
+          if (distance < closestDistance) {
+            closestDistance = distance;
+            closestIndex = index;
+          }
+        });
+
+        setActiveCard(closestIndex);
+
+        /*
+          Restart auto slider after manual swipe
+        */
+        startAutoSlide();
+      }, 120);
+    };
+
+    container.addEventListener(
+      "scroll",
+      handleScroll,
+      {
+        passive: true,
+      }
+    );
+
+    return () => {
+      container.removeEventListener(
+        "scroll",
+        handleScroll
+      );
+
+      clearTimeout(scrollTimeout);
+    };
+  }, []);
+
+  /* =========================================================
+     DOT CLICK
+  ========================================================= */
+
+  const handleDotClick = (index) => {
+    scrollToCard(index);
+
+    /*
+      Restart 2 sec timer after manual click
+    */
+    startAutoSlide();
+  };
+
   const currentSlide = slides[activeIndex];
 
   return (
     <section className="hero">
 
-      {/* VIDEO BACKGROUND */}
+      {/* =====================================================
+          VIDEO BACKGROUND
+      ===================================================== */}
+
       <video
         autoPlay
         muted
         loop
         playsInline
+        preload="auto"
         className="hero-video"
       >
         <source
@@ -78,20 +239,27 @@ const Hero = () => {
         />
       </video>
 
-      {/* VIDEO OVERLAY */}
+      {/* =====================================================
+          DARK OVERLAY
+      ===================================================== */}
+
       <div className="hero-overlay"></div>
+
+      {/* =====================================================
+          CONTENT
+      ===================================================== */}
 
       <div className="hero-container">
 
-        {/* HERO TEXT */}
-          {/* <div className="hero-badge">
-            LEADS GENETICS
-          </div> */}
-        <div className={`hero-text ${animate ? "show" : "hide"}`}>
+        {/* ===================================================
+            HERO TEXT
+        =================================================== */}
 
-          {/* STATIC BADGE - NO ANIMATION */}
-
-          {/* HERO HEADING */}
+        <div
+          className={`hero-text ${
+            animate ? "show" : "hide"
+          }`}
+        >
           <h1
             className="hero-heading"
             dangerouslySetInnerHTML={{
@@ -99,16 +267,19 @@ const Hero = () => {
             }}
           />
 
-          {/* HERO DESCRIPTION */}
           <p className="hero-description">
             {currentSlide.description}
           </p>
-
         </div>
 
-        {/* THREE GENOMICS CARDS */}
-        <div className="hero-cards">
+        {/* ===================================================
+            GENOMICS CARDS
+        =================================================== */}
 
+        <div
+          className="hero-cards"
+          ref={cardsRef}
+        >
           {cards.map((card, index) => (
             <Link
               key={index}
@@ -117,19 +288,47 @@ const Hero = () => {
             >
               <div className="hero-card-content">
 
-                {/* ICON */}
-                <div className={`hero-icon ${card.color}`}>
+                <div
+                  className={`hero-icon ${card.color}`}
+                >
                   {card.icon}
                 </div>
 
-                {/* TEXT */}
                 <div className="hero-card-text">
+
                   <h3>{card.title}</h3>
-                  <span>Explore Services →</span>
+
+                  <span>
+                    Explore Services →
+                  </span>
+
                 </div>
 
               </div>
             </Link>
+          ))}
+        </div>
+
+        {/* ===================================================
+            MOBILE SLIDER INDICATORS
+        =================================================== */}
+
+        <div className="hero-card-indicators">
+
+          {cards.map((card, index) => (
+            <button
+              key={index}
+              type="button"
+              aria-label={`Show ${card.title}`}
+              className={`hero-card-dot ${
+                activeCard === index
+                  ? "active"
+                  : ""
+              }`}
+              onClick={() =>
+                handleDotClick(index)
+              }
+            />
           ))}
 
         </div>

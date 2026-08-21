@@ -1,18 +1,25 @@
-/* ================= FAQ SECTION ================= */
-.faq-section {
+/* =========================================================
+   FAQ SECTION
+========================================================= */
 
+.faq-section {
   padding: 5% 0;
   background: #f5f6f7;
   width: 100%;
   overflow: hidden;
 }
 
-/* ================= CENTER HEADING ================= */
+
+/* =========================================================
+   CENTER HEADER
+========================================================= */
+
 .faq-header-center {
   text-align: center;
   max-width: 760px;
-  margin: 0 auto 34px;
+  margin: 0 auto 40px;
 }
+
 .faq-divider {
   display: flex;
   align-items: center;
@@ -36,176 +43,599 @@
   margin: 0;
 }
 
-/* ================= SLIDER TOP RIGHT ================= */
-.faq-slider-top {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin-bottom: 24px;
-}
 
-/* ================= NAVIGATION BUTTONS ================= */
-.faq-nav-buttons {
-  display: flex;
-  gap: 12px;
-}
+/* =========================================================
+   SLICK SLIDER WRAPPER
+========================================================= */
 
-.faq-nav-btn {
-  width: 48px;
-  height: 48px;
-  border-radius: 14px;
-  border: 2px solid #d7dde8;
-  background: #ffffff;
-  color: #0c2d63;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
-}
-
-.faq-nav-btn:hover {
-  border-color: #0c2d63;
-  background: #0c2d63;
-  color: #ffffff;
-  transform: translateY(-2px);
-}
-
-/* ================= HORIZONTAL VIEWPORT ================= */
-.faq-scroll-viewport {
-  overflow: hidden;
+.faq-slider-wrapper {
+  position: relative;
   width: 100%;
 }
 
-/* Lock the viewport to exactly 3 cards on desktop */
-@media (min-width: 992px) {
-  .faq-scroll-viewport {
-    max-width: calc(3 * 320px + 2 * 28px); /* 1016px */
-    margin: 0 auto;
-  }
+
+/* =========================================================
+   SLICK BASE
+========================================================= */
+
+.faq-slider-wrapper .slick-slider {
+  position: relative;
+  width: 100%;
 }
 
-/* ================= CARD ROW ================= */
-.faq-scroll-wrapper {
+.faq-slider-wrapper .slick-list {
+  overflow: hidden;
+  margin: 0;
+}
+
+.faq-slider-wrapper .slick-track {
   display: flex;
-  gap: 28px;
-  padding: 10px 6px 18px;
-  will-change: transform;
+  align-items: stretch;
 }
 
-/* ================= CARDS ================= */
+.faq-slider-wrapper .slick-slide {
+  height: auto;
+}
+
+.faq-slider-wrapper .slick-slide > div {
+  height: 100%;
+}
+
+
+/* =========================================================
+   INDIVIDUAL SLIDE
+========================================================= */
+
+.faq-slide {
+  padding: 10px 14px 18px;
+  box-sizing: border-box;
+  height: auto;
+}
+
+
+/* =========================================================
+   FAQ CARD
+========================================================= */
+
 .faq-help-card {
-  flex: 0 0 320px;
   background: #ffffff;
+
   border: 1px solid #e5e9f2;
+
   border-radius: 18px;
+
   padding: 28px 24px;
+
   min-height: 320px;
+
+  height: 100%;
+
   display: flex;
   flex-direction: column;
+
   cursor: pointer;
-  transition: transform 0.35s ease, border-color 0.3s ease,
+
+  box-sizing: border-box;
+
+  transition:
+    transform 0.35s ease,
+    border-color 0.3s ease,
     box-shadow 0.3s ease;
-  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+
+  box-shadow:
+    0 4px 14px rgba(15, 23, 42, 0.06);
 }
+
+
+/* =========================================================
+   CARD HOVER
+========================================================= */
 
 .faq-help-card:hover {
   transform: translateY(-10px);
+
   border-color: #0c2d63;
-  box-shadow: 0 16px 34px rgba(12, 45, 99, 0.14);
+
+  box-shadow:
+    0 16px 34px rgba(12, 45, 99, 0.14);
 }
+
+
+/* =========================================================
+   CARD ICON
+========================================================= */
 
 .faq-card-icon {
   width: 68px;
   height: 68px;
+
   border-radius: 16px;
+
   background: #cccccc36;
+
   color: #4b5563;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   margin-bottom: 22px;
+
+  flex-shrink: 0;
+
   transition: all 0.3s ease;
 }
 
 .faq-help-card:hover .faq-card-icon {
   background: #0c2d63;
+
   color: #ffffff;
+
   transform: scale(1.08);
 }
 
+
+/* =========================================================
+   CARD TITLE
+========================================================= */
+
 .faq-card-title {
   font-size: 1.2rem;
+
   font-weight: 700;
+
   color: #0c2d63;
+
   line-height: 1.4;
-  margin-bottom: 14px;
+
+  margin: 0 0 14px;
 }
+
+
+/* =========================================================
+   CARD DESCRIPTION
+========================================================= */
 
 .faq-card-description {
   font-size: 0.95rem;
+
   line-height: 1.7;
+
   color: #4b5563;
-  margin-bottom: 22px;
+
+  margin: 0 0 22px;
+
   flex-grow: 1;
 }
 
+
+/* =========================================================
+   CARD LINK
+========================================================= */
+
 .faq-card-link {
   display: inline-flex;
+
   align-items: center;
+
   gap: 8px;
+
   font-size: 0.95rem;
+
   font-weight: 600;
-  color: #000;
+
+  color: #000000;
+
   border-bottom: 2px solid rgba(139, 197, 63, 0.45);
+
   width: fit-content;
+
   padding-bottom: 3px;
-  transition: all 0.3s ease;
+
+  transition:
+    color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .faq-help-card:hover .faq-card-link {
   color: #0c2d63;
+
   border-color: #0c2d63;
 }
 
-/* ================= RESPONSIVE ================= */
+
+/* =========================================================
+   CUSTOM SLICK ARROWS
+   LEFT + RIGHT
+   VERTICAL CENTER
+========================================================= */
+
+.faq-slick-arrow {
+  position: absolute;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  z-index: 100;
+
+  width: 50px;
+  height: 50px;
+
+  border-radius: 50%;
+
+  border: 2px solid #d7dde8;
+
+  background: #ffffff;
+
+  color: #0c2d63;
+
+  display: flex !important;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  margin: 0;
+
+  cursor: pointer;
+
+  outline: none;
+
+  box-shadow:
+    0 5px 18px rgba(15, 23, 42, 0.12);
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+
+/* Remove default slick arrow */
+
+.faq-slick-arrow::before {
+  display: none !important;
+}
+
+
+/* =========================================================
+   ARROW HOVER
+========================================================= */
+
+.faq-slick-arrow:hover {
+  background: #0c2d63;
+
+  color: #ffffff;
+
+  border-color: #0c2d63;
+
+  transform: translateY(-50%) scale(1.08);
+}
+
+
+/* =========================================================
+   ARROW FOCUS
+========================================================= */
+
+.faq-slick-arrow:focus {
+  outline: none;
+
+  background: #ffffff;
+
+  color: #0c2d63;
+}
+
+.faq-slick-arrow:focus:hover {
+  background: #0c2d63;
+
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   DESKTOP ARROW POSITION
+========================================================= */
+
+.faq-slick-prev {
+  left: -8px;
+}
+
+.faq-slick-next {
+  right: -8px;
+}
+
+
+/* =========================================================
+   DESKTOP SLIDER WIDTH
+========================================================= */
+
+@media (min-width: 1200px) {
+
+  .faq-slider-wrapper {
+    width: calc(100% - 70px);
+
+    margin: 0 auto;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1199px) {
+
+  .faq-slider-wrapper {
+    width: calc(100% - 60px);
+
+    margin: 0 auto;
+  }
+
+  .faq-slide {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .faq-slick-arrow {
+    width: 46px;
+    height: 46px;
+  }
+
+  .faq-slick-prev {
+    left: -8px;
+  }
+
+  .faq-slick-next {
+    right: -8px;
+  }
+}
+
+
+/* =========================================================
+   TABLET / SMALL LAPTOP
+========================================================= */
+
 @media (max-width: 991px) {
+
   .faq-section {
     padding: 72px 0;
   }
 
-  .faq-slider-top {
-    justify-content: center;
+  .faq-header-center {
+    margin-bottom: 34px;
+  }
+
+  .faq-slider-wrapper {
+    width: calc(100% - 55px);
+
+    margin: 0 auto;
+  }
+
+  .faq-slide {
+    padding: 10px 10px 18px;
+  }
+
+  .faq-slick-arrow {
+    width: 44px;
+    height: 44px;
+  }
+
+  .faq-slick-prev {
+    left: -18px;
+  }
+
+  .faq-slick-next {
+    right: -18px;
   }
 }
 
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
 @media (max-width: 576px) {
+
   .faq-section {
     padding: 60px 0;
   }
 
+
+  /* ---------------------------------------------------------
+     HEADER
+  --------------------------------------------------------- */
+
+  .faq-header-center {
+    padding: 0 15px;
+
+    margin-bottom: 28px;
+  }
+
   .faq-subtitle {
     font-size: 0.95rem;
+
+    line-height: 1.7;
   }
 
-  .faq-scroll-wrapper {
-    padding-left: 6vw;
-    padding-right: 6vw;
-    gap: 20px;
+
+  /* ---------------------------------------------------------
+     SLIDER WRAPPER
+  --------------------------------------------------------- */
+
+  .faq-slider-wrapper {
+
+    width: 100%;
+
+    margin: 0;
+
+    padding: 0;
   }
+
+
+  /* ---------------------------------------------------------
+     SLICK LIST
+  --------------------------------------------------------- */
+
+  .faq-slider-wrapper .slick-list {
+
+    width: 100%;
+
+    overflow: hidden;
+  }
+
+
+  /* ---------------------------------------------------------
+     ONE SLIDE
+  --------------------------------------------------------- */
+
+  .faq-slide {
+
+    padding: 10px 0 18px;
+
+    display: flex !important;
+
+    justify-content: center;
+
+    align-items: stretch;
+
+    box-sizing: border-box;
+  }
+
+
+  /* ---------------------------------------------------------
+     MOBILE CARD
+     95% WIDTH
+  --------------------------------------------------------- */
 
   .faq-help-card {
-    flex: 0 0 88vw;
-    padding: 24px 20px;
+
+    width: 90vw;
+
+    max-width: 95vw;
+
     min-height: 300px;
+
+    padding: 24px 15px;
+
+    border-radius: 18px;
+
+    margin: 0 auto;
   }
+
+
+  /* ---------------------------------------------------------
+     MOBILE TITLE
+  --------------------------------------------------------- */
 
   .faq-card-title {
+
     font-size: 1.08rem;
+
+    line-height: 1.4;
   }
 
+
+  /* ---------------------------------------------------------
+     MOBILE DESCRIPTION
+  --------------------------------------------------------- */
+
   .faq-card-description {
+
     font-size: 0.92rem;
+
+    line-height: 1.7;
   }
+
+
+  /* ---------------------------------------------------------
+     MOBILE ARROWS
+     VERTICAL CENTER OF CARD
+  --------------------------------------------------------- */
+
+  .faq-slick-arrow {
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 42px;
+
+    height: 42px;
+
+    border-width: 1px;
+
+    box-shadow:
+      0 5px 18px rgba(15, 23, 42, 0.16);
+  }
+
+
+  /* LEFT */
+
+  /* .faq-slick-prev {
+
+    left: 0 !important;
+  } */
+
+
+  /* RIGHT */
+
+  /* .faq-slick-next {
+
+    right: 0 !important;
+  } */
+
+
+  /* MOBILE HOVER */
+
+  .faq-slick-arrow:hover {
+
+    transform:
+      translateY(-50%)
+      scale(1.05);
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+  .faq-help-card {
+
+    width: 95vw;
+
+    max-width: 95vw;
+
+    min-height: 290px;
+
+    padding: 22px 18px;
+  }
+
+
+  .faq-slick-arrow {
+
+    width: 38px;
+
+    height: 38px;
+  }
+
+
+  .faq-slick-prev {
+
+    left: 0px;
+  }
+
+
+  .faq-slick-next {
+
+    right: 0px;
+  }
+
 }

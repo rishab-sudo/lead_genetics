@@ -1,18 +1,22 @@
 import React from "react";
 import "./Partners.css";
 
-// Import all 11 client logos
+// Import all 15 partner logos from assets/key
 import logo1 from "../assets/key/logo1.jpg";
-import logo2 from "../assets/key/logo2.jpg";
-import logo3 from "../assets/key/logo3.jpg";
 import logo4 from "../assets/key/logo4.jpg";
 import logo5 from "../assets/key/logo5.jpg";
 import logo6 from "../assets/key/logo6.jpg";
-import logo7 from "../assets/key/logo7.jpg";
 import logo8 from "../assets/key/logo8.jpg";
 import logo9 from "../assets/key/logo9.jpg";
-import logo10 from "../assets/key/logo10.jpg";
 import logo11 from "../assets/key/logo11.jpg";
+import logo12 from "../assets/key/logo12.jpg";
+import logo13 from "../assets/key/logo13.jpg";
+import logo14 from "../assets/key/logo14.jpg";
+import logo15 from "../assets/key/logo15.png";
+import logo16 from "../assets/key/logo16.png";
+import logo17 from "../assets/key/logo17.jpg";
+import logo18 from "../assets/key/logo18.jpg";
+import logo19 from "../assets/key/logo19.jpg";
 
 const CLIENTS = [
   {
@@ -23,63 +27,87 @@ const CLIENTS = [
   },
   {
     id: 2,
-    name: "University of Oxford",
-    description: "Global Academic Collaboration in Genomic Sciences and Molecular Biology",
-    logo: logo2,
+    name: "ICMR",
+    description: "Indian Council of Medical Research — Apex Body for Biomedical & Clinical Research",
+    logo: logo12,
   },
   {
     id: 3,
-    name: "Vanderbilt University",
-    description: "Collaborative Research in Genetics, Life Sciences, and Translational Medicine",
-    logo: logo3,
+    name: "CSIR - CCMB",
+    description: "Centre for Cellular and Molecular Biology — Pioneer in Genomics & Modern Biology",
+    logo: logo13,
   },
   {
     id: 4,
+    name: "DBT",
+    description: "Department of Biotechnology, Govt of India — National Genomics Initiatives",
+    logo: logo16,
+  },
+  {
+    id: 5,
+    name: "BARC",
+    description: "Bhabha Atomic Research Centre — Premier Nuclear & Bioscience Research",
+    logo: logo14,
+  },
+  {
+    id: 6,
+    name: "DRDO",
+    description: "Defence Research and Development Organisation — Life Sciences & Health Technologies",
+    logo: logo15,
+  },
+  {
+    id: 7,
+    name: "ICAR",
+    description: "Indian Council of Agricultural Research — National Livestock & Crop Genomics",
+    logo: logo19,
+  },
+  {
+    id: 8,
     name: "ICGEB",
     description: "International Centre for Genetic Engineering and Biotechnology",
     logo: logo4,
   },
   {
-    id: 5,
-    name: "ITC Limited",
-    description: "Agri-Business & Sustainable Crop Value Chain Genomic Initiatives",
-    logo: logo5,
-  },
-  {
-    id: 6,
-    name: "Jawaharlal Nehru University",
-    description: "School of Biotechnology & Life Sciences Research Partnership",
-    logo: logo6,
-  },
-  {
-    id: 7,
-    name: "Queen's University",
-    description: "International Research Collaboration in Molecular Genetics",
-    logo: logo7,
-  },
-  {
-    id: 8,
+    id: 9,
     name: "IISc Bangalore",
     description: "Indian Institute of Science — Frontier Genomic Research & Bioinformatics",
     logo: logo8,
   },
   {
-    id: 9,
+    id: 10,
+    name: "IVRI",
+    description: "Indian Veterinary Research Institute — National Pioneer in Veterinary & Animal Genetics",
+    logo: logo17,
+  },
+  {
+    id: 11,
+    name: "ICAR - CIRB",
+    description: "Central Institute for Research on Buffaloes — Bovine & Livestock Genetics",
+    logo: logo18,
+  },
+  {
+    id: 12,
+    name: "THSTI",
+    description: "Translational Health Science and Technology Institute — Clinical Genomics",
+    logo: logo11,
+  },
+  {
+    id: 13,
     name: "NBRC",
     description: "National Brain Research Centre — Neurogenomics & Molecular Diagnostics",
     logo: logo9,
   },
   {
-    id: 10,
-    name: "ICAR",
-    description: "Indian Council of Agricultural Research — National Livestock & Crop Genomics",
-    logo: logo10,
+    id: 14,
+    name: "Jawaharlal Nehru University",
+    description: "School of Biotechnology & Life Sciences Research Partnership",
+    logo: logo6,
   },
   {
-    id: 11,
-    name: "THSTI",
-    description: "Translational Health Science and Technology Institute — Clinical Genomics",
-    logo: logo11,
+    id: 15,
+    name: "ITC Limited",
+    description: "Agri-Business & Sustainable Crop Value Chain Genomic Initiatives",
+    logo: logo5,
   },
 ];
 

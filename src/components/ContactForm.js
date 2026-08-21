@@ -8,17 +8,20 @@ const locations = [
     id: 1,
     city: "Bareilly Headquarters",
     address:
-      "123, Research Park, Bareilly, Uttar Pradesh - 243001",
-    phone: "+91 98765 43210",
-    email: "bareilly@leadsgenetics.com",
+      "B-31, Road No. 2, Parsakhera Industrial Area, C.B. Ganj, Bareilly, Uttar Pradesh 243502",
+    phone: "+91 73111 49681",
+    email: "Info@leadsgenetics.com",
+    mapUrl: "https://maps.app.goo.gl/DJgKQ2rgvhQxFBo29",
   },
   {
     id: 2,
-    city: "Lucknow Hub",
+    city: "Noida Hub",
     address:
-      "456, Innovation Centre, Gomti Nagar, Lucknow, Uttar Pradesh - 226010",
-    phone: "+91 98765 43211",
-    email: "lucknow@leadsgenetics.com",
+      "1ST FLOOR, PLOT NO. 014, Udyog Vihar Extension, Ecotech-II, Udyog Vihar, Greater Noida, Uttar Pradesh 201306",
+    phone: "063899 13132",
+    email: "Info@leadsgenetics.com",
+    mapUrl:
+      "https://www.google.com/maps/search/1ST+FLOOR,+PLOT+NO.+014,+Udyog+Vihar+Extension,+Ecotech-II,+Udyog+Vihar,+Greater+Noida,+Uttar+Pradesh+201306/@28.5467551,77.4232461,14z?entry=ttu&g_ep=EgoyMDI2MDgxNy4wIKXMDSoASAFQAw%3D%3D",
   },
 ];
 
@@ -120,7 +123,7 @@ const ContactForm = () => {
 
           {/* Contact Information */}
           <div className="contact-right">
-            <h3>Contact Information</h3>
+            <h3 className="section-heading">Contact Information</h3>
 
             <p>
               Reach out to our genomics experts for consultations,
@@ -136,8 +139,12 @@ const ContactForm = () => {
                   </div>
                   <div>
                     <h4>Phone</h4>
-                    <a href="tel:+919876543210">
-                      +91 98765 43210
+                    <a href="tel:+917311149681">
+                      +91 73111 49681
+                    </a>
+                    <br />
+                    <a href="tel:+916389913132">
+                      063899 13132
                     </a>
                   </div>
                 </div>
@@ -150,8 +157,8 @@ const ContactForm = () => {
                   </div>
                   <div>
                     <h4>Email</h4>
-                    <a href="mailto:info@leadsgenetics.com">
-                      info@leadsgenetics.com
+                    <a href="mailto:Info@leadsgenetics.com">
+                      Info@leadsgenetics.com
                     </a>
                   </div>
                 </div>
@@ -163,10 +170,13 @@ const ContactForm = () => {
                     <FaMapMarkerAlt />
                   </div>
                   <div>
-                    <h4>Address</h4>
+                    <h4>Headquarters (Bareilly)</h4>
                     <p>
-                      Leads Genetics <br />
-                      Bareilly, Uttar Pradesh, India
+                      B-31, Road No. 2, Parsakhera Industrial Area, C.B. Ganj, Bareilly, Uttar Pradesh 243502
+                    </p>
+                    <h4 style={{ marginTop: "12px" }}>Noida Hub</h4>
+                    <p>
+                      1ST FLOOR, PLOT NO. 014, Udyog Vihar Extension, Ecotech-II, Udyog Vihar, Greater Noida, Uttar Pradesh 201306
                     </p>
                   </div>
                 </div>
@@ -177,8 +187,8 @@ const ContactForm = () => {
             {/* Google Maps */}
             <div className="map-container">
               <iframe
-                title="Leads Genetics"
-                src="https://www.google.com/maps?q=Bareilly,Uttar+Pradesh&output=embed"
+                title="Leads Genetics Headquarters"
+                src="https://maps.google.com/maps?q=B-31%2C+Road+No.+2%2C+Parsakhera+Industrial+Area%2C+C.B.+Ganj%2C+Bareilly%2C+Uttar+Pradesh+243502&t=&z=14&ie=UTF8&iwloc=&output=embed"
                 loading="lazy"
                 allowFullScreen
                 referrerPolicy="no-referrer-when-downgrade"
@@ -190,7 +200,7 @@ const ContactForm = () => {
           {/* Contact Form */}
           <div className="contact-left">
             <div className="contact-heading">
-              <h2>Please Fill Out the Form</h2>
+              <h2 className="section-heading">Please Fill Out the Form</h2>
               <p>
                 Have a question regarding our genomics services? We'd love to
                 hear from you.
@@ -263,7 +273,7 @@ const ContactForm = () => {
 
           <div className="locations-heading">
             <span>Our Locations</span>
-            <h2>Visit Our Genomics Hubs</h2>
+            <h2 className="section-heading">Visit Our Genomics Hubs</h2>
             <p>
               We are expanding precision genomics across India through our
               research and diagnostic centers.
@@ -293,7 +303,7 @@ const ContactForm = () => {
                 </div>
 
                 <a
-                  href="https://maps.app.goo.gl/YDrRKUbqp7qmtowV9"
+                  href={office.mapUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="direction-btn"

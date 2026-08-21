@@ -64,22 +64,57 @@
   overflow: hidden;
 }
 
+.team-slider-wrapper .slick-slide:focus,
+.team-slider-wrapper .slick-slide *:focus {
+  outline: none;
+}
+
+.team-slider-wrapper .slick-track {
+  display: flex !important;
+  align-items: stretch;
+}
+
+.team-slider-wrapper .slick-slide {
+  height: auto;
+}
+
+.team-slider-wrapper .slick-slide > div {
+  height: 100%;
+}
+
 /* =========================================================
-   LEFT / RIGHT ARROWS
+   SLICK SPACING
+========================================================= */
+
+.team-slide {
+  padding: 0 12px;
+  height: 100%;
+}
+
+.team-slider-wrapper .slick-list {
+  margin: 0 -12px;
+  overflow: hidden;
+}
+
+/* =========================================================
+   LEFT / RIGHT ARROWS — white circle, shadow, vertically centered
 ========================================================= */
 
 .team-slider-arrow {
   position: absolute;
   top: 50%;
+  left: auto;
+  right: auto;
   transform: translateY(-50%);
 
   width: 52px;
   height: 52px;
+  flex-shrink: 0;
 
   border-radius: 50%;
-  border: 1px solid #dbe4f0;
+  border: none;
 
-  background: #fff;
+  background: #ffffff;
   color: #0f172a;
 
   display: flex;
@@ -87,17 +122,23 @@
   justify-content: center;
 
   cursor: pointer;
+  padding: 0;
+  line-height: 0;
 
   z-index: 20;
 
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.16);
+
   transition:
     background 0.35s ease,
-    border-color 0.35s ease,
     color 0.35s ease,
     transform 0.35s ease,
     box-shadow 0.35s ease;
+}
 
-  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+.team-slider-arrow svg {
+  display: block;
+  margin: 0 auto;
 }
 
 /* LEFT */
@@ -116,10 +157,9 @@
 
 .team-slider-arrow:hover {
   background: #0c2d63;
-  border-color: #0c2d63;
   color: #fff;
 
-  box-shadow: 0 14px 30px rgba(47, 133, 90, 0.28);
+  box-shadow: 0 14px 30px rgba(12, 45, 99, 0.32);
 }
 
 .team-slider-arrow-left:hover {
@@ -130,17 +170,10 @@
   transform: translateY(-50%) translateX(3px);
 }
 
-/* =========================================================
-   SLICK SPACING
-========================================================= */
+/* ACTIVE / CLICK feedback */
 
-.team-slide {
-  padding: 0 12px;
-}
-
-.team-slider-wrapper .slick-list {
-  margin: 0 -12px;
-  overflow: hidden;
+.team-slider-arrow:active {
+  transform: translateY(-50%) scale(0.94);
 }
 
 /* =========================================================
@@ -318,11 +351,11 @@
   }
 
   .team-slider-arrow-left {
-    left: 5px;
+    left: 1px;
   }
 
   .team-slider-arrow-right {
-    right: 5px;
+    right: 1px;
   }
 }
 

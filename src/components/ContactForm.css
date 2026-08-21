@@ -73,7 +73,7 @@
   height: 56px;
   min-width: 56px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #2563eb, #2563eb);
+  background: linear-gradient(135deg, #0c2d63, #0c2d63);
   color: #fff;
   display: flex;
   align-items: center;
@@ -98,7 +98,7 @@
 }
 
 .info-item a:hover {
-  color: #2563eb;
+  color: #0c2d63;
 }
 
 /* ==========================
@@ -194,7 +194,7 @@
   padding: 16px;
   border: none;
   border-radius: 12px;
-  background: linear-gradient(135deg, #2563eb, #2563eb);
+  background: linear-gradient(135deg, #0c2d63, #0c2d63);
   color: #fff;
   font-size: 16px;
   font-weight: 600;
@@ -356,10 +356,11 @@
     padding:14px;
     border:none;
     border-radius:12px;
-    background:linear-gradient(135deg,#2563eb,#2563eb);
+    background:linear-gradient(135deg,#0c2d63,#0c2d63);
     color:#fff;
     cursor:pointer;
     font-weight:600;
+    text-decoration: none !important;
 }
 
 @media(max-width:900px){

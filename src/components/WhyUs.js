@@ -13,7 +13,7 @@ const points = [
   },
   {
     title: "Accredited & compliant",
-    desc: "NABL, ISO, ICMR and CAP-aligned quality standards, end to end.",
+    desc: "NABL, ISO, and CAP-aligned quality standards, end to end.",
   },
   {
     title: "1958+ projects delivered",

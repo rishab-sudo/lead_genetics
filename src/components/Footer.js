@@ -84,7 +84,7 @@ export default function Footer() {
               <a href="https://www.linkedin.com/company/leads-genetics-1/" aria-label="LinkedIn" target="_blank" rel="noreferrer">
                 <Linkedin size={18} />
               </a>
-              <a href="mailto:hello@leadsgenetics.com" aria-label="Email">
+              <a href="mailto:Info@leadsgenetics.com" aria-label="Email">
                 <Mail size={18} />
               </a>
             </div>
@@ -100,13 +100,18 @@ export default function Footer() {
               <li><a href="/contact">Request consultation</a></li>
               <li><a href="/contact">Locations</a></li>
               <li>
-                <a href="mailto:hello@leadsgenetics.com" className="footer-contact-line">
-                  <Mail size={14} /> hello@leadsgenetics.com
+                <a href="mailto:Info@leadsgenetics.com" className="footer-contact-line">
+                  <Mail size={14} /> Info@leadsgenetics.com
                 </a>
               </li>
               <li>
-                <a href="tel:+910000000000" className="footer-contact-line">
-                  <Phone size={14} /> +91 00000 00000
+                <a href="tel:+917311149681" className="footer-contact-line">
+                  <Phone size={14} /> +91 73111 49681
+                </a>
+              </li>
+              <li>
+                <a href="tel:+916389913132" className="footer-contact-line">
+                  <Phone size={14} /> 063899 13132
                 </a>
               </li>
             </ul>

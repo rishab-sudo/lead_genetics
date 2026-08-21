@@ -56,29 +56,41 @@ const Team = () => {
     pauseOnHover: true,
     cssEase: "ease-in-out",
 
+    // ✅ Center alignment
+    centerMode: true,
+    centerPadding: "0px",
+
     responsive: [
       {
         breakpoint: 1200,
         settings: {
           slidesToShow: 3,
+          centerMode: true,
+          centerPadding: "0px",
         },
       },
       {
         breakpoint: 992,
         settings: {
           slidesToShow: 2,
+          centerMode: true,
+          centerPadding: "0px",
         },
       },
       {
         breakpoint: 768,
         settings: {
           slidesToShow: 1,
+          centerMode: true,
+          centerPadding: "0px", // single centered card, no peek
         },
       },
       {
         breakpoint: 430,
         settings: {
           slidesToShow: 1,
+          centerMode: true,
+          centerPadding: "0px", // single centered card, no peek
         },
       },
     ],
