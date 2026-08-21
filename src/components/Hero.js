@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { Leaf, FlaskConical, CirclePlus } from "lucide-react";
 import "./Hero.css";
@@ -72,7 +72,7 @@ const Hero = () => {
      SCROLL TO ACTIVE CARD
   ========================================================= */
 
-  const scrollToCard = (index, smooth = true) => {
+  const scrollToCard = useCallback((index, smooth = true) => {
     const container = cardsRef.current;
 
     if (!container) return;
@@ -101,14 +101,14 @@ const Hero = () => {
     });
 
     setActiveCard(index);
-  };
+  }, []);
 
   /* =========================================================
      AUTO CARD SLIDER
      Every 2 seconds
   ========================================================= */
 
-  const startAutoSlide = () => {
+  const startAutoSlide = useCallback(() => {
     clearInterval(autoSlideRef.current);
 
     autoSlideRef.current = setInterval(() => {
@@ -120,7 +120,7 @@ const Hero = () => {
         return nextIndex;
       });
     }, 2000);
-  };
+  }, [scrollToCard]);
 
   /* =========================================================
      START AUTO SLIDER
@@ -132,7 +132,7 @@ const Hero = () => {
     return () => {
       clearInterval(autoSlideRef.current);
     };
-  }, []);
+  }, [startAutoSlide]);
 
   /* =========================================================
      DETECT MANUAL SWIPE
@@ -201,7 +201,7 @@ const Hero = () => {
 
       clearTimeout(scrollTimeout);
     };
-  }, []);
+  }, [startAutoSlide]);
 
   /* =========================================================
      DOT CLICK
