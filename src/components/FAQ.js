@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Container } from "react-bootstrap";
-import Slider from "react-slick";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
 import {
   Download,
   FileText,
@@ -12,8 +13,7 @@ import {
   ShieldCheck,
 } from "lucide-react";
 
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import "swiper/css";
 import "./FAQ.css";
 
 const faqCards = [
@@ -113,76 +113,7 @@ const PrevArrow = ({ onClick }) => {
 ========================================================= */
 
 const FAQ = () => {
-
-  const settings = {
-    dots: false,
-
-    infinite: true,
-
-    speed: 600,
-
-    slidesToShow: 3,
-
-    slidesToScroll: 1,
-
-    autoplay: true,
-
-    autoplaySpeed: 3000,
-
-    pauseOnHover: true,
-
-    pauseOnFocus: true,
-
-    swipe: true,
-
-    draggable: true,
-
-    touchMove: true,
-
-    centerMode: false,
-
-    arrows: true,
-
-    nextArrow: <NextArrow />,
-
-    prevArrow: <PrevArrow />,
-
-    responsive: [
-      {
-        breakpoint: 991,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          centerMode: false,
-        },
-      },
-
-      {
-        breakpoint: 576,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-
-          centerMode: true,
-
-          centerPadding: "0px",
-
-          arrows: true,
-
-          autoplay: true,
-
-          autoplaySpeed: 3000,
-
-          speed: 600,
-
-          swipe: true,
-
-          touchMove: true,
-        },
-      },
-    ],
-  };
-
+  const sliderRef = useRef(null);
 
   return (
     <section className="faq-section">
@@ -219,20 +150,43 @@ const FAQ = () => {
 
 
         {/* =====================================================
-            REACT SLICK SLIDER
+            SWIPER SLIDER
         ===================================================== */}
 
         <div className="faq-slider-wrapper">
 
-          <Slider {...settings}>
+          <PrevArrow onClick={() => sliderRef.current.swiper.slidePrev()} />
 
+          <Swiper
+            ref={sliderRef}
+            modules={[Autoplay]}
+            loop={true}
+            speed={600}
+            slidesPerView={1}
+            slidesPerGroup={1}
+            spaceBetween={0}
+            centeredSlides={true}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+            simulateTouch={true}
+            breakpoints={{
+              577: {
+                slidesPerView: 2,
+                slidesPerGroup: 1,
+                centeredSlides: false,
+              },
+              992: {
+                slidesPerView: 3,
+                slidesPerGroup: 1,
+                centeredSlides: false,
+              },
+            }}
+          >
             {faqCards.map((card) => (
-
-              <div
-                className="faq-slide"
-                key={card.id}
-              >
-
+              <SwiperSlide className="faq-slide" key={card.id}>
                 <div className="faq-help-card">
 
                   <div className="faq-card-icon">
@@ -252,12 +206,11 @@ const FAQ = () => {
                   </span>
 
                 </div>
-
-              </div>
-
+              </SwiperSlide>
             ))}
+          </Swiper>
 
-          </Slider>
+          <NextArrow onClick={() => sliderRef.current.swiper.slideNext()} />
 
         </div>
 

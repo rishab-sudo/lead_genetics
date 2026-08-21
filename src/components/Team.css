@@ -425,11 +425,11 @@
   }
 
   .team-slider-arrow-left {
-    left: 1px;
+    left: -25px !important;
   }
 
   .team-slider-arrow-right {
-    right: 1px;
+    right: -25px !important;
   }
 
   .team-meet-section {

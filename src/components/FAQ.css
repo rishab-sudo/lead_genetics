@@ -293,6 +293,14 @@
     transform 0.3s ease;
 }
 
+.faq-slick-prev {
+  left: -25px !important;   /* jitna zyada negative, utna zyada left */
+}
+
+.faq-slick-next {
+  right: -25px;  /* jitna zyada negative, utna zyada right */
+}
+
 
 /* Remove default slick arrow */
 

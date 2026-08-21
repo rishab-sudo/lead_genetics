@@ -1,10 +1,10 @@
 import React, { useRef } from "react";
 import { Container } from "react-bootstrap";
-import Slider from "react-slick";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import "swiper/css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Team.css";
 
@@ -47,58 +47,6 @@ const teamBannerImage = require("../assets/team/group_team.jpeg");
 const Team = () => {
   const sliderRef = useRef(null);
 
-  const settings = {
-    dots: false,
-    arrows: false,
-    infinite: true,
-    speed: 700,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3500,
-    pauseOnHover: true,
-    cssEase: "ease-in-out",
-
-    // ✅ Center alignment
-    centerMode: true,
-    centerPadding: "0px",
-
-    responsive: [
-      {
-        breakpoint: 1200,
-        settings: {
-          slidesToShow: 3,
-          centerMode: true,
-          centerPadding: "0px",
-        },
-      },
-      {
-        breakpoint: 992,
-        settings: {
-          slidesToShow: 2,
-          centerMode: true,
-          centerPadding: "0px",
-        },
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-          centerMode: true,
-          centerPadding: "0px", // single centered card, no peek
-        },
-      },
-      {
-        breakpoint: 430,
-        settings: {
-          slidesToShow: 1,
-          centerMode: true,
-          centerPadding: "0px", // single centered card, no peek
-        },
-      },
-    ],
-  };
-
   return (
     <section className="team-scientists-section">
       <Container>
@@ -121,16 +69,53 @@ const Team = () => {
           {/* LEFT ARROW */}
           <button
             className="team-slider-arrow team-slider-arrow-left"
-            onClick={() => sliderRef.current.slickPrev()}
+            onClick={() => sliderRef.current.swiper.slidePrev()}
             aria-label="Previous team member"
           >
             <ChevronLeft size={24} />
           </button>
 
           {/* SLIDER */}
-          <Slider ref={sliderRef} {...settings}>
+          <Swiper
+            ref={sliderRef}
+            modules={[Autoplay]}
+            loop={true}
+            speed={700}
+            slidesPerView={1}
+            slidesPerGroup={1}
+            centeredSlides={true}
+            centeredSlidesBounds={true}
+            spaceBetween={0}
+            autoplay={{
+              delay: 3500,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true,
+            }}
+            breakpoints={{
+              431: {
+                slidesPerView: 1,
+                centeredSlides: true,
+              },
+              769: {
+                slidesPerView: 1,
+                centeredSlides: true,
+              },
+              993: {
+                slidesPerView: 2,
+                centeredSlides: true,
+              },
+              1201: {
+                slidesPerView: 3,
+                centeredSlides: true,
+              },
+              1301: {
+                slidesPerView: 4,
+                centeredSlides: true,
+              },
+            }}
+          >
             {scientists.map((scientist, index) => (
-              <div key={index} className="team-slide">
+              <SwiperSlide key={index} className="team-slide">
                 <div className="scientist-card">
 
                   <img
@@ -145,14 +130,14 @@ const Team = () => {
                   </div>
 
                 </div>
-              </div>
+              </SwiperSlide>
             ))}
-          </Slider>
+          </Swiper>
 
           {/* RIGHT ARROW */}
           <button
             className="team-slider-arrow team-slider-arrow-right"
-            onClick={() => sliderRef.current.slickNext()}
+            onClick={() => sliderRef.current.swiper.slideNext()}
             aria-label="Next team member"
           >
             <ChevronRight size={24} />
