@@ -6,7 +6,7 @@
 
 .whyus-section {
   --whyus-item-height: 125px;
-  --whyus-accent: #1d9e75;
+  --whyus-accent: #fff;
   --whyus-navy: #ffffff;
 
   position: relative;
@@ -217,7 +217,7 @@
 /* ACTIVE NUMBER = GREEN */
 
 .whyus-item-active .whyus-index {
-  color: #1d9e75;
+  color: #fff;
 }
 
 /* =========================================================

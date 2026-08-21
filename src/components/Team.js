@@ -41,6 +41,9 @@ const scientists = [
   },
 ];
 
+// 👉 Apni horizontal banner image yahan set karein
+const teamBannerImage = require("../assets/team/group_team.jpeg");
+
 const Team = () => {
   const sliderRef = useRef(null);
 
@@ -103,7 +106,7 @@ const Team = () => {
         {/* ===== Heading ===== */}
         <div className="team-top-bar">
           <div className="team-heading">
-            <h2 className="team-title section-heading">Our Team</h2>
+            <h2 className="team-title section-heading">Experts Behind Every Discovery</h2>
 
             <p className="team-subtitle">
    Meet the multidisciplinary experts bringing together genomics, bioinformatics, molecular science, and 
@@ -155,6 +158,15 @@ const Team = () => {
             <ChevronRight size={24} />
           </button>
 
+        </div>
+
+        {/* ===== Full-width Horizontal Banner Image (same width as slider) ===== */}
+        <div className="team-banner-image">
+          <img
+            src={teamBannerImage}
+            alt="Our Team"
+            className="team-banner-img"
+          />
         </div>
 
       </Container>
