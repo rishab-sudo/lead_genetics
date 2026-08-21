@@ -163,7 +163,7 @@ const Team = () => {
         {/* ===== Meet Our Team Section (replaces old banner image) ===== */}
         <div className="team-meet-section">
           <div className="team-meet-content">
-            <h2 className="team-meet-title">Meet our Team</h2>
+            <h2 className="team-meet-title section-heading">Meet our Team</h2>
 
             <p className="team-meet-text">
               At Leads Genetics, our strength lies in a multidisciplinary team of
