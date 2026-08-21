@@ -20,11 +20,11 @@ const Navbar = () => {
       // Always show navbar at the very top
       if (currentScrollY <= 20) {
         setNavbarVisible(true);
-      } 
+      }
       // Scrolling down
       else if (currentScrollY > lastScrollY.current) {
         setNavbarVisible(false);
-      } 
+      }
       // Scrolling up
       else if (currentScrollY < lastScrollY.current) {
         setNavbarVisible(true);
@@ -77,9 +77,9 @@ const Navbar = () => {
 
         {/* RIGHT - BUTTON + HAMBURGER */}
         <div className="nav-right">
-          <button className="common-btn nav-btn">
+          <Link to="/contact" className="common-btn nav-btn">
             <span>Get A Quote</span>
-          </button>
+          </Link>
 
           <button
             className="hamburger"
@@ -140,10 +140,13 @@ const Navbar = () => {
           </li>
         </ul>
 
-        <button className="common-btn sidebar-btn">
-          <span>Get A Quote
-</span>
-        </button>
+        {/* <Link
+          to="/contact"
+          className="common-btn sidebar-btn"
+          onClick={() => setSidebarOpen(false)}
+        >
+          <span>Get A Quote</span>
+        </Link> */}
       </aside>
     </>
   );

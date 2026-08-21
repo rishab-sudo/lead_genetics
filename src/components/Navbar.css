@@ -221,6 +221,7 @@ body {
 }
 
 .common-btn {
+  text-decoration: none;
   border-radius: 30px;
 width: fit-content;
 padding: 7px 25px;
