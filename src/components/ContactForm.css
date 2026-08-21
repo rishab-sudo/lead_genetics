@@ -54,7 +54,7 @@
 
 .info-item {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 18px;
   padding: 18px;
   border-radius: 16px;
@@ -69,9 +69,9 @@
 }
 
 .info-icon {
-  width: 56px;
-  height: 56px;
-  min-width: 56px;
+  width: 45px;
+  height: 50px;
+  min-width: 50px;
   border-radius: 50%;
   background: linear-gradient(135deg, #0c2d63, #0c2d63);
   color: #fff;
@@ -351,9 +351,10 @@
 }
 
 .direction-btn{
-    margin-top:15px;
+  margin-left: 25px;
+    margin-top:35px !important;
     width:100%;
-    padding:14px;
+    padding: 11px;
     border:none;
     border-radius:12px;
     background:linear-gradient(135deg,#0c2d63,#0c2d63);
