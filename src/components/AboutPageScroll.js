@@ -46,7 +46,7 @@ const CARDS = [
   },
 ];
 
-const LOGOS = ["Codecraft_", "◆ Frequencii", "✳ Kintsugi", "◗ CoreOS"];
+// const LOGOS = ["Codecraft_", "◆ Frequencii", "✳ Kintsugi", "◗ CoreOS"];
 
 function CardFace({ number, icon, title, desc, image, overlayRef }) {
   return (
