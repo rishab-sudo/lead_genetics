@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import AboutHero from "../components/AboutHero"
+import AboutScrollSection from "../components/AboutPageScroll"
 import "./About.css";
 import OurHistory from "../components/OurHistory";
 
 import WhyChooseUs from "../components/Whyleads";
+import AboutHero from "../components/AboutHero";
 
 /* ── Animation variants ─────────────────────────────────── */
 const fadeUp = {
@@ -46,36 +47,6 @@ const visionPoints = [
   { icon: "🌾", text: "Genomic selection reaches commercial herds nationwide" },
 ];
 
-const genomicsLevels = [
-  {
-    id:    "lab",
-    icon:  "🔬",
-    label: "Laboratory",
-    color: "teal",
-    desc:  "High-quality genomic information through SNP genotyping, GBS, sequencing, and advanced analysis.",
-  },
-  {
-    id:    "computational",
-    icon:  "💻",
-    label: "Computational",
-    color: "indigo",
-    desc:  "Population structure, parentage, genomic relationships, breeding values, and selection insights.",
-  },
-  {
-    id:    "biological",
-    icon:  "🧬",
-    label: "Biological",
-    color: "emerald",
-    desc:  "Genomic predictions connected to milk production, fertility, growth, health, and adaptability.",
-  },
-  {
-    id:    "herd",
-    icon:  "🐄",
-    label: "Herd",
-    color: "amber",
-    desc:  "Real-world breeding and selection decisions supported at the farm level.",
-  },
-];
 
 const foundationPillars = [
   { id: "agriculture",    icon: "🌾", label: "Agriculture",    desc: "Provides the biological context",    color: "green" },
@@ -100,9 +71,9 @@ export default function About() {
     <main className="about-page">
 
       {/* ── HERO ─────────────────────────────────────────── */}
-     
+     <AboutHero/>
 
-      <AboutHero />
+  
 
       {/* ── OUR STORY ────────────────────────────────────── */}
       <section id="about-our-story" className="container-fluid our-story-section" aria-labelledby="our-story-heading">
@@ -159,7 +130,10 @@ export default function About() {
           </p>
         </motion.div>
       </section>
-
+{/*  */}
+          <AboutScrollSection />
+          {/*  */}
+          
       {/* ── OUR HISTORY ──────────────────────────────────── */}
       <OurHistory />
 
@@ -223,37 +197,7 @@ export default function About() {
       {/* ── WHY CHOOSE US ────────────────────────────────── */}
       <WhyChooseUs />
 
-      {/* ── GENOMICS TO GENETIC GAIN ─────────────────────── */}
-      <section id="about-genomics-gain" className="container-fluid genomics-gain-section" aria-labelledby="genomics-gain-heading">
-        <motion.div className="section-header" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} variants={stagger}>
-          <motion.span className="tag" variants={fadeUp}>From Genomics to Genetic Gain</motion.span>
-          <motion.h2 id="genomics-gain-heading" variants={fadeUp}>
-            Genomic data has value when it changes a breeding decision.
-          </motion.h2>
-          <motion.p className="section-lede" variants={fadeUp}>
-            Our work extends from the laboratory to the herd — integrating data, computation, biology, and field decisions into a single continuous loop.
-          </motion.p>
-        </motion.div>
 
-        <motion.div className="genomics-levels-grid" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} variants={stagger}>
-          {genomicsLevels.map((level, i) => (
-            <motion.div key={level.id} className={`genomics-level-card glc--${level.color}`} variants={scaleIn}
-              whileHover={{ y: -8, boxShadow: "0 20px 50px -18px rgba(0,0,0,0.18)" }}
-              transition={{ type: "spring", stiffness: 260 }}>
-              <div className="glc-number">{String(i + 1).padStart(2, "0")}</div>
-              <span className="level-icon" aria-hidden="true">{level.icon}</span>
-              <h3>{level.label}</h3>
-              <p>{level.desc}</p>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        <motion.div className="gain-statement" initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.4 }} transition={{ duration: 0.6 }}>
-          <p>
-            This integrated approach allows Leads Genetics to build toward a continuously improving cattle population — where each generation provides new genomic and phenotypic information that strengthens the selection decisions for the next.
-          </p>
-        </motion.div>
-      </section>
 
       {/* ── LEADS GENETICS FOUNDATION ────────────────────── */}
       <section id="about-lg-foundation" className="container-fluid lg-foundation-section" aria-labelledby="lg-foundation-heading">

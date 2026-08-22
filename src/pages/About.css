@@ -1,71 +1,95 @@
 /* ==========================================================
-   About.css — Leads Genetics
-   Theme: Signature Brand Blue Palette & Compact Section Spacing
-   Scoped under .about-page | Mobile-first 640 / 960 / 1280
-   ========================================================== */
+   ABOUT PAGE - GLOBAL VARIABLES
+========================================================== */
 
 .about-page {
-  /* ── Core Brand Blue Palette ── */
-  --c-blue:        #2563b8;
-  --c-blue-dk:     #184a8f;
-  --c-blue-lt:     #e8f0fa;
-  --c-blue-hover:  #1d4ed8;
+  --c-blue: #2563b8;
+  --c-blue-dk: #184a8f;
+  --c-blue-lt: #e8f0fa;
+  --c-blue-hover: #1d4ed8;
+  --c-accent: #3b82f6;
+  --c-accent-lt: #eff6ff;
 
-  --c-accent:      #3b82f6;
-  --c-accent-lt:   #eff6ff;
-
-  --c-ink:         #0f1b2d;
-  --c-muted:       #5b6b7d;
-  --c-surface:     #ffffff;
+  --c-ink: #0f1b2d;
+  --c-muted: #5b6b7d;
+  --c-surface: #ffffff;
   --c-surface-alt: #f6f9fc;
-  --c-border:      #dfe6ee;
+  --c-border: #dfe6ee;
 
-  /* Compact section spacing */
-  --gutter:        clamp(1.25rem, 3.5vw, 2.5rem);
-  --section-y:     clamp(2rem, 4vw, 3.5rem);
-  --radius:        14px;
-  --radius-lg:     20px;
+  --gutter: clamp(1.25rem, 3.5vw, 2.5rem);
+  --radius: 14px;
+  --radius-lg: 20px;
 
   color: var(--c-ink);
-  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
   background: var(--c-surface);
   overflow-x: hidden;
 }
 
-.about-page * { box-sizing: border-box; }
-.about-page img { max-width: 100%; display: block; border-radius: var(--radius); }
 
-/* ── container-fluid (Compact Section Padding) ── */
-.about-page .container-fluid {
-  width: 100%;
-  padding: var(--section-y) var(--gutter);
-  position: relative;
+/* ==========================================================
+   GLOBAL RESET
+========================================================== */
+
+.about-page *,
+.about-page *::before,
+.about-page *::after {
+  box-sizing: border-box;
 }
 
-/* ── Typography ── */
+.about-page img {
+  max-width: 100%;
+  display: block;
+  border-radius: var(--radius);
+}
+
+.about-page button {
+  border: none;
+}
+
+
+/* ==========================================================
+   COMMON CONTAINER
+========================================================== */
+
+.about-page .container-fluid {
+  width: 100%;
+  position: relative;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+
+/* ==========================================================
+   COMMON TYPOGRAPHY
+========================================================== */
+
 .about-page h2 {
-  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
   color: var(--c-ink);
   line-height: 1.2;
   font-size: clamp(1.55rem, 3vw, 2.2rem);
   margin: 0 0 0.55em;
   font-weight: 700;
 }
+
 .about-page h3 {
-  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
   color: var(--c-ink);
   line-height: 1.25;
   font-size: 1.08rem;
   margin: 0 0 0.35em;
   font-weight: 600;
 }
+
 .about-page p {
   color: var(--c-muted);
   line-height: 1.7;
   margin: 0 0 0.85em;
 }
 
-/* ── Tags (Brand Blue) ── */
+
+/* ==========================================================
+   COMMON TAG
+========================================================== */
+
 .about-page .tag {
   display: inline-block;
   font-size: 0.7rem;
@@ -86,49 +110,105 @@
   border-color: rgba(255, 255, 255, 0.3) !important;
 }
 
-/* ── Section header ── */
+
+/* ==========================================================
+   SECTION HEADER
+========================================================== */
+
 .about-page .section-header {
   max-width: 700px;
-  margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+  margin: 0 0 clamp(1.5rem, 3vw, 2.25rem);
 }
+
 .about-page .section-lede {
   color: var(--c-ink);
   font-weight: 500;
   font-size: 1.02rem;
 }
 
-/* ── List bullet ── */
-.list-bullet { color: var(--c-blue); font-size: 0.78rem; flex-shrink: 0; }
 
 /* ==========================================================
-   OUR STORY
-   ========================================================== */
-.our-story-section { 
+   COMMON LIST BULLET
+========================================================== */
+
+.list-bullet {
+  color: var(--c-blue);
+  font-size: 0.78rem;
+  flex-shrink: 0;
+}
+
+
+/* ==========================================================
+   SECTION 1 - OUR STORY
+========================================================== */
+
+.our-story-section {
   background: var(--c-surface);
+align-items: flex-start !important;
+  padding-top: clamp(2rem, 4vw, 3.5rem);
   padding-bottom: clamp(1rem, 2vw, 1.75rem);
 }
+
+
+/* OUR STORY GRID */
 
 .story-grid {
   display: grid;
   grid-template-columns: 1fr;
+
   gap: clamp(1.5rem, 3.5vw, 3rem);
+
+  margin-top: 0;
   margin-bottom: clamp(1.75rem, 3.5vw, 2.5rem);
 }
-.story-text p { font-size: 0.98rem; }
 
-/* Highlight box */
+
+/* STORY TEXT */
+
+.story-text {
+  margin: 0;
+  padding: 0;
+}
+
+.story-text p {
+  font-size: 0.98rem;
+}
+
+
+/* STORY HIGHLIGHT BOX */
+
 .story-highlight-box {
   background: var(--c-blue-lt);
+
   border: 1px solid var(--c-border);
   border-left: 4px solid var(--c-blue);
+
   border-radius: var(--radius);
+
   padding: clamp(1.25rem, 2.5vw, 1.85rem);
+
+  margin: 0;
+
   display: flex;
   flex-direction: column;
+
   gap: 1rem;
+
   height: fit-content;
 }
-.highlight-intro { display: flex; flex-direction: column; gap: 0.25rem; }
+
+
+/* HIGHLIGHT INTRO */
+
+.highlight-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+
+  margin: 0;
+  padding: 0;
+}
+
 .highlight-label {
   font-size: 0.7rem;
   letter-spacing: 0.09em;
@@ -136,406 +216,738 @@
   color: var(--c-blue-dk);
   font-weight: 700;
 }
-.highlight-intro p { color: var(--c-ink); font-weight: 600; margin: 0; }
 
-.platform-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.45rem; }
+.highlight-intro p {
+  color: var(--c-ink);
+  font-weight: 600;
+  margin: 0;
+}
+
+
+/* PLATFORM LIST */
+
+.platform-list {
+  list-style: none;
+
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.45rem;
+}
+
 .platform-list li {
   display: flex;
   align-items: center;
+
   gap: 0.6rem;
+
   color: var(--c-ink);
   font-size: 0.92rem;
   font-weight: 500;
 }
 
+
+/* CAMPUS NOTE */
+
 .campus-note {
   display: flex;
   align-items: flex-start;
-  gap: 0.75rem;
-  background: #fff;
-  border-radius: calc(var(--radius) - 4px);
-  padding: 0.85rem 1rem;
-  border: 1px solid var(--c-border);
-}
-.campus-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 0.1rem; }
-.campus-note p { margin: 0; font-size: 0.86rem; color: var(--c-muted); }
-.campus-note strong { color: var(--c-ink); }
 
-/* ── Scientific loop (Signature Blue Gradient) ── */
+  gap: 0.75rem;
+
+  background: #ffffff;
+
+  border: 1px solid var(--c-border);
+  border-radius: calc(var(--radius) - 4px);
+
+  padding: 0.85rem 1rem;
+  margin: 0;
+}
+
+.campus-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.campus-note p {
+  margin: 0;
+  font-size: 0.86rem;
+  color: var(--c-muted);
+}
+
+.campus-note strong {
+  color: var(--c-ink);
+}
+
+
+/* ==========================================================
+   SECTION 1.1 - SCIENTIFIC LOOP
+========================================================== */
+
 .scientific-loop {
-  background: linear-gradient(135deg, var(--c-blue) 0%, var(--c-blue-dk) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--c-blue) 0%,
+    var(--c-blue-dk) 100%
+  );
+
   border-radius: var(--radius-lg);
+
   padding: clamp(1.5rem, 3.5vw, 2.25rem);
+
+  margin-top: 0;
+  margin-bottom: 0;
+
   text-align: center;
-  color: #fff;
+
+  color: #ffffff;
+
   box-shadow: 0 12px 30px -10px rgba(37, 99, 184, 0.3);
 }
+
+
+/* SCIENTIFIC LOOP LABEL */
+
 .loop-label {
   display: block;
+
   font-size: 0.7rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   font-weight: 700;
-  color: rgba(255,255,255,0.85);
-  margin-bottom: 1.1rem;
+
+  color: rgba(255, 255, 255, 0.85);
+
+  margin: 0 0 1.1rem;
 }
+
+
+/* SCIENTIFIC LOOP STEPS */
+
 .loop-steps {
   display: flex;
   flex-wrap: wrap;
+
   align-items: center;
   justify-content: center;
+
   gap: 0.4rem 0.5rem;
-  margin-bottom: 1rem;
+
+  margin: 0 0 1rem;
 }
+
 .loop-step {
-  background: rgba(255,255,255,0.16);
-  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255, 255, 255, 0.16);
+
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 999px;
+
   padding: 0.35em 0.85em;
+
   font-size: clamp(0.75rem, 1.3vw, 0.88rem);
   font-weight: 600;
+
   white-space: nowrap;
-  color: #fff;
+
+  color: #ffffff;
+
   cursor: default;
 }
-.loop-arrow { color: rgba(255,255,255,0.55); font-size: 1rem; }
+
+.loop-arrow {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 1rem;
+}
+
+
+/* SCIENTIFIC LOOP CAPTION */
 
 .scientific-loop .loop-caption,
 .scientific-loop p {
   font-size: 0.9rem;
   color: #ffffff !important;
   font-weight: 500;
+
   max-width: 56ch;
+
   margin: 0 auto;
+
   text-align: center;
   line-height: 1.6;
 }
 
+
 /* ==========================================================
-   MISSION & VISION
-   ========================================================== */
-.mission-vision-section { 
-  background: #ffffff; 
+   SECTION 2 - MISSION & VISION
+========================================================== */
+
+.mission-vision-section {
+  background: #ffffff;
+
+  padding-top: clamp(2rem, 4vw, 3.5rem);
+  padding-bottom: clamp(2rem, 4vw, 3.5rem);
 }
 
-/* Mission — split layout */
+
+/* --------------------------
+   MISSION
+-------------------------- */
+
 .mv-mission-wrap {
   display: grid;
   grid-template-columns: 1fr;
+
   gap: clamp(1.5rem, 3.5vw, 3rem);
+
   align-items: center;
+
+  margin-top: 0;
   margin-bottom: 2rem;
 }
-.mv-mission-text h2 { font-size: clamp(1.45rem, 2.8vw, 2rem); }
-.mv-mission-text p  { font-size: 0.96rem; }
 
-/* Mission stat cards */
+.mv-mission-text {
+  margin: 0;
+  padding: 0;
+}
+
+.mv-mission-text h2 {
+  font-size: clamp(1.45rem, 2.8vw, 2rem);
+}
+
+.mv-mission-text p {
+  font-size: 0.96rem;
+}
+
+
+/* MISSION STATS */
+
 .mv-mission-stats {
   display: grid;
   grid-template-columns: 1fr;
+
   gap: 0.85rem;
+
+  margin: 0;
+  padding: 0;
 }
+
 .mission-stat-card {
   background: #f8fafc;
+
   border: 1px solid #e2e8f0;
   border-top: 3px solid var(--c-blue);
+
   border-radius: var(--radius);
+
   padding: 1.15rem 1.4rem;
+
+  margin: 0;
+
   display: flex;
   flex-direction: column;
+
   gap: 0.2rem;
+
   cursor: default;
+
   box-shadow: 0 2px 10px rgba(15, 23, 42, 0.03);
-  transition: box-shadow 0.25s ease, transform 0.25s ease;
+
+  transition:
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
 }
+
 .ms-value {
-  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
   font-size: clamp(1.5rem, 2.6vw, 2rem);
   font-weight: 800;
+
   color: var(--c-blue);
+
   line-height: 1;
 }
+
 .ms-label {
   font-size: 0.92rem;
   color: var(--c-ink);
   font-weight: 700;
 }
+
 .ms-sub {
   font-size: 0.78rem;
   color: var(--c-muted);
 }
 
-/* Divider */
+
+/* MISSION VISION DIVIDER */
+
 .mv-divider {
   height: 1px;
+
   background: var(--c-border);
-  margin: 0 0 2rem;
+
+  margin-top: 0;
+  margin-bottom: 2rem;
 }
 
-/* Vision */
-.mv-vision-wrap { width: 100%; }
+
+/* --------------------------
+   VISION
+-------------------------- */
+
+.mv-vision-wrap {
+  width: 100%;
+
+  margin: 0;
+  padding: 0;
+}
+
 .mv-vision-header {
   max-width: 780px;
+
+  margin-top: 0;
   margin-bottom: 1.5rem;
 }
-.mv-vision-header h2 { font-size: clamp(1.4rem, 2.6vw, 1.9rem); }
 
-/* Chip grid */
+.mv-vision-header h2 {
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+}
+
+
+/* VISION CHIP GRID */
+
 .vision-chip-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+
   gap: 0.65rem;
+
+  margin-top: 0;
   margin-bottom: 1.5rem;
 }
+
 .vision-chip {
   display: flex;
   align-items: flex-start;
+
   gap: 0.6rem;
+
   background: #f8fafc;
+
   border: 1.5px solid #e2e8f0;
   border-radius: 12px;
-  padding: 0.75rem 0.95rem;
-  text-align: left;
-  cursor: pointer;
-  transition: border-color 0.2s ease, background 0.2s ease;
-  font-family: inherit;
-}
-.vision-chip:hover { border-color: var(--c-blue); background: var(--c-blue-lt); }
-.vision-chip--active { border-color: var(--c-blue); background: var(--c-blue-lt); }
 
-.vc-icon { font-size: 1.15rem; flex-shrink: 0; margin-top: 0.05rem; }
-.vc-text { font-size: 0.85rem; color: var(--c-ink); font-weight: 500; line-height: 1.45; }
+  padding: 0.75rem 0.95rem;
+
+  margin: 0;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.vision-chip:hover {
+  border-color: var(--c-blue);
+  background: var(--c-blue-lt);
+}
+
+.vision-chip--active {
+  border-color: var(--c-blue);
+  background: var(--c-blue-lt);
+}
+
+.vc-icon {
+  font-size: 1.15rem;
+  flex-shrink: 0;
+  margin-top: 0.05rem;
+}
+
+.vc-text {
+  font-size: 0.85rem;
+
+  color: var(--c-ink);
+
+  font-weight: 500;
+
+  line-height: 1.45;
+}
+
+
+/* VISION CONCLUSION */
 
 .vision-conclusion {
   color: var(--c-ink) !important;
+
   font-weight: 500;
   font-style: italic;
+
   font-size: 0.95rem;
+
   border-top: 1px solid var(--c-border);
+
   padding-top: 1rem;
+
   margin-top: 0.5rem;
+  margin-bottom: 0;
 }
-.vision-conclusion strong { font-style: normal; color: var(--c-blue-dk); }
+
+.vision-conclusion strong {
+  font-style: normal;
+  color: var(--c-blue-dk);
+}
+
 
 /* ==========================================================
-   GENOMICS TO GENETIC GAIN
-   ========================================================== */
-.genomics-gain-section { background: var(--c-surface); }
+   SECTION 3 - LEADS GENETICS FOUNDATION
+========================================================== */
 
-.genomics-levels-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.1rem;
-  margin-bottom: 1.75rem;
-}
-.genomics-level-card {
+.lg-foundation-section {
   background: var(--c-surface-alt);
-  border: 1px solid var(--c-border);
-  border-top: 3px solid var(--c-blue);
-  border-radius: var(--radius);
-  padding: 1.4rem 1.5rem;
-  position: relative;
-  overflow: hidden;
-  cursor: default;
-  transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
-}
-.genomics-level-card:hover {
-  border-top-color: var(--c-blue-hover);
-  box-shadow: 0 10px 26px -10px rgba(37, 99, 184, 0.2);
+
+  padding-top: clamp(2rem, 4vw, 3.5rem);
+  padding-bottom: clamp(2rem, 4vw, 3.5rem);
 }
 
-.glc-number {
-  position: absolute;
-  top: 0.85rem;
-  right: 1rem;
-  font-size: 2.2rem;
-  font-weight: 800;
-  opacity: 0.06;
-  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
-  line-height: 1;
-  pointer-events: none;
-  color: var(--c-blue-dk);
-}
 
-.level-icon { font-size: 1.65rem; display: block; margin-bottom: 0.6rem; }
-.genomics-level-card h3 { 
-  font-size: 1rem; 
-  margin-bottom: 0.35rem; 
-  color: var(--c-blue-dk);
-}
-
-.gain-statement {
-  background: var(--c-blue-lt);
-  border-left: 4px solid var(--c-blue);
-  border-radius: 0 var(--radius) var(--radius) 0;
-  padding: 1.25rem 1.65rem;
-}
-.gain-statement p {
-  color: var(--c-ink);
-  font-size: 0.98rem;
-  font-weight: 500;
-  margin: 0;
-  line-height: 1.65;
-}
-
-/* ==========================================================
-   LEADS GENETICS FOUNDATION
-   ========================================================== */
-.lg-foundation-section { background: var(--c-surface-alt); }
+/* FOUNDATION GRID */
 
 .lf-grid {
   display: grid;
   grid-template-columns: 1fr;
+
   gap: clamp(1.5rem, 3.5vw, 3rem);
+
   align-items: start;
+
+  margin: 0;
 }
+
+
+/* FOUNDATION TEXT */
+
+.lf-text {
+  margin: 0;
+  padding: 0;
+}
+
+
+/* FOUNDATION PILLARS */
 
 .lf-pillars {
   display: grid;
+
   grid-template-columns: 1fr 1fr;
+
   gap: 0.85rem;
+
+  margin: 0;
+  padding: 0;
 }
 
 .pillar-card {
   background: var(--c-surface);
+
   border: 1px solid var(--c-border);
   border-bottom: 3px solid var(--c-blue);
+
   border-radius: var(--radius);
+
   padding: 1.1rem 1.25rem;
+
+  margin: 0;
+
   display: flex;
   flex-direction: column;
+
   gap: 0.3rem;
+
   cursor: default;
-  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .pillar-card:hover {
   border-bottom-color: var(--c-blue-dk);
+
   box-shadow: 0 8px 20px -8px rgba(37, 99, 184, 0.18);
 }
 
-.pc-icon { font-size: 1.35rem; }
+.pc-icon {
+  font-size: 1.35rem;
+}
+
 .pillar-label {
   font-size: 0.95rem;
   font-weight: 700;
+
   color: var(--c-blue-dk);
-  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
 }
-.pillar-desc { font-size: 0.8rem; color: var(--c-muted); }
+
+.pillar-desc {
+  font-size: 0.8rem;
+  color: var(--c-muted);
+}
+
+
+/* FOUNDATION FOOTER */
 
 .pillars-footer {
   grid-column: 1 / -1;
+
   color: var(--c-ink) !important;
+
   font-weight: 500;
   font-size: 0.88rem;
-  margin: 0.35rem 0 0;
+
+  margin-top: 0.35rem;
+  margin-bottom: 0;
 }
+
 
 /* ==========================================================
-   THE ROAD AHEAD (Rich Brand Navy/Blue Gradient)
-   ========================================================== */
+   SECTION 4 - THE ROAD AHEAD
+========================================================== */
+
 .road-ahead-section {
-  background: linear-gradient(160deg, #184a8f 0%, #0c2b57 100%);
+  background: linear-gradient(
+    160deg,
+    #184a8f 0%,
+    #0c2b57 100%
+  );
+
   position: relative;
+
   overflow: hidden;
+
+  padding-top: clamp(2rem, 4vw, 3.5rem);
+  padding-bottom: clamp(2rem, 4vw, 3.5rem);
 }
 
-/* Subtle radial glow */
+
+/* ROAD BACKGROUND GLOW */
+
 .road-ahead-section::before {
   content: "";
+
   position: absolute;
   inset: 0;
+
   background:
-    radial-gradient(ellipse 60% 50% at 80% 20%, rgba(59, 130, 246, 0.25) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 60% at 10% 80%, rgba(37, 99, 184, 0.2) 0%, transparent 70%);
+    radial-gradient(
+      ellipse 60% 50% at 80% 20%,
+      rgba(59, 130, 246, 0.25) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 50% 60% at 10% 80%,
+      rgba(37, 99, 184, 0.2) 0%,
+      transparent 70%
+    );
+
   pointer-events: none;
 }
 
+
+/* ROAD CONTENT */
+
 .road-ahead-inner {
   position: relative;
+
   max-width: 900px;
+
   margin: 0 auto;
+
+  padding: 0;
+
   text-align: center;
+
   z-index: 1;
 }
 
 .road-ahead-section h2 {
-  color: #fff;
+  color: #ffffff;
+
   font-size: clamp(1.6rem, 3.2vw, 2.3rem);
 }
-.road-ahead-section > .container-fluid p,
+
 .road-ahead-section p {
-  color: rgba(255,255,255,0.85);
+  color: rgba(255, 255, 255, 0.85);
+
   font-size: 0.98rem;
+
   max-width: 62ch;
+
   margin-left: auto;
   margin-right: auto;
 }
 
-/* Step cards row */
+
+/* ROAD STEPS */
+
 .road-steps-row {
   display: flex;
   flex-wrap: wrap;
+
   align-items: center;
   justify-content: center;
+
   gap: 0.5rem 0.65rem;
-  margin: 1.75rem 0;
+
+  margin-top: 1.75rem;
+  margin-bottom: 1.75rem;
 }
+
 .road-step-card {
-  background: rgba(255,255,255,0.12);
-  border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(255, 255, 255, 0.12);
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
   border-radius: var(--radius);
+
   padding: 0.85rem 1.1rem;
+
+  margin: 0;
+
   display: flex;
   flex-direction: column;
+
   align-items: center;
+
   gap: 0.35rem;
+
   min-width: 105px;
+
   cursor: default;
-  transition: background 0.2s ease, transform 0.2s ease;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
 }
-.rsc-icon  { font-size: 1.45rem; }
-.rsc-label { font-size: 0.8rem; color: #ffffff; font-weight: 600; text-align: center; }
-.road-connector { color: rgba(255,255,255,0.55); font-size: 1rem; }
+
+.rsc-icon {
+  font-size: 1.45rem;
+}
+
+.rsc-label {
+  font-size: 0.8rem;
+
+  color: #ffffff;
+
+  font-weight: 600;
+
+  text-align: center;
+}
+
+.road-connector {
+  color: rgba(255, 255, 255, 0.55);
+
+  font-size: 1rem;
+}
+
+
+/* ROAD CONCLUSION */
 
 .road-conclusion {
   font-size: 0.92rem !important;
-  color: rgba(255,255,255,0.75) !important;
+
+  color: rgba(255, 255, 255, 0.75) !important;
+
+  margin-top: 0;
+  margin-bottom: 0;
 }
+
 .road-conclusion em {
   color: #ffffff;
+
   font-style: italic;
 }
 
+
 /* ==========================================================
-   RESPONSIVE
-   ========================================================== */
+   TABLET RESPONSIVE - 640PX
+========================================================== */
+
 @media (min-width: 640px) {
-  .story-grid            { grid-template-columns: 1fr 1fr; align-items: start; }
-  .mv-mission-stats      { grid-template-columns: repeat(3, 1fr); }
-  .genomics-levels-grid  { grid-template-columns: repeat(2, 1fr); }
-  .vision-chip-grid      { grid-template-columns: repeat(4, 1fr); }
-}
 
-@media (min-width: 960px) {
-  .story-grid            { grid-template-columns: 1.15fr 0.85fr; }
-  .mv-mission-wrap       { grid-template-columns: 1fr 1fr; }
-  .genomics-levels-grid  { grid-template-columns: repeat(4, 1fr); }
-  .lf-grid               { grid-template-columns: 1.1fr 0.9fr; }
-  .vision-chip-grid      { grid-template-columns: repeat(4, 1fr); }
-}
+  .story-grid {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
 
-@media (min-width: 1280px) {
-  .about-page .container-fluid {
-    padding-left:  max(var(--gutter), calc((100vw - 1240px) / 2));
-    padding-right: max(var(--gutter), calc((100vw - 1240px) / 2));
+  .mv-mission-stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .vision-chip-grid {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
-/* ── Reduced motion ── */
+
+/* ==========================================================
+   DESKTOP RESPONSIVE - 960PX
+========================================================== */
+
+@media (min-width: 960px) {
+
+  .story-grid {
+    grid-template-columns: 1.15fr 0.85fr;
+  }
+
+  .mv-mission-wrap {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .lf-grid {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+
+  .vision-chip-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+
+/* ==========================================================
+   LARGE DESKTOP - 1280PX
+========================================================== */
+
+@media (min-width: 1280px) {
+
+  .about-page .container-fluid {
+    padding-left: max(
+      var(--gutter),
+      calc((100vw - 1240px) / 2)
+    );
+
+    padding-right: max(
+      var(--gutter),
+      calc((100vw - 1240px) / 2)
+    );
+  }
+}
+
+
+/* ==========================================================
+   REDUCED MOTION
+========================================================== */
+
 @media (prefers-reduced-motion: reduce) {
-  .about-page * {
+
+  .about-page *,
+  .about-page *::before,
+  .about-page *::after {
     animation-duration: 0.001ms !important;
     transition-duration: 0.001ms !important;
   }
+
 }

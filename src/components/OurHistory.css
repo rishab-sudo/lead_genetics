@@ -34,7 +34,7 @@
   background: var(--lg-bg);
   color: var(--lg-ink);
 
-  padding: clamp(4rem, 7vw, 6rem) 1.5rem;
+  padding: 2.5rem 0px;
 
   box-sizing: border-box;
 }

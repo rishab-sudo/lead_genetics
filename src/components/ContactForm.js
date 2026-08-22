@@ -131,7 +131,8 @@ const ContactForm = () => {
       Swal.fire({
         icon: "warning",
         title: "Invalid File Type",
-        text: "Please upload PDF, DOC, DOCX, XLS, XLSX, CSV, TXT, JPG or PNG files only.",
+        text:
+          "Please upload PDF, DOC, DOCX, XLS, XLSX, CSV, TXT, JPG or PNG files only.",
         confirmButtonColor: "#0c2d63",
       });
 
@@ -317,75 +318,63 @@ const ContactForm = () => {
     try {
       const formDataToSend = new FormData();
 
-      formDataToSend.append(
-        "serviceType",
-        formData.serviceType
-      );
-
+      formDataToSend.append("serviceType", formData.serviceType);
       formDataToSend.append(
         "serviceInterest",
         formData.serviceInterest
       );
-
-      formDataToSend.append(
-        "name",
-        formData.name.trim()
-      );
-
+      formDataToSend.append("name", formData.name.trim());
       formDataToSend.append(
         "organisation",
         formData.organisation.trim()
       );
-
-      formDataToSend.append(
-        "email",
-        formData.email.trim()
-      );
-
-      formDataToSend.append(
-        "phone",
-        formData.phone
-      );
-
-      formDataToSend.append(
-        "sampleType",
-        formData.sampleType
-      );
-
-      formDataToSend.append(
-        "sampleCount",
-        formData.sampleCount
-      );
-
-      formDataToSend.append(
-        "message",
-        formData.message.trim()
-      );
+      formDataToSend.append("email", formData.email.trim());
+      formDataToSend.append("phone", formData.phone);
+      formDataToSend.append("sampleType", formData.sampleType);
+      formDataToSend.append("sampleCount", formData.sampleCount);
+      formDataToSend.append("message", formData.message.trim());
 
       if (selectedFile) {
-        formDataToSend.append(
-          "attachment",
-          selectedFile
+        formDataToSend.append("attachment", selectedFile);
+      }
+
+      const response = await fetch("/send-contact.php", {
+        method: "POST",
+        body: formDataToSend,
+      });
+
+      const responseText = await response.text();
+
+      let result;
+
+      try {
+        result = JSON.parse(responseText);
+      } catch (parseError) {
+        console.error(
+          "Invalid server response:",
+          responseText
+        );
+
+        throw new Error(
+          "The server returned an invalid response. Please check send-contact.php and SMTP configuration."
         );
       }
 
-      const response = await fetch(
-        "/send-contact.php",
-        {
-          method: "POST",
-          body: formDataToSend,
-        }
-      );
-
-      const result = await response.json();
-
       setLoading(false);
+
+      if (!response.ok) {
+        throw new Error(
+          result?.message ||
+            "Server error while submitting the form."
+        );
+      }
 
       if (result.success) {
         await Swal.fire({
           icon: "success",
           title: "Submitted Successfully!",
-          text: "Thank you for contacting us. We'll get back to you shortly.",
+          text:
+            "Thank you for contacting us. We'll get back to you shortly.",
           confirmButtonColor: "#0c2d63",
         });
 
@@ -416,7 +405,9 @@ const ContactForm = () => {
       Swal.fire({
         icon: "error",
         title: "Connection Error",
-        text: "Unable to connect with the server. Please try again later.",
+        text:
+          error.message ||
+          "Unable to connect with the server. Please try again later.",
         confirmButtonColor: "#0c2d63",
       });
     }
@@ -424,16 +415,8 @@ const ContactForm = () => {
 
   return (
     <>
-      {/* ================================
-          CONTACT SECTION
-      ================================= */}
-
       <section className="contact-section">
         <div className="contact-container">
-
-          {/* ================================
-              CONTACT INFORMATION
-          ================================= */}
 
           <div className="contact-right">
 
@@ -448,8 +431,6 @@ const ContactForm = () => {
             </p>
 
             <div className="contact-details">
-
-              {/* PHONE */}
 
               <div className="info-card">
                 <div className="info-item">
@@ -475,8 +456,6 @@ const ContactForm = () => {
                 </div>
               </div>
 
-              {/* EMAIL */}
-
               <div className="info-card">
                 <div className="info-item">
 
@@ -494,8 +473,6 @@ const ContactForm = () => {
 
                 </div>
               </div>
-
-              {/* ADDRESS */}
 
               <div className="info-card">
                 <div className="info-item">
@@ -535,8 +512,6 @@ const ContactForm = () => {
 
             </div>
 
-            {/* MAP */}
-
             <div className="map-container">
 
               <iframe
@@ -549,12 +524,7 @@ const ContactForm = () => {
 
             </div>
 
-
           </div>
-
-          {/* ================================
-              FORM
-          ================================= */}
 
           <div className="contact-left">
 
@@ -577,8 +547,6 @@ const ContactForm = () => {
               encType="multipart/form-data"
               noValidate
             >
-
-              {/* SERVICE TYPE */}
 
               <div className="form-group">
 
@@ -609,8 +577,6 @@ const ContactForm = () => {
 
               </div>
 
-              {/* SERVICE INTEREST */}
-
               <div className="form-group">
 
                 <label htmlFor="serviceInterest">
@@ -640,8 +606,6 @@ const ContactForm = () => {
 
               </div>
 
-              {/* NAME */}
-
               <div className="form-group">
 
                 <label htmlFor="name">
@@ -660,8 +624,6 @@ const ContactForm = () => {
                 />
 
               </div>
-
-              {/* ORGANISATION */}
 
               <div className="form-group">
 
@@ -682,8 +644,6 @@ const ContactForm = () => {
 
               </div>
 
-              {/* EMAIL */}
-
               <div className="form-group">
 
                 <label htmlFor="email">
@@ -702,8 +662,6 @@ const ContactForm = () => {
                 />
 
               </div>
-
-              {/* PHONE */}
 
               <div className="form-group">
 
@@ -724,8 +682,6 @@ const ContactForm = () => {
                 />
 
               </div>
-
-              {/* SAMPLE TYPE */}
 
               <div className="form-group">
 
@@ -756,8 +712,6 @@ const ContactForm = () => {
 
               </div>
 
-              {/* SAMPLE COUNT */}
-
               <div className="form-group">
 
                 <label htmlFor="sampleCount">
@@ -776,8 +730,6 @@ const ContactForm = () => {
                 />
 
               </div>
-
-              {/* MESSAGE */}
 
               <div className="form-group">
 
@@ -801,8 +753,6 @@ const ContactForm = () => {
                 </div>
 
               </div>
-
-              {/* FILE */}
 
               <div className="form-group">
 
@@ -843,8 +793,6 @@ const ContactForm = () => {
 
               </div>
 
-              {/* BUTTON */}
-
               <button
                 className="submit-btn"
                 type="submit"
@@ -861,10 +809,6 @@ const ContactForm = () => {
 
         </div>
       </section>
-
-      {/* ================================
-          LOCATIONS
-      ================================= */}
 
       <section className="locations-section">
 
