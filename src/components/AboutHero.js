@@ -20,8 +20,8 @@ const AboutHero = () => {
 
       {/* Heading */}
       <div className="AboutHero-content">
-        <h1>About Us</h1>
-        <p>Discover our journey, vision and commitment to excellence.</p>
+        <h1>Advancing Genomics for a Better Tomorrow</h1>
+        <p>Empowering healthcare, agriculture, and research through innovative genomic technologies and precision sequencing.</p>
       </div>
     </section>
   );

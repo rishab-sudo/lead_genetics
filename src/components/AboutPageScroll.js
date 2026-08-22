@@ -39,7 +39,7 @@ const CARDS = [
     number: "04",
     icon: "🐄",
     title: "Herd",
-    desc: "Real-world breeding and selection decisions supported at the farm level.",
+    desc: "Translating genomic insights into practical, data-driven breeding decisions at the farm level and accelerateing genetic progress across generations.",
     image: homeKamImg,
   },
 ];
@@ -248,7 +248,7 @@ export default function HeroScrollSection() {
                   ref={(el) => (cardRefs.current[i] = el)}
                   className={`proj-card ${c.id}`}
                 >
-                  <CardFace
+                  <CardFace className="overlay-card-text" id= "about-scroll-card-text"
                     number={c.number}
                     icon={c.icon}
                     title={c.title}
