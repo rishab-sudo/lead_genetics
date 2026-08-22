@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import AboutHero from "../components/AboutHero"
 import "./About.css";
 import OurHistory from "../components/OurHistory";
-import AboutPageBanner from "../components/AboutHero";
+
 import WhyChooseUs from "../components/Whyleads";
 
 /* ── Animation variants ─────────────────────────────────── */
@@ -99,7 +100,9 @@ export default function About() {
     <main className="about-page">
 
       {/* ── HERO ─────────────────────────────────────────── */}
-      <AboutPageBanner />
+     
+
+      <AboutHero />
 
       {/* ── OUR STORY ────────────────────────────────────── */}
       <section id="about-our-story" className="container-fluid our-story-section" aria-labelledby="our-story-heading">
