@@ -40,7 +40,7 @@ const TRAITS = [
 const FAQS = [
   {
     q: "How many embryos does one donor cycle typically produce?",
-    a: "It varies by donor and protocol response, but a single superovulation cycle commonly yields several transferable embryos — far more than the one calf a donor would produce naturally in that time.",
+    a: "It varies by donor and protocol response, but a single superovulation cycle commonly yields several transferable embryos - far more than the one calf a donor would produce naturally in that time.",
   },
   {
     q: "Do we need our own recipient herd?",
@@ -52,7 +52,7 @@ const FAQS = [
   },
   {
     q: "Can we choose the sex of the calves?",
-    a: "Yes — sex-sorted semen can be used alongside the MOET protocol to skew a batch toward female calves.",
+    a: "Yes - sex-sorted semen can be used alongside the MOET protocol to skew a batch toward female calves.",
   },
 ];
 
@@ -97,6 +97,7 @@ export default function MoetLeadsGenetics() {
           font-size:16px;
           line-height:1.6;
           -webkit-font-smoothing:antialiased;
+          text-transform: capitalize;
         }
         .moet-root *{box-sizing:border-box;}
         .moet-root h3{font-family:'Fraunces', serif; font-weight:600; letter-spacing:-0.01em; margin:0;}
@@ -335,7 +336,7 @@ export default function MoetLeadsGenetics() {
 
       {/* HERO */}
       <section className="moet-container-fluid moet-hero">
-        <div className="moet-inner">
+        <div className="moet-inner section-heading">
           <motion.span
             className="moet-eyebrow"
             initial={{ opacity: 0, y: 16 }}
@@ -362,7 +363,7 @@ export default function MoetLeadsGenetics() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             Multiple Ovulation and Embryo Transfer produces elite dairy embryos inside the cow's own
-            reproductive tract — not in a lab dish. In India, where AI is widespread but MOET and IVF
+            reproductive tract - not in a lab dish. In India, where AI is widespread but MOET and IVF
             are still early-stage, this is the fastest natural path to better milk-producing herds.
           </motion.p>
           <motion.div
@@ -401,7 +402,7 @@ export default function MoetLeadsGenetics() {
           <div className="moet-body">
             <p>
               Artificial insemination reached most Indian dairy farmers years ago. Advanced reproductive
-              technologies like MOET and IVF have not — they remain early-stage, even though they compress
+              technologies like MOET and IVF have not - they remain early-stage, even though they compress
               generations of genetic improvement into a single breeding cycle.
             </p>
             <p>
@@ -427,7 +428,7 @@ export default function MoetLeadsGenetics() {
             <span className="moet-eyebrow">The Protocol</span>
             <h2 className="section-heading">One donor cycle, day by day</h2>
             <p>
-              From hormone stimulation to embryo transfer — a single elite donor cow produces a batch of
+              From hormone stimulation to embryo transfer - a single elite donor cow produces a batch of
               naturally developed embryos in about a week.
             </p>
           </motion.div>
@@ -448,12 +449,12 @@ export default function MoetLeadsGenetics() {
               <motion.div className="moet-step" variants={staggerItem}>
                 <span className="moet-day">DAY 5</span>
                 <h3>Insemination</h3>
-                <p>Donor is inseminated with semen from a genetically superior bull — optionally sex-sorted for female calves.</p>
+                <p>Donor is inseminated with semen from a genetically superior bull - optionally sex-sorted for female calves.</p>
               </motion.div>
               <motion.div className="moet-step" variants={staggerItem}>
                 <span className="moet-day">DAY 12</span>
                 <h3>Embryo flushing</h3>
-                <p>Embryos are collected via a non-invasive transcervical flush — no surgery, no incision on the donor.</p>
+                <p>Embryos are collected via a non-invasive transcervical flush - no surgery, no incision on the donor.</p>
               </motion.div>
               <motion.div className="moet-step" variants={staggerItem}>
                 <span className="moet-day">DAY 12+</span>
@@ -478,7 +479,7 @@ export default function MoetLeadsGenetics() {
             <span className="moet-eyebrow">Trait Selection</span>
             <h2 className="section-heading">Every embryo is bred for something specific</h2>
             <p>
-              Donor and bull pairings are chosen against the traits your herd actually needs — not a generic
+              Donor and bull pairings are chosen against the traits your herd actually needs - not a generic
               "elite genetics" claim. Tap a trait to see what it optimizes for.
             </p>
           </motion.div>
@@ -575,7 +576,7 @@ export default function MoetLeadsGenetics() {
           >
             <span className="moet-eyebrow">In The Field</span>
             <h2 className="section-heading">From donor selection to a calf on the ground</h2>
-            <p>A look at the people and process behind every cycle — recipient care, genomic screening, and the calves the program exists for.</p>
+            <p>A look at the people and process behind every cycle - recipient care, genomic screening, and the calves the program exists for.</p>
           </motion.div>
           <motion.div
             className="moet-field-grid"
