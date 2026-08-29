@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom"; // Next.js ho to: import { useRouter } from "next/navigation";
 import "./AgriGenomics.css";
 import AgriGenoBan from "../components/AgriGenoBan";
+import embroy1 from "../assets/embroy1.jpeg";
+import embroy2 from "../assets/embroy2.jpeg";
+import embroy3 from "../assets/embroy3.jpeg";
 
 
 const AGR_SERVICES = [
@@ -135,36 +139,44 @@ const PGS_STATS = [
 
 const CASE_STUDIES = [
   {
-    id: "herd-402",
+    id: "herd-001",
     tag: "Herd Management",
-    title: "Herd Optimization Case Study #402",
+    title: "Herd Optimization Case Study #001",
     excerpt:
       "A 340-head dairy operation raised its genomic merit average by pairing targeted MOET cycles with predictive breeding value screening over two calving seasons.",
-    author: "Dr. Sarah Miller",
-    image:
-      "https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=600&q=80",
+    author: "Dr. Saravanan Durairaj",
+    image: embroy1,
   },
   {
-    id: "bull-k7",
+    id: "heard-002",
     tag: "Progeny Testing",
     title: "Progeny Performance: Bull K7-03e",
     excerpt:
       "Tracking three generations of offspring shows how early genomic predictions for K7-03e held up against realized milk yield and fertility outcomes.",
-    author: "Dr. James Chen",
-    image:
-      "https://images.unsplash.com/photo-1611171711912-ce5b3b17e5e8?auto=format&fit=crop&w=600&q=80",
+    author: "Dr. Suyush Agarwal",
+    image: embroy2,
   },
   {
-    id: "mastitis-focus",
+    id: "heard-003",
     tag: "Disease Resistance",
     title: "Disease Resistance Mapping: Mastitis Focus",
     excerpt:
       "Genomic markers linked to udder health were validated across four partner herds, giving producers an early signal for mastitis susceptibility.",
-    author: "Dr. Elena Rodriguez",
-    image:
-      "https://terranutritech.com/2020/04/06/top-10-tips-for-dairy-cow-breeding",
+    author: "Dr. Amit Gupta",
+    image: embroy3,
   },
 ];
+
+// single source of truth for author initials — used by the Clinical Case Studies cards
+function initials(name) {
+  return name
+    .replace(/^Dr\.\s*/i, "")
+    .split(" ")
+    .filter(Boolean)
+    .map((part) => part[0])
+    .join("")
+    .toUpperCase();
+}
 
 const renderArt = (art) => {
   if (art === "embryo") {
@@ -227,13 +239,6 @@ const renderArt = (art) => {
   );
 };
 
-const initials = (name) =>
-  name
-    .replace("Dr. ", "")
-    .split(" ")
-    .map((part) => part[0])
-    .join("");
-
 /* Bento column-span pattern for the 6 service cards, on a 6-col track:
    row1 wide/narrow, row2 narrow/wide, row3 even/even — mirrors the
    reference layout while staying data-driven off AGR_SERVICES. */
@@ -241,6 +246,7 @@ const AGB_SPANS = [4, 2, 2, 4, 3, 3];
 
 const AgriGenomics = () => {
   const [activeService, setActiveService] = useState(null);
+  const navigate = useNavigate();
 
   // Escape key closes the open card's detail modal.
   useEffect(() => {
@@ -254,7 +260,7 @@ const AgriGenomics = () => {
 
   return (
     <>
-    <AgriGenoBan/>
+      <AgriGenoBan />
 
       {/* Precision Biotech Services */}
       <section className="pgs-section-fluid">
@@ -330,26 +336,45 @@ const AgriGenomics = () => {
           </header>
 
           <div className="ccs-grid">
-            {CASE_STUDIES.map((study) => (
-              <article key={study.id} className="ccs-card">
-                <div className="ccs-media">
-                  <img src={study.image} alt={study.title} />
-                </div>
-                <div className="ccs-body">
-                  <span className="ccs-tag">{study.tag}</span>
-                  <h3 className="ccs-title">{study.title}</h3>
-                  <p className="ccs-excerpt">{study.excerpt}</p>
-                  <div className="ccs-author">
-                    <span className="ccs-author-avatar">{initials(study.author)}</span>
-                    <span className="ccs-author-name">{study.author}</span>
+            {CASE_STUDIES.map((study, i) => {
+              const isFirst = i === 0;
+              return (
+                <article
+                  key={study.id}
+                  className={"ccs-card" + (isFirst ? " ccs-card--clickable" : "")}
+                  onClick={isFirst ? () => navigate("/moet") : undefined}
+                  role={isFirst ? "button" : undefined}
+                  tabIndex={isFirst ? 0 : undefined}
+                  onKeyDown={
+                    isFirst
+                      ? (e) => {
+                          if (e.key === "Enter" || e.key === " ") navigate("/moet");
+                        }
+                      : undefined
+                  }
+                  aria-label={isFirst ? `${study.title} — go to MOET page` : undefined}
+                >
+                  <div className="ccs-media">
+                    <img src={study.image} alt={study.title} />
                   </div>
-                </div>
-              </article>
-            ))}
+                  <div className="ccs-body">
+                    <span className="ccs-tag">{study.tag}</span>
+                    <h3 className="ccs-title">{study.title}</h3>
+                    <p className="ccs-excerpt">{study.excerpt}</p>
+                    <div className="ccs-author">
+                      <span className="ccs-author-avatar">{initials(study.author)}</span>
+                      <span className="ccs-author-name">{study.author}</span>
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
           </div>
 
           <div className="ccs-more">
-            <button type="button" className="ccs-more-btn">Load More Case Studies</button>
+            <button type="button" className="ccs-more-btn">
+              Load More Case Studies
+            </button>
           </div>
         </div>
       </section>
@@ -438,8 +463,6 @@ const AgriGenomics = () => {
           </div>
         )}
       </section>
-
-      
     </>
   );
 };

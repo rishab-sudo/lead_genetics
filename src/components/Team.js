@@ -37,7 +37,7 @@ const scientists = [
   {
     name: "Dr. Saravanan Durairaj",
     lab: "MOET IVF Specialist",
-    image: require("../assets/team/saravanan.png"),
+    image: require("../assets/team/Dr.sarvananan.png"),
   },
 ];
 

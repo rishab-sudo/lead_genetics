@@ -10,6 +10,7 @@ import Footer from "./components/Footer";
 import Contact from "./pages/Contact";
 import Research from "./pages/Research";
 import AgriGenomics from "./pages/AgriGenomics";
+import Moet from "./pages/Moet";
 
 import ScrollTop from "./components/ScrollTop";
 import ScrollToTop from "./components/ScrollToTop";
@@ -41,6 +42,11 @@ function App() {
         <Route
           path="/agri-genomics"
           element={<AgriGenomics />}
+        />
+        
+             <Route
+          path="/moet"
+          element={<Moet />}
         />
 
         {/* Clinical Genomics Page */}
