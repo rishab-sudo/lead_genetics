@@ -4,6 +4,16 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import "./NewsEvents.css";
 
 const newsData = [
+    {
+    title:
+      "Live Birth of India's First Elite, Genetically Selected Gir Calves",
+     date: "16th September, 2026",
+      image: require("../assets/registration-banner.jpg"),
+  tag: "Upcoming Event",
+    description:
+      "India’s first elite, genetically selected Gir calves-advancing indigenous cattle breeding through genomics",
+    url: "/registration"
+    },
   {
     title:
       "Leads Agri Genetics Launches India’s 1st Privately-Owned Integrated CoE for Cattle & Plant Genomics",
@@ -24,6 +34,7 @@ const newsData = [
       "A historic India-Brazil alliance leveraging advanced animal genomics to revolutionize dairy production and safeguard global food security.",
     url: "https://www.business-standard.com/content/press-releases-ani/india-brazil-seal-landmark-animal-genomics-partnership-to-transform-global-dairy-future-a-strategic-south-south-alliance-for-global-food-security-125121101095_1.html",
   },
+
   {
     title:
       "Leads Agri Genetics initiative is a giant leap in advancing India’s agricultural biotechnology and livestock genomics capabilities.",
@@ -39,13 +50,22 @@ const newsData = [
     title:
       "India’s first IVF in 116 cows from Gir embryo by BL Agro subsidiary shows 65% success",
     date: "19 March, 2026",
-    image: require("../assets/news/news1.jpeg"),
+    image: require("../assets/news/news5.png"),
     tag: "News Article",
     description:
       "Leads Genetics plans to perform embryo transfers in a total of 700 cows by the end of March",
     url: "https://www.thehindubusinessline.com/economy/agri-business/indias-first-ivf-in-116-cows-from-gir-embryo-by-bl-agro-subsidiary-shows-65-success/article70761089.ece",
   },
-
+      {
+    title:
+      "Live Birth of India's First Elite, Genetically Selected Gir Calves",
+     date: "16th September, 2026",
+      image: require("../assets/registration-banner.jpg"),
+  tag: "Upcoming Event",
+    description:
+      "India’s first elite, genetically selected Gir calves-advancing indigenous cattle breeding through genomics",
+    url: "/registration"
+    },
     {
     title:
       "Baroda to Brazil and back Leads Genetics claims 60 pc success in Gir cattle embryo transfers",

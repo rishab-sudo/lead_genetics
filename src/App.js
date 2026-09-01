@@ -11,16 +11,22 @@ import Contact from "./pages/Contact";
 import Research from "./pages/Research";
 import AgriGenomics from "./pages/AgriGenomics";
 import Moet from "./pages/Moet";
+import Registration from "./pages/Registration";
+
+import RegistrationPopup from "./components/RegistrationPopup";
 
 import ScrollTop from "./components/ScrollTop";
 import ScrollToTop from "./components/ScrollToTop";
-import "./App.css"
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
       {/* Navbar always visible */}
       <Navbar />
+
+      {/* Registration Popup - Shows after 3 seconds */}
+      <RegistrationPopup />
 
       {/* Scroll to top whenever route/page changes */}
       <ScrollToTop />
@@ -43,8 +49,8 @@ function App() {
           path="/agri-genomics"
           element={<AgriGenomics />}
         />
-        
-             <Route
+
+        <Route
           path="/moet"
           element={<Moet />}
         />
@@ -60,6 +66,13 @@ function App() {
           path="/contact"
           element={<Contact />}
         />
+
+        {/* Registration Page */}
+        <Route
+          path="/registration"
+          element={<Registration />}
+        />
+
       </Routes>
 
       {/* Footer */}

@@ -1,0 +1,863 @@
+/* =========================================
+   REGISTRATION PAGE
+========================================= */
+
+.registration-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #f7f8fa;
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.registration-hero {
+  width: 100%;
+  min-height: 430px;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  position: relative;
+}
+
+
+.registration-hero-content {
+  width: min(75%, 90%);
+
+  margin: 0 auto;
+
+  color: #ffffff;
+
+  position: relative;
+  z-index: 1;
+}
+
+
+.registration-eyebrow {
+  display: inline-block;
+
+  margin-bottom: 18px;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  letter-spacing: 2.5px;
+
+  color: #ffffff;
+}
+
+
+.registration-hero-content h1 {
+  margin: 0 0 20px;
+
+  color: #ffffff;
+}
+
+
+.registration-hero-content p {
+  max-width: 80%;
+
+  margin: 0 auto;
+
+  font-size: 24px;
+
+  line-height: 1.7;
+
+  font-weight: 400;
+
+  color: rgba(255, 255, 255, 0.92);
+}
+
+
+/* =========================================
+   FORM SECTION
+========================================= */
+
+.registration-form-section {
+  width: 100%;
+
+  padding: 80px 20px 100px;
+
+  background: #f7f8fa;
+}
+
+
+.registration-container {
+  width: 100%;
+  max-width: 1100px;
+
+  margin: 0 auto;
+}
+
+
+/* =========================================
+   FORM BOX
+========================================= */
+
+.registration-form-box {
+  width: 100%;
+
+  background: #ffffff;
+
+  border-radius: 12px;
+
+  padding: 55px 60px 60px;
+
+  box-sizing: border-box;
+
+  box-shadow:
+    0 10px 35px rgba(0, 0, 0, 0.08),
+    0 2px 10px rgba(0, 0, 0, 0.04);
+}
+
+
+/* =========================================
+   FORM HEADING
+========================================= */
+
+.registration-form-heading {
+  text-align: center;
+
+  margin-bottom: 45px;
+}
+
+
+.registration-form-eyebrow {
+  display: inline-block;
+
+  margin-bottom: 10px;
+
+  font-size: 16px;
+
+  font-weight: 700;
+
+  color: var(--primary-color, #3f51b5);
+}
+
+
+.registration-form-heading h2 {
+  margin: 0 0 12px;
+
+  font-size: clamp(28px, 3vw, 42px);
+
+  line-height: 1.15;
+
+  font-weight: 700;
+
+  color: #151515;
+}
+
+
+.registration-form-heading p {
+  margin: 0 auto;
+
+  max-width: 650px;
+
+  font-size: 15px;
+
+  line-height: 1.7;
+
+  color: #6c6c6c;
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+.registration-form {
+  width: 100%;
+}
+
+
+.registration-form-row {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 25px;
+
+  margin-bottom: 25px;
+}
+
+
+/* =========================================
+   FORM FIELD
+========================================= */
+
+.registration-field {
+  width: 100%;
+}
+
+
+.registration-field label {
+  display: block;
+
+  margin-bottom: 9px;
+
+  font-size: 14px;
+
+  line-height: 1.4;
+
+  font-weight: 600;
+
+  color: #222222;
+}
+
+
+.registration-field label span {
+  color: #d32f2f;
+}
+
+
+/* =========================================
+   INPUT
+========================================= */
+
+.registration-field input {
+  width: 100%;
+
+  height: 52px;
+
+  padding: 0 16px;
+
+  border: 1px solid #dcdfe4;
+
+  border-radius: 5px;
+
+  background: #ffffff;
+
+  color: #222222;
+
+  font-family: inherit;
+
+  font-size: 15px;
+
+  outline: none;
+
+  box-sizing: border-box;
+
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+.registration-field input::placeholder {
+  color: #9a9a9a;
+}
+
+
+.registration-field input:hover {
+  border-color: #b9bdc5;
+}
+
+
+.registration-field input:focus {
+  border-color: var(--primary-color, #3f51b5);
+
+  box-shadow:
+    0 0 0 3px
+    color-mix(
+      in srgb,
+      var(--primary-color, #3f51b5) 12%,
+      transparent
+    );
+}
+
+
+/* =========================================
+   DATE PICKER — tap-to-open popup calendar
+========================================= */
+
+/* Positioning context for the popup */
+.registration-date-wrapper {
+  position: relative;
+
+  width: 100%;
+}
+
+
+/* The field that looks like the other inputs but is a button */
+.registration-date-trigger {
+  width: 100%;
+
+  height: 52px;
+
+  padding: 0 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+
+  border: 1px solid #dcdfe4;
+
+  border-radius: 5px;
+
+  background: #ffffff;
+
+  font-family: inherit;
+
+  font-size: 15px;
+
+  cursor: pointer;
+
+  box-sizing: border-box;
+
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+.registration-date-trigger:hover {
+  border-color: #b9bdc5;
+}
+
+
+.registration-date-trigger.active {
+  border-color: var(--primary-color, #3f51b5);
+
+  box-shadow:
+    0 0 0 3px
+    color-mix(
+      in srgb,
+      var(--primary-color, #3f51b5) 12%,
+      transparent
+    );
+}
+
+
+.registration-date-trigger-text {
+  color: #222222;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+.registration-date-trigger-placeholder {
+  color: #9a9a9a;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+.registration-date-trigger-icon {
+  flex: 0 0 auto;
+
+  color: var(--primary-color, #3f51b5);
+}
+
+
+/* The popup calendar itself, anchored under the trigger */
+.registration-date-calendar {
+  position: absolute;
+
+  top: calc(100% + 8px);
+  left: 0;
+
+  width: min(340px, 100%);
+
+  z-index: 20;
+
+  border: 1px solid #dcdfe4;
+  border-radius: 8px;
+
+  overflow: hidden;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.14),
+    0 3px 10px rgba(0, 0, 0, 0.06);
+
+  animation: registrationCalendarIn 0.16s ease;
+}
+
+
+@keyframes registrationCalendarIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.registration-calendar-month {
+  padding: 10px 0;
+
+  background: var(--primary-color, #3f51b5);
+  color: #ffffff;
+
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+.registration-calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+
+  padding: 10px 8px 0;
+
+  background: #ffffff;
+}
+
+.registration-calendar-weekdays span {
+  text-align: center;
+
+  font-size: 11px;
+  font-weight: 600;
+  color: #9a9a9a;
+}
+
+.registration-calendar-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+
+  gap: 6px;
+
+  padding: 8px;
+
+  background: #ffffff;
+}
+
+.registration-calendar-day {
+  aspect-ratio: 1 / 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 6px;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+
+  background: transparent;
+}
+
+/* Blank cells for non-event weekdays */
+.registration-calendar-day.empty {
+  visibility: hidden;
+}
+
+/* Clickable event dates */
+.registration-calendar-day.available {
+  background: #e6e6e6;
+  color: #222222;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.15s ease;
+}
+
+.registration-calendar-day.available:hover {
+  background: #d8d8d8;
+}
+
+.registration-calendar-day.available.selected {
+background: var(--primary-color, #3f51b5);
+  color: #ffffff;
+}
+
+.registration-calendar-day.available.selected:hover {
+background: var(--primary-color, #3f51b5);
+}
+
+.registration-calendar-day.available:active {
+  transform: scale(0.94);
+}
+
+
+/* Done button under the day grid */
+.registration-calendar-footer {
+  padding: 4px 8px 10px;
+
+  background: #ffffff;
+
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+.registration-calendar-done {
+  padding: 7px 18px;
+
+  border: none;
+  border-radius: 5px;
+
+  background: var(--primary-color, #3f51b5);
+  color: #ffffff;
+
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+
+  cursor: pointer;
+
+  transition: opacity 0.2s ease;
+}
+
+
+.registration-calendar-done:hover {
+  opacity: 0.9;
+}
+
+
+/* =========================================
+   SELECTED DATES TEXT
+========================================= */
+
+.selected-dates-text {
+  margin-top: 7px;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+
+  color: #666666;
+
+  word-break: break-word;
+}
+
+
+/* =========================================
+   EMPTY FIELD
+========================================= */
+
+.registration-empty-field {
+  visibility: hidden;
+}
+
+
+/* =========================================
+   SUBMIT
+========================================= */
+
+.registration-submit-wrapper {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 15px;
+}
+
+
+.registration-submit-btn {
+  min-width: 280px;
+
+  min-height: 52px;
+
+  padding: 14px 30px;
+
+  border: none;
+
+  border-radius: 5px;
+
+  background: var(--primary-color, #3f51b5);
+
+  color: #ffffff;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  letter-spacing: 1px;
+
+  cursor: pointer;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+.registration-submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+
+  opacity: 0.92;
+
+  box-shadow:
+    0 8px 22px rgba(0, 0, 0, 0.16);
+}
+
+
+.registration-submit-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+
+.registration-submit-btn:disabled {
+  opacity: 0.65;
+
+  cursor: not-allowed;
+}
+
+
+/* =========================================
+   LOADING SPINNER
+========================================= */
+
+.registration-spinner {
+  width: 17px;
+  height: 17px;
+
+  border: 2px solid rgba(255, 255, 255, 0.4);
+
+  border-top-color: #ffffff;
+
+  border-radius: 50%;
+
+  animation: registrationSpin 0.7s linear infinite;
+}
+
+
+@keyframes registrationSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =========================================
+   LARGE TABLET
+========================================= */
+
+@media (max-width: 991px) {
+
+  .registration-hero {
+    min-height: 400px;
+  }
+
+  .registration-form-section {
+    padding: 65px 18px 80px;
+  }
+
+  .registration-form-box {
+    padding: 45px 40px 50px;
+  }
+
+  .registration-form-row {
+    gap: 20px;
+  }
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 768px) {
+
+  .registration-hero {
+    min-height: 380px;
+
+    padding: 50px 15px;
+  }
+
+  .registration-hero-content {
+    width: 100%;
+  }
+
+  .registration-hero-content p {
+    font-size: 15px;
+
+    line-height: 1.6;
+  }
+
+  .registration-form-section {
+    padding: 50px 15px 65px;
+  }
+
+  .registration-form-box {
+    padding: 40px 30px 45px;
+
+    border-radius: 10px;
+  }
+
+  .registration-form-heading {
+    margin-bottom: 35px;
+  }
+
+  .registration-form-row {
+    grid-template-columns: 1fr;
+
+    gap: 22px;
+
+    margin-bottom: 22px;
+  }
+
+  .registration-empty-field {
+    display: none;
+  }
+
+  .registration-submit-btn {
+    width: 100%;
+
+    max-width: 350px;
+  }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+
+  .registration-hero {
+    min-height: 360px;
+
+    padding: 40px 15px;
+  }
+
+  .registration-eyebrow {
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 14px;
+  }
+
+  .registration-hero-content h1 {
+    font-size: 34px;
+
+    line-height: 1.12;
+
+    margin-bottom: 16px;
+  }
+
+  .registration-hero-content p {
+    font-size: 14px;
+
+    line-height: 1.6;
+  }
+
+  .registration-form-section {
+    padding: 35px 12px 50px;
+  }
+
+  .registration-form-box {
+    padding: 32px 18px 35px;
+
+    border-radius: 8px;
+  }
+
+  .registration-form-heading {
+    margin-bottom: 30px;
+  }
+
+  .registration-form-eyebrow {
+    font-size: 11px;
+
+    letter-spacing: 1.7px;
+  }
+
+  .registration-form-heading h2 {
+    font-size: 26px;
+  }
+
+  .registration-form-heading p {
+    font-size: 14px;
+  }
+
+  .registration-field label {
+    font-size: 13px;
+  }
+
+  .registration-field input {
+    height: 50px;
+
+    font-size: 14px;
+
+    padding: 0 14px;
+  }
+
+
+  /* DATE PICKER MOBILE */
+
+  .registration-date-trigger {
+    height: 50px;
+
+    font-size: 14px;
+
+    padding: 0 14px;
+  }
+
+  .registration-date-calendar {
+    width: min(300px, calc(100vw - 32px));
+  }
+
+  .registration-calendar-day {
+    font-size: 12px;
+  }
+
+  .registration-calendar-weekdays span {
+    font-size: 10px;
+  }
+
+  .selected-dates-text {
+    font-size: 11px;
+  }
+
+
+  .registration-submit-wrapper {
+    margin-top: 8px;
+  }
+
+  .registration-submit-btn {
+    width: 100%;
+
+    min-width: 0;
+
+    min-height: 50px;
+
+    padding: 13px 18px;
+
+    font-size: 13px;
+  }
+}
