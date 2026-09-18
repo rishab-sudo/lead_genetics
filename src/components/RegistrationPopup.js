@@ -1,8 +1,7 @@
+
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./RegistrationPopup.css";
-
-
 
 const RegistrationPopup = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -49,8 +48,8 @@ const RegistrationPopup = () => {
           />
         </div>
 
-        {/* Registration Button */}
-        <div className="registration-popup-action">
+        {/* Separate Button Section */}
+        <div className="registration-popup-button-wrapper">
           <button
             className="registration-popup-btn"
             onClick={handleRegistration}
@@ -65,3 +64,4 @@ const RegistrationPopup = () => {
 };
 
 export default RegistrationPopup;
+

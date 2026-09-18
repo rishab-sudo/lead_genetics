@@ -4,16 +4,27 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import "./NewsEvents.css";
 
 const newsData = [
-    {
+  {
     title:
       "Live Birth of India's First Elite, Genetically Selected Gir Calves",
-     date: "16th September, 2026",
-      image: require("../assets/registration-banner.jpg"),
-  tag: "Upcoming Event",
+    date: "14th & 15th September, 2026",
+    image: require("../assets/news/cattle-event14-15.jpeg"),
+    tag: "Upcoming Event",
     description:
       "India’s first elite, genetically selected Gir calves-advancing indigenous cattle breeding through genomics",
-    url: "/registration"
-    },
+    url: "/registration",
+  },
+
+  {
+    title: "Hands-on Workshop on SNP Genotyping & Genomic Selection",
+    date: "16th & 17th September, 2026",
+    image: require("../assets/news/cattle-event16-17.png"),
+    tag: "Upcoming Event",
+    description:
+      "A hands-on workshop on SNP genotyping and genomic selection, focused on practical genomic techniques and their role in modern genetic improvement.",
+    url: "/registration",
+  },
+
   {
     title:
       "Leads Agri Genetics Launches India’s 1st Privately-Owned Integrated CoE for Cattle & Plant Genomics",
@@ -24,6 +35,7 @@ const newsData = [
       "From Gir embryos to genome mapping, Leads Agri Genetics is reshaping India’s agri-genomics future.",
     url: "https://www.indianweb2.com/2025/09/leads-agri-genetics-launches-indias-1st.html",
   },
+
   {
     title:
       "India, Brazil Seal Landmark Animal Genomics Partnership to Transform Global Dairy Future: A Strategic South-South Alliance for Global Food Security",
@@ -46,7 +58,7 @@ const newsData = [
     url: "https://agrospectrumindia.com/news/62/32657/leads-agri-genetics-launches-indias-first-privately-owned-integrated-centre-of-excellence-for-cattle-and-plant-genomics.html",
   },
 
-    {
+  {
     title:
       "India’s first IVF in 116 cows from Gir embryo by BL Agro subsidiary shows 65% success",
     date: "19 March, 2026",
@@ -56,24 +68,14 @@ const newsData = [
       "Leads Genetics plans to perform embryo transfers in a total of 700 cows by the end of March",
     url: "https://www.thehindubusinessline.com/economy/agri-business/indias-first-ivf-in-116-cows-from-gir-embryo-by-bl-agro-subsidiary-shows-65-success/article70761089.ece",
   },
-      {
-    title:
-      "Live Birth of India's First Elite, Genetically Selected Gir Calves",
-     date: "16th September, 2026",
-      image: require("../assets/registration-banner.jpg"),
-  tag: "Upcoming Event",
-    description:
-      "India’s first elite, genetically selected Gir calves-advancing indigenous cattle breeding through genomics",
-    url: "/registration"
-    },
-    {
+
+  {
     title:
       "Baroda to Brazil and back Leads Genetics claims 60 pc success in Gir cattle embryo transfers",
     date: "March 19, 2026",
     image: require("../assets/news/news1.jpeg"),
     tag: "News Article",
-    description:
-      "Elite Brazilian Gir cattle genetics back to India",
+    description: "Elite Brazilian Gir cattle genetics back to India",
     url: "https://www.theweek.in/wire-updates/business/2026/03/19/baroda-to-brazil-and-back-leads-genetics-claims-60-pc-success-in-gir-cattle-embryo-transfers.html",
   },
 ];
@@ -137,29 +139,6 @@ const NewsEvents = () => {
       return prev - 1;
     });
   };
-
-  /* ================= AUTO SLIDER ================= */
-  useEffect(() => {
-    if (newsData.length <= visibleCards) {
-      return undefined;
-    }
-
-    const interval = setInterval(() => {
-      const maxIndex = Math.max(newsData.length - visibleCards, 0);
-
-      setCurrentIndex((prev) => {
-        if (prev >= maxIndex) {
-          return 0;
-        }
-
-        return prev + 1;
-      });
-    }, 4500);
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, [visibleCards]);
 
   /* ================= CARD / ARROW CLICK ================= */
   const goToUrl = (url) => {
@@ -230,6 +209,7 @@ const NewsEvents = () => {
 
         {/* ================= SLIDER ================= */}
         <div className="news-slider-wrapper">
+
           {/* LEFT ARROW */}
           <button
             type="button"

@@ -6,7 +6,7 @@ ob_start();
 |--------------------------------------------------------------------------
 | CATTLE EVENT REGISTRATION
 |--------------------------------------------------------------------------
-| React -> PHP -> PHPMailer -> SMTP -> rishabdutt4@gmail.com
+| React -> PHP -> PHPMailer -> SMTP -> Gmail
 |--------------------------------------------------------------------------
 */
 
@@ -15,9 +15,10 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Accept");
 
+
 /*
 |--------------------------------------------------------------------------
-| HELPER: JSON RESPONSE
+| JSON RESPONSE
 |--------------------------------------------------------------------------
 */
 
@@ -40,6 +41,7 @@ function sendResponse($success, $message, $statusCode = 200)
     exit;
 }
 
+
 /*
 |--------------------------------------------------------------------------
 | CORS PREFLIGHT
@@ -49,6 +51,7 @@ function sendResponse($success, $message, $statusCode = 200)
 if ($_SERVER["REQUEST_METHOD"] === "OPTIONS") {
     sendResponse(true, "OK", 200);
 }
+
 
 /*
 |--------------------------------------------------------------------------
@@ -64,6 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     );
 }
 
+
 /*
 |--------------------------------------------------------------------------
 | PHP SETTINGS
@@ -75,26 +79,59 @@ ini_set("log_errors", "1");
 ini_set("max_execution_time", "60");
 ini_set("memory_limit", "256M");
 
+
 /*
 |--------------------------------------------------------------------------
-| PHPMailer
+| PHPMailer - DIRECT LOAD
+|--------------------------------------------------------------------------
+|
+| Folder structure:
+|
+| public/
+| ├── cattleevent.php
+| └── PHPMailer/
+|     ├── Exception.php
+|     ├── PHPMailer.php
+|     └── SMTP.php
+|
+*/
+
+$phpMailerPath = __DIR__ . "/PHPMailer/";
+
+
+/*
+|--------------------------------------------------------------------------
+| CHECK PHPMailer FILES
 |--------------------------------------------------------------------------
 */
 
-$autoload = __DIR__ . "/vendor/autoload.php";
-
-if (!file_exists($autoload)) {
+if (
+    !file_exists($phpMailerPath . "Exception.php") ||
+    !file_exists($phpMailerPath . "PHPMailer.php") ||
+    !file_exists($phpMailerPath . "SMTP.php")
+) {
     sendResponse(
         false,
-        "PHPMailer is not installed correctly. Please check the vendor folder.",
+        "PHPMailer files are missing. Please check the PHPMailer folder.",
         500
     );
 }
 
-require_once $autoload;
+
+/*
+|--------------------------------------------------------------------------
+| LOAD PHPMailer FILES
+|--------------------------------------------------------------------------
+*/
+
+require_once $phpMailerPath . "Exception.php";
+require_once $phpMailerPath . "PHPMailer.php";
+require_once $phpMailerPath . "SMTP.php";
+
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -118,6 +155,7 @@ function cleanInput($value)
     );
 }
 
+
 /*
 |--------------------------------------------------------------------------
 | GET FORM DATA
@@ -139,6 +177,7 @@ $researchArea = cleanInput($_POST["researchArea"] ?? "");
 $designation = cleanInput($_POST["designation"] ?? "");
 
 $dates = cleanInput($_POST["dates"] ?? "");
+
 
 /*
 |--------------------------------------------------------------------------
@@ -163,6 +202,7 @@ if (
     );
 }
 
+
 /*
 |--------------------------------------------------------------------------
 | EMAIL VALIDATION
@@ -176,6 +216,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         400
     );
 }
+
 
 /*
 |--------------------------------------------------------------------------
@@ -191,48 +232,55 @@ if (!preg_match("/^[6-9][0-9]{9}$/", $phone)) {
     );
 }
 
+
 /*
 |--------------------------------------------------------------------------
-| EMAIL CONFIGURATION
-|--------------------------------------------------------------------------
-|
-| Registration emails will be delivered to:
-| rishabdutt4@gmail.com
-|
+| EMAIL SETTINGS
 |--------------------------------------------------------------------------
 */
 
-$toEmail = "rishabdutt4@gmail.com";
+$toEmail = "info@leadsagrigenetics.com";
 $toName = "Rishab";
+
 
 /*
 |--------------------------------------------------------------------------
-| SMTP ACCOUNT
+| SMTP SETTINGS
 |--------------------------------------------------------------------------
 |
-| Your domain uses:
+| SMTP USERNAME:
 | info@leadsgenetics.com
 |
-| IMPORTANT:
-| Replace SMTP_PASSWORD_HERE with the REAL mailbox password.
+| SMTP PASSWORD:
+| info@leadsgenetics.com mailbox ka password
 |
-|--------------------------------------------------------------------------
 */
 
 $fromEmail = "info@leadsgenetics.com";
 $fromName = "Leads Genetics Registration";
 
 $smtpHost = "cloud-da2.xdnscloud.com";
+
 $smtpUsername = "info@leadsgenetics.com";
-$smtpPassword = "Deva@8899";
 
 /*
 |--------------------------------------------------------------------------
-| SUBJECT
+| IMPORTANT
+|--------------------------------------------------------------------------
+| Yahan info@leadsgenetics.com ka NEW mailbox password daalo.
+*/
+
+$smtpPassword = "Deva@8899";
+
+
+/*
+|--------------------------------------------------------------------------
+| EMAIL SUBJECT
 |--------------------------------------------------------------------------
 */
 
 $subject = "New Cattle Event Registration - " . $name;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -242,245 +290,304 @@ $subject = "New Cattle Event Registration - " . $name;
 
 $htmlBody = '
 <!DOCTYPE html>
+
 <html>
+
 <head>
-    <meta charset="UTF-8">
-    <title>Cattle Event Registration</title>
+
+<meta charset="UTF-8">
+
+<title>Cattle Event Registration</title>
+
 </head>
 
 <body style="
-    margin:0;
-    padding:30px;
-    background:#f5f6f8;
-    font-family:Arial,Helvetica,sans-serif;
+margin:0;
+padding:30px;
+background:#f5f6f8;
+font-family:Arial,Helvetica,sans-serif;
 ">
 
 <div style="
-    max-width:700px;
-    margin:0 auto;
-    background:#ffffff;
-    border:1px solid #dddddd;
-    border-radius:10px;
-    overflow:hidden;
+max-width:700px;
+margin:0 auto;
+background:#ffffff;
+border:1px solid #dddddd;
+border-radius:10px;
+overflow:hidden;
 ">
 
-    <div style="
-        padding:28px 30px;
-        background:#f7f7f7;
-        border-bottom:1px solid #e5e5e5;
-        text-align:center;
-    ">
 
-        <h2 style="
-            margin:0;
-            color:#222222;
-            font-size:24px;
-        ">
-            Leads Genetics
-        </h2>
+<!-- HEADER -->
 
-        <p style="
-            margin:8px 0 0;
-            color:#666666;
-            font-size:14px;
-        ">
-            New Cattle Event Registration
-        </p>
+<div style="
+padding:28px 30px;
+background:#f7f7f7;
+border-bottom:1px solid #e5e5e5;
+text-align:center;
+">
 
-    </div>
+<h2 style="
+margin:0;
+color:#222222;
+font-size:24px;
+">
+Leads Genetics
+</h2>
 
-    <div style="padding:30px;">
+<p style="
+margin:8px 0 0;
+color:#666666;
+font-size:14px;
+">
+New Cattle Event Registration
+</p>
 
-        <table style="
-            width:100%;
-            border-collapse:collapse;
-        ">
+</div>
 
-            <tr>
-                <td style="
-                    width:38%;
-                    padding:13px 12px;
-                    background:#f5f5f5;
-                    border:1px solid #e2e2e2;
-                    font-weight:bold;
-                    color:#333333;
-                ">
-                    Name
-                </td>
 
-                <td style="
-                    padding:13px 12px;
-                    border:1px solid #e2e2e2;
-                    color:#555555;
-                ">
-                    ' . $name . '
-                </td>
-            </tr>
+<!-- CONTENT -->
 
-            <tr>
-                <td style="
-                    padding:13px 12px;
-                    background:#f5f5f5;
-                    border:1px solid #e2e2e2;
-                    font-weight:bold;
-                    color:#333333;
-                ">
-                    Email
-                </td>
+<div style="padding:30px;">
 
-                <td style="
-                    padding:13px 12px;
-                    border:1px solid #e2e2e2;
-                    color:#555555;
-                ">
-                    ' . htmlspecialchars(
-                        $email,
-                        ENT_QUOTES | ENT_SUBSTITUTE,
-                        "UTF-8"
-                    ) . '
-                </td>
-            </tr>
+<table style="
+width:100%;
+border-collapse:collapse;
+">
 
-            <tr>
-                <td style="
-                    padding:13px 12px;
-                    background:#f5f5f5;
-                    border:1px solid #e2e2e2;
-                    font-weight:bold;
-                    color:#333333;
-                ">
-                    Phone No.
-                </td>
 
-                <td style="
-                    padding:13px 12px;
-                    border:1px solid #e2e2e2;
-                    color:#555555;
-                ">
-                    ' . $phone . '
-                </td>
-            </tr>
+<!-- NAME -->
 
-            <tr>
-                <td style="
-                    padding:13px 12px;
-                    background:#f5f5f5;
-                    border:1px solid #e2e2e2;
-                    font-weight:bold;
-                    color:#333333;
-                ">
-                    Institute / Affiliation
-                </td>
+<tr>
 
-                <td style="
-                    padding:13px 12px;
-                    border:1px solid #e2e2e2;
-                    color:#555555;
-                ">
-                    ' . $institute . '
-                </td>
-            </tr>
+<td style="
+width:38%;
+padding:13px 12px;
+background:#f5f5f5;
+border:1px solid #e2e2e2;
+font-weight:bold;
+color:#333333;
+">
+Name
+</td>
 
-            <tr>
-                <td style="
-                    padding:13px 12px;
-                    background:#f5f5f5;
-                    border:1px solid #e2e2e2;
-                    font-weight:bold;
-                    color:#333333;
-                ">
-                    Department
-                </td>
+<td style="
+padding:13px 12px;
+border:1px solid #e2e2e2;
+color:#555555;
+">
+' . $name . '
+</td>
 
-                <td style="
-                    padding:13px 12px;
-                    border:1px solid #e2e2e2;
-                    color:#555555;
-                ">
-                    ' . $department . '
-                </td>
-            </tr>
+</tr>
 
-            <tr>
-                <td style="
-                    padding:13px 12px;
-                    background:#f5f5f5;
-                    border:1px solid #e2e2e2;
-                    font-weight:bold;
-                    color:#333333;
-                ">
-                    Area of Research
-                </td>
 
-                <td style="
-                    padding:13px 12px;
-                    border:1px solid #e2e2e2;
-                    color:#555555;
-                ">
-                    ' . $researchArea . '
-                </td>
-            </tr>
+<!-- EMAIL -->
 
-            <tr>
-                <td style="
-                    padding:13px 12px;
-                    background:#f5f5f5;
-                    border:1px solid #e2e2e2;
-                    font-weight:bold;
-                    color:#333333;
-                ">
-                    Designation
-                </td>
+<tr>
 
-                <td style="
-                    padding:13px 12px;
-                    border:1px solid #e2e2e2;
-                    color:#555555;
-                ">
-                    ' . $designation . '
-                </td>
-            </tr>
+<td style="
+padding:13px 12px;
+background:#f5f5f5;
+border:1px solid #e2e2e2;
+font-weight:bold;
+color:#333333;
+">
+Email
+</td>
 
-            <tr>
-                <td style="
-                    padding:13px 12px;
-                    background:#f5f5f5;
-                    border:1px solid #e2e2e2;
-                    font-weight:bold;
-                    color:#333333;
-                ">
-                    Selected Date(s)
-                </td>
+<td style="
+padding:13px 12px;
+border:1px solid #e2e2e2;
+color:#555555;
+">
+' . htmlspecialchars(
+    $email,
+    ENT_QUOTES | ENT_SUBSTITUTE,
+    "UTF-8"
+) . '
+</td>
 
-                <td style="
-                    padding:13px 12px;
-                    border:1px solid #e2e2e2;
-                    color:#555555;
-                    font-weight:bold;
-                ">
-                    ' . $dates . '
-                </td>
-            </tr>
+</tr>
 
-        </table>
 
-        <p style="
-            margin:25px 0 0;
-            color:#999999;
-            font-size:12px;
-            text-align:center;
-        ">
-            This is an automated email from the Leads Genetics
-            registration system.
-        </p>
+<!-- PHONE -->
 
-    </div>
+<tr>
+
+<td style="
+padding:13px 12px;
+background:#f5f5f5;
+border:1px solid #e2e2e2;
+font-weight:bold;
+color:#333333;
+">
+Phone No.
+</td>
+
+<td style="
+padding:13px 12px;
+border:1px solid #e2e2e2;
+color:#555555;
+">
+' . $phone . '
+</td>
+
+</tr>
+
+
+<!-- INSTITUTE -->
+
+<tr>
+
+<td style="
+padding:13px 12px;
+background:#f5f5f5;
+border:1px solid #e2e2e2;
+font-weight:bold;
+color:#333333;
+">
+Institute / Affiliation
+</td>
+
+<td style="
+padding:13px 12px;
+border:1px solid #e2e2e2;
+color:#555555;
+">
+' . $institute . '
+</td>
+
+</tr>
+
+
+<!-- DEPARTMENT -->
+
+<tr>
+
+<td style="
+padding:13px 12px;
+background:#f5f5f5;
+border:1px solid #e2e2e2;
+font-weight:bold;
+color:#333333;
+">
+Department
+</td>
+
+<td style="
+padding:13px 12px;
+border:1px solid #e2e2e2;
+color:#555555;
+">
+' . $department . '
+</td>
+
+</tr>
+
+
+<!-- RESEARCH AREA -->
+
+<tr>
+
+<td style="
+padding:13px 12px;
+background:#f5f5f5;
+border:1px solid #e2e2e2;
+font-weight:bold;
+color:#333333;
+">
+Area of Research
+</td>
+
+<td style="
+padding:13px 12px;
+border:1px solid #e2e2e2;
+color:#555555;
+">
+' . $researchArea . '
+</td>
+
+</tr>
+
+
+<!-- DESIGNATION -->
+
+<tr>
+
+<td style="
+padding:13px 12px;
+background:#f5f5f5;
+border:1px solid #e2e2e2;
+font-weight:bold;
+color:#333333;
+">
+Designation
+</td>
+
+<td style="
+padding:13px 12px;
+border:1px solid #e2e2e2;
+color:#555555;
+">
+' . $designation . '
+</td>
+
+</tr>
+
+
+<!-- DATES -->
+
+<tr>
+
+<td style="
+padding:13px 12px;
+background:#f5f5f5;
+border:1px solid #e2e2e2;
+font-weight:bold;
+color:#333333;
+">
+Selected Date(s)
+</td>
+
+<td style="
+padding:13px 12px;
+border:1px solid #e2e2e2;
+color:#555555;
+font-weight:bold;
+">
+' . $dates . '
+</td>
+
+</tr>
+
+
+</table>
+
+
+<!-- FOOTER -->
+
+<p style="
+margin:25px 0 0;
+color:#999999;
+font-size:12px;
+text-align:center;
+">
+
+This is an automated email from the Leads Genetics
+registration system.
+
+</p>
+
+</div>
 
 </div>
 
 </body>
+
 </html>
 ';
+
 
 /*
 |--------------------------------------------------------------------------
@@ -492,6 +599,7 @@ try {
 
     $mail = new PHPMailer(true);
 
+
     /*
     |--------------------------------------------------------------------------
     | SMTP
@@ -501,19 +609,24 @@ try {
     $mail->isSMTP();
 
     $mail->Host = $smtpHost;
+
     $mail->SMTPAuth = true;
 
     $mail->Username = $smtpUsername;
+
     $mail->Password = $smtpPassword;
+
 
     /*
     |--------------------------------------------------------------------------
-    | SSL
+    | SSL / PORT
     |--------------------------------------------------------------------------
     */
 
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+
     $mail->Port = 465;
+
 
     /*
     |--------------------------------------------------------------------------
@@ -522,15 +635,11 @@ try {
     */
 
     $mail->SMTPDebug = 0;
+
     $mail->Timeout = 30;
 
-    /*
-    |--------------------------------------------------------------------------
-    | CHARACTER SET
-    |--------------------------------------------------------------------------
-    */
-
     $mail->CharSet = "UTF-8";
+
 
     /*
     |--------------------------------------------------------------------------
@@ -543,6 +652,7 @@ try {
         $fromName
     );
 
+
     /*
     |--------------------------------------------------------------------------
     | TO
@@ -553,6 +663,7 @@ try {
         $toEmail,
         $toName
     );
+
 
     /*
     |--------------------------------------------------------------------------
@@ -565,17 +676,19 @@ try {
         $name
     );
 
+
     /*
     |--------------------------------------------------------------------------
-    | EMAIL
+    | EMAIL CONTENT
     |--------------------------------------------------------------------------
     */
 
-    $mail->Subject = $subject;
-
     $mail->isHTML(true);
 
+    $mail->Subject = $subject;
+
     $mail->Body = $htmlBody;
+
 
     /*
     |--------------------------------------------------------------------------
@@ -594,6 +707,7 @@ try {
         "Designation: " . $designation . "\n" .
         "Selected Date(s): " . $dates . "\n";
 
+
     /*
     |--------------------------------------------------------------------------
     | SEND
@@ -602,31 +716,54 @@ try {
 
     $mail->send();
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | SUCCESS
+    |--------------------------------------------------------------------------
+    */
+
     sendResponse(
         true,
         "Registration submitted successfully. Thank you!",
         200
     );
 
+
 } catch (Exception $e) {
+
+    /*
+    |--------------------------------------------------------------------------
+    | SMTP ERROR LOG
+    |--------------------------------------------------------------------------
+    */
 
     error_log(
         "Cattle Event Registration Mail Error: " .
-        $e->getMessage()
+        $mail->ErrorInfo
     );
+
 
     sendResponse(
         false,
-        "Email could not be sent. Please try again later.",
+        "Email could not be sent. Please check your SMTP settings.",
         500
     );
 
+
 } catch (Throwable $e) {
+
+    /*
+    |--------------------------------------------------------------------------
+    | PHP ERROR LOG
+    |--------------------------------------------------------------------------
+    */
 
     error_log(
         "Cattle Event Registration PHP Error: " .
         $e->getMessage()
     );
+
 
     sendResponse(
         false,
@@ -635,4 +772,7 @@ try {
     );
 }
 
+
 exit;
+
+?>

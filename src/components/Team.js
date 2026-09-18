@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { Container } from "react-bootstrap";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
@@ -46,6 +46,8 @@ const teamBannerImage = require("../assets/team/group_team.jpeg");
 
 const Team = () => {
   const swiperRef = useRef(null);
+  const sectionRef = useRef(null);
+  const hasEnteredRef = useRef(false);
 
   const handlePrev = () => {
     if (swiperRef.current) {
@@ -59,8 +61,60 @@ const Team = () => {
     }
   };
 
+  /*
+    Reset slider to first position whenever
+    user enters the Team section.
+  */
+  useEffect(() => {
+    const section = sectionRef.current;
+
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+
+        if (entry.isIntersecting && !hasEnteredRef.current) {
+          hasEnteredRef.current = true;
+
+          if (swiperRef.current) {
+            // Stop autoplay first
+            swiperRef.current.autoplay.stop();
+
+            // Always start from slide 1
+            swiperRef.current.slideToLoop(0, 0);
+
+            // Start autoplay after 3500ms
+            setTimeout(() => {
+              if (swiperRef.current) {
+                swiperRef.current.autoplay.start();
+              }
+            }, 3500);
+          }
+        }
+
+        // Reset trigger after leaving section
+        if (!entry.isIntersecting) {
+          hasEnteredRef.current = false;
+        }
+      },
+      {
+        threshold: 0.2,
+      }
+    );
+
+    observer.observe(section);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
-    <section className="team-scientists-section">
+    <section
+      ref={sectionRef}
+      className="team-scientists-section"
+    >
       <Container>
         {/* ================================
             HEADING
@@ -146,7 +200,10 @@ const Team = () => {
             className="team-swiper"
           >
             {scientists.map((scientist, index) => (
-              <SwiperSlide key={index} className="team-slide">
+              <SwiperSlide
+                key={index}
+                className="team-slide"
+              >
                 <div className="scientist-card">
                   <img
                     src={scientist.image}
@@ -183,7 +240,7 @@ const Team = () => {
               Meet our Team
             </h2>
 
-            <p className="team-meet-text">
+            <p className="team-meet-text page-text">
               At Leads Genetics, our strength lies in a multidisciplinary team
               of geneticists, embryologists, and veterinary scientists working
               together to advance genomics-driven livestock breeding. From
@@ -193,7 +250,7 @@ const Team = () => {
               breeders and dairy farms across the region.
             </p>
 
-            <p className="team-meet-text">
+            <p className="team-meet-text page-text">
               Backed by a state-of-the-art lab and years of applied research,
               we're committed to making cutting-edge reproductive genetics
               accessible and practical for the livestock industry.

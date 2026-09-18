@@ -227,7 +227,7 @@ const HomeAbout = () => {
 
               {/* DESCRIPTION */}
 
-              <p className="h-about-text">
+              <p className="h-about-text page-text">
                 The story of Leads Genetics begins with a strong foundation
                 built in genomics, molecular diagnostics, and life-science
                 research. For nearly a decade, the organization operated
@@ -236,7 +236,7 @@ const HomeAbout = () => {
                 molecular diagnostics, and bioinformatics.
               </p>
 
-              <p className="h-about-text">
+              <p className="h-about-text page-text">
                 Over the years, this scientific foundation evolved beyond
                 individual testing and sequencing projects into a broader
                 vision-building an integrated genomics platform capable of
@@ -244,7 +244,7 @@ const HomeAbout = () => {
                 across agriculture, livestock, plants, and human health.
               </p>
 
-              <p className="h-about-text">
+              <p className="h-about-text page-text">
                 A new chapter began as the business became part of the
                 Leads / BL Agro ecosystem, bringing together established
                 genomics capabilities with the scale, agricultural reach,

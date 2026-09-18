@@ -235,7 +235,7 @@
 .h-about-text {
   margin: 0 0 18px;
 
-  font-size: 15px;
+
   line-height: 1.8;
 
   color: #667085;
@@ -471,9 +471,6 @@
     font-size: 2.45rem;
   }
 
-  .h-about-text {
-    font-size: 14px;
-  }
 
   .h-about-stat {
     padding: 0 14px;
@@ -531,9 +528,6 @@
     font-size: 2.5rem;
   }
 
-  .h-about-text {
-    font-size: 15px;
-  }
 
   .h-about-stats-row {
     margin-top: 4px;
@@ -644,7 +638,7 @@
   }
 
   .h-about-text {
-    font-size: 14px;
+  
 
     line-height: 1.75;
 
@@ -746,7 +740,6 @@
   }
 
   .h-about-text {
-    font-size: 13.5px;
     line-height: 1.75;
   }
 
@@ -782,9 +775,7 @@
     font-size: 1.55rem;
   }
 
-  .h-about-text {
-    font-size: 13px;
-  }
+
 
   .h-about-stat-value {
     font-size: 1.1rem;

@@ -85,19 +85,19 @@ export default function About() {
         </motion.div>
 
         <div className="story-grid">
-          <motion.div className="story-text" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} variants={stagger}>
+          <motion.div className="story-text page-text" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} variants={stagger}>
             <motion.p variants={fadeUp}>
-              Leads Genetics is the next chapter in the evolution of a long-standing agricultural enterprise rooted in the BL Agro / Leads Group of Companies. With deep experience in agriculture, food, dairy-linked value chains, and farmer-oriented businesses, the Group brings an understanding of Indian agriculture that extends beyond the laboratory — into farms, supply chains, producers, and the realities of improving productivity at scale.
+              Leads Genetics is the next chapter in the evolution of a long-standing agricultural enterprise rooted in the BL Agro / Leads Group of Companies. With deep experience in agriculture, food, dairy-linked value chains, and farmer-oriented businesses, the Group brings an understanding of Indian agriculture that extends beyond the laboratory - into farms, supply chains, producers, and the realities of improving productivity at scale.
             </motion.p>
             <motion.p variants={fadeUp}>
               The genomics operations of GenePrint Labs were merged into the Leads ecosystem, bringing established genomics, molecular diagnostics, sequencing, and bioinformatics capabilities into the organization.
             </motion.p>
             <motion.p variants={fadeUp}>
-              Leads Genetics was created with a larger ambition: to combine the scale and agricultural understanding of the BL Agro ecosystem with modern genomics to address one of India's most important biological challenges — improving the productivity, health, fertility, and resilience of its cattle population.
+              Leads Genetics was created with a larger ambition: to combine the scale and agricultural understanding of the BL Agro ecosystem with modern genomics to address one of India's most important biological challenges - improving the productivity, health, fertility, and resilience of its cattle population.
             </motion.p>
           </motion.div>
 
-          <motion.div className="story-highlight-box" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} variants={fadeRight}>
+          <motion.div className="story-highlight-box page-text" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} variants={fadeRight}>
             <div className="highlight-intro">
               <span className="highlight-label">Our Integrated Platform</span>
               <p>The organization brings together:</p>
@@ -107,9 +107,9 @@ export default function About() {
                 <li key={item}><span className="list-bullet" aria-hidden="true">▸</span>{item}</li>
               ))}
             </ul>
-            <div className="campus-note">
+            <div className="campus-note page-text">
               <span className="campus-icon" aria-hidden="true">📍</span>
-              <p>At the centre is the <strong>Leads Genetics Livestock Campus in Bareilly</strong> — connecting genomics with a working research herd, elite germplasm, and continuously generated phenotypic information.</p>
+              <p>At the centre is the <strong>Leads Genetics Livestock Campus in Bareilly</strong> - connecting genomics with a working research herd, elite germplasm, and continuously generated phenotypic information.</p>
             </div>
           </motion.div>
         </div>
@@ -140,13 +140,13 @@ export default function About() {
       {/* ── MISSION & VISION ─────────────────────────────── */}
       <section id="about-mission-vision" className="container-fluid mission-vision-section" aria-label="Mission and Vision">
 
-        {/* Mission — compact split layout */}
+        {/* Mission - compact split layout */}
         <motion.div className="mv-mission-wrap" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.25 }} variants={stagger}>
           <motion.div className="mv-mission-text" variants={fadeLeft}>
             <span className="tag">Our Mission</span>
             <h2>To accelerate the genetic improvement of Indian cattle through genomics.</h2>
-            <p>
-              Our mission is to make genomic selection a practical and scalable tool for improving India's dairy and livestock populations — translating genetic data into better breeding decisions that shorten the improvement cycle for every generation.
+            <p className="page-text">
+              Our mission is to make genomic selection a practical and scalable tool for improving India's dairy and livestock populations - translating genetic data into better breeding decisions that shorten the improvement cycle for every generation.
             </p>
           </motion.div>
           <motion.div className="mv-mission-stats" variants={stagger}>
@@ -164,12 +164,13 @@ export default function About() {
 
         <div className="mv-divider" aria-hidden="true" />
 
-        {/* Vision — chip grid layout */}
+        {/* Vision - chip grid layout */}
         <motion.div className="mv-vision-wrap" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.2 }} variants={stagger}>
           <motion.div className="mv-vision-header" variants={fadeUp}>
             <span className="tag">Our Vision</span>
-            <h2>To build a genomically improved Indian cattle population — healthier, more productive, better adapted.</h2>
-            <p>We envision a data-driven genetic improvement ecosystem where every generation benefits from increasingly precise information about its genetic potential:</p>
+            <h2>To build a genomically improved Indian cattle population - healthier, more productive, better adapted.</h2>
+            <p className="page-text"> Leads Genetics is a biotech company working at the intersection of genetics, genomics, artificial intelligence, and advanced research. The company focuses on developing innovative solutions across three key domains-cattle, plants, and human genetics-with the aim of
+               leveraging genomic science and AI to improve productivity, health, sustainability, and outcomes. Through its focus on core research, technology, and innovation, Leads Genetics is working towards translating advances in genomics into real-world applications across agriculture, livestock, and human health</p>
           </motion.div>
           <motion.div className="vision-chip-grid" variants={stagger}>
             {visionPoints.map((pt, i) => (
@@ -202,7 +203,7 @@ export default function About() {
       {/* ── LEADS GENETICS FOUNDATION ────────────────────── */}
       <section id="about-lg-foundation" className="container-fluid lg-foundation-section" aria-labelledby="lg-foundation-heading">
         <div className="lf-grid">
-          <motion.div className="lf-text" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} variants={stagger}>
+          <motion.div className="lf-text page-text" initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} variants={stagger}>
             <motion.span className="tag" variants={fadeUp}>Leads Genetics Foundation</motion.span>
             <motion.h2 id="lg-foundation-heading" variants={fadeUp}>
               Strength rooted in agriculture, sharpened by science.
@@ -214,7 +215,7 @@ export default function About() {
               The BL Agro / Leads Group of Companies provides a foundation rooted in agriculture and the Indian food and dairy landscape. Cattle genomics must ultimately work within the realities of Indian farms, farmers, breeds, production systems, economics, and animal health.
             </motion.p>
             <motion.p variants={fadeUp}>
-              Rather than treating cattle as sequencing samples, Leads Genetics views each animal as part of a larger production system — with a genome, phenotype, pedigree, health history, reproductive history, environment, and economic value.
+              Rather than treating cattle as sequencing samples, Leads Genetics views each animal as part of a larger production system - with a genome, phenotype, pedigree, health history, reproductive history, environment, and economic value.
             </motion.p>
           </motion.div>
 
@@ -243,7 +244,7 @@ export default function About() {
             Genomics translated into genetic gain.
           </motion.h2>
           <motion.p variants={fadeUp}>
-            Leads Genetics is building toward a future where genomic selection becomes increasingly accessible across India's cattle-breeding ecosystem — from elite breeding programs and organized dairy operations to cooperatives and broader population-improvement initiatives.
+            Leads Genetics is building toward a future where genomic selection becomes increasingly accessible across India's cattle-breeding ecosystem - from elite breeding programs and organized dairy operations to cooperatives and broader population-improvement initiatives.
           </motion.p>
 
           {/* Step chain */}
@@ -265,7 +266,7 @@ export default function About() {
 
           <motion.p className="road-conclusion" variants={fadeUp}>
             That is the purpose behind Leads Genetics.&nbsp;
-            <em>Not genomics for genomics' sake — but genomics translated into genetic gain.</em>
+            <em>Not genomics for genomics' sake - but genomics translated into genetic gain.</em>
           </motion.p>
         </motion.div>
       </section>

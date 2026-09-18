@@ -26,7 +26,7 @@ const locations = [
     phone: " +91 63899 13132",
     email: "Info@leadsgenetics.com",
     mapUrl:
-      "https://maps.app.goo.gl/EAFC2aJY6SCRAiRZ6?g_st=ac",
+      "https://maps.app.goo.gl/bb3ASGodxt9xMZ7Q9?g_st=aw",
   },
 ];
 
