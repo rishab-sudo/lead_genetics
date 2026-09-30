@@ -10,7 +10,7 @@ const HeroChip = () => {
         <div className="hero-chip-content">
 
           <div className="hero-chip-badge">
-            UNVEILED AT THE CATTLE GENOMICS SUMMIT 2025 • BAREILLY, INDIA
+            UNVEILED AT THE CATTLE GENOMICS SUMMIT 2026 • BAREILLY, INDIA
           </div>
 
           <h1 className="hero-chip-title">
@@ -24,7 +24,7 @@ const HeroChip = () => {
           <p className="hero-chip-description">
             A purpose-built genomic genotyping platform designed to accelerate
             scientific breeding improvement in India's native cattle
-            populations — enabling precision genomics for Gir, Sahiwal,
+            populations - enabling precision genomics for Gir, Sahiwal,
             and indigenous Bos indicus cattle at unprecedented scale.
           </p>
 
@@ -73,7 +73,7 @@ const HeroChip = () => {
 </video>
 
             {/* Image Bottom Information */}
-            <div className="hero-chip-image-info">
+            {/* <div className="hero-chip-image-info">
 
               <div className="hero-chip-image-info-left">
                 <span className="hero-chip-live-dot"></span>
@@ -90,7 +90,7 @@ const HeroChip = () => {
                 ACTIVE
               </div>
 
-            </div>
+            </div> */}
 
           </div>
 

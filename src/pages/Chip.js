@@ -60,7 +60,7 @@ export const Chip = () => {
 
           <h3 className="zebu-snp-card-title">
             "Until now, Indian cattle breeders relied on genotyping chips
-            designed for exotic & European breeds — poorly suited to the
+            designed for exotic & European breeds - poorly suited to the
             indigenous cattle's unique genetic architecture."
           </h3>
 
