@@ -13,7 +13,7 @@ import AgriGenomics from "./pages/AgriGenomics";
 import Moet from "./pages/Moet";
 // import Registration from "./pages/Registration";
 
-// import RegistrationPopup from "./components/RegistrationPopup";
+import RegistrationPopup from "./components/RegistrationPopup";
 
 import ScrollTop from "./components/ScrollTop";
 import ScrollToTop from "./components/ScrollToTop";
@@ -29,6 +29,7 @@ function App() {
      {/* Scroll to top whenever route/page changes */}
       <ScrollToTop />
 
+<RegistrationPopup/>
       <Routes>
         {/* Home Page */}
         <Route path="/" element={<Home />} />

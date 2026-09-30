@@ -3,10 +3,19 @@
 ================================ */
 
 .hero-chip {
+  --nav-band: 90px;               /* navbar ke peeche dark blue patti ki height */
+
   width: 100%;
-  padding: 95px 0px;
-  background: #e1e0ed;
+  padding: 135px 0 120px;
   overflow: hidden;
+
+  background:
+    /* neeche ka fade: white section me smoothly mil jata hai */
+    linear-gradient(to bottom, rgba(255, 255, 255, 0) calc(100% - 90px), #ffffff 100%),
+    /* upar navbar ke peeche dark blue patti */
+    linear-gradient(to bottom, #0a1f45 0, #0f2d5c var(--nav-band), transparent var(--nav-band)),
+    /* baaki hero ka light blue */
+    linear-gradient(135deg, #dce9fb80 0%, #c4d9f518 100%);
 }
 
 .hero-chip-container {
@@ -36,12 +45,12 @@
   padding: 6px 11px;
   margin-bottom: 18px;
 
-  border: 1px solid #cbd8d8;
+  border: 1px solid #a9c3e6;
   border-radius: 30px;
 
-  background: #f8fbfb;
+  background: #f5f9ff;
 
-  color: #607474;
+  color: #4f6785;
   font-size: 9px;
   font-weight: 700;
 
@@ -68,7 +77,7 @@
 
   margin: 0 0 25px;
 
-  color: #7b858b;
+  color: #52647d;
 
   font-size: 14px;
   line-height: 1.6;
@@ -88,8 +97,8 @@
 
   margin: 20px 0 28px;
 
-  border-top: 1px solid #dce3e4;
-  border-bottom: 1px solid #dce3e4;
+  border-top: 1px solid #a9c3e6;
+  border-bottom: 1px solid #a9c3e6;
 }
 
 
@@ -111,7 +120,7 @@
   width: 1px;
   height: 42px;
 
-  background: #dce3e4;
+  background: #a9c3e6;
 }
 
 
@@ -128,7 +137,7 @@
 .hero-chip-stat span {
   display: block;
 
-  color: #7b858b;
+  color: #52647d;
 
   font-size: 14px;
   line-height: 1.3;
@@ -331,7 +340,8 @@
 @media (max-width: 991px) {
 
   .hero-chip {
-    padding: 60px 0;
+    --nav-band: 100px;
+    padding: 125px 0 90px;
   }
 
   .hero-chip-container {
@@ -369,7 +379,8 @@
 @media (max-width: 767px) {
 
   .hero-chip {
-    padding: 45px 0 55px;
+    --nav-band: 90px;
+    padding: 110px 0 75px;
   }
 
   .hero-chip-container {
@@ -408,7 +419,7 @@
   }
 
   .hero-chip-stat:not(:last-child) {
-    border-bottom: 1px solid #dce3e4;
+    border-bottom: 1px solid #a9c3e6;
   }
 
   .hero-chip-image {
