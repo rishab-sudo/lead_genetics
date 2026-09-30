@@ -507,7 +507,8 @@ align-items: flex-start !important;
 
 .mv-vision-header {
   max-width: 780px;
-
+/* background-color: #2563b8; */
+min-width: 100% !important;
   margin-top: 0;
   margin-bottom: 1.5rem;
 }
@@ -530,25 +531,17 @@ align-items: flex-start !important;
 }
 
 .vision-chip {
-  display: flex;
-  align-items: flex-start;
-
-  gap: 0.6rem;
-
-  background: #f8fafc;
-
-  border: 1.5px solid #e2e8f0;
-  border-radius: 12px;
-
-  padding: 0.75rem 0.95rem;
-
-  margin: 0;
-
-  text-align: left;
-
-  cursor: pointer;
-
-  transition:
+display: flex;
+align-items: flex-start;
+gap: 0.6rem;
+background: #f8fafc;
+border: 1.5px solid #e2e8f0;
+border-radius: 12px;
+padding: 0.75rem 0.95rem;
+margin: 0;
+text-align: left;
+cursor: pointer;
+transition:
     border-color 0.2s ease,
     background 0.2s ease;
 }
@@ -849,7 +842,7 @@ align-items: flex-start !important;
 
 .road-connector {
   color: rgba(255, 255, 255, 0.55);
-
+ 
   font-size: 1rem;
 }
 

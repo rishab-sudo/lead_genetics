@@ -4,28 +4,47 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import "./NewsEvents.css";
 
 const newsData = [
+  // {
+  //   title:
+  //     "Live Birth of India's First Elite, Genetically Selected Gir Calves",
+  //   date: "14th & 15th September, 2026",
+  //   image: require("../assets/news/cattle-event14-15.jpeg"),
+  //   tag: "Upcoming Event",
+  //   description:
+  //     "India’s first elite, genetically selected Gir calves-advancing indigenous cattle breeding through genomics",
+  //   url: "/registration",
+  // },
+
+  // {
+  //   title: "Hands-on Workshop on SNP Genotyping & Genomic Selection",
+  //   date: "16th & 17th September, 2026",
+  //   image: require("../assets/news/cattle-event16-17.png"),
+  //   tag: "Upcoming Event",
+  //   description:
+  //     "A hands-on workshop on SNP genotyping and genomic selection, focused on practical genomic techniques and their role in modern genetic improvement.",
+  //   url: "/registration",
+  // },
   {
     title:
-      "Live Birth of India's First Elite, Genetically Selected Gir Calves",
-    date: "14th & 15th September, 2026",
-    image: require("../assets/news/cattle-event14-15.jpeg"),
-    tag: "Upcoming Event",
+      "A New Chapter in Dairy Genetics: BL Agro and Leads Genetics",
+    date: "September 16, 2026",
+    image: require("../assets/news/news16sep26.jpeg"),
+    tag: "News Article",
     description:
-      "India’s first elite, genetically selected Gir calves-advancing indigenous cattle breeding through genomics",
-    url: "/registration",
+      "Investment to build an integrated dairy and cattle genetics ecosystem powered by genomics and advanced reproductive technologies.",
+    url: "https://retail.economictimes.indiatimes.com/news/food-entertainment/personal-care-pet-supplies-liquor/bl-agro-to-invest-rs-1500-crore-in-leads-genetics-to-build-integrated-dairy-genetics-ecosystem/134254004",
   },
-
-  {
-    title: "Hands-on Workshop on SNP Genotyping & Genomic Selection",
-    date: "16th & 17th September, 2026",
-    image: require("../assets/news/cattle-event16-17.png"),
-    tag: "Upcoming Event",
+    {
+    title:
+      "40–60 लीटर तक दैनिक दूध उत्पादन की दिशा में बड़ा कदम",
+    date: "September 15, 2026",
+    image: require("../assets/news/news15sep26.png"),
+    tag: "News Article",
     description:
-      "A hands-on workshop on SNP genotyping and genomic selection, focused on practical genomic techniques and their role in modern genetic improvement.",
-    url: "/registration",
-  },
-
-  {
+      "आधुनिक जेनेटिक्स और वैज्ञानिक पशुपालन के माध्यम से भारत के डेयरी सेक्टर को अधिक उत्पादक और तकनीक-संचालित बनाने की योजना।",
+    url: "https://www.zeebiz.com/hindi/economy/agriculture/bl-agro-invests-rs-1500-cr-in-leads-genetics-high-milk-yield-dairy-ecosystem-and-ivf-rollout-by-2027-264319?shem=dsdf,sharefoc,agadiscoversdl,,sh/x/discover/m1/4",
+    },
+    {
     title:
       "Leads Agri Genetics Launches India’s 1st Privately-Owned Integrated CoE for Cattle & Plant Genomics",
     date: "September 30, 2025",

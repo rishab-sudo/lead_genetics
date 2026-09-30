@@ -15,6 +15,7 @@ import Credentials from "../components/Credentials";
 import WhyUs from "../components/WhyUs";
 import SectionDivider from "../components/SectionDivider";
 import Partners from "../components/Partners";
+import ChipVideo from "../components/ChipVideo";
 
 const Home = () => {
   return (
@@ -29,6 +30,10 @@ const Home = () => {
         <Team />
       </Reveal>
 
+ <Reveal>
+        <ChipVideo />
+      </Reveal> 
+      
       <Reveal>
         <NewsEvents />
       </Reveal>

@@ -11,13 +11,14 @@ import Contact from "./pages/Contact";
 import Research from "./pages/Research";
 import AgriGenomics from "./pages/AgriGenomics";
 import Moet from "./pages/Moet";
-import Registration from "./pages/Registration";
+// import Registration from "./pages/Registration";
 
-import RegistrationPopup from "./components/RegistrationPopup";
+// import RegistrationPopup from "./components/RegistrationPopup";
 
 import ScrollTop from "./components/ScrollTop";
 import ScrollToTop from "./components/ScrollToTop";
 import "./App.css";
+import { Chip } from "./pages/Chip";
 
 function App() {
   return (
@@ -25,10 +26,7 @@ function App() {
       {/* Navbar always visible */}
       <Navbar />
 
-      {/* Registration Popup - Shows after 3 seconds */}
-      <RegistrationPopup />
-
-      {/* Scroll to top whenever route/page changes */}
+     {/* Scroll to top whenever route/page changes */}
       <ScrollToTop />
 
       <Routes>
@@ -60,7 +58,10 @@ function App() {
           path="/clinical-genomics"
           element={<ClinicalGenomics />}
         />
-
+ <Route
+          path="/chip"
+          element={<Chip />}
+        /> 
         {/* Contact Page */}
         <Route
           path="/contact"
@@ -68,10 +69,10 @@ function App() {
         />
 
         {/* Registration Page */}
-        <Route
+        {/* <Route
           path="/registration"
           element={<Registration />}
-        />
+        /> */}
 
       </Routes>
 

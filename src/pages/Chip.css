@@ -1,0 +1,554 @@
+/* =========================================
+   ZEBU SNP SECTION
+========================================= */
+
+.zebu-snp-section {
+  width: 100%;
+  padding: 50px 0;
+  background: #ffffff;
+}
+
+.zebu-snp-container {
+  width:80%;
+
+  margin: 0 auto;
+
+  display: flex;
+justify-content: space-between;
+align-items: center;
+  gap: 35px;
+  align-items: center;
+}
+
+
+/* =========================================
+   LEFT CONTENT
+========================================= */
+
+.zebu-snp-content {
+  width: 100%;
+}
+
+.zebu-snp-content .section-heading {
+  margin-bottom: 20px;
+  color: #092348;
+}
+
+.zebu-snp-content .page-text {
+  max-width: 720px;
+  margin: 0 0 14px;
+  color: #66727a;
+  line-height: 1.65;
+}
+
+
+/* =========================================
+   HIGHLIGHT STRIP
+========================================= */
+
+.zebu-snp-highlight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  max-width: 720px;
+  margin-top: 28px;
+  padding: 13px 16px;
+
+  border: 1px solid #d7e1e1;
+  border-radius: 4px;
+
+  background: #f5f9f8;
+}
+
+.zebu-snp-highlight-dot {
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+
+  border-radius: 50%;
+  background: #2f9a68;
+
+  box-shadow: 0 0 0 4px rgba(47, 154, 104, 0.12);
+}
+
+.zebu-snp-highlight-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.zebu-snp-highlight-label {
+  color: #2d8b61;
+  letter-spacing: 0.7px;
+}
+
+.zebu-snp-highlight-text {
+  color: #59676d;
+}
+
+
+/* =========================================
+   RIGHT CARD
+========================================= */
+
+.zebu-snp-info-card {
+  width: 80%;
+  padding: 28px 27px;
+
+  border-radius: 5px;
+
+  background: #062650;
+
+  box-shadow: 0 14px 35px rgba(6, 38, 80, 0.13);
+}
+
+.zebu-snp-card-label {
+  display: inline-block;
+  margin-bottom: 17px;
+
+  color: #7fd2ae;
+  letter-spacing: 1px;
+}
+
+.zebu-snp-card-title {
+  margin: 0;
+
+  color: #ffffff;
+  line-height: 1.55;
+}
+
+.zebu-snp-card-divider {
+  width: 100%;
+  height: 1px;
+
+  margin: 20px 0;
+
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.zebu-snp-card-text {
+  margin: 0;
+
+  color: #c9d6e3;
+  line-height: 1.6;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 991px) {
+
+  .zebu-snp-section {
+    padding: 65px 0;
+  }
+
+  .zebu-snp-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .zebu-snp-content .page-text {
+    max-width: 100%;
+  }
+
+  .zebu-snp-highlight {
+    max-width: 100%;
+  }
+
+  .zebu-snp-info-card {
+    max-width: 700px;
+  }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 767px) {
+
+  .zebu-snp-section {
+    padding: 50px 0;
+  }
+
+  .zebu-snp-container {
+    flex-direction: column;
+    width: 95%;
+    gap: 30px;
+  }
+
+  .zebu-snp-content .section-heading {
+    margin-bottom: 15px;
+  }
+
+  .zebu-snp-content .page-text {
+    line-height: 1.55;
+  }
+
+  .zebu-snp-highlight {
+    margin-top: 22px;
+    padding: 12px;
+  }
+
+  .zebu-snp-info-card {
+    padding: 22px 20px;
+    width: 100% !important;
+  }
+
+  .zebu-snp-card-divider {
+    margin: 16px 0;
+  }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+
+  .zebu-snp-container {
+    width: 92%;
+  }
+
+  .zebu-snp-highlight {
+    align-items: flex-start;
+  }
+
+  .zebu-snp-info-card {
+    padding: 20px 17px;
+  }
+}
+/* -------------section 2 --------------------- */
+.genomic-architecture-section {
+  width: 100%;
+  padding: 52px 0;
+  background: #f6f9fa;
+}
+
+.genomic-architecture-container {
+  width: 80%;
+
+  margin: 0 auto;
+}
+
+
+/* ================================
+   HEADER
+================================ */
+
+.genomic-architecture-header {
+  max-width: 720px;
+  margin: 0 auto 42px;
+  text-align: center;
+}
+
+.genomic-architecture-eyebrow {
+  display: inline-block;
+  margin-bottom: 9px;
+
+  color: #748187;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.genomic-architecture-header .section-heading {
+  margin: 0 0 7px;
+  color: #092348;
+}
+
+.genomic-architecture-header .page-text {
+  max-width: 620px;
+  margin: 0 auto;
+  color: #78848a;
+  line-height: 1.5;
+}
+
+
+/* ================================
+   COMPARISON
+================================ */
+
+.genomic-architecture-comparison {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  align-items: stretch;
+}
+
+
+/* ================================
+   CARD
+================================ */
+
+.genomic-architecture-card {
+  position: relative;
+
+  padding: 22px 23px 20px;
+
+  border-radius: 5px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 8px 22px rgba(18, 44, 55, 0.08);
+
+  overflow: hidden;
+}
+
+.genomic-architecture-card--legacy {
+  border: 1px solid #dce2e4;
+}
+
+.genomic-architecture-card--zebu {
+  border: 1px solid #b9e6d1;
+}
+
+
+/* ================================
+   CARD TOP
+================================ */
+
+.genomic-architecture-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 11px;
+}
+
+.genomic-architecture-card-label {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 4px 7px;
+
+  border-radius: 2px;
+
+  background: #eef1f2;
+  color: #677278;
+
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+}
+
+.genomic-architecture-card--zebu .genomic-architecture-card-label {
+  background: #d9f3e5;
+  color: #24835a;
+}
+
+.genomic-architecture-card-icon {
+  color: #718087;
+}
+
+
+/* ================================
+   CARD HEADING
+================================ */
+
+.genomic-architecture-card-title {
+  margin: 0 0 5px;
+  color: #102b49;
+  line-height: 1.25;
+}
+
+.genomic-architecture-card--zebu .genomic-architecture-card-title {
+  color: #0c3c2b;
+}
+
+.genomic-architecture-card-subtitle {
+  display: block;
+  margin-bottom: 18px;
+
+  color: #899397;
+  letter-spacing: 0.5px;
+}
+
+.genomic-architecture-card--zebu .genomic-architecture-card-subtitle {
+  color: #5c8a74;
+}
+
+
+/* ================================
+   CONTENT POINTS
+================================ */
+
+.genomic-architecture-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.genomic-architecture-point {
+  padding-bottom: 11px;
+
+  border-bottom: 1px solid #edf0f1;
+}
+
+.genomic-architecture-point:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.genomic-architecture-point strong {
+  display: block;
+  margin-bottom: 3px;
+
+  color: #344850;
+}
+
+.genomic-architecture-point .page-text {
+  margin: 0;
+  color: #748187;
+  line-height: 1.4;
+}
+
+.genomic-architecture-point--warning {
+  padding-left: 10px;
+  border-left: 2px solid #d79a4b;
+}
+
+.genomic-architecture-point--warning strong {
+  color: #a06b25;
+}
+
+
+/* ================================
+   RESULT BAR
+================================ */
+
+.genomic-architecture-result {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  margin-top: 17px;
+  padding: 9px 11px;
+
+  border-radius: 3px;
+}
+
+.genomic-architecture-result--legacy {
+  background: #f0f2f3;
+}
+
+.genomic-architecture-result--zebu {
+  background: #e5f8ed;
+}
+
+.genomic-architecture-result span {
+  width: 17px;
+  height: 17px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+}
+
+.genomic-architecture-result--legacy span {
+  background: #dce1e3;
+  color: #6c777b;
+}
+
+.genomic-architecture-result--zebu span {
+  background: #bce9cf;
+  color: #218257;
+}
+
+.genomic-architecture-result .page-text {
+  margin: 0;
+  line-height: 1.35;
+}
+
+.genomic-architecture-result--legacy .page-text {
+  color: #707a7e;
+}
+
+.genomic-architecture-result--zebu .page-text {
+  color: #39765a;
+}
+
+
+/* ================================
+   TABLET
+================================ */
+
+@media (max-width: 991px) {
+
+  .genomic-architecture-section {
+    padding: 65px 0;
+  }
+
+  .genomic-architecture-comparison {
+    grid-template-columns: 1fr;
+    max-width: 750px;
+    margin: 0 auto;
+  }
+
+  .genomic-architecture-card {
+    padding: 23px;
+  }
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 767px) {
+
+  .genomic-architecture-section {
+    padding: 50px 0;
+  }
+
+  .genomic-architecture-container {
+    width: 92%;
+  }
+
+  .genomic-architecture-header {
+    margin-bottom: 30px;
+  }
+
+  .genomic-architecture-card {
+    padding: 19px 17px;
+  }
+
+  .genomic-architecture-card-content {
+    gap: 10px;
+  }
+
+  .genomic-architecture-result {
+    align-items: flex-start;
+  }
+}
+
+
+/* ================================
+   SMALL MOBILE
+================================ */
+
+@media (max-width: 480px) {
+
+  .genomic-architecture-container {
+    width: 93%;
+  }
+
+  .genomic-architecture-card-top {
+    margin-bottom: 9px;
+  }
+
+  .genomic-architecture-card-subtitle {
+    margin-bottom: 15px;
+  }
+
+  .genomic-architecture-result {
+    padding: 8px 9px;
+  }
+}
