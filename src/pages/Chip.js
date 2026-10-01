@@ -76,6 +76,8 @@ export const Chip = () => {
 
       </div>
     </section>
+    {/*  */}
+      <WhyDairyMatters/>
 {/* ------------------------------------------------------ */}
        <section className="genomic-architecture-section">
       <div className="genomic-architecture-container">
@@ -260,7 +262,7 @@ export const Chip = () => {
       </div>
     </section>
 
-    <WhyDairyMatters/>
+  
     </div>
   )
 }
